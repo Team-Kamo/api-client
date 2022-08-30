@@ -16,7 +16,4 @@
 namespace octane {
   ApiClient::ApiClient() {}
   ApiClient::~ApiClient() noexcept {}
-  int ApiClient::test(int a, int b) {
-    return a + b;
-  }
 } // namespace octane
