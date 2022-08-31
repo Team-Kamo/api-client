@@ -9,5 +9,15 @@ target_link_libraries(
   GTest::gtest_main
   octane
 )
-
 gtest_discover_tests(api_client_test)
+
+add_executable(
+  fetch_test
+  fetch_test.cpp
+)
+target_link_libraries(
+  fetch_test
+  GTest::gtest_main
+  octane
+)
+gtest_discover_tests(fetch_test)
