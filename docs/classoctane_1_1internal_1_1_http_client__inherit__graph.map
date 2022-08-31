@@ -1,0 +1,4 @@
+<map id="octane::internal::HttpClient" name="octane::internal::HttpClient">
+<area shape="rect" id="node1" title="HTTP通信を行う。" alt="" coords="21,79,197,104"/>
+<area shape="rect" id="node2" href="$classoctane_1_1internal_1_1_http_client_base.html" title="HTTP通信を行うインタフェース。" alt="" coords="5,5,212,31"/>
+</map>

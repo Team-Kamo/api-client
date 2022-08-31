@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Octane API Client: src/include/api_client.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Octane API Client
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.5 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b0856f6b0d80ccb263b2f415c91f9e17.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">api_client.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="api__client_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#ifndef OCTANE_API_CLIENT_API_CLIENT_H_</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define OCTANE_API_CLIENT_API_CLIENT_H_</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;optional&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;string_view&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;variant&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="error__response_8h.html">./error_response.h</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="fetch_8h.html">./internal/fetch.h</a>&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="result_8h.html">./result.h</a>&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceoctane.html">octane</a> {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="namespaceoctane.html#a1f009b9e200bd7209934b50ab7b01900">   27</a></span>  <span class="keyword">enum struct</span> <a class="code hl_enumeration" href="namespaceoctane.html#a1f009b9e200bd7209934b50ab7b01900">Health</a> {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_enumvalue" href="namespaceoctane.html#a1f009b9e200bd7209934b50ab7b01900a396d45b57c2fbe3318e7b93272a2686b">Healthy</a>,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_enumvalue" href="namespaceoctane.html#a1f009b9e200bd7209934b50ab7b01900aaa95669cd5732a57e8f6467705f06642">Degraded</a>,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_enumvalue" href="namespaceoctane.html#a1f009b9e200bd7209934b50ab7b01900af1a033c30a9465df0c13c56b41d9b41b">Faulty</a>,</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  };</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structoctane_1_1_health_result.html">   32</a></span>  <span class="keyword">struct </span><a class="code hl_struct" href="structoctane_1_1_health_result.html">HealthResult</a> {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structoctane_1_1_health_result.html#a7cf1fca201bfb39c56551ba0c4f019af">   33</a></span>    <a class="code hl_enumeration" href="namespaceoctane.html#a1f009b9e200bd7209934b50ab7b01900">Health</a> <a class="code hl_variable" href="structoctane_1_1_health_result.html#a7cf1fca201bfb39c56551ba0c4f019af">health</a>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structoctane_1_1_health_result.html#a967d18755cbfcc463e14083ec1b19b2e">   34</a></span>    std::optional&lt;std::string&gt; <a class="code hl_variable" href="structoctane_1_1_health_result.html#a967d18755cbfcc463e14083ec1b19b2e">message</a>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  };</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="structoctane_1_1_device.html">   36</a></span>  <span class="keyword">struct </span><a class="code hl_struct" href="structoctane_1_1_device.html">Device</a> {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structoctane_1_1_device.html#a9eb9cf421c4b4ece009372a6919172f6">   37</a></span>    std::string <a class="code hl_variable" href="structoctane_1_1_device.html#a9eb9cf421c4b4ece009372a6919172f6">name</a>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structoctane_1_1_device.html#ab94b313c2af38bdf0724468ed02e349c">   38</a></span>    std::uint64_t <a class="code hl_variable" href="structoctane_1_1_device.html#ab94b313c2af38bdf0724468ed02e349c">timestamp</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  };</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structoctane_1_1_room_status.html">   40</a></span>  <span class="keyword">struct </span><a class="code hl_struct" href="structoctane_1_1_room_status.html">RoomStatus</a> {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structoctane_1_1_room_status.html#a67a2578ac1112d7046c8668f1343afc1">   41</a></span>    std::string <a class="code hl_variable" href="structoctane_1_1_room_status.html#a67a2578ac1112d7046c8668f1343afc1">name</a>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structoctane_1_1_room_status.html#a0afd7e61504745794574698059533843">   42</a></span>    std::vector&lt;Device&gt; <a class="code hl_variable" href="structoctane_1_1_room_status.html#a0afd7e61504745794574698059533843">devices</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  };</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4">   44</a></span>  <span class="keyword">enum struct</span> <a class="code hl_enumeration" href="namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4">ContentType</a> {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_enumvalue" href="namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4a0b27918290ff5323bea1e3b78a9cf04e">File</a>,</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_enumvalue" href="namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4a23e5a7b7976e412ece233ceaf8257bc2">Clipboard</a>,</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  };</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="structoctane_1_1_content.html">   48</a></span>  <span class="keyword">struct </span><a class="code hl_struct" href="structoctane_1_1_content.html">Content</a> {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="structoctane_1_1_content.html#ac006abade1c4e0d5ba265ead6e831f17">   49</a></span>    <a class="code hl_enumeration" href="namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4">ContentType</a> <a class="code hl_variable" href="structoctane_1_1_content.html#ac006abade1c4e0d5ba265ead6e831f17">type</a>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="structoctane_1_1_content.html#a9204a48e2d1aae9c61dfe15a9a87d1e6">   50</a></span>    std::string <a class="code hl_variable" href="structoctane_1_1_content.html#a9204a48e2d1aae9c61dfe15a9a87d1e6">name</a>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="structoctane_1_1_content.html#a79ff6362c8905a530fdc6af35cce2826">   51</a></span>    std::string <a class="code hl_variable" href="structoctane_1_1_content.html#a79ff6362c8905a530fdc6af35cce2826">mime</a>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="structoctane_1_1_content.html#a3e3dff8dcf95c76bfbf9b85922ee7ac3">   52</a></span>    std::variant&lt;std::string, std::vector&lt;std::uint8_t&gt;&gt; <a class="code hl_variable" href="structoctane_1_1_content.html#a3e3dff8dcf95c76bfbf9b85922ee7ac3">data</a>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  };</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="structoctane_1_1_content_status.html">   54</a></span>  <span class="keyword">struct </span><a class="code hl_struct" href="structoctane_1_1_content_status.html">ContentStatus</a> {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="structoctane_1_1_content_status.html#ae75661b140e0e44583af2feb067c9a45">   55</a></span>    std::string <a class="code hl_variable" href="structoctane_1_1_content_status.html#ae75661b140e0e44583af2feb067c9a45">device</a>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="structoctane_1_1_content_status.html#a9ac16fb176a571681a8ddfb75cf83473">   56</a></span>    std::uint64_t <a class="code hl_variable" href="structoctane_1_1_content_status.html#a9ac16fb176a571681a8ddfb75cf83473">timestamp</a>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="structoctane_1_1_content_status.html#a9ccfe92e0ed91069b392f8d4f010c933">   57</a></span>    <a class="code hl_enumeration" href="namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4">ContentType</a> <a class="code hl_variable" href="structoctane_1_1_content_status.html#a9ccfe92e0ed91069b392f8d4f010c933">type</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="structoctane_1_1_content_status.html#a43a579fa3f296f50ea967f1af872fe70">   58</a></span>    std::optional&lt;std::string&gt; <a class="code hl_variable" href="structoctane_1_1_content_status.html#a43a579fa3f296f50ea967f1af872fe70">name</a>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="structoctane_1_1_content_status.html#ad612c1e2a67ba2187a92914732d04166">   59</a></span>    std::string <a class="code hl_variable" href="structoctane_1_1_content_status.html#ad612c1e2a67ba2187a92914732d04166">mime</a>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="structoctane_1_1_content_status.html#a3806fa67a665d4924c2595d30dc60ffb">   60</a></span>    std::string <a class="code hl_variable" href="structoctane_1_1_content_status.html#a3806fa67a665d4924c2595d30dc60ffb">hash</a>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  };</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classoctane_1_1_api_client.html">   62</a></span>  <span class="keyword">class </span><a class="code hl_class" href="classoctane_1_1_api_client.html">ApiClient</a> {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <a class="code hl_class" href="classoctane_1_1internal_1_1_fetch.html">internal::Fetch</a> fetch;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    std::uint64_t lastCheckedTime;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <a class="code hl_class" href="classoctane_1_1_api_client.html">ApiClient</a>(std::string_view token,</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>              std::string_view origin,</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>              std::string_view baseUrl);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <a class="code hl_function" href="classoctane_1_1_api_client.html#a8107ab8f11d4298c0960fb078fb8611f">~ApiClient</a>() <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;std::optional&lt;std::string&gt;</a>, <a class="code hl_struct" href="structoctane_1_1_error_response.html">ErrorResponse</a>&gt; <a class="code hl_function" href="classoctane_1_1_api_client.html#a90a36f3caf3ada6677d9782aadd5780c">init</a>();</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;HealthResult, ErrorResponse&gt;</a> <a class="code hl_function" href="classoctane_1_1_api_client.html#a93ff968043aca8a60231e7b218689d9b">health</a>();</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;std::string, ErrorResponse&gt;</a> <a class="code hl_function" href="classoctane_1_1_api_client.html#aca5a441478ce67bb09dedc124834d5c2">createRoom</a>(std::string_view name);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;RoomStatus, ErrorResponse&gt;</a> <a class="code hl_function" href="classoctane_1_1_api_client.html#abf9f627eef82ca6b148130e707f99fd7">getRoomStatus</a>(std::string_view <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;_, ErrorResponse&gt;</a> <a class="code hl_function" href="classoctane_1_1_api_client.html#a8459fa5374bfe4e039cecb1afd79b531">deleteRoom</a>(std::string_view <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;Content, ErrorResponse&gt;</a> <a class="code hl_function" href="classoctane_1_1_api_client.html#af293ce82a072d6f8fbdd4376b7452c36">getContent</a>(std::string_view <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;_, ErrorResponse&gt;</a> <a class="code hl_function" href="classoctane_1_1_api_client.html#abcadeb1619b4f438c7d3605d7c29824f">deleteContent</a>(std::string_view <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;_, ErrorResponse&gt;</a> <a class="code hl_function" href="classoctane_1_1_api_client.html#acc69338fe35004772b219e7a24f78481">uploadContent</a>(std::string_view <span class="keywordtype">id</span>,</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>                                           <span class="keyword">const</span> <a class="code hl_struct" href="structoctane_1_1_content.html">Content</a>&amp; content);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;std::optional&lt;std::string&gt;</a>, <a class="code hl_struct" href="structoctane_1_1_error_response.html">ErrorResponse</a>&gt; checkHealth();</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;_, ErrorResponse&gt;</a> connectRoom(std::string_view <span class="keywordtype">id</span>,</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>                                         std::string_view name);</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;ContentStatus, ErrorResponse&gt;</a> getContentStatus(std::string_view <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;_, ErrorResponse&gt;</a> uploadContentStatus(</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>      std::string_view <span class="keywordtype">id</span>,</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>      <span class="keyword">const</span> <a class="code hl_struct" href="structoctane_1_1_content_status.html">ContentStatus</a>&amp; contentStatus);</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;_, ErrorResponse&gt;</a> deleteContentStatus(std::string_view <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>  };</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>} <span class="comment">// namespace octane</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="preprocessor">#endif </span><span class="comment">// OCTANE_API_CLIENT_API_CLIENT_H_</span></div>
+<div class="ttc" id="aclassoctane_1_1_api_client_html"><div class="ttname"><a href="classoctane_1_1_api_client.html">octane::ApiClient</a></div><div class="ttdef"><b>Definition:</b> api_client.h:62</div></div>
+<div class="ttc" id="aclassoctane_1_1_api_client_html_a8107ab8f11d4298c0960fb078fb8611f"><div class="ttname"><a href="classoctane_1_1_api_client.html#a8107ab8f11d4298c0960fb078fb8611f">octane::ApiClient::~ApiClient</a></div><div class="ttdeci">~ApiClient() noexcept</div><div class="ttdoc">Destroy the Api Client object</div><div class="ttdef"><b>Definition:</b> api_client.cpp:26</div></div>
+<div class="ttc" id="aclassoctane_1_1_api_client_html_a8459fa5374bfe4e039cecb1afd79b531"><div class="ttname"><a href="classoctane_1_1_api_client.html#a8459fa5374bfe4e039cecb1afd79b531">octane::ApiClient::deleteRoom</a></div><div class="ttdeci">Result&lt; _, ErrorResponse &gt; deleteRoom(std::string_view id)</div><div class="ttdoc">Delete the room</div><div class="ttdef"><b>Definition:</b> api_client.cpp:83</div></div>
+<div class="ttc" id="aclassoctane_1_1_api_client_html_a90a36f3caf3ada6677d9782aadd5780c"><div class="ttname"><a href="classoctane_1_1_api_client.html#a90a36f3caf3ada6677d9782aadd5780c">octane::ApiClient::init</a></div><div class="ttdeci">Result&lt; std::optional&lt; std::string &gt;, ErrorResponse &gt; init()</div><div class="ttdoc">Initialize</div><div class="ttdef"><b>Definition:</b> api_client.cpp:27</div></div>
+<div class="ttc" id="aclassoctane_1_1_api_client_html_a93ff968043aca8a60231e7b218689d9b"><div class="ttname"><a href="classoctane_1_1_api_client.html#a93ff968043aca8a60231e7b218689d9b">octane::ApiClient::health</a></div><div class="ttdeci">Result&lt; HealthResult, ErrorResponse &gt; health()</div><div class="ttdoc">Return the server's status</div><div class="ttdef"><b>Definition:</b> api_client.cpp:63</div></div>
+<div class="ttc" id="aclassoctane_1_1_api_client_html_abcadeb1619b4f438c7d3605d7c29824f"><div class="ttname"><a href="classoctane_1_1_api_client.html#abcadeb1619b4f438c7d3605d7c29824f">octane::ApiClient::deleteContent</a></div><div class="ttdeci">Result&lt; _, ErrorResponse &gt; deleteContent(std::string_view id)</div><div class="ttdoc">Delete content from the room</div><div class="ttdef"><b>Definition:</b> api_client.cpp:97</div></div>
+<div class="ttc" id="aclassoctane_1_1_api_client_html_abf9f627eef82ca6b148130e707f99fd7"><div class="ttname"><a href="classoctane_1_1_api_client.html#abf9f627eef82ca6b148130e707f99fd7">octane::ApiClient::getRoomStatus</a></div><div class="ttdeci">Result&lt; RoomStatus, ErrorResponse &gt; getRoomStatus(std::string_view id)</div><div class="ttdoc">Get the room's status</div><div class="ttdef"><b>Definition:</b> api_client.cpp:75</div></div>
+<div class="ttc" id="aclassoctane_1_1_api_client_html_aca5a441478ce67bb09dedc124834d5c2"><div class="ttname"><a href="classoctane_1_1_api_client.html#aca5a441478ce67bb09dedc124834d5c2">octane::ApiClient::createRoom</a></div><div class="ttdeci">Result&lt; std::string, ErrorResponse &gt; createRoom(std::string_view name)</div><div class="ttdoc">Create a room</div><div class="ttdef"><b>Definition:</b> api_client.cpp:67</div></div>
+<div class="ttc" id="aclassoctane_1_1_api_client_html_acc69338fe35004772b219e7a24f78481"><div class="ttname"><a href="classoctane_1_1_api_client.html#acc69338fe35004772b219e7a24f78481">octane::ApiClient::uploadContent</a></div><div class="ttdeci">Result&lt; _, ErrorResponse &gt; uploadContent(std::string_view id, const Content &amp;content)</div><div class="ttdoc">Upload content to the room</div><div class="ttdef"><b>Definition:</b> api_client.cpp:104</div></div>
+<div class="ttc" id="aclassoctane_1_1_api_client_html_af293ce82a072d6f8fbdd4376b7452c36"><div class="ttname"><a href="classoctane_1_1_api_client.html#af293ce82a072d6f8fbdd4376b7452c36">octane::ApiClient::getContent</a></div><div class="ttdeci">Result&lt; Content, ErrorResponse &gt; getContent(std::string_view id)</div><div class="ttdoc">Return content in the room</div><div class="ttdef"><b>Definition:</b> api_client.cpp:90</div></div>
+<div class="ttc" id="aclassoctane_1_1_result_html"><div class="ttname"><a href="classoctane_1_1_result.html">octane::Result</a></div><div class="ttdef"><b>Definition:</b> result.h:9</div></div>
+<div class="ttc" id="aclassoctane_1_1internal_1_1_fetch_html"><div class="ttname"><a href="classoctane_1_1internal_1_1_fetch.html">octane::internal::Fetch</a></div><div class="ttdef"><b>Definition:</b> fetch.h:20</div></div>
+<div class="ttc" id="aerror__response_8h_html"><div class="ttname"><a href="error__response_8h.html">error_response.h</a></div><div class="ttdoc">エラーレスポンス。</div></div>
+<div class="ttc" id="afetch_8h_html"><div class="ttname"><a href="fetch_8h.html">fetch.h</a></div></div>
+<div class="ttc" id="anamespaceoctane_html"><div class="ttname"><a href="namespaceoctane.html">octane</a></div><div class="ttdef"><b>Definition:</b> api_client.cpp:20</div></div>
+<div class="ttc" id="anamespaceoctane_html_a1f009b9e200bd7209934b50ab7b01900"><div class="ttname"><a href="namespaceoctane.html#a1f009b9e200bd7209934b50ab7b01900">octane::Health</a></div><div class="ttdeci">Health</div><div class="ttdef"><b>Definition:</b> api_client.h:27</div></div>
+<div class="ttc" id="anamespaceoctane_html_a1f009b9e200bd7209934b50ab7b01900a396d45b57c2fbe3318e7b93272a2686b"><div class="ttname"><a href="namespaceoctane.html#a1f009b9e200bd7209934b50ab7b01900a396d45b57c2fbe3318e7b93272a2686b">octane::Health::Healthy</a></div><div class="ttdeci">@ Healthy</div></div>
+<div class="ttc" id="anamespaceoctane_html_a1f009b9e200bd7209934b50ab7b01900aaa95669cd5732a57e8f6467705f06642"><div class="ttname"><a href="namespaceoctane.html#a1f009b9e200bd7209934b50ab7b01900aaa95669cd5732a57e8f6467705f06642">octane::Health::Degraded</a></div><div class="ttdeci">@ Degraded</div></div>
+<div class="ttc" id="anamespaceoctane_html_a1f009b9e200bd7209934b50ab7b01900af1a033c30a9465df0c13c56b41d9b41b"><div class="ttname"><a href="namespaceoctane.html#a1f009b9e200bd7209934b50ab7b01900af1a033c30a9465df0c13c56b41d9b41b">octane::Health::Faulty</a></div><div class="ttdeci">@ Faulty</div></div>
+<div class="ttc" id="anamespaceoctane_html_ab6ae76f8bafa760d30cd5a5863b0cea4"><div class="ttname"><a href="namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4">octane::ContentType</a></div><div class="ttdeci">ContentType</div><div class="ttdef"><b>Definition:</b> api_client.h:44</div></div>
+<div class="ttc" id="anamespaceoctane_html_ab6ae76f8bafa760d30cd5a5863b0cea4a0b27918290ff5323bea1e3b78a9cf04e"><div class="ttname"><a href="namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4a0b27918290ff5323bea1e3b78a9cf04e">octane::ContentType::File</a></div><div class="ttdeci">@ File</div></div>
+<div class="ttc" id="anamespaceoctane_html_ab6ae76f8bafa760d30cd5a5863b0cea4a23e5a7b7976e412ece233ceaf8257bc2"><div class="ttname"><a href="namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4a23e5a7b7976e412ece233ceaf8257bc2">octane::ContentType::Clipboard</a></div><div class="ttdeci">@ Clipboard</div></div>
+<div class="ttc" id="aresult_8h_html"><div class="ttname"><a href="result_8h.html">result.h</a></div></div>
+<div class="ttc" id="astructoctane_1_1_content_html"><div class="ttname"><a href="structoctane_1_1_content.html">octane::Content</a></div><div class="ttdef"><b>Definition:</b> api_client.h:48</div></div>
+<div class="ttc" id="astructoctane_1_1_content_html_a3e3dff8dcf95c76bfbf9b85922ee7ac3"><div class="ttname"><a href="structoctane_1_1_content.html#a3e3dff8dcf95c76bfbf9b85922ee7ac3">octane::Content::data</a></div><div class="ttdeci">std::variant&lt; std::string, std::vector&lt; std::uint8_t &gt; &gt; data</div><div class="ttdef"><b>Definition:</b> api_client.h:52</div></div>
+<div class="ttc" id="astructoctane_1_1_content_html_a79ff6362c8905a530fdc6af35cce2826"><div class="ttname"><a href="structoctane_1_1_content.html#a79ff6362c8905a530fdc6af35cce2826">octane::Content::mime</a></div><div class="ttdeci">std::string mime</div><div class="ttdef"><b>Definition:</b> api_client.h:51</div></div>
+<div class="ttc" id="astructoctane_1_1_content_html_a9204a48e2d1aae9c61dfe15a9a87d1e6"><div class="ttname"><a href="structoctane_1_1_content.html#a9204a48e2d1aae9c61dfe15a9a87d1e6">octane::Content::name</a></div><div class="ttdeci">std::string name</div><div class="ttdef"><b>Definition:</b> api_client.h:50</div></div>
+<div class="ttc" id="astructoctane_1_1_content_html_ac006abade1c4e0d5ba265ead6e831f17"><div class="ttname"><a href="structoctane_1_1_content.html#ac006abade1c4e0d5ba265ead6e831f17">octane::Content::type</a></div><div class="ttdeci">ContentType type</div><div class="ttdef"><b>Definition:</b> api_client.h:49</div></div>
+<div class="ttc" id="astructoctane_1_1_content_status_html"><div class="ttname"><a href="structoctane_1_1_content_status.html">octane::ContentStatus</a></div><div class="ttdef"><b>Definition:</b> api_client.h:54</div></div>
+<div class="ttc" id="astructoctane_1_1_content_status_html_a3806fa67a665d4924c2595d30dc60ffb"><div class="ttname"><a href="structoctane_1_1_content_status.html#a3806fa67a665d4924c2595d30dc60ffb">octane::ContentStatus::hash</a></div><div class="ttdeci">std::string hash</div><div class="ttdef"><b>Definition:</b> api_client.h:60</div></div>
+<div class="ttc" id="astructoctane_1_1_content_status_html_a43a579fa3f296f50ea967f1af872fe70"><div class="ttname"><a href="structoctane_1_1_content_status.html#a43a579fa3f296f50ea967f1af872fe70">octane::ContentStatus::name</a></div><div class="ttdeci">std::optional&lt; std::string &gt; name</div><div class="ttdef"><b>Definition:</b> api_client.h:58</div></div>
+<div class="ttc" id="astructoctane_1_1_content_status_html_a9ac16fb176a571681a8ddfb75cf83473"><div class="ttname"><a href="structoctane_1_1_content_status.html#a9ac16fb176a571681a8ddfb75cf83473">octane::ContentStatus::timestamp</a></div><div class="ttdeci">std::uint64_t timestamp</div><div class="ttdef"><b>Definition:</b> api_client.h:56</div></div>
+<div class="ttc" id="astructoctane_1_1_content_status_html_a9ccfe92e0ed91069b392f8d4f010c933"><div class="ttname"><a href="structoctane_1_1_content_status.html#a9ccfe92e0ed91069b392f8d4f010c933">octane::ContentStatus::type</a></div><div class="ttdeci">ContentType type</div><div class="ttdef"><b>Definition:</b> api_client.h:57</div></div>
+<div class="ttc" id="astructoctane_1_1_content_status_html_ad612c1e2a67ba2187a92914732d04166"><div class="ttname"><a href="structoctane_1_1_content_status.html#ad612c1e2a67ba2187a92914732d04166">octane::ContentStatus::mime</a></div><div class="ttdeci">std::string mime</div><div class="ttdef"><b>Definition:</b> api_client.h:59</div></div>
+<div class="ttc" id="astructoctane_1_1_content_status_html_ae75661b140e0e44583af2feb067c9a45"><div class="ttname"><a href="structoctane_1_1_content_status.html#ae75661b140e0e44583af2feb067c9a45">octane::ContentStatus::device</a></div><div class="ttdeci">std::string device</div><div class="ttdef"><b>Definition:</b> api_client.h:55</div></div>
+<div class="ttc" id="astructoctane_1_1_device_html"><div class="ttname"><a href="structoctane_1_1_device.html">octane::Device</a></div><div class="ttdef"><b>Definition:</b> api_client.h:36</div></div>
+<div class="ttc" id="astructoctane_1_1_device_html_a9eb9cf421c4b4ece009372a6919172f6"><div class="ttname"><a href="structoctane_1_1_device.html#a9eb9cf421c4b4ece009372a6919172f6">octane::Device::name</a></div><div class="ttdeci">std::string name</div><div class="ttdef"><b>Definition:</b> api_client.h:37</div></div>
+<div class="ttc" id="astructoctane_1_1_device_html_ab94b313c2af38bdf0724468ed02e349c"><div class="ttname"><a href="structoctane_1_1_device.html#ab94b313c2af38bdf0724468ed02e349c">octane::Device::timestamp</a></div><div class="ttdeci">std::uint64_t timestamp</div><div class="ttdef"><b>Definition:</b> api_client.h:38</div></div>
+<div class="ttc" id="astructoctane_1_1_error_response_html"><div class="ttname"><a href="structoctane_1_1_error_response.html">octane::ErrorResponse</a></div><div class="ttdef"><b>Definition:</b> error_response.h:20</div></div>
+<div class="ttc" id="astructoctane_1_1_health_result_html"><div class="ttname"><a href="structoctane_1_1_health_result.html">octane::HealthResult</a></div><div class="ttdef"><b>Definition:</b> api_client.h:32</div></div>
+<div class="ttc" id="astructoctane_1_1_health_result_html_a7cf1fca201bfb39c56551ba0c4f019af"><div class="ttname"><a href="structoctane_1_1_health_result.html#a7cf1fca201bfb39c56551ba0c4f019af">octane::HealthResult::health</a></div><div class="ttdeci">Health health</div><div class="ttdef"><b>Definition:</b> api_client.h:33</div></div>
+<div class="ttc" id="astructoctane_1_1_health_result_html_a967d18755cbfcc463e14083ec1b19b2e"><div class="ttname"><a href="structoctane_1_1_health_result.html#a967d18755cbfcc463e14083ec1b19b2e">octane::HealthResult::message</a></div><div class="ttdeci">std::optional&lt; std::string &gt; message</div><div class="ttdef"><b>Definition:</b> api_client.h:34</div></div>
+<div class="ttc" id="astructoctane_1_1_room_status_html"><div class="ttname"><a href="structoctane_1_1_room_status.html">octane::RoomStatus</a></div><div class="ttdef"><b>Definition:</b> api_client.h:40</div></div>
+<div class="ttc" id="astructoctane_1_1_room_status_html_a0afd7e61504745794574698059533843"><div class="ttname"><a href="structoctane_1_1_room_status.html#a0afd7e61504745794574698059533843">octane::RoomStatus::devices</a></div><div class="ttdeci">std::vector&lt; Device &gt; devices</div><div class="ttdef"><b>Definition:</b> api_client.h:42</div></div>
+<div class="ttc" id="astructoctane_1_1_room_status_html_a67a2578ac1112d7046c8668f1343afc1"><div class="ttname"><a href="structoctane_1_1_room_status.html#a67a2578ac1112d7046c8668f1343afc1">octane::RoomStatus::name</a></div><div class="ttdeci">std::string name</div><div class="ttdef"><b>Definition:</b> api_client.h:41</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+</small></address>
+</body>
+</html>

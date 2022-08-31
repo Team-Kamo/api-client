@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Octane API Client: src/include/api_client.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Octane API Client
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.5 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b0856f6b0d80ccb263b2f415c91f9e17.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">クラス</a> &#124;
+<a href="#namespaces">名前空間</a> &#124;
+<a href="#enum-members">列挙型</a>  </div>
+  <div class="headertitle"><div class="title">api_client.h ファイル</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;optional&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;string_view&gt;</code><br />
+<code>#include &lt;variant&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="error__response_8h_source.html">./error_response.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="fetch_8h_source.html">./internal/fetch.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="result_8h_source.html">./result.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+api_client.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="api__client_8h__incl.png" border="0" usemap="#asrc_2include_2api__client_8h" alt=""/></div>
+<map name="asrc_2include_2api__client_8h" id="asrc_2include_2api__client_8h">
+<area shape="rect" title=" " alt="" coords="515,5,669,31"/>
+<area shape="rect" title=" " alt="" coords="5,79,72,104"/>
+<area shape="rect" title=" " alt="" coords="1150,299,1205,324"/>
+<area shape="rect" title=" " alt="" coords="251,299,336,324"/>
+<area shape="rect" title=" " alt="" coords="197,152,256,177"/>
+<area shape="rect" title=" " alt="" coords="1257,225,1313,251"/>
+<area shape="rect" href="error__response_8h.html" title="エラーレスポンス。" alt="" coords="550,225,677,251"/>
+<area shape="rect" href="result_8h.html" title=" " alt="" coords="779,299,853,324"/>
+<area shape="rect" href="fetch_8h.html" title=" " alt="" coords="657,79,772,104"/>
+<area shape="rect" title=" " alt="" coords="741,372,806,397"/>
+<area shape="rect" title=" " alt="" coords="831,372,884,397"/>
+<area shape="rect" title=" " alt="" coords="928,152,1075,177"/>
+<area shape="rect" title=" " alt="" coords="1099,152,1247,177"/>
+<area shape="rect" title=" " alt="" coords="331,152,483,177"/>
+<area shape="rect" title=" " alt="" coords="507,152,627,177"/>
+<area shape="rect" title=" " alt="" coords="1006,225,1053,251"/>
+<area shape="rect" href="http__client_8h.html" title="HTTPクライアント。" alt="" coords="752,152,853,177"/>
+<area shape="rect" title=" " alt="" coords="753,225,879,251"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="api__client_8h__dep__incl.png" border="0" usemap="#asrc_2include_2api__client_8hdep" alt=""/></div>
+<map name="asrc_2include_2api__client_8hdep" id="asrc_2include_2api__client_8hdep">
+<area shape="rect" title=" " alt="" coords="5,5,160,31"/>
+<area shape="rect" href="api__client_8cpp.html" title=" " alt="" coords="8,79,157,104"/>
+</map>
+</div>
+</div>
+<p><a href="api__client_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+クラス</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_health_result.html">octane::HealthResult</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_device.html">octane::Device</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_room_status.html">octane::RoomStatus</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_content.html">octane::Content</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_content_status.html">octane::ContentStatus</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1_api_client.html">octane::ApiClient</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+名前空間</h2></td></tr>
+<tr class="memitem:namespaceoctane"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html">octane</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+列挙型</h2></td></tr>
+<tr class="memitem:a1f009b9e200bd7209934b50ab7b01900"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a1f009b9e200bd7209934b50ab7b01900">octane::Health</a> { <a class="el" href="namespaceoctane.html#a1f009b9e200bd7209934b50ab7b01900a396d45b57c2fbe3318e7b93272a2686b">octane::Healthy</a>
+, <a class="el" href="namespaceoctane.html#a1f009b9e200bd7209934b50ab7b01900aaa95669cd5732a57e8f6467705f06642">octane::Degraded</a>
+, <a class="el" href="namespaceoctane.html#a1f009b9e200bd7209934b50ab7b01900af1a033c30a9465df0c13c56b41d9b41b">octane::Faulty</a>
+ }</td></tr>
+<tr class="separator:a1f009b9e200bd7209934b50ab7b01900"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6ae76f8bafa760d30cd5a5863b0cea4"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4">octane::ContentType</a> { <a class="el" href="namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4a0b27918290ff5323bea1e3b78a9cf04e">octane::File</a>
+, <a class="el" href="namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4a23e5a7b7976e412ece233ceaf8257bc2">octane::Clipboard</a>
+ }</td></tr>
+<tr class="separator:ab6ae76f8bafa760d30cd5a5863b0cea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+</small></address>
+</body>
+</html>

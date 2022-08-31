@@ -1,0 +1,475 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Octane API Client: octane::ApiClient クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Octane API Client
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.5 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceoctane.html">octane</a></li><li class="navelem"><a class="el" href="classoctane_1_1_api_client.html">ApiClient</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="classoctane_1_1_api_client-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle"><div class="title">octane::ApiClient クラス</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="api__client_8h_source.html">api_client.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:acdec9bc2ef115ec7fe7f14c7063b7c94"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1_api_client.html#acdec9bc2ef115ec7fe7f14c7063b7c94">ApiClient</a> (std::string_view token, std::string_view origin, std::string_view baseUrl)</td></tr>
+<tr class="memdesc:acdec9bc2ef115ec7fe7f14c7063b7c94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Api Client object  <a href="classoctane_1_1_api_client.html#acdec9bc2ef115ec7fe7f14c7063b7c94">[詳解]</a><br /></td></tr>
+<tr class="separator:acdec9bc2ef115ec7fe7f14c7063b7c94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8107ab8f11d4298c0960fb078fb8611f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1_api_client.html#a8107ab8f11d4298c0960fb078fb8611f">~ApiClient</a> () noexcept</td></tr>
+<tr class="memdesc:a8107ab8f11d4298c0960fb078fb8611f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the Api Client object  <a href="classoctane_1_1_api_client.html#a8107ab8f11d4298c0960fb078fb8611f">[詳解]</a><br /></td></tr>
+<tr class="separator:a8107ab8f11d4298c0960fb078fb8611f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90a36f3caf3ada6677d9782aadd5780c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; std::optional&lt; std::string &gt;, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1_api_client.html#a90a36f3caf3ada6677d9782aadd5780c">init</a> ()</td></tr>
+<tr class="memdesc:a90a36f3caf3ada6677d9782aadd5780c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize  <a href="classoctane_1_1_api_client.html#a90a36f3caf3ada6677d9782aadd5780c">[詳解]</a><br /></td></tr>
+<tr class="separator:a90a36f3caf3ada6677d9782aadd5780c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93ff968043aca8a60231e7b218689d9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1_health_result.html">HealthResult</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1_api_client.html#a93ff968043aca8a60231e7b218689d9b">health</a> ()</td></tr>
+<tr class="memdesc:a93ff968043aca8a60231e7b218689d9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the server's status  <a href="classoctane_1_1_api_client.html#a93ff968043aca8a60231e7b218689d9b">[詳解]</a><br /></td></tr>
+<tr class="separator:a93ff968043aca8a60231e7b218689d9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca5a441478ce67bb09dedc124834d5c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; std::string, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1_api_client.html#aca5a441478ce67bb09dedc124834d5c2">createRoom</a> (std::string_view name)</td></tr>
+<tr class="memdesc:aca5a441478ce67bb09dedc124834d5c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a room  <a href="classoctane_1_1_api_client.html#aca5a441478ce67bb09dedc124834d5c2">[詳解]</a><br /></td></tr>
+<tr class="separator:aca5a441478ce67bb09dedc124834d5c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf9f627eef82ca6b148130e707f99fd7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1_room_status.html">RoomStatus</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1_api_client.html#abf9f627eef82ca6b148130e707f99fd7">getRoomStatus</a> (std::string_view id)</td></tr>
+<tr class="memdesc:abf9f627eef82ca6b148130e707f99fd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the room's status  <a href="classoctane_1_1_api_client.html#abf9f627eef82ca6b148130e707f99fd7">[詳解]</a><br /></td></tr>
+<tr class="separator:abf9f627eef82ca6b148130e707f99fd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8459fa5374bfe4e039cecb1afd79b531"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1__.html">_</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1_api_client.html#a8459fa5374bfe4e039cecb1afd79b531">deleteRoom</a> (std::string_view id)</td></tr>
+<tr class="memdesc:a8459fa5374bfe4e039cecb1afd79b531"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete the room  <a href="classoctane_1_1_api_client.html#a8459fa5374bfe4e039cecb1afd79b531">[詳解]</a><br /></td></tr>
+<tr class="separator:a8459fa5374bfe4e039cecb1afd79b531"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af293ce82a072d6f8fbdd4376b7452c36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1_content.html">Content</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1_api_client.html#af293ce82a072d6f8fbdd4376b7452c36">getContent</a> (std::string_view id)</td></tr>
+<tr class="memdesc:af293ce82a072d6f8fbdd4376b7452c36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return content in the room  <a href="classoctane_1_1_api_client.html#af293ce82a072d6f8fbdd4376b7452c36">[詳解]</a><br /></td></tr>
+<tr class="separator:af293ce82a072d6f8fbdd4376b7452c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcadeb1619b4f438c7d3605d7c29824f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1__.html">_</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1_api_client.html#abcadeb1619b4f438c7d3605d7c29824f">deleteContent</a> (std::string_view id)</td></tr>
+<tr class="memdesc:abcadeb1619b4f438c7d3605d7c29824f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete content from the room  <a href="classoctane_1_1_api_client.html#abcadeb1619b4f438c7d3605d7c29824f">[詳解]</a><br /></td></tr>
+<tr class="separator:abcadeb1619b4f438c7d3605d7c29824f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc69338fe35004772b219e7a24f78481"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1__.html">_</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1_api_client.html#acc69338fe35004772b219e7a24f78481">uploadContent</a> (std::string_view id, const <a class="el" href="structoctane_1_1_content.html">Content</a> &amp;content)</td></tr>
+<tr class="memdesc:acc69338fe35004772b219e7a24f78481"><td class="mdescLeft">&#160;</td><td class="mdescRight">Upload content to the room  <a href="classoctane_1_1_api_client.html#acc69338fe35004772b219e7a24f78481">[詳解]</a><br /></td></tr>
+<tr class="separator:acc69338fe35004772b219e7a24f78481"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">構築子と解体子</h2>
+<a id="acdec9bc2ef115ec7fe7f14c7063b7c94" name="acdec9bc2ef115ec7fe7f14c7063b7c94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdec9bc2ef115ec7fe7f14c7063b7c94">&#9670;&#160;</a></span>ApiClient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">octane::ApiClient::ApiClient </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>token</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>origin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>baseUrl</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new Api Client object </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">token</td><td></td></tr>
+    <tr><td class="paramname">origin</td><td><a href="http://localhost:3000">http://localhost:3000</a> </td></tr>
+    <tr><td class="paramname">baseUrl</td><td>/api/v1 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8107ab8f11d4298c0960fb078fb8611f" name="a8107ab8f11d4298c0960fb078fb8611f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8107ab8f11d4298c0960fb078fb8611f">&#9670;&#160;</a></span>~ApiClient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">octane::ApiClient::~ApiClient </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Destroy the Api Client object </p>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="aca5a441478ce67bb09dedc124834d5c2" name="aca5a441478ce67bb09dedc124834d5c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca5a441478ce67bb09dedc124834d5c2">&#9670;&#160;</a></span>createRoom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; std::string, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt; octane::ApiClient::createRoom </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a room </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Room name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>Result&lt;std::string, ErrorResponse&gt; Returns room id on success </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classoctane_1_1_api_client_aca5a441478ce67bb09dedc124834d5c2_cgraph.png" border="0" usemap="#aclassoctane_1_1_api_client_aca5a441478ce67bb09dedc124834d5c2_cgraph" alt=""/></div>
+<map name="aclassoctane_1_1_api_client_aca5a441478ce67bb09dedc124834d5c2_cgraph" id="aclassoctane_1_1_api_client_aca5a441478ce67bb09dedc124834d5c2_cgraph">
+<area shape="rect" title="Create a room" alt="" coords="5,22,135,62"/>
+<area shape="rect" href="namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title=" " alt="" coords="183,29,277,55"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abcadeb1619b4f438c7d3605d7c29824f" name="abcadeb1619b4f438c7d3605d7c29824f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcadeb1619b4f438c7d3605d7c29824f">&#9670;&#160;</a></span>deleteContent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1__.html">_</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt; octane::ApiClient::deleteContent </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Delete content from the room </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>Result&lt;_, ErrorResponse&gt; </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classoctane_1_1_api_client_abcadeb1619b4f438c7d3605d7c29824f_cgraph.png" border="0" usemap="#aclassoctane_1_1_api_client_abcadeb1619b4f438c7d3605d7c29824f_cgraph" alt=""/></div>
+<map name="aclassoctane_1_1_api_client_abcadeb1619b4f438c7d3605d7c29824f_cgraph" id="aclassoctane_1_1_api_client_abcadeb1619b4f438c7d3605d7c29824f_cgraph">
+<area shape="rect" title="Delete content from the room" alt="" coords="5,22,135,62"/>
+<area shape="rect" href="namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title=" " alt="" coords="183,29,277,55"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8459fa5374bfe4e039cecb1afd79b531" name="a8459fa5374bfe4e039cecb1afd79b531"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8459fa5374bfe4e039cecb1afd79b531">&#9670;&#160;</a></span>deleteRoom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1__.html">_</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt; octane::ApiClient::deleteRoom </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Delete the room </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>Result&lt;_, ErrorResponse&gt; </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classoctane_1_1_api_client_a8459fa5374bfe4e039cecb1afd79b531_cgraph.png" border="0" usemap="#aclassoctane_1_1_api_client_a8459fa5374bfe4e039cecb1afd79b531_cgraph" alt=""/></div>
+<map name="aclassoctane_1_1_api_client_a8459fa5374bfe4e039cecb1afd79b531_cgraph" id="aclassoctane_1_1_api_client_a8459fa5374bfe4e039cecb1afd79b531_cgraph">
+<area shape="rect" title="Delete the room" alt="" coords="5,22,135,62"/>
+<area shape="rect" href="namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title=" " alt="" coords="183,29,277,55"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af293ce82a072d6f8fbdd4376b7452c36" name="af293ce82a072d6f8fbdd4376b7452c36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af293ce82a072d6f8fbdd4376b7452c36">&#9670;&#160;</a></span>getContent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1_content.html">Content</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt; octane::ApiClient::getContent </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return content in the room </p>
+<dl class="section return"><dt>戻り値</dt><dd>Result&lt;Content, ErrorResponse&gt; </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classoctane_1_1_api_client_af293ce82a072d6f8fbdd4376b7452c36_cgraph.png" border="0" usemap="#aclassoctane_1_1_api_client_af293ce82a072d6f8fbdd4376b7452c36_cgraph" alt=""/></div>
+<map name="aclassoctane_1_1_api_client_af293ce82a072d6f8fbdd4376b7452c36_cgraph" id="aclassoctane_1_1_api_client_af293ce82a072d6f8fbdd4376b7452c36_cgraph">
+<area shape="rect" title="Return content in the room" alt="" coords="5,22,135,62"/>
+<area shape="rect" href="namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title=" " alt="" coords="183,29,277,55"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abf9f627eef82ca6b148130e707f99fd7" name="abf9f627eef82ca6b148130e707f99fd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf9f627eef82ca6b148130e707f99fd7">&#9670;&#160;</a></span>getRoomStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1_room_status.html">RoomStatus</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt; octane::ApiClient::getRoomStatus </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the room's status </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>Result&lt;RoomStatus, ErrorResponse&gt; </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classoctane_1_1_api_client_abf9f627eef82ca6b148130e707f99fd7_cgraph.png" border="0" usemap="#aclassoctane_1_1_api_client_abf9f627eef82ca6b148130e707f99fd7_cgraph" alt=""/></div>
+<map name="aclassoctane_1_1_api_client_abf9f627eef82ca6b148130e707f99fd7_cgraph" id="aclassoctane_1_1_api_client_abf9f627eef82ca6b148130e707f99fd7_cgraph">
+<area shape="rect" title="Get the room&#39;s status" alt="" coords="5,22,135,62"/>
+<area shape="rect" href="namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title=" " alt="" coords="183,29,277,55"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a93ff968043aca8a60231e7b218689d9b" name="a93ff968043aca8a60231e7b218689d9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93ff968043aca8a60231e7b218689d9b">&#9670;&#160;</a></span>health()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1_health_result.html">HealthResult</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt; octane::ApiClient::health </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the server's status </p>
+<dl class="section return"><dt>戻り値</dt><dd>Result&lt;HealthResult, ErrorResponse&gt; </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classoctane_1_1_api_client_a93ff968043aca8a60231e7b218689d9b_cgraph.png" border="0" usemap="#aclassoctane_1_1_api_client_a93ff968043aca8a60231e7b218689d9b_cgraph" alt=""/></div>
+<map name="aclassoctane_1_1_api_client_a93ff968043aca8a60231e7b218689d9b_cgraph" id="aclassoctane_1_1_api_client_a93ff968043aca8a60231e7b218689d9b_cgraph">
+<area shape="rect" title="Return the server&#39;s status" alt="" coords="5,22,135,62"/>
+<area shape="rect" href="namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title=" " alt="" coords="183,29,277,55"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a90a36f3caf3ada6677d9782aadd5780c" name="a90a36f3caf3ada6677d9782aadd5780c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90a36f3caf3ada6677d9782aadd5780c">&#9670;&#160;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; std::optional&lt; std::string &gt;, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt; octane::ApiClient::init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize </p>
+<dl class="section return"><dt>戻り値</dt><dd><a class="el" href="classoctane_1_1_result.html">Result</a>&lt;std::optional&lt;std::string&gt;, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a>&gt; </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classoctane_1_1_api_client_a90a36f3caf3ada6677d9782aadd5780c_cgraph.png" border="0" usemap="#aclassoctane_1_1_api_client_a90a36f3caf3ada6677d9782aadd5780c_cgraph" alt=""/></div>
+<map name="aclassoctane_1_1_api_client_a90a36f3caf3ada6677d9782aadd5780c_cgraph" id="aclassoctane_1_1_api_client_a90a36f3caf3ada6677d9782aadd5780c_cgraph">
+<area shape="rect" title="Initialize" alt="" coords="5,59,152,84"/>
+<area shape="rect" href="namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title=" " alt="" coords="229,29,323,55"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_fetch.html#ab13d25961028289f8f3e21237fb5233b" title="Initailize" alt="" coords="200,79,352,119"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_http_client_base.html#af17a7fb609866e4294315e4fba2a711d" title="HttpClientを初期化する。" alt="" coords="400,79,576,119"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acc69338fe35004772b219e7a24f78481" name="acc69338fe35004772b219e7a24f78481"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc69338fe35004772b219e7a24f78481">&#9670;&#160;</a></span>uploadContent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1__.html">_</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt; octane::ApiClient::uploadContent </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structoctane_1_1_content.html">Content</a> &amp;&#160;</td>
+          <td class="paramname"><em>content</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Upload content to the room </p>
+<dl class="section return"><dt>戻り値</dt><dd>Result&lt;_, ErrorResponse&gt; </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classoctane_1_1_api_client_acc69338fe35004772b219e7a24f78481_cgraph.png" border="0" usemap="#aclassoctane_1_1_api_client_acc69338fe35004772b219e7a24f78481_cgraph" alt=""/></div>
+<map name="aclassoctane_1_1_api_client_acc69338fe35004772b219e7a24f78481_cgraph" id="aclassoctane_1_1_api_client_acc69338fe35004772b219e7a24f78481_cgraph">
+<area shape="rect" title="Upload content to the room" alt="" coords="5,22,135,62"/>
+<area shape="rect" href="namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title=" " alt="" coords="183,29,277,55"/>
+</map>
+</div>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>src/include/<a class="el" href="api__client_8h_source.html">api_client.h</a></li>
+<li>src/cpp/<a class="el" href="api__client_8cpp.html">api_client.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+</small></address>
+</body>
+</html>

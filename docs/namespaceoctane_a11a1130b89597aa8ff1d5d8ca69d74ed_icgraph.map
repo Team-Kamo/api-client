@@ -1,0 +1,19 @@
+<map id="octane::error" name="octane::error">
+<area shape="rect" id="node1" title=" " alt="" coords="448,401,543,426"/>
+<area shape="rect" id="node2" href="$classoctane_1_1_api_client.html#aca5a441478ce67bb09dedc124834d5c2" title="Create a room" alt="" coords="250,5,379,45"/>
+<area shape="rect" id="node3" href="$classoctane_1_1_api_client.html#abcadeb1619b4f438c7d3605d7c29824f" title="Delete content from the room" alt="" coords="250,69,379,109"/>
+<area shape="rect" id="node4" href="$classoctane_1_1_api_client.html#a8459fa5374bfe4e039cecb1afd79b531" title="Delete the room" alt="" coords="250,133,379,173"/>
+<area shape="rect" id="node5" href="$classoctane_1_1_result.html#ab5dc7ca728727fe6fcf2ad6731277eb3" title=" " alt="" coords="250,198,379,223"/>
+<area shape="rect" id="node6" href="$classoctane_1_1error__t.html#a8c961c88b5b7d8ed425ad7e75a5b7f30" title=" " alt="" coords="239,247,390,273"/>
+<area shape="rect" id="node7" href="$classoctane_1_1_api_client.html#af293ce82a072d6f8fbdd4376b7452c36" title="Return content in the room" alt="" coords="250,297,379,337"/>
+<area shape="rect" id="node8" href="$classoctane_1_1_api_client.html#abf9f627eef82ca6b148130e707f99fd7" title="Get the room&#39;s status" alt="" coords="250,361,379,401"/>
+<area shape="rect" id="node9" href="$classoctane_1_1_api_client.html#a93ff968043aca8a60231e7b218689d9b" title="Return the server&#39;s status" alt="" coords="250,425,379,465"/>
+<area shape="rect" id="node10" href="$classoctane_1_1_api_client.html#a90a36f3caf3ada6677d9782aadd5780c" title="Initialize" alt="" coords="241,490,388,515"/>
+<area shape="rect" id="node11" href="$namespaceoctane.html#a508d9040da1bea287606313174f69cbc" title="エラーレスポンスを作成するためのユーティリティ関数。" alt="" coords="250,539,379,565"/>
+<area shape="rect" id="node14" href="$classoctane_1_1error__t.html#a5f88fb2143fdd0af7505963b72d07b64" title=" " alt="" coords="229,589,400,629"/>
+<area shape="rect" id="node15" href="$classoctane_1_1_result.html#a75e8a3bfab37da3e786cfdd9c7348d43" title=" " alt="" coords="239,654,390,679"/>
+<area shape="rect" id="node16" href="$classoctane_1_1_api_client.html#acc69338fe35004772b219e7a24f78481" title="Upload content to the room" alt="" coords="250,704,379,744"/>
+<area shape="rect" id="node17" href="$classoctane_1_1_result.html#a51e56850275cb524d62ad79cfbe74f7b" title=" " alt="" coords="235,769,394,794"/>
+<area shape="rect" id="node12" href="$classoctane_1_1internal_1_1_http_client.html#ae637622c392e4cf4ac4c9f33f71b0443" title=" " alt="" coords="5,488,181,528"/>
+<area shape="rect" id="node13" href="$classoctane_1_1internal_1_1_http_client.html#ac4698034c0997078b5ba13c7ed46e8bb" title=" " alt="" coords="5,576,181,616"/>
+</map>
