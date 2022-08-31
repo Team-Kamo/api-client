@@ -67,8 +67,11 @@ namespace octane {
     /**
      * @brief Construct a new Api Client object
      *
+     * @param token
+     * @param origin http://localhost:3000
+     * @param baseUrl /api/v1
      */
-    ApiClient(std::string_view token, std::string_view origin);
+    ApiClient(std::string_view token, std::string_view origin, std::string_view baseUrl);
     /**
      * @brief Destroy the Api Client object
      *

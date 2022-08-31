@@ -1,17 +1,17 @@
-#ifndef OCTANE_RESULT_H_
-#define OCTANE_RESULT_H_
+#ifndef OCTANE_API_CLIENT_RESULT_H_
+#define OCTANE_API_CLIENT_RESULT_H_
 
 #include <cassert>
 #include <utility>
 
 namespace octane {
-  template <typename OK, typename Error>
+  template <typename T_OK, typename T_Error>
   class [[nodiscard]] Result {
     enum struct Tag { None, OK, Error };
     Tag tag;
     union {
-      OK ok;
-      Error error;
+      T_OK ok;
+      T_Error error;
     };
 
     template <typename T>
@@ -26,10 +26,10 @@ namespace octane {
         case Tag::None:
           break;
         case Tag::OK:
-          new (&ok) OK(result.ok);
+          new (&ok) T_OK(result.ok);
           break;
         case Tag::Error:
-          new (&error) Error(result.error);
+          new (&error) T_Error(result.error);
           break;
         default:
           std::abort();
@@ -40,10 +40,10 @@ namespace octane {
         case Tag::None:
           break;
         case Tag::OK:
-          new (&ok) OK(std::move(result.ok));
+          new (&ok) T_OK(std::move(result.ok));
           break;
         case Tag::Error:
-          new (&error) Error(std::move(result.error));
+          new (&error) T_Error(std::move(result.error));
           break;
         default:
           std::abort();
@@ -55,10 +55,10 @@ namespace octane {
         case Tag::None:
           break;
         case Tag::OK:
-          ok.~OK();
+          ok.~T_OK();
           break;
         case Tag::Error:
-          error.~Error();
+          error.~T_Error();
           break;
         default:
           std::abort();
@@ -104,11 +104,11 @@ namespace octane {
     }
 
   private:
-    Result(const OK& ok, [[maybe_unused]] int) : tag(Tag::OK), ok(ok) {}
-    Result(OK&& ok, [[maybe_unused]] int) : tag(Tag::OK), ok(std::move(ok)) {}
+    Result(const T_OK& ok, [[maybe_unused]] int) : tag(Tag::OK), ok(ok) {}
+    Result(T_OK&& ok, [[maybe_unused]] int) : tag(Tag::OK), ok(std::move(ok)) {}
 
-    Result(const Error& error) : tag(Tag::Error), error(error) {}
-    Result(Error&& error) : tag(Tag::Error), error(std::move(error)) {}
+    Result(const T_Error& error) : tag(Tag::Error), error(error) {}
+    Result(T_Error&& error) : tag(Tag::Error), error(std::move(error)) {}
 
   public:
     operator bool() const noexcept {
@@ -119,19 +119,19 @@ namespace octane {
       assert(tag != Tag::None);
       return tag == Tag::Error;
     }
-    const OK& get() const {
+    const T_OK& get() const {
       assert(tag == Tag::OK);
       return ok;
     }
-    OK& get() {
+    T_OK& get() {
       assert(tag == Tag::OK);
       return ok;
     }
-    const Error& err() const {
+    const T_Error& err() const {
       assert(tag == Tag::Error);
       return error;
     }
-    Error& err() {
+    T_Error& err() {
       assert(tag == Tag::Error);
       return error;
     }
@@ -146,21 +146,21 @@ namespace octane {
   public:
     explicit ok_t(const T& ok) : ok(ok) {}
     explicit ok_t(T&& ok) : ok(std::move(ok)) {}
-    template <typename OK, typename Error>
-    operator Result<OK, Error>() {
-      return Result<OK, Error>(std::move(ok), 0);
+    template <typename T_OK, typename T_Error>
+    operator Result<T_OK, T_Error>() {
+      return Result<T_OK, T_Error>(std::move(ok), 0);
     }
   };
-  template <typename OK>
-  decltype(auto) [[nodiscard]] ok(const OK& ok) {
+  template <typename T_OK>
+  decltype(auto) ok(const T_OK& ok) {
     return ok_t(ok);
   }
-  template <typename OK>
-  decltype(auto) [[nodiscard]] ok(OK&& ok) {
+  template <typename T_OK>
+  decltype(auto) ok(T_OK&& ok) {
     return ok_t(std::move(ok));
   }
-  template <typename OK = _>
-  ok_t<_> [[nodiscard]] ok() {
+  template <typename T_OK = _>
+  ok_t<_> ok() {
     return ok(_{});
   }
 
@@ -171,23 +171,23 @@ namespace octane {
   public:
     explicit error_t(const T& error) : error(error) {}
     explicit error_t(T&& error) : error(std::move(error)) {}
-    template <typename OK, typename Error>
-    operator Result<OK, Error>() {
-      return Result<OK, Error>(std::move(error));
+    template <typename T_OK, typename T_Error>
+    operator Result<T_OK, T_Error>() {
+      return Result<T_OK, T_Error>(std::move(error));
     }
   };
-  template <typename Error, size_t N>
-  decltype(auto) [[nodiscard]] error(const Error (&error)[N]) {
-    return error_t((const Error*)error);
+  template <typename T_Error, size_t N>
+  decltype(auto) error(const T_Error (&error)[N]) {
+    return error_t((const T_Error*)error);
   }
-  template <typename Error>
-  decltype(auto) [[nodiscard]] error(const Error& error) {
+  template <typename T_Error>
+  decltype(auto)  error(const T_Error& error) {
     return error_t(error);
   }
-  template <typename Error>
-  decltype(auto) [[nodiscard]] error(Error&& error) {
+  template <typename T_Error>
+  decltype(auto) error(T_Error&& error) {
     return error_t(std::move(error));
   }
 } // namespace octane
 
-#endif // OCTANE_RESULT_H_
+#endif // OCTANE_API_CLIENT_RESULT_H_
