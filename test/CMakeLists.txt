@@ -7,7 +7,7 @@ add_executable(
 target_link_libraries(
   api_client_test
   GTest::gtest_main
-  liboctane
+  octane
 )
 
 gtest_discover_tests(api_client_test)

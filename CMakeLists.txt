@@ -34,6 +34,29 @@ set(CMAKE_USE_OPENSSL)
 include(FindOpenSSL)
 include(FindCURL)
 
+include(ExternalProject)
+
+ExternalProject_Add(
+  zlib
+  GIT_REPOSITORY "https://github.com/madler/zlib"
+  GIT_TAG "v1.2.12"
+  PREFIX "${CMAKE_BINARY_DIR}/zlib"
+  CMAKE_CACHE_ARGS
+  "-DBUILD_SHARED_LIBS:BOOL=OFF"
+  "-DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}"
+)
+
+include_directories(${PROJECT_BINARY_DIR}/include)
+link_directories(${PROJECT_BINARY_DIR}/lib)
+
+if(WIN32)
+  set(ZLIB zlibstaticd)
+elseif(APPLE)
+  set(ZLIB libz.a)
+else(UNIX)
+  set(ZLIB libz.a)
+endif()
+
 include(FetchContent)
 
 FetchContent_Declare(

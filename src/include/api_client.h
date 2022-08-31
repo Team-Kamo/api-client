@@ -19,13 +19,11 @@
 #include <variant>
 #include <vector>
 
+#include "./error_response.h"
+#include "./fetch.h"
 #include "./result.h"
 
 namespace octane {
-  struct ErrorResponse {
-    std::string code;
-    std::string reason;
-  };
   enum struct Health {
     Healthy,
     Degraded,
@@ -62,17 +60,28 @@ namespace octane {
     std::string hash;
   };
   class ApiClient {
+    internal::Fetch fetch;
+    std::uint64_t lastCheckedTime;
+
   public:
     /**
      * @brief Construct a new Api Client object
      *
      */
-    ApiClient();
+    ApiClient(std::string_view token, std::string_view origin);
     /**
      * @brief Destroy the Api Client object
      *
      */
     ~ApiClient() noexcept;
+
+    /**
+     * @brief Initialize
+     *
+     * @return Result<std::optional<std::string>, ErrorResponse>
+     */
+    Result<std::optional<std::string>, ErrorResponse> init();
+
     /**
      * @brief Return the server's status
      *
@@ -122,6 +131,7 @@ namespace octane {
                                            const Content& content);
 
   private:
+    Result<std::optional<std::string>, ErrorResponse> checkHealth();
     /**
      * @brief Connect to the room
      * @details The user doesn't have to call this method since it's only used

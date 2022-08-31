@@ -5,5 +5,5 @@
 using namespace octane;
 
 TEST(ApiClientTest, BasicAssertions) {
-  ApiClient apiClient;
+  ApiClient apiClient("mock","http://localhost:3000");
 }
