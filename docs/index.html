@@ -83,9 +83,18 @@ $(function() {
 <ul>
 <li><a href="./build.bat">cmd</a></li>
 <li><a href="./build.ps1">PowerShell</a></li>
-<li><a href="./build.sh">bashなど</a> </li>
+<li><a href="./build.sh">bashなど</a></li>
 </ul>
-</div></div><!-- PageDoc -->
+<h1><a class="anchor" id="autotoc_md3"></a>
+Git Submoduleでの使い方</h1>
+<p >gitにsubmoduleを追加する。</p>
+<div class="fragment"><div class="line">git submodule add https://github.com/Team-Kamo/api-client.git</div>
+</div><!-- fragment --><p >ルートの<code>CMakeLists.txt</code>に次の項目を追加する。</p>
+<div class="fragment"><div class="line">include_directories(${CMAKE_CURRENT_SOURCE_DIR}/api-client/src/include)</div>
+<div class="line">add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/api-client)</div>
+</div><!-- fragment --><p >ライブラリを使用するターゲットに<code>octane_api_client</code>を追加する</p>
+<div class="fragment"><div class="line">target_link_libraries(your_target [PUBLIC, PRIVATE, INTERFACE] octane_api_client)</div>
+</div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
