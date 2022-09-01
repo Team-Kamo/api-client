@@ -13,7 +13,6 @@
 #include <rapidjson/error/en.h>
 
 #include <cassert>
-#include <format>
 
 #include "include/error_code.h"
 
