@@ -9,4 +9,4 @@ add_library(
 )
 
 add_dependencies(octane zlib)
-target_link_libraries(octane OpenSSL::SSL CURL::libcurl ${ZLIB})
+target_link_libraries(octane PRIVATE OpenSSL::SSL CURL::libcurl ${ZLIB})
