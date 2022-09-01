@@ -7,6 +7,7 @@ add_library(
   cpp/internal/fetch.cpp
   cpp/internal/http_client.cpp
   cpp/internal/api_bridge.cpp
+  cpp/internal/hash.cpp
 )
 
 target_include_directories(octane_api_client PUBLIC ${OCTANE_API_CLIENT_INCLUDE_DIRS})

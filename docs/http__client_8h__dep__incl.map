@@ -2,7 +2,9 @@
 <area shape="rect" id="node1" title="HTTPクライアント。" alt="" coords="87,5,218,45"/>
 <area shape="rect" id="node2" href="$http__client_8cpp.html" title="http_client.hの実装。" alt="" coords="5,93,143,133"/>
 <area shape="rect" id="node3" href="$fetch_8h.html" title="fetch.hの実装" alt="" coords="167,93,298,133"/>
-<area shape="rect" id="node4" href="$fetch_8cpp.html" title=" " alt="" coords="57,181,225,207"/>
-<area shape="rect" id="node5" href="$api__client_8h.html" title=" " alt="" coords="249,181,403,207"/>
-<area shape="rect" id="node6" href="$api__client_8cpp.html" title=" " alt="" coords="251,255,401,280"/>
+<area shape="rect" id="node4" href="$fetch_8cpp.html" title=" " alt="" coords="61,189,231,214"/>
+<area shape="rect" id="node5" href="$api__bridge_8h.html" title=" " alt="" coords="255,181,386,221"/>
+<area shape="rect" id="node6" href="$api__bridge_8cpp.html" title=" " alt="" coords="171,269,303,309"/>
+<area shape="rect" id="node7" href="$api__client_8h.html" title=" " alt="" coords="327,277,482,302"/>
+<area shape="rect" id="node8" href="$api__client_8cpp.html" title=" " alt="" coords="330,357,479,383"/>
 </map>

@@ -1,6 +1,6 @@
 <map id="octane::Result::Result" name="octane::Result::Result">
-<area shape="rect" id="node1" title=" " alt="" coords="5,55,156,80"/>
-<area shape="rect" id="node2" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title=" " alt="" coords="204,29,299,55"/>
-<area shape="rect" id="node3" href="$namespaceoctane.html#a3f017b1c4b4453a03510ba4f01e6668a" title=" " alt="" coords="210,79,293,104"/>
-<area shape="rect" id="node4" href="$namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835" title=" " alt="" coords="347,79,429,104"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,55,159,80"/>
+<area shape="rect" id="node2" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="207,29,301,55"/>
+<area shape="rect" id="node3" href="$namespaceoctane.html#a3f017b1c4b4453a03510ba4f01e6668a" title="正常系の値を構築するためのユーティリティ関数。" alt="" coords="213,79,295,104"/>
+<area shape="rect" id="node4" href="$namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835" title="正常系の型が_であるときに使用できるユーティリティ関数。" alt="" coords="349,79,432,104"/>
 </map>

@@ -80,20 +80,29 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="api__client_8h_source.html">api_client.h</a>&gt;</code></p>
+<p><code><a class="el" href="">getContent</a></code>メソッドを呼んだ時の結果を表す構造体。  
+ <a href="structoctane_1_1_content.html#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="api__result__types_8h_source.html">api_result_types.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 公開変数類</h2></td></tr>
 <tr class="memitem:ac006abade1c4e0d5ba265ead6e831f17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4">ContentType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_content.html#ac006abade1c4e0d5ba265ead6e831f17">type</a></td></tr>
+<tr class="memdesc:ac006abade1c4e0d5ba265ead6e831f17"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンテンツの型。  <a href="structoctane_1_1_content.html#ac006abade1c4e0d5ba265ead6e831f17">[詳解]</a><br /></td></tr>
 <tr class="separator:ac006abade1c4e0d5ba265ead6e831f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9204a48e2d1aae9c61dfe15a9a87d1e6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_content.html#a9204a48e2d1aae9c61dfe15a9a87d1e6">name</a></td></tr>
+<tr class="memdesc:a9204a48e2d1aae9c61dfe15a9a87d1e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンテンツがファイル形式をとる場合、その名前。  <a href="structoctane_1_1_content.html#a9204a48e2d1aae9c61dfe15a9a87d1e6">[詳解]</a><br /></td></tr>
 <tr class="separator:a9204a48e2d1aae9c61dfe15a9a87d1e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79ff6362c8905a530fdc6af35cce2826"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_content.html#a79ff6362c8905a530fdc6af35cce2826">mime</a></td></tr>
+<tr class="memdesc:a79ff6362c8905a530fdc6af35cce2826"><td class="mdescLeft">&#160;</td><td class="mdescRight">MIME。  <a href="structoctane_1_1_content.html#a79ff6362c8905a530fdc6af35cce2826">[詳解]</a><br /></td></tr>
 <tr class="separator:a79ff6362c8905a530fdc6af35cce2826"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e3dff8dcf95c76bfbf9b85922ee7ac3"><td class="memItemLeft" align="right" valign="top">std::variant&lt; std::string, std::vector&lt; std::uint8_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_content.html#a3e3dff8dcf95c76bfbf9b85922ee7ac3">data</a></td></tr>
+<tr class="memdesc:a3e3dff8dcf95c76bfbf9b85922ee7ac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンテンツのデータ。  <a href="structoctane_1_1_content.html#a3e3dff8dcf95c76bfbf9b85922ee7ac3">[詳解]</a><br /></td></tr>
 <tr class="separator:a3e3dff8dcf95c76bfbf9b85922ee7ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">メンバ詳解</h2>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p ><code><a class="el" href="">getContent</a></code>メソッドを呼んだ時の結果を表す構造体。 </p>
+</div><h2 class="groupheader">メンバ詳解</h2>
 <a id="a3e3dff8dcf95c76bfbf9b85922ee7ac3" name="a3e3dff8dcf95c76bfbf9b85922ee7ac3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3e3dff8dcf95c76bfbf9b85922ee7ac3">&#9670;&#160;</a></span>data</h2>
 
@@ -105,6 +114,8 @@ $(function() {
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>コンテンツのデータ。 </p>
 
 </div>
 </div>
@@ -120,6 +131,8 @@ $(function() {
       </table>
 </div><div class="memdoc">
 
+<p>MIME。 </p>
+
 </div>
 </div>
 <a id="a9204a48e2d1aae9c61dfe15a9a87d1e6" name="a9204a48e2d1aae9c61dfe15a9a87d1e6"></a>
@@ -133,6 +146,8 @@ $(function() {
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>コンテンツがファイル形式をとる場合、その名前。 </p>
 
 </div>
 </div>
@@ -148,10 +163,12 @@ $(function() {
       </table>
 </div><div class="memdoc">
 
+<p>コンテンツの型。 </p>
+
 </div>
 </div>
 <hr/>この構造体詳解は次のファイルから抽出されました:<ul>
-<li>src/include/<a class="el" href="api__client_8h_source.html">api_client.h</a></li>
+<li>src/include/<a class="el" href="api__result__types_8h_source.html">api_result_types.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

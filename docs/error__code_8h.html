@@ -79,15 +79,19 @@ $(function() {
   <div class="headertitle"><div class="title">error_code.h ファイル</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>エラーコードを定義する。  
+<a href="#details">[詳解]</a></p>
 <div class="textblock"><div class="dynheader">
 被依存関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="error__code_8h__dep__incl.png" border="0" usemap="#asrc_2include_2error__code_8hdep" alt=""/></div>
 <map name="asrc_2include_2error__code_8hdep" id="asrc_2include_2error__code_8hdep">
-<area shape="rect" title=" " alt="" coords="182,5,343,31"/>
+<area shape="rect" title="エラーコードを定義する。" alt="" coords="251,5,413,31"/>
 <area shape="rect" href="api__client_8cpp.html" title=" " alt="" coords="5,86,155,111"/>
-<area shape="rect" href="fetch_8cpp.html" title=" " alt="" coords="179,86,347,111"/>
-<area shape="rect" href="http__client_8cpp.html" title="http_client.hの実装。" alt="" coords="371,79,509,119"/>
+<area shape="rect" href="api__bridge_8cpp.html" title=" " alt="" coords="179,79,311,119"/>
+<area shape="rect" href="fetch_8cpp.html" title=" " alt="" coords="335,86,505,111"/>
+<area shape="rect" href="http__client_8cpp.html" title="http_client.hの実装。" alt="" coords="529,79,666,119"/>
 </map>
 </div>
 </div>
@@ -101,17 +105,40 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 変数</h2></td></tr>
 <tr class="memitem:a32c1cf2a9967d890ba562949285d39fe"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a32c1cf2a9967d890ba562949285d39fe">octane::ERR_API_CLIENT_INITIALIZATION_FAILED</a> = &quot;ERR_API_CLIENT_INITIALIZATION_FAILED&quot;</td></tr>
+<tr class="memdesc:a32c1cf2a9967d890ba562949285d39fe"><td class="mdescLeft">&#160;</td><td class="mdescRight"><code><a class="el" href="classoctane_1_1_api_client.html">ApiClient</a></code>の初期化に失敗したときに使用される。  <a href="namespaceoctane.html#a32c1cf2a9967d890ba562949285d39fe">[詳解]</a><br /></td></tr>
 <tr class="separator:a32c1cf2a9967d890ba562949285d39fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab03e35a80fea5e125fb3b7b3b71167a0"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#ab03e35a80fea5e125fb3b7b3b71167a0">octane::ERR_SERVER_HEALTH_STATUS_FAULTY</a> = &quot;ERR_SERVER_HEALTH_STATUS_FAULTY&quot;</td></tr>
+<tr class="memdesc:ab03e35a80fea5e125fb3b7b3b71167a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">サーバに障害が発生し、正常に動作できないときに使用される。  <a href="namespaceoctane.html#ab03e35a80fea5e125fb3b7b3b71167a0">[詳解]</a><br /></td></tr>
+<tr class="separator:ab03e35a80fea5e125fb3b7b3b71167a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77c3d811e837e59701ca4a108dc9a7e8"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a77c3d811e837e59701ca4a108dc9a7e8">octane::ERR_CURL_INITIALIZATION_FAILED</a> = &quot;ERR_CURL_INITIALIZATION_FAILED&quot;</td></tr>
+<tr class="memdesc:a77c3d811e837e59701ca4a108dc9a7e8"><td class="mdescLeft">&#160;</td><td class="mdescRight"><code><a class="el" href="classoctane_1_1internal_1_1_http_client.html">octane::internal::HttpClient</a></code>などでCURLの初期化に失敗したときに使用される。  <a href="namespaceoctane.html#a77c3d811e837e59701ca4a108dc9a7e8">[詳解]</a><br /></td></tr>
 <tr class="separator:a77c3d811e837e59701ca4a108dc9a7e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7cafcefa79f336082d35b64d4cec4d84"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a7cafcefa79f336082d35b64d4cec4d84">octane::ERR_INCORRECT_HTTP_METHOD</a> = &quot;ERR_INCORRECT_HTTP_METHOD&quot;</td></tr>
+<tr class="memdesc:a7cafcefa79f336082d35b64d4cec4d84"><td class="mdescLeft">&#160;</td><td class="mdescRight">予期しないHTTPリクエストを発行したときに使用される。  <a href="namespaceoctane.html#a7cafcefa79f336082d35b64d4cec4d84">[詳解]</a><br /></td></tr>
 <tr class="separator:a7cafcefa79f336082d35b64d4cec4d84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab58060f2188272708873292198100e21"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#ab58060f2188272708873292198100e21">octane::ERR_CURL_CONNECTION_FAILED</a> = &quot;ERR_CURL_CONNECTION_FAILED&quot;</td></tr>
+<tr class="memdesc:ab58060f2188272708873292198100e21"><td class="mdescLeft">&#160;</td><td class="mdescRight">CURLの処理に失敗したときに使用される。  <a href="namespaceoctane.html#ab58060f2188272708873292198100e21">[詳解]</a><br /></td></tr>
 <tr class="separator:ab58060f2188272708873292198100e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8552f757e6e3a0e1af42ee5031a1117"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#af8552f757e6e3a0e1af42ee5031a1117">octane::ERR_JSON_PARSE_FAILED</a> = &quot;ERR_JSON_PARSE_FAILED&quot;</td></tr>
+<tr class="memdesc:af8552f757e6e3a0e1af42ee5031a1117"><td class="mdescLeft">&#160;</td><td class="mdescRight">JSONのパースに失敗したときに使用される。  <a href="namespaceoctane.html#af8552f757e6e3a0e1af42ee5031a1117">[詳解]</a><br /></td></tr>
 <tr class="separator:af8552f757e6e3a0e1af42ee5031a1117"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5da164e559661be90535b3968521b775"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a5da164e559661be90535b3968521b775">octane::ERR_INVALID_RESPONSE</a> = &quot;ERR_INVALID_RESPONSE&quot;</td></tr>
+<tr class="memdesc:a5da164e559661be90535b3968521b775"><td class="mdescLeft">&#160;</td><td class="mdescRight">APIサーバから予期しない応答があったときに使用される。  <a href="namespaceoctane.html#a5da164e559661be90535b3968521b775">[詳解]</a><br /></td></tr>
+<tr class="separator:a5da164e559661be90535b3968521b775"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b27587dbd2d28891593cd7519003565"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a7b27587dbd2d28891593cd7519003565">octane::ERR_INVALID_REQUEST</a> = &quot;ERR_INVALID_REQUEST&quot;</td></tr>
+<tr class="memdesc:a7b27587dbd2d28891593cd7519003565"><td class="mdescLeft">&#160;</td><td class="mdescRight">予期しないリクエストを発行したときに使用される。  <a href="namespaceoctane.html#a7b27587dbd2d28891593cd7519003565">[詳解]</a><br /></td></tr>
+<tr class="separator:a7b27587dbd2d28891593cd7519003565"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0719fc64f3c0e8fe2e7d545f73e005af"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a0719fc64f3c0e8fe2e7d545f73e005af">octane::ERR_INVALID_STATUS_CODE</a> = &quot;ERR_INVALID_STATUS_CODE&quot;</td></tr>
+<tr class="memdesc:a0719fc64f3c0e8fe2e7d545f73e005af"><td class="mdescLeft">&#160;</td><td class="mdescRight">予期しないステータスコードが返されたときに使用される。  <a href="namespaceoctane.html#a0719fc64f3c0e8fe2e7d545f73e005af">[詳解]</a><br /></td></tr>
+<tr class="separator:a0719fc64f3c0e8fe2e7d545f73e005af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p >エラーコードを定義する。 </p>
+<dl class="section author"><dt>著者</dt><dd>soon (<a href="#" onclick="location.href='mai'+'lto:'+'ken'+'to'+'.so'+'on'+'@gm'+'ai'+'l.c'+'om'; return false;">kento<span class="obfuscator">.nosp@m.</span>.soo<span class="obfuscator">.nosp@m.</span>n@gma<span class="obfuscator">.nosp@m.</span>il.c<span class="obfuscator">.nosp@m.</span>om</a>) </dd></dl>
+<dl class="section version"><dt>バージョン</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>日付</dt><dd>2022-09-01</dd></dl>
+<dl class="section copyright"><dt>著作権所有</dt><dd>Copyright (c) 2022 </dd></dl>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5

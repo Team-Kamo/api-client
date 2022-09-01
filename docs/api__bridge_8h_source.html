@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Octane API Client: src/include/internal/api_bridge.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Octane API Client
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.5 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b0856f6b0d80ccb263b2f415c91f9e17.html">include</a></li><li class="navelem"><a class="el" href="dir_37a9b835d5ced2a8f90c237a2ad84fdf.html">internal</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">api_bridge.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="api__bridge_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifndef OCTANE_API_CLIENT_INTERNAL_API_BRIDGE_H_</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define OCTANE_API_CLIENT_INTERNAL_API_BRIDGE_H_</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="api__result__types_8h.html">include/api_result_types.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="error__response_8h.html">include/error_response.h</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="fetch_8h.html">include/internal/fetch.h</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="result_8h.html">include/result.h</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceoctane_1_1internal.html">octane::internal</a> {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classoctane_1_1internal_1_1_api_bridge.html">   20</a></span>  <span class="keyword">class </span><a class="code hl_class" href="classoctane_1_1internal_1_1_api_bridge.html">ApiBridge</a> {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_class" href="classoctane_1_1internal_1_1_fetch.html">internal::Fetch</a> fetch;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_class" href="classoctane_1_1internal_1_1_api_bridge.html">ApiBridge</a>(std::string_view token,</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>              std::string_view origin,</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>              std::string_view baseUrl);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;_, ErrorResponse&gt;</a> <a class="code hl_function" href="classoctane_1_1internal_1_1_api_bridge.html#adb1d932c5cc7b07d9982738e63a5ed0e">init</a>();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;HealthResult, ErrorResponse&gt;</a> <a class="code hl_function" href="classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935">healthGet</a>();</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;std::string, ErrorResponse&gt;</a> <a class="code hl_function" href="classoctane_1_1internal_1_1_api_bridge.html#ad509d17c76ac650318f92e78aa674b22">roomPost</a>(std::string_view name);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;RoomStatus, ErrorResponse&gt;</a> <a class="code hl_function" href="classoctane_1_1internal_1_1_api_bridge.html#a26186938de852177fc05cff45e037fc9">roomIdGet</a>(std::string_view <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;_, ErrorResponse&gt;</a> <a class="code hl_function" href="classoctane_1_1internal_1_1_api_bridge.html#ae2c4f70b94f79adb66b1db81b118d809">roomIdDelete</a>(std::string_view <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;_, ErrorResponse&gt;</a> <a class="code hl_function" href="classoctane_1_1internal_1_1_api_bridge.html#a152a5325cd6f9c7992469a619e317fcf">roomIdPost</a>(std::string_view <span class="keywordtype">id</span>,</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                                        std::string_view name);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;Content, ErrorResponse&gt;</a> <a class="code hl_function" href="classoctane_1_1internal_1_1_api_bridge.html#aee95260574f0825495bf61003829d80c">roomIdContentGet</a>(std::string_view <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;_, ErrorResponse&gt;</a> <a class="code hl_function" href="classoctane_1_1internal_1_1_api_bridge.html#a150b61a254e64c188074e94d67737263">roomIdContentDelete</a>(std::string_view <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;_, ErrorResponse&gt;</a> <a class="code hl_function" href="classoctane_1_1internal_1_1_api_bridge.html#a982f02890b89d82b649fe4bcf2dff1b3">roomIdContentPut</a>(std::string_view <span class="keywordtype">id</span>,</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                                              <span class="keyword">const</span> <a class="code hl_struct" href="structoctane_1_1_content.html">Content</a>&amp; content);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;internal::ContentStatus, ErrorResponse&gt;</a> <a class="code hl_function" href="classoctane_1_1internal_1_1_api_bridge.html#a5ddc77106d7ff1e53b465002cc02f55a">roomIdStatusGet</a>(</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>      std::string_view <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;_, ErrorResponse&gt;</a> <a class="code hl_function" href="classoctane_1_1internal_1_1_api_bridge.html#aeeccd95e2ec6beb6e01fbcd7c8667d80">roomIdStatusDelete</a>(std::string_view <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <a class="code hl_class" href="classoctane_1_1_result.html">Result&lt;_, ErrorResponse&gt;</a> <a class="code hl_function" href="classoctane_1_1internal_1_1_api_bridge.html#aae96fc4c7a02e171425c0ff91606b4e0">roomIdStatusPut</a>(</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>      std::string_view <span class="keywordtype">id</span>,</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>      <span class="keyword">const</span> <a class="code hl_struct" href="structoctane_1_1internal_1_1_content_status.html">internal::ContentStatus</a>&amp; contentStatus);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    std::optional&lt;error_t&lt;ErrorResponse&gt;&gt; <a class="code hl_function" href="classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f">checkStatusCode</a>(</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>      <span class="keyword">const</span> <a class="code hl_struct" href="structoctane_1_1internal_1_1_fetch_response.html">internal::FetchResponse</a>&amp; response);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>  };</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>} <span class="comment">// namespace octane::internal</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="preprocessor">#endif </span><span class="comment">// OCTANE_API_CLIENT_INTERNAL_API_BRIDGE_H_</span></div>
+<div class="ttc" id="aapi__result__types_8h_html"><div class="ttname"><a href="api__result__types_8h.html">api_result_types.h</a></div></div>
+<div class="ttc" id="aclassoctane_1_1_result_html"><div class="ttname"><a href="classoctane_1_1_result.html">octane::Result</a></div><div class="ttdoc">正常系と準正常系で示す値を分岐させるラッパークラス。</div><div class="ttdef"><b>Definition:</b> result.h:32</div></div>
+<div class="ttc" id="aclassoctane_1_1internal_1_1_api_bridge_html"><div class="ttname"><a href="classoctane_1_1internal_1_1_api_bridge.html">octane::internal::ApiBridge</a></div><div class="ttdef"><b>Definition:</b> api_bridge.h:20</div></div>
+<div class="ttc" id="aclassoctane_1_1internal_1_1_api_bridge_html_a150b61a254e64c188074e94d67737263"><div class="ttname"><a href="classoctane_1_1internal_1_1_api_bridge.html#a150b61a254e64c188074e94d67737263">octane::internal::ApiBridge::roomIdContentDelete</a></div><div class="ttdeci">Result&lt; _, ErrorResponse &gt; roomIdContentDelete(std::string_view id)</div><div class="ttdoc">use delete method for room/:id/content api</div><div class="ttdef"><b>Definition:</b> api_bridge.cpp:211</div></div>
+<div class="ttc" id="aclassoctane_1_1internal_1_1_api_bridge_html_a152a5325cd6f9c7992469a619e317fcf"><div class="ttname"><a href="classoctane_1_1internal_1_1_api_bridge.html#a152a5325cd6f9c7992469a619e317fcf">octane::internal::ApiBridge::roomIdPost</a></div><div class="ttdeci">Result&lt; _, ErrorResponse &gt; roomIdPost(std::string_view id, std::string_view name)</div><div class="ttdoc">use post method for room/:id api</div><div class="ttdef"><b>Definition:</b> api_bridge.cpp:170</div></div>
+<div class="ttc" id="aclassoctane_1_1internal_1_1_api_bridge_html_a26186938de852177fc05cff45e037fc9"><div class="ttname"><a href="classoctane_1_1internal_1_1_api_bridge.html#a26186938de852177fc05cff45e037fc9">octane::internal::ApiBridge::roomIdGet</a></div><div class="ttdeci">Result&lt; RoomStatus, ErrorResponse &gt; roomIdGet(std::string_view id)</div><div class="ttdoc">use get method for room/:id api</div><div class="ttdef"><b>Definition:</b> api_bridge.cpp:103</div></div>
+<div class="ttc" id="aclassoctane_1_1internal_1_1_api_bridge_html_a5ba018c516d67ccf9d3bd603cb1a0935"><div class="ttname"><a href="classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935">octane::internal::ApiBridge::healthGet</a></div><div class="ttdeci">Result&lt; HealthResult, ErrorResponse &gt; healthGet()</div><div class="ttdoc">use get method for health api</div><div class="ttdef"><b>Definition:</b> api_bridge.cpp:28</div></div>
+<div class="ttc" id="aclassoctane_1_1internal_1_1_api_bridge_html_a5ddc77106d7ff1e53b465002cc02f55a"><div class="ttname"><a href="classoctane_1_1internal_1_1_api_bridge.html#a5ddc77106d7ff1e53b465002cc02f55a">octane::internal::ApiBridge::roomIdStatusGet</a></div><div class="ttdeci">Result&lt; internal::ContentStatus, ErrorResponse &gt; roomIdStatusGet(std::string_view id)</div><div class="ttdoc">use get method for room/:id/status api</div><div class="ttdef"><b>Definition:</b> api_bridge.cpp:247</div></div>
+<div class="ttc" id="aclassoctane_1_1internal_1_1_api_bridge_html_a982f02890b89d82b649fe4bcf2dff1b3"><div class="ttname"><a href="classoctane_1_1internal_1_1_api_bridge.html#a982f02890b89d82b649fe4bcf2dff1b3">octane::internal::ApiBridge::roomIdContentPut</a></div><div class="ttdeci">Result&lt; _, ErrorResponse &gt; roomIdContentPut(std::string_view id, const Content &amp;content)</div><div class="ttdoc">use put method for room/:id/content api</div><div class="ttdef"><b>Definition:</b> api_bridge.cpp:222</div></div>
+<div class="ttc" id="aclassoctane_1_1internal_1_1_api_bridge_html_aaa70b8ad65c7537a11df3982d342b61f"><div class="ttname"><a href="classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f">octane::internal::ApiBridge::checkStatusCode</a></div><div class="ttdeci">std::optional&lt; error_t&lt; ErrorResponse &gt; &gt; checkStatusCode(const internal::FetchResponse &amp;response)</div><div class="ttdoc">check if the given status code is 2xx</div><div class="ttdef"><b>Definition:</b> api_bridge.cpp:372</div></div>
+<div class="ttc" id="aclassoctane_1_1internal_1_1_api_bridge_html_aae96fc4c7a02e171425c0ff91606b4e0"><div class="ttname"><a href="classoctane_1_1internal_1_1_api_bridge.html#aae96fc4c7a02e171425c0ff91606b4e0">octane::internal::ApiBridge::roomIdStatusPut</a></div><div class="ttdeci">Result&lt; _, ErrorResponse &gt; roomIdStatusPut(std::string_view id, const internal::ContentStatus &amp;contentStatus)</div><div class="ttdoc">use put method for room/:id/status api</div><div class="ttdef"><b>Definition:</b> api_bridge.cpp:327</div></div>
+<div class="ttc" id="aclassoctane_1_1internal_1_1_api_bridge_html_ad509d17c76ac650318f92e78aa674b22"><div class="ttname"><a href="classoctane_1_1internal_1_1_api_bridge.html#ad509d17c76ac650318f92e78aa674b22">octane::internal::ApiBridge::roomPost</a></div><div class="ttdeci">Result&lt; std::string, ErrorResponse &gt; roomPost(std::string_view name)</div><div class="ttdoc">use post method for room api</div><div class="ttdef"><b>Definition:</b> api_bridge.cpp:69</div></div>
+<div class="ttc" id="aclassoctane_1_1internal_1_1_api_bridge_html_adb1d932c5cc7b07d9982738e63a5ed0e"><div class="ttname"><a href="classoctane_1_1internal_1_1_api_bridge.html#adb1d932c5cc7b07d9982738e63a5ed0e">octane::internal::ApiBridge::init</a></div><div class="ttdeci">Result&lt; _, ErrorResponse &gt; init()</div><div class="ttdoc">Initialize</div><div class="ttdef"><b>Definition:</b> api_bridge.cpp:25</div></div>
+<div class="ttc" id="aclassoctane_1_1internal_1_1_api_bridge_html_ae2c4f70b94f79adb66b1db81b118d809"><div class="ttname"><a href="classoctane_1_1internal_1_1_api_bridge.html#ae2c4f70b94f79adb66b1db81b118d809">octane::internal::ApiBridge::roomIdDelete</a></div><div class="ttdeci">Result&lt; _, ErrorResponse &gt; roomIdDelete(std::string_view id)</div><div class="ttdoc">use delete method for room/:id api</div><div class="ttdef"><b>Definition:</b> api_bridge.cpp:159</div></div>
+<div class="ttc" id="aclassoctane_1_1internal_1_1_api_bridge_html_aee95260574f0825495bf61003829d80c"><div class="ttname"><a href="classoctane_1_1internal_1_1_api_bridge.html#aee95260574f0825495bf61003829d80c">octane::internal::ApiBridge::roomIdContentGet</a></div><div class="ttdeci">Result&lt; Content, ErrorResponse &gt; roomIdContentGet(std::string_view id)</div><div class="ttdoc">use get method for room/:id/content api</div><div class="ttdef"><b>Definition:</b> api_bridge.cpp:190</div></div>
+<div class="ttc" id="aclassoctane_1_1internal_1_1_api_bridge_html_aeeccd95e2ec6beb6e01fbcd7c8667d80"><div class="ttname"><a href="classoctane_1_1internal_1_1_api_bridge.html#aeeccd95e2ec6beb6e01fbcd7c8667d80">octane::internal::ApiBridge::roomIdStatusDelete</a></div><div class="ttdeci">Result&lt; _, ErrorResponse &gt; roomIdStatusDelete(std::string_view id)</div><div class="ttdoc">use delete method for room/:id/status api</div><div class="ttdef"><b>Definition:</b> api_bridge.cpp:316</div></div>
+<div class="ttc" id="aclassoctane_1_1internal_1_1_fetch_html"><div class="ttname"><a href="classoctane_1_1internal_1_1_fetch.html">octane::internal::Fetch</a></div><div class="ttdoc">HttpClientクラスを通じてHTTP通信を行う。</div><div class="ttdef"><b>Definition:</b> fetch.h:51</div></div>
+<div class="ttc" id="aerror__response_8h_html"><div class="ttname"><a href="error__response_8h.html">error_response.h</a></div><div class="ttdoc">エラーレスポンス。</div></div>
+<div class="ttc" id="afetch_8h_html"><div class="ttname"><a href="fetch_8h.html">fetch.h</a></div><div class="ttdoc">fetch.hの実装</div></div>
+<div class="ttc" id="anamespaceoctane_1_1internal_html"><div class="ttname"><a href="namespaceoctane_1_1internal.html">octane::internal</a></div><div class="ttdef"><b>Definition:</b> api_bridge.cpp:20</div></div>
+<div class="ttc" id="aresult_8h_html"><div class="ttname"><a href="result_8h.html">result.h</a></div><div class="ttdoc">RustのResultに触発されて作った結果を表す型を定義する。</div></div>
+<div class="ttc" id="astructoctane_1_1_content_html"><div class="ttname"><a href="structoctane_1_1_content.html">octane::Content</a></div><div class="ttdoc">getContentメソッドを呼んだ時の結果を表す構造体。</div><div class="ttdef"><b>Definition:</b> api_result_types.h:81</div></div>
+<div class="ttc" id="astructoctane_1_1internal_1_1_content_status_html"><div class="ttname"><a href="structoctane_1_1internal_1_1_content_status.html">octane::internal::ContentStatus</a></div><div class="ttdoc">getContentStatusメソッドを呼んだ時の結果を表す構造体。</div><div class="ttdef"><b>Definition:</b> api_result_types.h:97</div></div>
+<div class="ttc" id="astructoctane_1_1internal_1_1_fetch_response_html"><div class="ttname"><a href="structoctane_1_1internal_1_1_fetch_response.html">octane::internal::FetchResponse</a></div><div class="ttdoc">Fetchのレスポンスを表す構造体。</div><div class="ttdef"><b>Definition:</b> fetch.h:34</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+</small></address>
+</body>
+</html>

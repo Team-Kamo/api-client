@@ -1,0 +1,5 @@
+<map id="octane::internal::ApiBridge::init" name="octane::internal::ApiBridge::init">
+<area shape="rect" id="node1" title="Initialize" alt="" coords="5,5,180,45"/>
+<area shape="rect" id="node2" href="$classoctane_1_1internal_1_1_fetch.html#ab13d25961028289f8f3e21237fb5233b" title="Fetchのインスタンスを初期化する。" alt="" coords="228,5,380,45"/>
+<area shape="rect" id="node3" href="$classoctane_1_1internal_1_1_http_client_base.html#af17a7fb609866e4294315e4fba2a711d" title="HttpClientを初期化する。" alt="" coords="428,5,607,45"/>
+</map>

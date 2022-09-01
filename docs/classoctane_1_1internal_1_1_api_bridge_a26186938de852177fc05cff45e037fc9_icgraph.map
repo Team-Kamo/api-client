@@ -1,0 +1,4 @@
+<map id="octane::internal::ApiBridge::roomIdGet" name="octane::internal::ApiBridge::roomIdGet">
+<area shape="rect" id="node1" title="use get method for room/:id api" alt="" coords="184,5,359,45"/>
+<area shape="rect" id="node2" href="$classoctane_1_1_api_client.html#abf9f627eef82ca6b148130e707f99fd7" title="Get the room&#39;s status" alt="" coords="5,5,136,45"/>
+</map>
