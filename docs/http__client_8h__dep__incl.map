@@ -1,7 +1,7 @@
 <map id="src/include/internal/http_client.h" name="src/include/internal/http_client.h">
 <area shape="rect" id="node1" title="HTTPクライアント。" alt="" coords="87,5,218,45"/>
 <area shape="rect" id="node2" href="$http__client_8cpp.html" title="http_client.hの実装。" alt="" coords="5,93,143,133"/>
-<area shape="rect" id="node3" href="$fetch_8h.html" title=" " alt="" coords="167,93,298,133"/>
+<area shape="rect" id="node3" href="$fetch_8h.html" title="fetch.hの実装" alt="" coords="167,93,298,133"/>
 <area shape="rect" id="node4" href="$fetch_8cpp.html" title=" " alt="" coords="57,181,225,207"/>
 <area shape="rect" id="node5" href="$api__client_8h.html" title=" " alt="" coords="249,181,403,207"/>
 <area shape="rect" id="node6" href="$api__client_8cpp.html" title=" " alt="" coords="251,255,401,280"/>

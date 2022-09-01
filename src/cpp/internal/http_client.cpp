@@ -164,5 +164,6 @@ namespace octane::internal {
     if (a.statusCode != b.statusCode) return false;
     if (a.headerField != b.headerField) return false;
     if (a.body != b.body) return false;
+    return true;
   }
 } // namespace octane::internal

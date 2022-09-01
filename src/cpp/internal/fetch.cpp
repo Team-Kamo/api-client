@@ -1,3 +1,13 @@
+/**
+ * @file fetch.h
+ * @author soon (kento.soon@gmail.com)
+ * @brief fetch.hの実装
+ * @version 0.1
+ * @date 2022-09-01
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
 #include "include/internal/fetch.h"
 
 #include <rapidjson/error/en.h>
