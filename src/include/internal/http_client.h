@@ -222,7 +222,7 @@ namespace octane::internal {
       char* buffer,
       size_t size,
       size_t nmemb,
-      std::map<std::string, std::string>* responseHeaderField);
+      std::pair<std::string,std::map<std::string, std::string>>* responseHeader);
   };
 } // namespace octane::internal
 

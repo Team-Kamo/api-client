@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2022
  *
  */
-#ifndef OCTANE_API_CLIENT_FETCH_H_
-#define OCTANE_API_CLIENT_FETCH_H_
+#ifndef OCTANE_API_CLIENT_INTERNAL_FETCH_H_
+#define OCTANE_API_CLIENT_INTERNAL_FETCH_H_
 
 #include <rapidjson/document.h>
 #include <rapidjson/encodings.h>
@@ -28,7 +28,24 @@
 
 namespace octane::internal {
   /**
+   * @brief Fetchのレスポンスを表す構造体。
+   *
+   */
+  struct FetchResponse {
+    /** @brief レスポンスのボディ部。*/
+    std::variant<rapidjson::Document, std::vector<std::uint8_t>> body;
+    /** @brief レスポンスのmime。*/
+    std::string mime;
+    /** @brief レスポンスのステータスコード。*/
+    int statusCode;
+    /** @brief レスポンスのステータスライン。 */
+    std::string statusLine;
+  };
+  /**
    * @brief HttpClientクラスを通じてHTTP通信を行う。
+   * @details
+   * このクラスは3xx番台のレスポンスを受けたときにリダイレクト処理を行う。
+   * また、このリダイレクト処理はHTTPヘッダのLocationに従う。
    *
    */
   class Fetch {
@@ -39,9 +56,7 @@ namespace octane::internal {
     HttpClientBase* client;
 
   public:
-    using FetchResult
-      = Result<std::variant<rapidjson::Document, std::vector<std::uint8_t>>,
-               ErrorResponse>;
+    using FetchResult = Result<FetchResponse, ErrorResponse>;
 
     /**
      * @brief Construct a new Fetch object
@@ -152,17 +167,24 @@ namespace octane::internal {
      * - ERR_CURL_CONNECTION_FAILED: CURLの接続に失敗したとき
      *
      * @param[in] method リクエストに使用するHTTPメソッド
-     * @param[in] url APIへのURL
+     * @param[in] origin APIのオリジン
+     * @param[in] url APIへのURL。baseUrlを含む。
      * @param[in] headers リクエストのヘッダフィールド
      * @param[in] body APIリクエストのボディ部
      * @return FetchResult
      * 成功した場合はレスポンスのボディ部、失敗した場合は上記のエラーレスポンスを返す。
+     *
+     * @note
+     * コンストラクタでオリジンを受け取っているにもかかわらず
+     * ここでまたオリジンを受け取っていたり、
+     * urlにbaseUrlを含ませる仕様にしているのはリダイレクト処理のため。
      */
     FetchResult request(HttpMethod method,
+                        std::string_view origin,
                         std::string_view url,
                         const std::map<std::string, std::string>& headers,
                         const std::vector<std::uint8_t>& body);
   };
 } // namespace octane::internal
 
-#endif // OCTANE_API_CLIENT_FETCH_H_
+#endif // OCTANE_API_CLIENT_INTERNAL_FETCH_H_

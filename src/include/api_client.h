@@ -13,63 +13,24 @@
 #ifndef OCTANE_API_CLIENT_API_CLIENT_H_
 #define OCTANE_API_CLIENT_API_CLIENT_H_
 
-#include <optional>
-#include <string>
-#include <string_view>
-#include <variant>
-#include <vector>
 
 #include "./error_response.h"
-#include "./internal/fetch.h"
+#include "./internal/api_bridge.h"
+#include "./api_result_types.h"
 #include "./result.h"
 
 namespace octane {
-  enum struct Health {
-    Healthy,
-    Degraded,
-    Faulty,
-  };
-  struct HealthResult {
-    Health health;
-    std::optional<std::string> message;
-  };
-  struct Device {
-    std::string name;
-    std::uint64_t timestamp;
-  };
-  struct RoomStatus {
-    std::string name;
-    std::vector<Device> devices;
-  };
-  enum struct ContentType {
-    File,
-    Clipboard,
-  };
-  struct Content {
-    ContentType type;
-    std::string name;
-    std::string mime;
-    std::variant<std::string, std::vector<std::uint8_t>> data;
-  };
-  struct ContentStatus {
-    std::string device;
-    std::uint64_t timestamp;
-    ContentType type;
-    std::optional<std::string> name;
-    std::string mime;
-    std::string hash;
-  };
   class ApiClient {
-    internal::Fetch fetch;
+    internal::ApiBridge bridge;
     std::uint64_t lastCheckedTime;
 
   public:
     /**
      * @brief Construct a new Api Client object
      *
-     * @param token
-     * @param origin http://localhost:3000
-     * @param baseUrl /api/v1
+     * @param[in] token
+     * @param[in] origin http://localhost:3000
+     * @param[in] baseUrl /api/v1
      */
     ApiClient(std::string_view token,
               std::string_view origin,
@@ -96,21 +57,21 @@ namespace octane {
     /**
      * @brief Create a room
      *
-     * @param name Room name
+     * @param[in] name Room name
      * @return Result<std::string, ErrorResponse> Returns room id on success
      */
     Result<std::string, ErrorResponse> createRoom(std::string_view name);
     /**
      * @brief Get the room's status
      *
-     * @param id
+     * @param[in] id
      * @return Result<RoomStatus, ErrorResponse>
      */
     Result<RoomStatus, ErrorResponse> getRoomStatus(std::string_view id);
     /**
      * @brief Delete the room
      *
-     * @param id
+     * @param[in] id
      * @return Result<_, ErrorResponse>
      */
     Result<_, ErrorResponse> deleteRoom(std::string_view id);
@@ -123,7 +84,7 @@ namespace octane {
     /**
      * @brief Delete content from the room
      *
-     * @param id
+     * @param[in] id
      * @return Result<_, ErrorResponse>
      */
     Result<_, ErrorResponse> deleteContent(std::string_view id);
@@ -141,7 +102,7 @@ namespace octane {
      * @brief Connect to the room
      * @details The user doesn't have to call this method since it's only used
      * in api_client
-     * @param id
+     * @param[in] id
      * @param name
      * @return Result<_,ErrorResponse>
      */
@@ -150,23 +111,23 @@ namespace octane {
     /**
      * @brief Return content status in the room
      *
-     * @param id
+     * @param[in] id
      * @return Result<ContentStatus, ErrorResponse>
      */
-    Result<ContentStatus, ErrorResponse> getContentStatus(std::string_view id);
+    Result<internal::ContentStatus, ErrorResponse> getContentStatus(std::string_view id);
     /**
      * @brief Upload content status to the room
      *
-     * @param id
+     * @param[in] id
      * @return Result<_, ErrorResponse>
      */
     Result<_, ErrorResponse> uploadContentStatus(
       std::string_view id,
-      const ContentStatus& contentStatus);
+      const internal::ContentStatus& contentStatus);
     /**
      * @brief Delete content status from the room
      *
-     * @param id
+     * @param[in] id
      * @return Result<_, ErrorResponse>
      */
     Result<_, ErrorResponse> deleteContentStatus(std::string_view id);

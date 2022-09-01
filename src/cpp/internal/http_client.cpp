@@ -16,6 +16,8 @@
 
 #include <curl/curl.h>
 
+#include <cstring>
+
 #include "include/error_code.h"
 
 namespace octane::internal {
@@ -84,8 +86,8 @@ namespace octane::internal {
     }
 
     // レスポンスのヘッダを受け取るための準備
-    std::map<std::string, std::string> responseHeaderField;
-    curl_easy_setopt(curl, CURLOPT_HEADERDATA, &responseHeaderField);
+    std::pair<std::string, std::map<std::string, std::string>> responseHeader;
+    curl_easy_setopt(curl, CURLOPT_HEADERDATA, &responseHeader);
     curl_easy_setopt(curl, CURLOPT_HEADERFUNCTION, headerCallback);
 
     // レスポンスのボディを受け取るための準備
@@ -107,8 +109,23 @@ namespace octane::internal {
     }
 
     HttpResponse response;
-    response.statusLine  = "";
-    response.headerField = std::move(responseHeaderField);
+    response.statusLine     = std::move(responseHeader.first);
+    auto pos1               = response.statusLine.find(" ");
+    auto pos2               = response.statusLine.substr(pos1).find(" ");
+    response.statusCode     = stoi(response.statusLine.substr(pos1, pos2));
+    std::string httpVersion = response.statusLine.substr(0, pos1);
+    if (httpVersion == "HTTP/1.0") {
+      response.version = HttpVersion::Http1_0;
+    } else if (httpVersion == "HTTP/1.1") {
+      response.version = HttpVersion::Http1_1;
+    } else if (httpVersion == "HTTP/2") {
+      response.version = HttpVersion::Http2;
+    } else if (httpVersion == "HTTP/3") {
+      response.version = HttpVersion::Http3;
+    } else {
+      makeError(ERR_INVALID_RESPONSE, "http version was invalid");
+    }
+    response.headerField = std::move(responseHeader.second);
     response.body        = std::move(chunk);
 
     return ok(response);
@@ -131,7 +148,7 @@ namespace octane::internal {
     size_t nmemb,
     std::pair<const std::vector<uint8_t>*, size_t>* stream) {
     size_t len = std::min(stream->first->size() - stream->second, size * nmemb);
-    memcpy(buffer, stream->first->data() + stream->second, len);
+    std::memcpy(buffer, stream->first->data() + stream->second, len);
     stream->second += len;
     return len;
   }
@@ -140,13 +157,18 @@ namespace octane::internal {
     char* buffer,
     size_t size,
     size_t nmemb,
-    std::map<std::string, std::string>* responseHeaderField) {
+    std::pair<std::string, std::map<std::string, std::string>>*
+      responseHeader) {
     // 扱いやすいようにstring_viewでラップ(コピーが発生しないのでオーバーヘッドは無視できるほど小さいはず多分)
     std::string_view buf(buffer, size * nmemb);
     auto pos = buf.find(": ");
-    std::string key(buf.substr(0, pos));
-    std::string val(buf.substr(pos + 2));
-    (*responseHeaderField)[key] = val;
+    if (pos == buf.npos) {
+      responseHeader->first = buf;
+    } else {
+      std::string key(buf.substr(0, pos));
+      std::string val(buf.substr(pos + 2));
+      responseHeader->second[key] = val;
+    }
     return size * nmemb;
   }
 

@@ -13,6 +13,7 @@
 #include <rapidjson/error/en.h>
 
 #include <cassert>
+#include <regex>
 
 #include "include/error_code.h"
 
@@ -27,7 +28,11 @@ namespace octane::internal {
   }
 
   Fetch::FetchResult Fetch::request(HttpMethod method, std::string_view url) {
-    return request(method, url, { { "X-Octane-API-Token", token } }, {});
+    return request(method,
+                   origin,
+                   baseUrl + std::string(url),
+                   { { "X-Octane-API-Token", token } },
+                   {});
   }
   Fetch::FetchResult Fetch::request(HttpMethod method,
                                     std::string_view url,
@@ -43,7 +48,8 @@ namespace octane::internal {
               decoded.begin());
 
     return request(method,
-                   url,
+                   origin,
+                   baseUrl + std::string(url),
                    { { "X-Octane-API-Token", token },
                      { "Content-Type", "application/json" } },
                    decoded);
@@ -53,20 +59,22 @@ namespace octane::internal {
                                     std::string_view mimeType,
                                     const std::vector<std::uint8_t>& body) {
     return request(method,
-                   url,
+                   origin,
+                   baseUrl + std::string(url),
                    { { "X-Octane-API-Token", token },
                      { "Content-Type", std::string(mimeType) } },
                    body);
   }
   Fetch::FetchResult Fetch::request(
     HttpMethod method,
+    std::string_view origin,
     std::string_view url,
     const std::map<std::string, std::string>& headers,
     const std::vector<std::uint8_t>& body) {
     HttpRequest request{
       .method      = method,
       .version     = HttpVersion::Http2,
-      .uri         = baseUrl + std::string(url),
+      .uri         = std::string(url),
       .headerField = headers,
       .body        = body,
     };
@@ -76,9 +84,25 @@ namespace octane::internal {
     }
 
     auto& response = result.get();
+    if (300 <= response.statusCode && response.statusCode < 400) {
+      const auto& location = response.headerField["Location"];
+      std::smatch regexResults;
+      if (std::regex_search(
+            location, regexResults, std::regex(R"(^(https?://.+)/(.*))"))) {
+        auto& origin = regexResults[1];
+        auto& url    = regexResults[2];
+        return this->request(method, origin.str(), url.str(), headers, body);
+      }
+    }
 
-    // curlして返ってきた結果のHTTPヘッダにContent-Type:application/jsonがあるときにはjsonを返す
-    if (response.headerField["Content-Type"].starts_with("application/json")) {
+    FetchResponse fetchResponse;
+    fetchResponse.statusLine = response.statusLine;
+    fetchResponse.statusCode = response.statusCode;
+    std::string contentType  = response.headerField["Content-Type"];
+    auto pos                 = contentType.find("; ");
+    fetchResponse.mime       = contentType.substr(0, pos);
+    // curlして返ってきた結果のHTTPヘッダにContent-Type:application/jsonがあるときにはFetchResponse.bodyにjsonを代入する
+    if (fetchResponse.mime == "application/json") {
       rapidjson::Document json;
       json.Parse((char*)response.body.data());
       if (json.HasParseError()) {
@@ -88,9 +112,12 @@ namespace octane::internal {
           ERR_JSON_PARSE_FAILED,
           message + std::string("\noffset: ") + std::to_string(offset));
       }
-      return ok(json);
+      fetchResponse.body = std::move(json);
     }
-    //そうでない時にはバイナリを返す
-    return ok(response.body);
+    //そうでない時にはFetchResponse.bodyにバイナリを代入する
+    else {
+      fetchResponse.body = std::move(response.body);
+    }
+    return ok(fetchResponse);
   }
 } // namespace octane::internal
