@@ -86,7 +86,7 @@ namespace octane::internal {
      */
     int statusCode;
     /**
-     * @brief レスポンスのHTTPステータスライン。"200 OK", "400 Bad
+     * @brief レスポンスのHTTPステータスライン。"HTTP/2 200 OK", "HTTP/2 400 Bad
      * Request"など。
      *
      */
@@ -194,10 +194,10 @@ namespace octane::internal {
      *
      * @see { @link https://curl.se/libcurl/c/CURLOPT_READFUNCTION.html }
      *
-     * @param[in] buffer 書き込み先のバッファ。
+     * @param[in,out] buffer 書き込み先のバッファ。
      * @param[in] size これとnmembを掛けた値がバッファのサイズ。
      * @param[in] nmemb これとsizeを掛けた値がバッファのサイズ。
-     * @param[in,out] stream 書き込み元のバッファ。
+     * @param[in] stream 書き込み元のバッファ。
      * @return size_t 書き込んだバッファのバイト数。
      */
     static size_t readCallback(

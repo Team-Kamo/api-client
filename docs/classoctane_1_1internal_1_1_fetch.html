@@ -81,6 +81,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>HttpClientクラスを通じてHTTP通信を行う。  
+ <a href="classoctane_1_1internal_1_1_fetch.html#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="fetch_8h_source.html">fetch.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -91,22 +94,25 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
 <tr class="memitem:ab02eafab2fb92301d490636953c52d9d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1internal_1_1_fetch.html#ab02eafab2fb92301d490636953c52d9d">Fetch</a> (std::string_view token, std::string_view origin, std::string_view baseUrl, <a class="el" href="classoctane_1_1internal_1_1_http_client_base.html">HttpClientBase</a> *client)</td></tr>
-<tr class="memdesc:ab02eafab2fb92301d490636953c52d9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classoctane_1_1internal_1_1_fetch.html">Fetch</a> object  <a href="classoctane_1_1internal_1_1_fetch.html#ab02eafab2fb92301d490636953c52d9d">[詳解]</a><br /></td></tr>
+<tr class="memdesc:ab02eafab2fb92301d490636953c52d9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classoctane_1_1internal_1_1_fetch.html" title="HttpClientクラスを通じてHTTP通信を行う。">Fetch</a> object  <a href="classoctane_1_1internal_1_1_fetch.html#ab02eafab2fb92301d490636953c52d9d">[詳解]</a><br /></td></tr>
 <tr class="separator:ab02eafab2fb92301d490636953c52d9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab13d25961028289f8f3e21237fb5233b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1__.html">_</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1internal_1_1_fetch.html#ab13d25961028289f8f3e21237fb5233b">init</a> ()</td></tr>
-<tr class="memdesc:ab13d25961028289f8f3e21237fb5233b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initailize  <a href="classoctane_1_1internal_1_1_fetch.html#ab13d25961028289f8f3e21237fb5233b">[詳解]</a><br /></td></tr>
+<tr class="memdesc:ab13d25961028289f8f3e21237fb5233b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetchのインスタンスを初期化する。  <a href="classoctane_1_1internal_1_1_fetch.html#ab13d25961028289f8f3e21237fb5233b">[詳解]</a><br /></td></tr>
 <tr class="separator:ab13d25961028289f8f3e21237fb5233b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c27b88c73c1c64987c5e451409afa74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoctane_1_1internal_1_1_fetch.html#aef7f20e283522b66fdbb6a2b99910fb1">FetchResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1internal_1_1_fetch.html#a3c27b88c73c1c64987c5e451409afa74">request</a> (<a class="el" href="namespaceoctane_1_1internal.html#a164bed1ca702ea1cb6f0feb4ded22e73">HttpMethod</a> method, std::string_view url)</td></tr>
-<tr class="memdesc:a3c27b88c73c1c64987c5e451409afa74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests  <a href="classoctane_1_1internal_1_1_fetch.html#a3c27b88c73c1c64987c5e451409afa74">[詳解]</a><br /></td></tr>
+<tr class="memdesc:a3c27b88c73c1c64987c5e451409afa74"><td class="mdescLeft">&#160;</td><td class="mdescRight">APIへのボディ部を持たないリクエストを発行する。  <a href="classoctane_1_1internal_1_1_fetch.html#a3c27b88c73c1c64987c5e451409afa74">[詳解]</a><br /></td></tr>
 <tr class="separator:a3c27b88c73c1c64987c5e451409afa74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afad212025d44efac0303eaa09f4cefd1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoctane_1_1internal_1_1_fetch.html#aef7f20e283522b66fdbb6a2b99910fb1">FetchResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1internal_1_1_fetch.html#afad212025d44efac0303eaa09f4cefd1">request</a> (<a class="el" href="namespaceoctane_1_1internal.html#a164bed1ca702ea1cb6f0feb4ded22e73">HttpMethod</a> method, std::string_view url, const rapidjson::Document &amp;body)</td></tr>
-<tr class="memdesc:afad212025d44efac0303eaa09f4cefd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests  <a href="classoctane_1_1internal_1_1_fetch.html#afad212025d44efac0303eaa09f4cefd1">[詳解]</a><br /></td></tr>
+<tr class="memdesc:afad212025d44efac0303eaa09f4cefd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">APIへのJSON形式のボディ部を持つリクエストを発行する。  <a href="classoctane_1_1internal_1_1_fetch.html#afad212025d44efac0303eaa09f4cefd1">[詳解]</a><br /></td></tr>
 <tr class="separator:afad212025d44efac0303eaa09f4cefd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb088211786c19a754e3f5eec50dd4a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoctane_1_1internal_1_1_fetch.html#aef7f20e283522b66fdbb6a2b99910fb1">FetchResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1internal_1_1_fetch.html#aeb088211786c19a754e3f5eec50dd4a9">request</a> (<a class="el" href="namespaceoctane_1_1internal.html#a164bed1ca702ea1cb6f0feb4ded22e73">HttpMethod</a> method, std::string_view url, std::string_view mimeType, const std::vector&lt; std::uint8_t &gt; &amp;body)</td></tr>
-<tr class="memdesc:aeb088211786c19a754e3f5eec50dd4a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests  <a href="classoctane_1_1internal_1_1_fetch.html#aeb088211786c19a754e3f5eec50dd4a9">[詳解]</a><br /></td></tr>
+<tr class="memdesc:aeb088211786c19a754e3f5eec50dd4a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">APIへの任意のContent-Typeのボディ部を持つリクエストを発行する。 このメソッドは任意のContent-Typeのボディを持つリクエストに使用する。 JSON形式のリクエストの場合は<code><a class="el" href="classoctane_1_1internal_1_1_fetch.html#afad212025d44efac0303eaa09f4cefd1">Fetch::request(HttpMethod method,
+std::string_view url, const rapidjson::Document&amp; body)</a></code>の使用を推奨する。 GET及びDELETEリクエストはこのメソッドを使用してはならず、代わりに<code><a class="el" href="classoctane_1_1internal_1_1_fetch.html#a3c27b88c73c1c64987c5e451409afa74">Fetch::request(HttpMethod method, std::string_view url)</a></code>を使用すること。 失敗した場合は次のエラーレスポンスを返す。  <a href="classoctane_1_1internal_1_1_fetch.html#aeb088211786c19a754e3f5eec50dd4a9">[詳解]</a><br /></td></tr>
 <tr class="separator:aeb088211786c19a754e3f5eec50dd4a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">型定義メンバ詳解</h2>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p >HttpClientクラスを通じてHTTP通信を行う。 </p>
+</div><h2 class="groupheader">型定義メンバ詳解</h2>
 <a id="aef7f20e283522b66fdbb6a2b99910fb1" name="aef7f20e283522b66fdbb6a2b99910fb1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aef7f20e283522b66fdbb6a2b99910fb1">&#9670;&#160;</a></span>FetchResult</h2>
 
@@ -160,13 +166,14 @@ $(function() {
       </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="classoctane_1_1internal_1_1_fetch.html">Fetch</a> object </p>
+<p>Construct a new <a class="el" href="classoctane_1_1internal_1_1_fetch.html" title="HttpClientクラスを通じてHTTP通信を行う。">Fetch</a> object </p>
+<p >tokenは正当なAPIトークンでなければならない。 また、このトークンはHTTP拡張ヘッダ"X-Octane-API-Token"で送信される。 originはAPIサーバへのプロトコル、ドメイン、ポート番号を含む正当なAPIサーバのオリジンでなければならない。 例えば"http://localhost:3000"などの形式となる。 baseUrlはAPIと通信するときにオリジンの後につく共通のURLを指定する。 例えば"/api/v1"など。 これは<code><a class="el" href="classoctane_1_1internal_1_1_fetch.html#a3c27b88c73c1c64987c5e451409afa74">Fetch::request</a></code>のurl引数のベースURLとなる。 clientはHTTP通信を仲介する<code><a class="el" href="classoctane_1_1internal_1_1_http_client_base.html">HttpClientBase</a></code>を実装する任意のインスタンスを指定する。通常は<code><a class="el" href="classoctane_1_1internal_1_1_http_client.html">HttpClient</a></code>クラスのインスタンスを指定すればよい。</p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">token</td><td></td></tr>
-    <tr><td class="paramname">origin</td><td><a href="http://localhost:3000">http://localhost:3000</a> </td></tr>
-    <tr><td class="paramname">baseUrl</td><td>/api/v1 </td></tr>
-    <tr><td class="paramname">client</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">token</td><td>APIに送信するトークン </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">origin</td><td>APIサーバのオリジン </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">baseUrl</td><td>APIの起点となるURL </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">client</td><td>通信を媒介するHttpClient </td></tr>
   </table>
   </dd>
 </dl>
@@ -189,14 +196,17 @@ $(function() {
       </table>
 </div><div class="memdoc">
 
-<p>Initailize </p>
-<dl class="section return"><dt>戻り値</dt><dd>Result&lt;_, ErrorResponse&gt; </dd></dl>
+<p>Fetchのインスタンスを初期化する。 </p>
+<p >このメソッドはインスタンス一つにつき一度だけ呼び出すことができる。 また、インスタンスを作成した直後に呼び出さなければならない。 失敗した場合は次のエラーレスポンスを返す。</p><ul>
+<li>ERR_CURL_INITIALIZATION_FAILED: CURLの初期化に失敗したとき</li>
+</ul>
+<dl class="section return"><dt>戻り値</dt><dd>Result&lt;_, ErrorResponse&gt; 成功した場合は何も返さず、失敗した場合は上記のエラーレスポンスを返す。 </dd></dl>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="classoctane_1_1internal_1_1_fetch_ab13d25961028289f8f3e21237fb5233b_cgraph.png" border="0" usemap="#aclassoctane_1_1internal_1_1_fetch_ab13d25961028289f8f3e21237fb5233b_cgraph" alt=""/></div>
 <map name="aclassoctane_1_1internal_1_1_fetch_ab13d25961028289f8f3e21237fb5233b_cgraph" id="aclassoctane_1_1internal_1_1_fetch_ab13d25961028289f8f3e21237fb5233b_cgraph">
-<area shape="rect" title="Initailize" alt="" coords="5,5,157,45"/>
+<area shape="rect" title="Fetchのインスタンスを初期化する。" alt="" coords="5,5,157,45"/>
 <area shape="rect" href="classoctane_1_1internal_1_1_http_client_base.html#af17a7fb609866e4294315e4fba2a711d" title="HttpClientを初期化する。" alt="" coords="205,5,381,45"/>
 </map>
 </div>
@@ -205,7 +215,7 @@ $(function() {
 <div class="dyncontent">
 <div class="center"><img src="classoctane_1_1internal_1_1_fetch_ab13d25961028289f8f3e21237fb5233b_icgraph.png" border="0" usemap="#aclassoctane_1_1internal_1_1_fetch_ab13d25961028289f8f3e21237fb5233b_icgraph" alt=""/></div>
 <map name="aclassoctane_1_1internal_1_1_fetch_ab13d25961028289f8f3e21237fb5233b_icgraph" id="aclassoctane_1_1internal_1_1_fetch_ab13d25961028289f8f3e21237fb5233b_icgraph">
-<area shape="rect" title="Initailize" alt="" coords="200,5,352,45"/>
+<area shape="rect" title="Fetchのインスタンスを初期化する。" alt="" coords="200,5,352,45"/>
 <area shape="rect" href="classoctane_1_1_api_client.html#a90a36f3caf3ada6677d9782aadd5780c" title="Initialize" alt="" coords="5,13,152,38"/>
 </map>
 </div>
@@ -238,21 +248,26 @@ $(function() {
       </table>
 </div><div class="memdoc">
 
-<p>Requests </p>
+<p>APIへのボディ部を持たないリクエストを発行する。 </p>
+<p >このメソッドはボディを持たないリクエストに使用する。 GET及びDELETEリクエストは必ずこのメソッドを使用しなければならない。 失敗した場合は次のエラーレスポンスを返す。</p><ul>
+<li>ERR_JSON_PARSE_FAILED: レスポンスのContent-Typeがapplication/jsonであったにもかかわらず正常なJSONデータがAPIから返却されなかったとき</li>
+<li>ERR_INCORRECT_HTTP_METHOD: GET, POST, PUT, DELETE以外のHTTPメソッドを指定したとき</li>
+<li>ERR_CURL_CONNECTION_FAILED: CURLの接続に失敗したとき</li>
+</ul>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">method</td><td></td></tr>
-    <tr><td class="paramname">url</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">method</td><td>リクエストに使用するHTTPメソッド </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">url</td><td>APIへのURL </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>戻り値</dt><dd>FetchResult </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd>FetchResult 成功した場合はレスポンスのボディ部、失敗した場合は上記のエラーレスポンスを返す。 </dd></dl>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="classoctane_1_1internal_1_1_fetch_a3c27b88c73c1c64987c5e451409afa74_cgraph.png" border="0" usemap="#aclassoctane_1_1internal_1_1_fetch_a3c27b88c73c1c64987c5e451409afa74_cgraph" alt=""/></div>
 <map name="aclassoctane_1_1internal_1_1_fetch_a3c27b88c73c1c64987c5e451409afa74_cgraph" id="aclassoctane_1_1internal_1_1_fetch_a3c27b88c73c1c64987c5e451409afa74_cgraph">
-<area shape="rect" title="Requests" alt="" coords="5,29,157,69"/>
+<area shape="rect" title="APIへのボディ部を持たないリクエストを発行する。" alt="" coords="5,29,157,69"/>
 </map>
 </div>
 <div class="dynheader">
@@ -260,7 +275,7 @@ $(function() {
 <div class="dyncontent">
 <div class="center"><img src="classoctane_1_1internal_1_1_fetch_a3c27b88c73c1c64987c5e451409afa74_icgraph.png" border="0" usemap="#aclassoctane_1_1internal_1_1_fetch_a3c27b88c73c1c64987c5e451409afa74_icgraph" alt=""/></div>
 <map name="aclassoctane_1_1internal_1_1_fetch_a3c27b88c73c1c64987c5e451409afa74_icgraph" id="aclassoctane_1_1internal_1_1_fetch_a3c27b88c73c1c64987c5e451409afa74_icgraph">
-<area shape="rect" title="Requests" alt="" coords="5,29,157,69"/>
+<area shape="rect" title="APIへのボディ部を持たないリクエストを発行する。" alt="" coords="5,29,157,69"/>
 </map>
 </div>
 
@@ -298,23 +313,28 @@ $(function() {
       </table>
 </div><div class="memdoc">
 
-<p>Requests </p>
+<p>APIへのJSON形式のボディ部を持つリクエストを発行する。 </p>
+<p >このメソッドはJSON形式のボディを持つリクエストに使用する。 GET及びDELETEリクエストはこのメソッドを使用してはならず、代わりに<code><a class="el" href="classoctane_1_1internal_1_1_fetch.html#a3c27b88c73c1c64987c5e451409afa74">Fetch::request(HttpMethod method, std::string_view url)</a></code>を使用すること。 失敗した場合は次のエラーレスポンスを返す。</p><ul>
+<li>ERR_JSON_PARSE_FAILED: レスポンスのContent-Typeがapplication/jsonであったにもかかわらず正常なJSONデータがAPIから返却されなかったとき</li>
+<li>ERR_INCORRECT_HTTP_METHOD: POST, PUT以外のHTTPメソッドを指定したとき</li>
+<li>ERR_CURL_CONNECTION_FAILED: CURLの接続に失敗したとき</li>
+</ul>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">method</td><td></td></tr>
-    <tr><td class="paramname">url</td><td></td></tr>
-    <tr><td class="paramname">body</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">method</td><td>リクエストに使用するHTTPメソッド </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">url</td><td>APIへのURL </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">body</td><td>APIリクエストのボディ部 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>戻り値</dt><dd>FetchResult </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd>FetchResult 成功した場合はレスポンスのボディ部、失敗した場合は上記のエラーレスポンスを返す。 </dd></dl>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="classoctane_1_1internal_1_1_fetch_afad212025d44efac0303eaa09f4cefd1_cgraph.png" border="0" usemap="#aclassoctane_1_1internal_1_1_fetch_afad212025d44efac0303eaa09f4cefd1_cgraph" alt=""/></div>
 <map name="aclassoctane_1_1internal_1_1_fetch_afad212025d44efac0303eaa09f4cefd1_cgraph" id="aclassoctane_1_1internal_1_1_fetch_afad212025d44efac0303eaa09f4cefd1_cgraph">
-<area shape="rect" title="Requests" alt="" coords="5,29,157,69"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_fetch.html#a3c27b88c73c1c64987c5e451409afa74" title="Requests" alt="" coords="205,29,357,69"/>
+<area shape="rect" title="APIへのJSON形式のボディ部を持つリクエストを発行する。" alt="" coords="5,29,157,69"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_fetch.html#a3c27b88c73c1c64987c5e451409afa74" title="APIへのボディ部を持たないリクエストを発行する。" alt="" coords="205,29,357,69"/>
 </map>
 </div>
 
@@ -358,23 +378,29 @@ $(function() {
       </table>
 </div><div class="memdoc">
 
-<p>Requests </p>
+<p>APIへの任意のContent-Typeのボディ部を持つリクエストを発行する。 このメソッドは任意のContent-Typeのボディを持つリクエストに使用する。 JSON形式のリクエストの場合は<code><a class="el" href="classoctane_1_1internal_1_1_fetch.html#afad212025d44efac0303eaa09f4cefd1">Fetch::request(HttpMethod method,
+std::string_view url, const rapidjson::Document&amp; body)</a></code>の使用を推奨する。 GET及びDELETEリクエストはこのメソッドを使用してはならず、代わりに<code><a class="el" href="classoctane_1_1internal_1_1_fetch.html#a3c27b88c73c1c64987c5e451409afa74">Fetch::request(HttpMethod method, std::string_view url)</a></code>を使用すること。 失敗した場合は次のエラーレスポンスを返す。 </p>
+<ul>
+<li>ERR_JSON_PARSE_FAILED: レスポンスのContent-Typeがapplication/jsonであったにもかかわらず正常なJSONデータがAPIから返却されなかったとき</li>
+<li>ERR_INCORRECT_HTTP_METHOD: POST, PUT以外のHTTPメソッドを指定したとき</li>
+<li>ERR_CURL_CONNECTION_FAILED: CURLの接続に失敗したとき</li>
+</ul>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">method</td><td></td></tr>
-    <tr><td class="paramname">url</td><td></td></tr>
-    <tr><td class="paramname">body</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">method</td><td>リクエストに使用するHTTPメソッド </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">url</td><td>APIへのURL </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">body</td><td>APIリクエストのボディ部 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>戻り値</dt><dd>FetchResult </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd>FetchResult 成功した場合はレスポンスのボディ部、失敗した場合は上記のエラーレスポンスを返す。 </dd></dl>
 <div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="classoctane_1_1internal_1_1_fetch_aeb088211786c19a754e3f5eec50dd4a9_cgraph.png" border="0" usemap="#aclassoctane_1_1internal_1_1_fetch_aeb088211786c19a754e3f5eec50dd4a9_cgraph" alt=""/></div>
 <map name="aclassoctane_1_1internal_1_1_fetch_aeb088211786c19a754e3f5eec50dd4a9_cgraph" id="aclassoctane_1_1internal_1_1_fetch_aeb088211786c19a754e3f5eec50dd4a9_cgraph">
-<area shape="rect" title="Requests" alt="" coords="5,29,157,69"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_fetch.html#a3c27b88c73c1c64987c5e451409afa74" title="Requests" alt="" coords="205,29,357,69"/>
+<area shape="rect" title="APIへの任意のContent&#45;Typeのボディ部を持つリクエストを発行する。 このメソッドは任意のContent&#45;Typeのボディを持つリクエストに使用する。 JSON形式のリクエストの場合はFetc..." alt="" coords="5,29,157,69"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_fetch.html#a3c27b88c73c1c64987c5e451409afa74" title="APIへのボディ部を持たないリクエストを発行する。" alt="" coords="205,29,357,69"/>
 </map>
 </div>
 

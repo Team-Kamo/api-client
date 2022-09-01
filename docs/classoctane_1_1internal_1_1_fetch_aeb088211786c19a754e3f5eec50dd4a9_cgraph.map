@@ -1,4 +1,4 @@
 <map id="octane::internal::Fetch::request" name="octane::internal::Fetch::request">
-<area shape="rect" id="node1" title="Requests" alt="" coords="5,29,157,69"/>
-<area shape="rect" id="node2" href="$classoctane_1_1internal_1_1_fetch.html#a3c27b88c73c1c64987c5e451409afa74" title="Requests" alt="" coords="205,29,357,69"/>
+<area shape="rect" id="node1" title="APIへの任意のContent&#45;Typeのボディ部を持つリクエストを発行する。 このメソッドは任意のContent&#45;Typeのボディを持つリクエストに使用する。 JSON形式のリクエストの場合はFetc..." alt="" coords="5,29,157,69"/>
+<area shape="rect" id="node2" href="$classoctane_1_1internal_1_1_fetch.html#a3c27b88c73c1c64987c5e451409afa74" title="APIへのボディ部を持たないリクエストを発行する。" alt="" coords="205,29,357,69"/>
 </map>
