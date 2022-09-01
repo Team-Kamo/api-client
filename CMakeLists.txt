@@ -46,8 +46,8 @@ ExternalProject_Add(
   "-DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}"
 )
 
-include_directories(${PROJECT_BINARY_DIR}/include)
-link_directories(${PROJECT_BINARY_DIR}/lib)
+include_directories(${CMAKE_BINARY_DIR}/include)
+link_directories(${CMAKE_BINARY_DIR}/lib)
 
 if(WIN32)
   set(ZLIB zlibstaticd)
