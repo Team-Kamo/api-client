@@ -1,0 +1,14 @@
+name: Doxygen Action
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  doxygen:
+    name: Doxygen
+    runs-on: ubuntu-latest
+    steps:
+      - name: Doxygen
+        uses: mattnotmitt/doxygen-action@1.9.4
