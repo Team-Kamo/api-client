@@ -167,7 +167,7 @@ std::string_view url, const rapidjson::Document&amp; body)</a></code>の使用�
 </div><div class="memdoc">
 
 <p>Construct a new <a class="el" href="classoctane_1_1internal_1_1_fetch.html" title="HttpClientクラスを通じてHTTP通信を行う。">Fetch</a> object </p>
-<p >tokenは正当なAPIトークンでなければならない。 また、このトークンはHTTP拡張ヘッダ"X-Octane-API-Token"で送信される。 originはAPIサーバへのプロトコル、ドメイン、ポート番号を含む正当なAPIさーばのオリジンでなければならない。 例えば"http://localhost:3000"などの形式となる。 baseUrlはAPIと通信するときにオリジンの後につく共通のURLを指定する。 例えば"/api/v1"など。 これは<code><a class="el" href="classoctane_1_1internal_1_1_fetch.html#a3c27b88c73c1c64987c5e451409afa74">Fetch::request</a></code>のurl引数のベースURLとなる。 clientはHTTP通信を仲介する<code><a class="el" href="classoctane_1_1internal_1_1_http_client_base.html">HttpClientBase</a></code>を実装する任意のインスタンスを指定する。通常は<code><a class="el" href="classoctane_1_1internal_1_1_http_client.html">HttpClient</a></code>クラスのインスタンスを指定すればよい。</p>
+<p >tokenは正当なAPIトークンでなければならない。 また、このトークンはHTTP拡張ヘッダ"X-Octane-API-Token"で送信される。 originはAPIサーバへのプロトコル、ドメイン、ポート番号を含む正当なAPIサーバのオリジンでなければならない。 例えば"http://localhost:3000"などの形式となる。 baseUrlはAPIと通信するときにオリジンの後につく共通のURLを指定する。 例えば"/api/v1"など。 これは<code><a class="el" href="classoctane_1_1internal_1_1_fetch.html#a3c27b88c73c1c64987c5e451409afa74">Fetch::request</a></code>のurl引数のベースURLとなる。 clientはHTTP通信を仲介する<code><a class="el" href="classoctane_1_1internal_1_1_http_client_base.html">HttpClientBase</a></code>を実装する任意のインスタンスを指定する。通常は<code><a class="el" href="classoctane_1_1internal_1_1_http_client.html">HttpClient</a></code>クラスのインスタンスを指定すればよい。</p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">token</td><td>APIに送信するトークン </td></tr>
