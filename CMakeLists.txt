@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
 
-project(octane-api-client CXX)
+project(octane_api_client CXX)
 
 add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
 add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
@@ -46,8 +46,8 @@ ExternalProject_Add(
   "-DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}"
 )
 
-include_directories(${CMAKE_BINARY_DIR}/include)
-link_directories(${CMAKE_BINARY_DIR}/lib)
+include_directories(${PROJECT_BINARY_DIR}/include)
+link_directories(${PROJECT_BINARY_DIR}/lib)
 
 if(WIN32)
   set(ZLIB zlibstaticd)
