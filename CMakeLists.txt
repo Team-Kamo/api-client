@@ -48,11 +48,14 @@ ExternalProject_Add(
 
 link_directories(${CMAKE_BINARY_DIR}/lib)
 
+set(CRYPTOPP_BUILD_TESTING OFF)
+
 if(WIN32)
   set(ZLIB zlibstaticd)
 elseif(APPLE)
   set(ZLIB libz.a)
-else(UNIX)
+  add_compile_definitions(CRYPTOPP_DISABLE_ASM)
+elseif(UNIX)
   set(ZLIB libz.a)
 endif()
 
@@ -68,6 +71,12 @@ FetchContent_GetProperties(rapidjson)
 if(NOT rapidjson_POPULATED)
   FetchContent_Populate(rapidjson)
 endif()
+
+FetchContent_Declare(
+  cryptopp-cmake
+  GIT_REPOSITORY https://github.com/abdes/cryptopp-cmake.git
+)
+FetchContent_MakeAvailable(cryptopp-cmake)
 
 FetchContent_Declare(
   googletest
@@ -86,6 +95,7 @@ set(
   ${SRC_DIR}
   ${CMAKE_BINARY_DIR}/include
   ${rapidjson_SOURCE_DIR}/include
+  ${cryptopp_SOURCE_DIR}
   ${googletest_SOURCE_DIR}/googletest/include
   ${gmock_SOURCE_DIR}/include
 )

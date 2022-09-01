@@ -206,7 +206,7 @@ namespace octane::internal {
     content.mime = response.get().mime;
     content.type;
     content.name;
-    return ok();
+    return ok(content);
   }
   Result<_, ErrorResponse> ApiBridge::roomIdContentDelete(std::string_view id) {
     auto response = fetch.request(internal::HttpMethod::Delete,

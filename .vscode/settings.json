@@ -116,5 +116,5 @@
     "xutility": "cpp",
     "filesystem": "cpp"
   },
-  "cmake.sourceDirectory": "${workspaceFolder}/System/Volumes/Data/Applications/Docker.app/Contents/MacOS/Docker Desktop.app/Contents/Resources/app.asar/node_modules/cpu-features/deps/cpu_features/ndk_compat"
+  "cmake.sourceDirectory": "${workspaceFolder}/."
 }
