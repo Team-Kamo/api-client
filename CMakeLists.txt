@@ -46,7 +46,6 @@ ExternalProject_Add(
   "-DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}"
 )
 
-include_directories(${CMAKE_BINARY_DIR}/include)
 link_directories(${CMAKE_BINARY_DIR}/lib)
 
 if(WIN32)
@@ -70,8 +69,6 @@ if(NOT rapidjson_POPULATED)
   FetchContent_Populate(rapidjson)
 endif()
 
-include_directories(${rapidjson_SOURCE_DIR}/include)
-
 FetchContent_Declare(
   googletest
   GIT_REPOSITORY https://github.com/google/googletest.git
@@ -81,11 +78,17 @@ FetchContent_Declare(
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
-include_directories(${googletest_SOURCE_DIR}/googletest/include ${gmock_SOURCE_DIR}/include)
 
 include(GoogleTest)
 
-include_directories(${SRC_DIR})
+set(
+  OCTANE_API_CLIENT_INCLUDE_DIRS
+  ${SRC_DIR}
+  ${CMAKE_BINARY_DIR}/include
+  ${rapidjson_SOURCE_DIR}/include
+  ${googletest_SOURCE_DIR}/googletest/include
+  ${gmock_SOURCE_DIR}/include
+)
 
 add_subdirectory(${SRC_DIR})
 
