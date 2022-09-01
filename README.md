@@ -12,9 +12,9 @@ GUI、CUI共にこのライブラリからAPIへアクセスする。
 
 各環境向けにスクリプト書いたのでそれ使ってください。
 
-- [cmd](./build.bat)
-- [PowerShell](./build.ps1)
-- [bashなど](./build.sh)
+- [cmd](https://github.com/Team-Kamo/api-client/blob/master/build.bat)
+- [PowerShell](https://github.com/Team-Kamo/api-client/blob/master/build.ps1)
+- [bashなど](https://github.com/Team-Kamo/api-client/blob/master/build.sh)
 
 ## Git Submoduleでの使い方
 
