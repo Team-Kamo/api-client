@@ -1,11 +1,9 @@
 /**
  * @file api-client.h
  * @author cosocaf (cosocaf@gmail.com)
- * @brief
+ * @brief APIクライアント。
  * @version 0.1
  * @date 2022-08-30
- *
- * APIクライアント。
  *
  * @copyright Copyright (c) 2022
  *
@@ -13,10 +11,10 @@
 #ifndef OCTANE_API_CLIENT_API_CLIENT_H_
 #define OCTANE_API_CLIENT_API_CLIENT_H_
 
-
+#include "./api_result_types.h"
+#include "./config.h"
 #include "./error_response.h"
 #include "./internal/api_bridge.h"
-#include "./api_result_types.h"
 #include "./result.h"
 
 namespace octane {
@@ -32,9 +30,9 @@ namespace octane {
      * @param[in] origin http://localhost:3000
      * @param[in] baseUrl /api/v1
      */
-    ApiClient(std::string_view token,
-              std::string_view origin,
-              std::string_view baseUrl);
+    ApiClient(std::string_view token   = DEFAULT_API_TOKEN,
+              std::string_view origin  = DEFAULT_API_ORIGIN,
+              std::string_view baseUrl = DEFAULT_API_BASE_URL);
     /**
      * @brief Destroy the Api Client object
      *
@@ -114,7 +112,8 @@ namespace octane {
      * @param[in] id
      * @return Result<ContentStatus, ErrorResponse>
      */
-    Result<internal::ContentStatus, ErrorResponse> getContentStatus(std::string_view id);
+    Result<internal::ContentStatus, ErrorResponse> getContentStatus(
+      std::string_view id);
     /**
      * @brief Upload content status to the room
      *
