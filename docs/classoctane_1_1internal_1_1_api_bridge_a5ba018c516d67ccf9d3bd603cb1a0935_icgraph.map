@@ -1,0 +1,4 @@
+<map id="octane::internal::ApiBridge::healthGet" name="octane::internal::ApiBridge::healthGet">
+<area shape="rect" id="node1" title="use get method for health api" alt="" coords="184,5,359,45"/>
+<area shape="rect" id="node2" href="$classoctane_1_1_api_client.html#a93ff968043aca8a60231e7b218689d9b" title="Return the server&#39;s status" alt="" coords="5,5,136,45"/>
+</map>

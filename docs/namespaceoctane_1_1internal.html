@@ -83,8 +83,16 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 クラス</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1internal_1_1_api_bridge.html">ApiBridge</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1internal_1_1_content_status.html">ContentStatus</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><code><a class="el" href="">getContentStatus</a></code>メソッドを呼んだ時の結果を表す構造体。  <a href="structoctane_1_1internal_1_1_content_status.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1internal_1_1_fetch.html">Fetch</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">HttpClientクラスを通じてHTTP通信を行う。  <a href="classoctane_1_1internal_1_1_fetch.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1internal_1_1_fetch_response.html">FetchResponse</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetchのレスポンスを表す構造体。  <a href="structoctane_1_1internal_1_1_fetch_response.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1internal_1_1_http_client.html">HttpClient</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">HTTP通信を行う。  <a href="classoctane_1_1internal_1_1_http_client.html#details">[詳解]</a><br /></td></tr>
@@ -118,6 +126,9 @@ $(function() {
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 関数</h2></td></tr>
+<tr class="memitem:a7e567b63d242d3eb64af63c3d11644d3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane_1_1internal.html#a7e567b63d242d3eb64af63c3d11644d3">generateHash</a> (const std::vector&lt; std::uint8_t &gt; &amp;src)</td></tr>
+<tr class="memdesc:a7e567b63d242d3eb64af63c3d11644d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">ハッシュ値を生成する。  <a href="namespaceoctane_1_1internal.html#a7e567b63d242d3eb64af63c3d11644d3">[詳解]</a><br /></td></tr>
+<tr class="separator:a7e567b63d242d3eb64af63c3d11644d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a365c42befde57e9779228249bee9b8df"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane_1_1internal.html#a365c42befde57e9779228249bee9b8df">operator==</a> (const <a class="el" href="structoctane_1_1internal_1_1_http_request.html">HttpRequest</a> &amp;a, const <a class="el" href="structoctane_1_1internal_1_1_http_request.html">HttpRequest</a> &amp;b)</td></tr>
 <tr class="separator:a365c42befde57e9779228249bee9b8df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c85a41db1af45228350856bebcaad2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane_1_1internal.html#a4c85a41db1af45228350856bebcaad2a">operator==</a> (const <a class="el" href="structoctane_1_1internal_1_1_http_response.html">HttpResponse</a> &amp;a, const <a class="el" href="structoctane_1_1internal_1_1_http_response.html">HttpResponse</a> &amp;b)</td></tr>
@@ -193,6 +204,34 @@ $(function() {
 </div>
 </div>
 <h2 class="groupheader">関数詳解</h2>
+<a id="a7e567b63d242d3eb64af63c3d11644d3" name="a7e567b63d242d3eb64af63c3d11644d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e567b63d242d3eb64af63c3d11644d3">&#9670;&#160;</a></span>generateHash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::uint8_t &gt; octane::internal::generateHash </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::uint8_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ハッシュ値を生成する。 </p>
+<p >使用されるアルゴリズムはblack2b-256である。</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">src</td><td>ハッシュを生成する値。 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>std::vector&lt;std::uint8_t&gt; 生成されたハッシュ値。 </dd></dl>
+
+</div>
+</div>
 <a id="a365c42befde57e9779228249bee9b8df" name="a365c42befde57e9779228249bee9b8df"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a365c42befde57e9779228249bee9b8df">&#9670;&#160;</a></span>operator==() <span class="overload">[1/2]</span></h2>
 

@@ -1,10 +1,12 @@
 <map id="src/include/error_response.h" name="src/include/error_response.h">
-<area shape="rect" id="node1" title="エラーレスポンス。" alt="" coords="155,5,342,31"/>
+<area shape="rect" id="node1" title="エラーレスポンス。" alt="" coords="181,5,367,31"/>
 <area shape="rect" id="node2" href="$error__response_8cpp.html" title="error_response.hの実装。" alt="" coords="5,86,185,111"/>
-<area shape="rect" id="node3" href="$api__client_8h.html" title=" " alt="" coords="146,255,301,280"/>
-<area shape="rect" id="node5" href="$fetch_8h.html" title="fetch.hの実装" alt="" coords="261,167,391,207"/>
-<area shape="rect" id="node7" href="$http__client_8h.html" title="HTTPクライアント。" alt="" coords="311,79,442,119"/>
-<area shape="rect" id="node4" href="$api__client_8cpp.html" title=" " alt="" coords="149,328,298,353"/>
-<area shape="rect" id="node6" href="$fetch_8cpp.html" title=" " alt="" coords="325,255,493,280"/>
-<area shape="rect" id="node8" href="$http__client_8cpp.html" title="http_client.hの実装。" alt="" coords="416,167,553,207"/>
+<area shape="rect" id="node3" href="$api__client_8h.html" title=" " alt="" coords="146,350,301,375"/>
+<area shape="rect" id="node5" href="$api__bridge_8h.html" title=" " alt="" coords="261,255,391,295"/>
+<area shape="rect" id="node7" href="$fetch_8h.html" title="fetch.hの実装" alt="" coords="311,167,442,207"/>
+<area shape="rect" id="node9" href="$http__client_8h.html" title="HTTPクライアント。" alt="" coords="362,79,493,119"/>
+<area shape="rect" id="node4" href="$api__client_8cpp.html" title=" " alt="" coords="149,431,298,456"/>
+<area shape="rect" id="node6" href="$api__bridge_8cpp.html" title=" " alt="" coords="325,343,457,383"/>
+<area shape="rect" id="node8" href="$fetch_8cpp.html" title=" " alt="" coords="416,262,585,287"/>
+<area shape="rect" id="node10" href="$http__client_8cpp.html" title="http_client.hの実装。" alt="" coords="467,167,604,207"/>
 </map>
