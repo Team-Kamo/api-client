@@ -8,7 +8,7 @@ target_link_libraries(
   api_client_test
   GTest::gtest_main
   GTest::gmock
-  octane
+  octane_api_client
 )
 gtest_discover_tests(api_client_test)
 
@@ -20,7 +20,7 @@ target_link_libraries(
   fetch_test
   GTest::gtest_main
   GTest::gmock
-  octane
+  octane_api_client
 )
 gtest_discover_tests(fetch_test)
 
@@ -32,6 +32,6 @@ target_link_libraries(
   http_client_test
   GTest::gtest_main
   GTest::gmock
-  octane
+  octane_api_client
 )
 gtest_discover_tests(http_client_test)
