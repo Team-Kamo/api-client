@@ -48,7 +48,7 @@ namespace octane::internal {
      * @details
      * tokenは正当なAPIトークンでなければならない。
      * また、このトークンはHTTP拡張ヘッダ"X-Octane-API-Token"で送信される。
-     * originはAPIサーバへのプロトコル、ドメイン、ポート番号を含む正当なAPIさーばのオリジンでなければならない。
+     * originはAPIサーバへのプロトコル、ドメイン、ポート番号を含む正当なAPIサーバのオリジンでなければならない。
      * 例えば"http://localhost:3000"などの形式となる。
      * baseUrlはAPIと通信するときにオリジンの後につく共通のURLを指定する。
      * 例えば"/api/v1"など。
