@@ -1,7 +1,7 @@
 $path = Split-Path -Parent $MyInvocation.MyCommand.Path
 Push-Location $path
 
-cmake -B build
+cmake -B build -DOCTANE_API_CLIENT_ENABLE_TESTING=ON
 
 if ($?) {
   cmake --build build
