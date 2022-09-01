@@ -18,8 +18,11 @@
 #include "include/error_code.h"
 
 namespace octane {
-  ApiClient::ApiClient(std::string_view token, std::string_view origin, std::string_view baseUrl)
-    : fetch(token, origin, baseUrl), lastCheckedTime(0) {}
+  ApiClient::ApiClient(std::string_view token,
+                       std::string_view origin,
+                       std::string_view baseUrl)
+    : fetch(token, origin, baseUrl, new internal::HttpClient()),
+      lastCheckedTime(0) {}
   ApiClient::~ApiClient() noexcept {}
   Result<std::optional<std::string>, ErrorResponse> ApiClient::init() {
     auto result = fetch.init();
@@ -58,6 +61,7 @@ namespace octane {
   }
 
   Result<HealthResult, ErrorResponse> ApiClient::health() {
+    return error(ErrorResponse{});
   }
 
   Result<std::string, ErrorResponse> ApiClient::createRoom(

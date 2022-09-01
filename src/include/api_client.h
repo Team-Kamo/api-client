@@ -20,7 +20,7 @@
 #include <vector>
 
 #include "./error_response.h"
-#include "./fetch.h"
+#include "./internal/fetch.h"
 #include "./result.h"
 
 namespace octane {
@@ -71,7 +71,9 @@ namespace octane {
      * @param origin http://localhost:3000
      * @param baseUrl /api/v1
      */
-    ApiClient(std::string_view token, std::string_view origin, std::string_view baseUrl);
+    ApiClient(std::string_view token,
+              std::string_view origin,
+              std::string_view baseUrl);
     /**
      * @brief Destroy the Api Client object
      *
