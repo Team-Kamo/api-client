@@ -40,14 +40,14 @@ ExternalProject_Add(
   zlib
   GIT_REPOSITORY "https://github.com/madler/zlib"
   GIT_TAG "v1.2.12"
-  PREFIX "${CMAKE_CURRENT_BINARY_DIR}/zlib"
+  PREFIX "${CMAKE_BINARY_DIR}/zlib"
   CMAKE_CACHE_ARGS
   "-DBUILD_SHARED_LIBS:BOOL=OFF"
-  "-DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_CURRENT_BINARY_DIR}"
+  "-DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}"
 )
 
-include_directories(${PROJECT_BINARY_DIR}/include)
-link_directories(${PROJECT_BINARY_DIR}/lib)
+include_directories(${CMAKE_BINARY_DIR}/include)
+link_directories(${CMAKE_BINARY_DIR}/lib)
 
 if(WIN32)
   set(ZLIB zlibstaticd)
@@ -85,9 +85,11 @@ include_directories(${googletest_SOURCE_DIR}/googletest/include ${gmock_SOURCE_D
 
 include(GoogleTest)
 
-enable_testing()
-
 include_directories(${SRC_DIR})
 
 add_subdirectory(${SRC_DIR})
-add_subdirectory(${TEST_DIR})
+
+if(OCTANE_API_CLIENT_ENABLE_TESTING)
+  enable_testing()
+  add_subdirectory(${TEST_DIR})
+endif(OCTANE_API_CLIENT_ENABLE_TESTING)
