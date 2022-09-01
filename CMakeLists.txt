@@ -102,6 +102,8 @@ set(
 
 add_subdirectory(${SRC_DIR})
 
+set(OCTANE_API_CLIENT_ENABLE_TESTING ON)
+
 if(OCTANE_API_CLIENT_ENABLE_TESTING)
   enable_testing()
   add_subdirectory(${TEST_DIR})
