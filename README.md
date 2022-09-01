@@ -6,7 +6,7 @@ GUI、CUI共にこのライブラリからAPIへアクセスする。
 
 ## 仕様
 
-ドキュメントは[こちら](./docs/index.html)。信頼と実績のDoxygen製。
+ドキュメントは[こちら](https://team-kamo.github.io/api-client/)。信頼と実績のDoxygen製。
 
 ## ビルド&テスト方法
 
