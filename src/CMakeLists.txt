@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.21)
 
 add_library(
-  octane
+  octane SHARED
   cpp/api_client.cpp
   cpp/error_response.cpp
   cpp/internal/fetch.cpp
