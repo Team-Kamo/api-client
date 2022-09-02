@@ -187,8 +187,8 @@ namespace octane::internal {
     }
     return ok();
   }
-  Result<Content, ErrorResponse> ApiBridge::roomIdContentGet(
-    std::string_view id) {
+  Result<std::variant<std::string, std::vector<std::uint8_t>>, ErrorResponse>
+  ApiBridge::roomIdContentGet(std::string_view id) {
     auto response = fetch.request(internal::HttpMethod::Get,
                                   "/room/" + std::string(id) + "/content");
     if (!response) {
@@ -201,12 +201,7 @@ namespace octane::internal {
       return makeError(ERR_INVALID_RESPONSE,
                        "Invalid response, binary not returned");
     }
-    Content content{};
-    content.data = std::get<std::vector<uint8_t>>(response.get().body);
-    content.mime = response.get().mime;
-    content.type;
-    content.name;
-    return ok(content);
+    return ok(std::get<std::vector<uint8_t>>(response.get().body));
   }
   Result<_, ErrorResponse> ApiBridge::roomIdContentDelete(std::string_view id) {
     auto response = fetch.request(internal::HttpMethod::Delete,
@@ -219,22 +214,24 @@ namespace octane::internal {
     }
     return ok();
   }
-  Result<_, ErrorResponse> ApiBridge::roomIdContentPut(std::string_view id,
-                                                       const Content& content) {
+  Result<_, ErrorResponse> ApiBridge::roomIdContentPut(
+    std::string_view id,
+    const std::variant<std::string, std::vector<std::uint8_t>>& contentData,
+    std::string_view mime) {
     std::vector<uint8_t> data;
-    if (std::holds_alternative<std::vector<uint8_t>>(content.data)) {
-      data = std::get<std::vector<uint8_t>>(content.data);
-    } else if (std::holds_alternative<std::string>(content.data)) {
-      const std::string& contentData = std::get<std::string>(content.data);
-      data.reserve(contentData.size());
-      std::copy(contentData.begin(), contentData.end(), data.begin());
+    if (std::holds_alternative<std::vector<uint8_t>>(contentData)) {
+      data = std::get<std::vector<uint8_t>>(contentData);
+    } else if (std::holds_alternative<std::string>(contentData)) {
+      const std::string& stringData = std::get<std::string>(contentData);
+      data.reserve(stringData.size());
+      std::copy(stringData.begin(), stringData.end(), data.begin());
     } else {
       return makeError(ERR_INVALID_REQUEST,
-                       "content.data is not string or binary");
+                       "contentData is not string or binary");
     }
     auto response = fetch.request(internal::HttpMethod::Put,
                                   "/room/" + std::string(id) + "/content",
-                                  content.mime,
+                                  mime,
                                   data);
     if (!response) {
       return error(response.err());
@@ -244,7 +241,7 @@ namespace octane::internal {
     }
     return ok();
   }
-  Result<internal::ContentStatus, ErrorResponse> ApiBridge::roomIdStatusGet(
+  Result<ContentStatus, ErrorResponse> ApiBridge::roomIdStatusGet(
     std::string_view id) {
     auto response = fetch.request(internal::HttpMethod::Get,
                                   "/room/" + std::string(id) + "/status");
@@ -260,7 +257,7 @@ namespace octane::internal {
     }
     rapidjson::Document& json
       = std::get<rapidjson::Document>(response.get().body);
-    internal::ContentStatus status{};
+    ContentStatus status{};
     if (!json.HasMember("device"))
       return makeError(ERR_INVALID_RESPONSE,
                        "Invalid response, json doesn't have member 'device'");
@@ -326,7 +323,8 @@ namespace octane::internal {
   }
   Result<_, ErrorResponse> ApiBridge::roomIdStatusPut(
     std::string_view id,
-    const internal::ContentStatus& contentStatus) {
+    const ContentStatus& contentStatus,
+    std::string_view hash) {
     rapidjson::StringBuffer buffer;
     rapidjson::Writer writer(buffer);
 
@@ -351,7 +349,7 @@ namespace octane::internal {
     writer.Key("mime");
     writer.String(contentStatus.mime.c_str());
     writer.Key("hash");
-    writer.String(contentStatus.hash.c_str());
+    writer.String(std::string(hash).c_str());
 
     writer.EndObject();
 
@@ -370,9 +368,27 @@ namespace octane::internal {
     return ok();
   }
   std::optional<error_t<ErrorResponse>> ApiBridge::checkStatusCode(
-    const internal::FetchResponse& response) {
+    internal::FetchResponse& response) {
     if (200 <= response.statusCode && response.statusCode < 300)
       return std::nullopt;
-    return makeError(ERR_INVALID_STATUS_CODE, response.statusLine);
+    if (!std::holds_alternative<rapidjson::Document>(response.body)) {
+      return makeError(
+        ERR_INVALID_RESPONSE,
+        "Invalid response, json not returned. Maybe error at cdn?");
+    }
+    rapidjson::Document& json = std::get<rapidjson::Document>(response.body);
+    if (!json.HasMember("code"))
+      return makeError(ERR_INVALID_RESPONSE,
+                       "Invalid response, json doesn't have member 'code'");
+    if (!json.HasMember("message"))
+      return makeError(ERR_INVALID_RESPONSE,
+                       "Invalid response, json doesn't have member 'message'");
+    if (!json["code"].IsString())
+      return makeError(ERR_INVALID_RESPONSE,
+                       "Invalid response, member 'code' type is not string");
+    if (!json["message"].IsString())
+      return makeError(ERR_INVALID_RESPONSE,
+                       "Invalid response, member 'message' type is not string");
+    return makeError(json["code"].GetString(), json["message"].GetString());
   }
 } // namespace octane::internal

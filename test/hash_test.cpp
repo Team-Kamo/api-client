@@ -2,30 +2,25 @@
 
 #include <gtest/gtest.h>
 
-#include <sstream>
-#include <string>
-
 #include "include/internal/http_client.h"
 
 namespace octane::internal {
+  TEST(HashTest, ConvToHex) {
+    // 10未満でも二桁になるかテスト
+    EXPECT_EQ(convToHex({ 0 }), "00");
+    EXPECT_EQ(convToHex({ 9 }), "09");
+    // a-fがちゃんと出るかテスト
+    EXPECT_EQ(convToHex({ 10 }), "0a");
+    EXPECT_EQ(convToHex({ 171 }), "ab");
+    // 複数の要素があってもちゃんとできるかテスト
+    EXPECT_EQ(convToHex({ 0, 8, 10, 16, 205, 255 }), "00080a10cdff");
+  }
 
   /**
    * 検証用に次のウェブサービスでハッシュを生成しています。
    * https://www.toolkitbay.com/tkb/tool/BLAKE2b_256
    */
 
-  std::vector<std::uint8_t> makeBinary(std::string_view msg) {
-    std::vector<std::uint8_t> bin;
-    while (!msg.empty()) {
-      std::stringstream ss;
-      ss << std::hex << msg.substr(0, 2);
-      int n;
-      ss >> n;
-      bin.push_back(n);
-      msg = msg.substr(2);
-    }
-    return bin;
-  }
   TEST(HashTest, GenerateHashA) {
     std::string message = "Impossible is nothing.";
     std::string digest
@@ -34,7 +29,7 @@ namespace octane::internal {
     std::vector<std::uint8_t> src;
     src.resize(message.size());
     std::copy(message.begin(), message.end(), src.begin());
-    EXPECT_EQ(generateHash(src), makeBinary(digest));
+    EXPECT_EQ(generateHash(src), digest);
   }
   TEST(HashTest, GenerateHashB) {
     std::string message = "Do your best.";
@@ -44,7 +39,7 @@ namespace octane::internal {
     std::vector<std::uint8_t> src;
     src.resize(message.size());
     std::copy(message.begin(), message.end(), src.begin());
-    EXPECT_EQ(generateHash(src), makeBinary(digest));
+    EXPECT_EQ(generateHash(src), digest);
   }
   TEST(HashTest, GenerateHashC) {
     std::string message
@@ -55,6 +50,6 @@ namespace octane::internal {
     std::vector<std::uint8_t> src;
     src.resize(message.size());
     std::copy(message.begin(), message.end(), src.begin());
-    EXPECT_EQ(generateHash(src), makeBinary(digest));
+    EXPECT_EQ(generateHash(src), digest);
   }
 } // namespace octane::internal
