@@ -2,8 +2,55 @@
 
 #include <gtest/gtest.h>
 
-namespace octane::internal {
+#include "include/error_code.h"
 
+namespace octane::internal {
+  /**
+   * @brief
+   * GETリクエストでボディを指定したときにちゃんとエラーとなるかテストする。
+   *
+   */
+  TEST(HttpClientTest, ExpectAnErrorWhenABodyPartExistsInGetRequest) {
+    HttpClient client;
+    client.init();
+
+    HttpRequest request{
+      .method      = HttpMethod::Get,
+      .version     = HttpVersion::Http2,
+      .uri         = "/api/v1/health",
+      .headerField = {},
+      .body        = { 'G', 'E', 'T' },
+    };
+    auto response = client.request("http://localhost:3000", request);
+    EXPECT_FALSE(response);
+
+    EXPECT_EQ(response.err().code, ERR_INCORRECT_HTTP_METHOD);
+  }
+  /**
+   * @brief
+   * DELETEリクエストでボディを指定したときにちゃんとエラーとなるかテストする。
+   *
+   */
+  TEST(HttpClientTest, ExpectAnErrorWhenABodyPartExistsInDeleteRequest) {
+    HttpClient client;
+    client.init();
+
+    HttpRequest request{
+      .method      = HttpMethod::Delete,
+      .version     = HttpVersion::Http2,
+      .uri         = "/api/v1/health",
+      .headerField = {},
+      .body        = { 'D', 'E', 'L', 'E', 'T', 'E' },
+    };
+    auto response = client.request("http://localhost:3000", request);
+    EXPECT_FALSE(response);
+
+    EXPECT_EQ(response.err().code, ERR_INCORRECT_HTTP_METHOD);
+  }
+  /**
+   * @brief HttpClient::writeCallbackが正常に動作するかをテストする。
+   *
+   */
   TEST(HttpClientTest, WriteCallback) {
     HttpClient client;
     client.init();
@@ -22,6 +69,10 @@ namespace octane::internal {
       ASSERT_EQ(buffer[length + i], chunk[length + i]);
     }
   }
+  /**
+   * @brief HttpClient::readCallbackが正常に動作するかをテストする。
+   *
+   */
   TEST(HttpClientTest, ReadCallback) {
     HttpClient client;
     client.init();
@@ -45,6 +96,10 @@ namespace octane::internal {
       ASSERT_EQ(buffer[i + 10], body[i + 10]);
     }
   }
+  /**
+   * @brief HttpClient::headerCallbackが正常に動作するかをテストする。
+   *
+   */
   TEST(HttpClientTest, HeaderCallback) {
     constexpr const char* const headers[] = {
       "Allow: GET,POST,PUT,DELETE",
@@ -72,5 +127,4 @@ namespace octane::internal {
               "application/json; charset=utf-8");
     ASSERT_EQ(responseHeaderField["Content-Length"], "500");
   }
-
 } // namespace octane::internal

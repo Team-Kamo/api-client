@@ -66,6 +66,7 @@ namespace octane::internal {
     std::vector<std::uint8_t> body;
   };
   bool operator==(const HttpRequest& a, const HttpRequest& b);
+  std::ostream& operator<<(std::ostream& stream, const HttpRequest& request);
 
   /**
    * @brief HTTPのレスポンスを表す構造体。
@@ -108,6 +109,7 @@ namespace octane::internal {
     std::vector<std::uint8_t> body;
   };
   bool operator==(const HttpResponse& a, const HttpResponse& b);
+  std::ostream& operator<<(std::ostream& stream, const HttpResponse& response);
 
   /**
    * @brief HTTP通信を行うインタフェース。
@@ -222,7 +224,8 @@ namespace octane::internal {
       char* buffer,
       size_t size,
       size_t nmemb,
-      std::pair<std::string,std::map<std::string, std::string>>* responseHeader);
+      std::pair<std::string, std::map<std::string, std::string>>*
+        responseHeader);
   };
 } // namespace octane::internal
 

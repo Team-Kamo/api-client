@@ -37,6 +37,11 @@ namespace octane::internal {
   Fetch::FetchResult Fetch::request(HttpMethod method,
                                     std::string_view url,
                                     const rapidjson::Document& body) {
+    if (method != HttpMethod::Post && method != HttpMethod::Put) {
+      return makeError(
+        ERR_INCORRECT_HTTP_METHOD,
+        "Only Post and Put requests are allowed for requests with a body parts.");
+    }
     std::vector<uint8_t> decoded;
     rapidjson::StringBuffer buffer;
     rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
@@ -58,6 +63,11 @@ namespace octane::internal {
                                     std::string_view url,
                                     std::string_view mimeType,
                                     const std::vector<std::uint8_t>& body) {
+    if (method != HttpMethod::Post && method != HttpMethod::Put) {
+      return makeError(
+        ERR_INCORRECT_HTTP_METHOD,
+        "Only Post and Put requests are allowed for requests with a body parts.");
+    }
     return request(method,
                    origin,
                    baseUrl + std::string(url),
@@ -88,10 +98,11 @@ namespace octane::internal {
       const auto& location = response.headerField["Location"];
       std::smatch regexResults;
       if (std::regex_search(
-            location, regexResults, std::regex(R"(^(https?://.+)/(.*))"))) {
-        auto& origin = regexResults[1];
-        auto& url    = regexResults[2];
-        return this->request(method, origin.str(), url.str(), headers, body);
+            location, regexResults, std::regex(R"(^(https?://.+)(/.*)?)"))) {
+        auto origin = regexResults[1].str();
+        auto url    = regexResults[2].str();
+        if (url.empty()) url = "/";
+        return this->request(method, origin, url, headers, body);
       }
     }
 

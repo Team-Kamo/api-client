@@ -17,6 +17,7 @@
 #include <curl/curl.h>
 
 #include <cstring>
+#include <ostream>
 
 #include "include/error_code.h"
 
@@ -187,5 +188,82 @@ namespace octane::internal {
     if (a.headerField != b.headerField) return false;
     if (a.body != b.body) return false;
     return true;
+  }
+  std::ostream& operator<<(std::ostream& stream, const HttpRequest& request) {
+    std::string method;
+    switch (request.method) {
+      case HttpMethod::Get:
+        method = "GET";
+        break;
+      case HttpMethod::Post:
+        method = "POST";
+        break;
+      case HttpMethod::Put:
+        method = "PUT";
+        break;
+      case HttpMethod::Delete:
+        method = "DELETE";
+        break;
+      default:
+        method = "UNKNOWN";
+        break;
+    }
+
+    std::string version;
+    switch (request.version) {
+      case HttpVersion::Http1_0:
+        version = "HTTP/1.0";
+        break;
+      case HttpVersion::Http1_1:
+        version = "HTTP/1.1";
+        break;
+      case HttpVersion::Http2:
+        version = "HTTP/2";
+        break;
+      case HttpVersion::Http3:
+        version = "HTTP/3";
+        break;
+      default:
+        version = "UNKNOWN";
+    }
+
+    std::string headers;
+    headers += "{ ";
+    for (const auto& [key, value] : request.headerField) {
+      headers += key;
+      headers += ": ";
+      headers += value;
+      headers += ", ";
+    }
+    headers += "}";
+
+    std::string body;
+    body.resize(request.body.size());
+    std::copy(request.body.begin(), request.body.end(), body.begin());
+
+    stream << "method = " << method << ", version = " << version
+           << ", uri = " << request.uri << ", headers = " << headers
+           << ", body = " << body;
+    return stream;
+  }
+  std::ostream& operator<<(std::ostream& stream, const HttpResponse& response) {
+    std::string headers;
+    headers += "{ ";
+    for (const auto& [key, value] : response.headerField) {
+      headers += key;
+      headers += ": ";
+      headers += value;
+      headers += ", ";
+    }
+    headers += "}";
+
+    std::string body;
+    body.resize(response.body.size());
+    std::copy(response.body.begin(), response.body.end(), body.begin());
+
+    stream << "statusLine = " << response.statusLine
+           << ", headers = " << headers << ", body = " << body;
+
+    return stream;
   }
 } // namespace octane::internal
