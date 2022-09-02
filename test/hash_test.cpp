@@ -9,7 +9,10 @@
 
 namespace octane::internal {
 
-  // https://www.toolkitbay.com/tkb/tool/BLAKE2b_256
+  /**
+   * 検証用に次のウェブサービスでハッシュを生成しています。
+   * https://www.toolkitbay.com/tkb/tool/BLAKE2b_256
+   */
 
   std::vector<std::uint8_t> makeBinary(std::string_view msg) {
     std::vector<std::uint8_t> bin;
