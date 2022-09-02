@@ -77,9 +77,11 @@ namespace octane::internal {
      * @brief use get method for room/:id/content api
      *
      * @param[in] id
-     * @return Result<Content, ErrorResponse>
+     * @return Result<std::variant<std::string, std::vector<std::uint8_t>>,
+     * ErrorResponse>
      */
-    Result<Content, ErrorResponse> roomIdContentGet(std::string_view id);
+    Result<std::variant<std::string, std::vector<std::uint8_t>>, ErrorResponse>
+    roomIdContentGet(std::string_view id);
     /**
      * @brief use delete method for room/:id/content api
      *
@@ -91,19 +93,21 @@ namespace octane::internal {
      * @brief use put method for room/:id/content api
      *
      * @param[in] id
-     * @param[in] content
+     * @param[in] contentData
+     * @param[in] mime
      * @return Result<_, ErrorResponse>
      */
-    Result<_, ErrorResponse> roomIdContentPut(std::string_view id,
-                                              const Content& content);
+    Result<_, ErrorResponse> roomIdContentPut(
+      std::string_view id,
+      const std::variant<std::string, std::vector<std::uint8_t>>& contentData,
+      std::string_view mime);
     /**
      * @brief use get method for room/:id/status api
      *
      * @param[in] id
      * @return Result<internal::ContentStatus, ErrorResponse>
      */
-    Result<internal::ContentStatus, ErrorResponse> roomIdStatusGet(
-      std::string_view id);
+    Result<ContentStatus, ErrorResponse> roomIdStatusGet(std::string_view id);
     /**
      * @brief use delete method for room/:id/status api
      *
@@ -118,17 +122,17 @@ namespace octane::internal {
      * @param[in] contentStatus
      * @return Result<_, ErrorResponse>
      */
-    Result<_, ErrorResponse> roomIdStatusPut(
-      std::string_view id,
-      const internal::ContentStatus& contentStatus);
+    Result<_, ErrorResponse> roomIdStatusPut(std::string_view id,
+                                             const ContentStatus& contentStatus,
+                                             std::string_view hash);
     /**
      * @brief check if the given status code is 2xx
-     * 
-     * @param response 
-     * @return std::optional<error_t<ErrorResponse>> 
+     *
+     * @param response
+     * @return std::optional<error_t<ErrorResponse>>
      */
     std::optional<error_t<ErrorResponse>> checkStatusCode(
-      const internal::FetchResponse& response);
+      internal::FetchResponse& response);
   };
 } // namespace octane::internal
 #endif // OCTANE_API_CLIENT_INTERNAL_API_BRIDGE_H_

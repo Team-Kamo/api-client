@@ -14,6 +14,7 @@
 #include "include/api_client.h"
 
 #include <chrono>
+
 #include "include/error_code.h"
 
 namespace octane {
@@ -104,22 +105,43 @@ namespace octane {
     return ok();
   }
 
-  Result<Content, ErrorResponse> ApiClient::getContent(std::string_view id) {
+  Result<Content, ErrorResponse> ApiClient::getContent(std::string_view id,
+                                                       std::string_view name) {
     const auto checkHealthResult = checkHealth();
     if (!checkHealthResult) {
       return error(checkHealthResult.err());
     }
-    auto result = bridge.roomIdContentGet(id);
+    auto resultC = bridge.roomIdPost(id, name);
+    if (!resultC) {
+      return error(resultC.err());
+    }
+    auto resultS = bridge.roomIdStatusGet(id);
+    if (!resultS) {
+      return error(resultS.err());
+    }
+    Content content{};
+    content.contentStatus = resultS.get();
+    auto result           = bridge.roomIdContentGet(id);
     if (!result) {
       return error(result.err());
     }
-    return ok(result.get());
+    content.data = result.get();
+    return ok(content);
   }
 
-  Result<_, ErrorResponse> ApiClient::deleteContent(std::string_view id) {
+  Result<_, ErrorResponse> ApiClient::deleteContent(std::string_view id,
+                                                    std::string_view name) {
     const auto checkHealthResult = checkHealth();
     if (!checkHealthResult) {
       return error(checkHealthResult.err());
+    }
+    auto resultC = bridge.roomIdPost(id, name);
+    if (!resultC) {
+      return error(resultC.err());
+    }
+    auto resultS = bridge.roomIdStatusDelete(id);
+    if (!resultS) {
+      return error(resultS.err());
     }
     auto result = bridge.roomIdContentDelete(id);
     if (!result) {
@@ -129,68 +151,38 @@ namespace octane {
   }
 
   Result<_, ErrorResponse> ApiClient::uploadContent(std::string_view id,
+                                                    std::string_view name,
                                                     const Content& content) {
     const auto checkHealthResult = checkHealth();
     if (!checkHealthResult) {
       return error(checkHealthResult.err());
     }
-    auto result = bridge.roomIdContentPut(id, content);
+    auto resultC = bridge.roomIdPost(id, name);
+    if (!resultC) {
+      return error(resultC.err());
+    }
+    std::vector<uint8_t> hashData;
+    if (std::holds_alternative<std::vector<uint8_t>>(content.data)) {
+      hashData = std::get<std::vector<uint8_t>>(content.data);
+    }
+    else if (std::holds_alternative<std::string>(content.data)) {
+      std::string hashDataString = std::get<std::string>(content.data);
+      hashData.reserve(hashDataString.size());
+      std::copy(hashDataString.begin(),hashDataString.end(),hashData.begin());
+    }
+    else {
+      return makeError(ERR_INVALID_REQUEST, "content.data type is not binary or string");
+    }
+    std::string hash = internal::generateHash(hashData);
+    auto resultS = bridge.roomIdStatusPut(id, content.contentStatus,hash);
+    if (!resultS) {
+      return error(resultS.err());
+    }
+    auto result
+      = bridge.roomIdContentPut(id, content.data, content.contentStatus.mime);
     if (!result) {
       return error(result.err());
     }
     return ok();
-  }
-
-  Result<_, ErrorResponse> ApiClient::connectRoom(std::string_view id,
-                                                  std::string_view name) {
-    const auto checkHealthResult = checkHealth();
-    if (!checkHealthResult) {
-      return error(checkHealthResult.err());
-    }
-    auto result = bridge.roomIdPost(id, name);
-    if (!result) {
-      return error(result.err());
-    }
-    return ok();
-  }
-
-  Result<internal::ContentStatus, ErrorResponse> ApiClient::getContentStatus(
-    std::string_view id) {
-    const auto checkHealthResult = checkHealth();
-    if (!checkHealthResult) {
-      return error(checkHealthResult.err());
-    }
-    auto result = bridge.roomIdStatusGet(id);
-    if (!result) {
-      return error(result.err());
-    }
-    return ok(result.get());
-  }
-
-  Result<_, ErrorResponse> ApiClient::uploadContentStatus(
-    std::string_view id,
-    const internal::ContentStatus& contentStatus) {
-    const auto checkHealthResult = checkHealth();
-    if (!checkHealthResult) {
-      return error(checkHealthResult.err());
-    }
-    // TODO: Hash値をApiClient側で自動的に生成する
-    auto result = bridge.roomIdStatusPut(id, contentStatus);
-    if (!result) {
-      return error(result.err());
-    }
-    return ok(result.get());
-  }
-
-  Result<_, ErrorResponse> ApiClient::deleteContentStatus(std::string_view id) {
-    const auto checkHealthResult = checkHealth();
-    if (!checkHealthResult) {
-      return error(checkHealthResult.err());
-    }
-    auto result = bridge.roomIdStatusDelete(id);
-    if (!result) {
-      return error(result.err());
-    }
-    return ok(result.get());
   }
 } // namespace octane

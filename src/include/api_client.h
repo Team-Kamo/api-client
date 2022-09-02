@@ -15,8 +15,8 @@
 #include "./config.h"
 #include "./error_response.h"
 #include "./internal/api_bridge.h"
+#include "./internal/hash.h"
 #include "./result.h"
-
 namespace octane {
   class ApiClient {
     internal::ApiBridge bridge;
@@ -75,23 +75,31 @@ namespace octane {
     Result<_, ErrorResponse> deleteRoom(std::string_view id);
     /**
      * @brief Return content in the room
-     *
-     * @return Result<Content, ErrorResponse>
+     * 
+     * @param[in] id 
+     * @param[in] name 
+     * @return Result<Content, ErrorResponse> 
      */
-    Result<Content, ErrorResponse> getContent(std::string_view id);
+    Result<Content, ErrorResponse> getContent(std::string_view id,
+                                              std::string_view name);
     /**
      * @brief Delete content from the room
-     *
-     * @param[in] id
-     * @return Result<_, ErrorResponse>
+     * 
+     * @param id 
+     * @param name 
+     * @return Result<_, ErrorResponse> 
      */
-    Result<_, ErrorResponse> deleteContent(std::string_view id);
+    Result<_, ErrorResponse> deleteContent(std::string_view id,
+                                           std::string_view name);
     /**
      * @brief Upload content to the room
      *
+     * @param[in] id
+     * @param[in] name
      * @return Result<_, ErrorResponse>
      */
     Result<_, ErrorResponse> uploadContent(std::string_view id,
+                                           std::string_view name,
                                            const Content& content);
 
   private:
@@ -104,32 +112,6 @@ namespace octane {
      * @param name
      * @return Result<_,ErrorResponse>
      */
-    Result<_, ErrorResponse> connectRoom(std::string_view id,
-                                         std::string_view name);
-    /**
-     * @brief Return content status in the room
-     *
-     * @param[in] id
-     * @return Result<ContentStatus, ErrorResponse>
-     */
-    Result<internal::ContentStatus, ErrorResponse> getContentStatus(
-      std::string_view id);
-    /**
-     * @brief Upload content status to the room
-     *
-     * @param[in] id
-     * @return Result<_, ErrorResponse>
-     */
-    Result<_, ErrorResponse> uploadContentStatus(
-      std::string_view id,
-      const internal::ContentStatus& contentStatus);
-    /**
-     * @brief Delete content status from the room
-     *
-     * @param[in] id
-     * @return Result<_, ErrorResponse>
-     */
-    Result<_, ErrorResponse> deleteContentStatus(std::string_view id);
   };
 } // namespace octane
 

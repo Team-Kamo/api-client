@@ -75,39 +75,30 @@ namespace octane {
     Clipboard,
   };
   /**
+   * @brief {@link getContentStatus}メソッドを呼んだ時の結果を表す構造体。
+   *
+   */
+  struct ContentStatus {
+    /** @brief デバイス名。*/
+    std::string device;
+    /** @brief タイムスタンプ。*/
+    std::uint64_t timestamp;
+    /** @brief コンテンツの型。*/
+    ContentType type;
+    /** @brief コンテンツがファイル形式をとる場合、その名前。*/
+    std::optional<std::string> name;
+    /** @brief MIME。*/
+    std::string mime;
+  };
+  /**
    * @brief {@link getContent}メソッドを呼んだ時の結果を表す構造体。
    *
    */
   struct Content {
-    /** @brief コンテンツの型。*/
-    ContentType type;
-    /** @brief コンテンツがファイル形式をとる場合、その名前。*/
-    std::string name;
-    /** @brief MIME。*/
-    std::string mime;
+    /** @brief コンテンツの状態。*/
+    ContentStatus contentStatus;
     /** @brief コンテンツのデータ。*/
     std::variant<std::string, std::vector<std::uint8_t>> data;
   };
-
-  namespace internal {
-    /**
-     * @brief {@link getContentStatus}メソッドを呼んだ時の結果を表す構造体。
-     *
-     */
-    struct ContentStatus {
-      /** @brief デバイス名。*/
-      std::string device;
-      /** @brief タイムスタンプ。*/
-      std::uint64_t timestamp;
-      /** @brief コンテンツの型。*/
-      ContentType type;
-      /** @brief コンテンツがファイル形式をとる場合、その名前。*/
-      std::optional<std::string> name;
-      /** @brief MIME。*/
-      std::string mime;
-      /** @brief コンテンツのデータ。*/
-      std::string hash;
-    };
-  } // namespace internal
-} // namespace octane
+};     // namespace octane
 #endif // OCTANE_API_CLIENT_API_RESULT_TYPES_H_
