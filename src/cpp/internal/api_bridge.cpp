@@ -12,12 +12,50 @@
 #include "include/internal/api_bridge.h"
 
 #include <rapidjson/document.h>
+#include <rapidjson/schema.h>
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
 
+#include <iostream>
+#include <map>
+
 #include "include/error_code.h"
+#include "include/internal/api_schema.h"
 
 namespace octane::internal {
+  namespace {
+    std::optional<ErrorResponse> verifyJson(const rapidjson::Document& json,
+                                            std::string_view schema) {
+      rapidjson::Document sd;
+      assert(!sd.Parse(schema.data(), schema.size()).HasParseError());
+      rapidjson::SchemaDocument schemaDoc(sd);
+      rapidjson::SchemaValidator validator(schemaDoc);
+
+      if (json.Accept(validator)) {
+        return std::nullopt;
+      }
+
+      std::string msg;
+
+      rapidjson::StringBuffer buf;
+      validator.GetInvalidSchemaPointer().StringifyUriFragment(buf);
+      msg += "\n\t\tInvalid schema: ";
+      msg += buf.GetString();
+      msg += "\n\t\tInvalid keyword: ";
+      msg += validator.GetInvalidSchemaKeyword();
+
+      buf.Clear();
+      validator.GetInvalidDocumentPointer().StringifyUriFragment(buf);
+      msg += "\n\t\tInvalid document: ";
+      msg += buf.GetString();
+
+      return ErrorResponse{
+        .code   = ERR_INVALID_RESPONSE,
+        .reason = msg,
+      };
+    }
+  } // namespace
+
   ApiBridge::ApiBridge(FetchBase* fetch) : fetch(fetch) {}
   Result<_, ErrorResponse> ApiBridge::init() {
     return fetch->init();
@@ -29,7 +67,7 @@ namespace octane::internal {
       return error(response.err());
     }
     if (auto err = checkStatusCode(response.get())) {
-      return error(err.value());
+      return err.value();
     }
     if (!std::holds_alternative<rapidjson::Document>(response.get().body)) {
       return makeError(ERR_INVALID_RESPONSE,
@@ -37,53 +75,35 @@ namespace octane::internal {
     }
     rapidjson::Document& json
       = std::get<rapidjson::Document>(response.get().body);
-    HealthResult healthResult{};
-    if (!json.HasMember("health"))
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, json doesn't have member 'health'");
-    if (!json.HasMember("message"))
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, json doesn't have member 'message'");
-    if (!json["health"].IsString())
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, member 'health' type is not string");
-    if (!json["message"].IsString())
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, member 'message' type is not string");
-    if (json["health"].GetString() == "healthy"s) {
-      healthResult.health = Health::Healthy;
-    } else if (json["health"].GetString() == "degraded"s) {
-      healthResult.health = Health::Degraded;
-    } else if (json["health"].GetString() == "faulty"s) {
-      healthResult.health = Health::Faulty;
-    } else {
-      return makeError(
-        ERR_INVALID_RESPONSE,
-        "Invalid response, member 'health' is not 'healthy', 'degraded' or 'faulty' "s
-          + json["health"].GetString() + " was passed");
+
+    if (auto err = verifyJson(json, SCHEMA_HEALTH_GET)) {
+      return error(err.value());
     }
-    healthResult.message = json["message"].GetString();
-    return ok(healthResult);
+
+    static const std::map<std::string, Health> healthMap = {
+      { "healthy", Health::Healthy },
+      { "degraded", Health::Degraded },
+      { "faulty", Health::Faulty },
+    };
+
+    return ok(HealthResult{
+      .health  = healthMap.at(json["health"].GetString()),
+      .message = json["message"].GetString(),
+    });
   }
   Result<std::string, ErrorResponse> ApiBridge::roomPost(
     std::string_view name) {
-    // ここにおそらくテストで引っ掛かっているようなところがあるかも知れません。
-    // これかもhttps://techoverflow.net/2020/01/13/how-to-fix-rapidjson-assertion-hasroot_-failed/
-    rapidjson::StringBuffer buffer;
-    rapidjson::Writer writer(buffer);
-    writer.StartObject();
-    writer.Key("name");
-    writer.String(std::string(name).c_str());
-    writer.EndObject();
-    rapidjson::Document uploadJson;
-    uploadJson.Accept(writer);
+    rapidjson::Document uploadJson(rapidjson::kObjectType);
+    uploadJson.AddMember("name",
+                         rapidjson::StringRef(name.data(), name.size()),
+                         uploadJson.GetAllocator());
     auto response
       = fetch->request(internal::HttpMethod::Post, "/room", uploadJson);
     if (!response) {
       return error(response.err());
     }
     if (auto err = checkStatusCode(response.get())) {
-      return error(err.value());
+      return err.value();
     }
     if (!std::holds_alternative<rapidjson::Document>(response.get().body)) {
       return makeError(ERR_INVALID_RESPONSE,
@@ -91,15 +111,12 @@ namespace octane::internal {
     }
     rapidjson::Document& json
       = std::get<rapidjson::Document>(response.get().body);
-    std::string id;
-    if (!json.HasMember("id"))
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, json doesn't have member 'id'");
-    if (!json["id"].IsString())
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, member 'id' type is not string");
-    id = json["id"].GetString();
-    return ok(id);
+
+    if (auto err = verifyJson(json, SCHEMA_ROOM_POST)) {
+      return error(err.value());
+    }
+
+    return ok(json["id"].GetString());
   }
   Result<RoomStatus, ErrorResponse> ApiBridge::roomIdGet(std::string_view id) {
     auto response
@@ -108,7 +125,7 @@ namespace octane::internal {
       return error(response.err());
     }
     if (auto err = checkStatusCode(response.get())) {
-      return error(err.value());
+      return err.value();
     }
     if (!std::holds_alternative<rapidjson::Document>(response.get().body)) {
       return makeError(ERR_INVALID_RESPONSE,
@@ -116,46 +133,20 @@ namespace octane::internal {
     }
     rapidjson::Document& json
       = std::get<rapidjson::Document>(response.get().body);
-    RoomStatus roomStatus{};
-    std::vector<Device> devices;
-    if (!json.HasMember("name"))
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, json doesn't have member 'name'");
-    if (!json.HasMember("devices"))
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, json doesn't have member 'devices'");
-    if (!json["name"].IsString())
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, member 'name' type is not string");
-    if (!json["devices"].IsArray())
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, member 'devices' type is not array");
-    roomStatus.name = json["name"].GetString();
-    for (int i = 0; i < json["devices"].Size(); i++) {
-      auto& jsonDevice = json["devices"][i];
-      Device device{};
-      if (!jsonDevice.HasMember("name"))
-        return makeError(
-          ERR_INVALID_RESPONSE,
-          "Invalid response, object of member 'devices' doesn't have member 'name'");
-      if (!jsonDevice.HasMember("timestamp"))
-        return makeError(
-          ERR_INVALID_RESPONSE,
-          "Invalid response, object of member 'devices' doesn't have member 'timestamp'");
-      if (!jsonDevice["name"].IsString())
-        return makeError(
-          ERR_INVALID_RESPONSE,
-          "Invalid response, 'devices' member 'name' type is not string");
-      if (!jsonDevice["timestamp"].IsUint64())
-        return makeError(
-          ERR_INVALID_RESPONSE,
-          "Invalid response, 'devices' member 'timestamp' type is not uint64_t");
-      device.name      = jsonDevice["name"].GetString();
-      device.timestamp = jsonDevice["timestamp"].GetUint64();
-      devices.push_back(device);
+
+    if (auto err = verifyJson(json, SCHEMA_ROOM_ID_GET)) {
+      return error(err.value());
     }
-    roomStatus.devices = devices;
-    return ok(roomStatus);
+
+    std::vector<Device> devices;
+    for (const auto& device : json["devices"].GetArray()) {
+      devices.emplace_back(device["name"].GetString(),
+                           device["timestamp"].GetUint64());
+    }
+    return ok(RoomStatus{
+      .name    = json["name"].GetString(),
+      .devices = devices,
+    });
   }
   Result<_, ErrorResponse> ApiBridge::roomIdDelete(std::string_view id) {
     auto response = fetch->request(internal::HttpMethod::Delete,
@@ -164,27 +155,23 @@ namespace octane::internal {
       return error(response.err());
     }
     if (auto err = checkStatusCode(response.get())) {
-      return error(err.value());
+      return err.value();
     }
     return ok();
   }
   Result<_, ErrorResponse> ApiBridge::roomIdPost(std::string_view id,
                                                  std::string_view name) {
-    rapidjson::StringBuffer buffer;
-    rapidjson::Writer writer(buffer);
-    writer.StartObject();
-    writer.Key("name");
-    writer.String(std::string(name).c_str());
-    writer.EndObject();
-    rapidjson::Document uploadJson;
-    uploadJson.Accept(writer);
+    rapidjson::Document uploadJson(rapidjson::kObjectType);
+    uploadJson.AddMember("name",
+                         rapidjson::StringRef(name.data(), name.size()),
+                         uploadJson.GetAllocator());
     auto response = fetch->request(
       internal::HttpMethod::Post, "/room/" + std::string(id), uploadJson);
     if (!response) {
       return error(response.err());
     }
     if (auto err = checkStatusCode(response.get())) {
-      return error(err.value());
+      return err.value();
     }
     return ok();
   }
@@ -196,7 +183,7 @@ namespace octane::internal {
       return error(response.err());
     }
     if (auto err = checkStatusCode(response.get())) {
-      return error(err.value());
+      return err.value();
     }
     if (!std::holds_alternative<std::vector<std::uint8_t>>(
           response.get().body)) {
@@ -212,7 +199,7 @@ namespace octane::internal {
       return error(response.err());
     }
     if (auto err = checkStatusCode(response.get())) {
-      return error(err.value());
+      return err.value();
     }
     return ok();
   }
@@ -239,7 +226,7 @@ namespace octane::internal {
       return error(response.err());
     }
     if (auto err = checkStatusCode(response.get())) {
-      return error(err.value());
+      return err.value();
     }
     return ok();
   }
@@ -252,7 +239,7 @@ namespace octane::internal {
       return error(response.err());
     }
     if (auto err = checkStatusCode(response.get())) {
-      return error(err.value());
+      return err.value();
     }
     if (!std::holds_alternative<rapidjson::Document>(response.get().body)) {
       return makeError(ERR_INVALID_RESPONSE,
@@ -260,58 +247,26 @@ namespace octane::internal {
     }
     rapidjson::Document& json
       = std::get<rapidjson::Document>(response.get().body);
-    ContentStatus status{};
-    if (!json.HasMember("device"))
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, json doesn't have member 'device'");
-    if (!json.HasMember("timestamp"))
-      return makeError(
-        ERR_INVALID_RESPONSE,
-        "Invalid response, json doesn't have member 'timestamp'");
-    if (!json.HasMember("type"))
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, json doesn't have member 'type'");
-    if (!json.HasMember("mime"))
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, json doesn't have member 'mime'");
-    if (!json.HasMember("hash"))
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, json doesn't have member 'hash'");
-    if (!json["device"].IsString())
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, member 'device' type is not string");
-    if (!json["timestamp"].IsUint64())
-      return makeError(
-        ERR_INVALID_RESPONSE,
-        "Invalid response, member 'timestamp' type is not uint64_t");
-    if (!json["type"].IsString())
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, member 'type' type is not string");
-    if (!json["mime"].IsString())
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, member 'mime' type is not string");
-    if (!json["hash"].IsString())
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, member 'hash' type is not string");
-    status.device    = json["device"].GetString();
-    status.timestamp = json["timestamp"].GetUint64();
-    if (json["type"].GetString() == "file"s) {
-      status.type = ContentType::File;
-    } else if (json["type"].GetString() == "clipboard"s) {
-      status.type = ContentType::Clipboard;
-    } else {
-      return makeError(
-        ERR_INVALID_RESPONSE,
-        "Invalid response, json member 'type' is not 'file' or 'clipboard'");
+
+    if (auto err = verifyJson(json, SCHEMA_ROOM_ID_STATUS_GET)) {
+      return error(err.value());
     }
-    if (status.type == ContentType::Clipboard) return ok(status);
-    if (!json.HasMember("name"))
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, json doesn't have member 'name'");
-    if (!json["name"].IsString())
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, member 'name' type is not string");
-    return ok(status);
+
+    static const std::map<std::string, ContentType> typeMap = {
+      { "file", ContentType::File },
+      { "clipboard", ContentType::Clipboard },
+    };
+
+    ContentStatus status{
+      .device    = json["device"].GetString(),
+      .timestamp = json["timestamp"].GetUint64(),
+      .type      = typeMap.at(json["type"].GetString()),
+      .mime      = json["mime"].GetString(),
+    };
+    if (status.type == ContentType::Clipboard) {
+      status.name = json["name"].GetString();
+    }
+    return ok(std::move(status));
   }
   Result<_, ErrorResponse> ApiBridge::roomIdStatusDelete(std::string_view id) {
     auto response = fetch->request(internal::HttpMethod::Delete,
@@ -320,7 +275,7 @@ namespace octane::internal {
       return error(response.err());
     }
     if (auto err = checkStatusCode(response.get())) {
-      return error(err.value());
+      return err.value();
     }
     return ok();
   }
@@ -328,37 +283,35 @@ namespace octane::internal {
     std::string_view id,
     const ContentStatus& contentStatus,
     std::string_view hash) {
-    rapidjson::StringBuffer buffer;
-    rapidjson::Writer writer(buffer);
-
-    writer.StartObject();
-    writer.Key("device");
-    writer.String(contentStatus.device.c_str());
-    writer.Key("timestamp");
-    writer.Uint64(contentStatus.timestamp);
+    rapidjson::Document uploadJson(rapidjson::kObjectType);
+    uploadJson.AddMember("device",
+                         rapidjson::StringRef(contentStatus.device.data(),
+                                              contentStatus.device.size()),
+                         uploadJson.GetAllocator());
+    uploadJson.AddMember("timestamp",
+                         rapidjson::Value().SetUint64(contentStatus.timestamp),
+                         uploadJson.GetAllocator());
     if (contentStatus.type == ContentType::File) {
-      writer.Key("type");
-      writer.String("file");
-      writer.Key("name");
-      writer.String(contentStatus.name.value_or("file").c_str());
+      uploadJson.AddMember("type", "file", uploadJson.GetAllocator());
+      uploadJson.AddMember(
+        "name",
+        rapidjson::StringRef(contentStatus.name.value_or("file").data(),
+                             contentStatus.name.value_or("file").size()),
+        uploadJson.GetAllocator());
     } else if (contentStatus.type == ContentType::Clipboard) {
-      writer.Key("type");
-      writer.String("clipboard");
+      uploadJson.AddMember("type", "clipboard", uploadJson.GetAllocator());
     } else {
       return makeError(
         ERR_INVALID_REQUEST,
         "Invalid request, contentStatus.type is not 'File' or 'Clipboard'");
     }
-    writer.Key("mime");
-    writer.String(contentStatus.mime.c_str());
-    writer.Key("hash");
-    writer.String(std::string(hash).c_str());
-
-    writer.EndObject();
-
-    rapidjson::Document uploadJson;
-    uploadJson.Accept(writer);
-
+    uploadJson.AddMember("mime",
+                         rapidjson::StringRef(contentStatus.mime.data(),
+                                              contentStatus.mime.size()),
+                         uploadJson.GetAllocator());
+    uploadJson.AddMember("hash",
+                         rapidjson::StringRef(hash.data(), hash.size()),
+                         uploadJson.GetAllocator());
     auto response = fetch->request(internal::HttpMethod::Post,
                                    "/room/" + std::string(id) + "/status",
                                    uploadJson);
@@ -366,12 +319,12 @@ namespace octane::internal {
       return error(response.err());
     }
     if (auto err = checkStatusCode(response.get())) {
-      return error(err.value());
+      return err.value();
     }
     return ok();
   }
   std::optional<error_t<ErrorResponse>> ApiBridge::checkStatusCode(
-    internal::FetchResponse& response) {
+    const internal::FetchResponse& response) {
     if (200 <= response.statusCode && response.statusCode < 300)
       return std::nullopt;
     if (!std::holds_alternative<rapidjson::Document>(response.body)) {
@@ -379,19 +332,11 @@ namespace octane::internal {
         ERR_INVALID_RESPONSE,
         "Invalid response, json not returned. Maybe error at cdn?");
     }
-    rapidjson::Document& json = std::get<rapidjson::Document>(response.body);
-    if (!json.HasMember("code"))
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, json doesn't have member 'code'");
-    if (!json.HasMember("reason"))
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, json doesn't have member 'message'");
-    if (!json["code"].IsString())
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, member 'code' type is not string");
-    if (!json["reason"].IsString())
-      return makeError(ERR_INVALID_RESPONSE,
-                       "Invalid response, member 'message' type is not string");
+    const rapidjson::Document& json
+      = std::get<rapidjson::Document>(response.body);
+    if (auto err = verifyJson(json, SCHEMA_ERROR_RESPONSE)) {
+      return error(err.value());
+    }
     return makeError(json["code"].GetString(), json["reason"].GetString());
   }
 } // namespace octane::internal

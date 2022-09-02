@@ -19,7 +19,7 @@
 namespace octane {
   /**
    * @brief エラーを表す汎用構造体。
-   * 
+   *
    */
   struct ErrorResponse {
     /**
@@ -32,9 +32,10 @@ namespace octane {
     /**
      * @brief エラーが起こった原因。
      * @details
-     * {@link ErrorResponse::code}は機械向けのものだが、こちらは人間が読む用の文字列。
+     * {@link
+     * ErrorResponse::code}は機械向けのものだが、こちらは人間が読む用の文字列。
      * デバッグ効率を上げるためになるべく具体的な情報を入れたいところ。
-     * 
+     *
      */
     std::string reason;
   };
@@ -51,7 +52,7 @@ namespace octane {
    *   .code = ERR_SOME_ERROR,
    *   .reason = "Error!!!",
    * });
-   * 
+   *
    * // 次のように記述できる
    * return makeError(ERR_SOME_ERROR, "Error!!!");
    * @endcode
@@ -62,5 +63,6 @@ namespace octane {
    */
   error_t<ErrorResponse> makeError(std::string_view code,
                                    std::string_view reason);
+  std::ostream& operator<<(std::ostream& stream, const ErrorResponse& err);
 } // namespace octane
 #endif // OCTANE_API_CLIENT_ERROR_RESPONSE_H_

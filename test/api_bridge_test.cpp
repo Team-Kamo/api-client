@@ -72,7 +72,8 @@ namespace octane::internal {
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.init();
     EXPECT_FALSE(result);
-    EXPECT_EQ(result.err().code, ERR_CURL_INITIALIZATION_FAILED);
+    EXPECT_EQ(result.err().code, ERR_CURL_INITIALIZATION_FAILED)
+      << result.err();
   }
   /**
    * @brief
@@ -81,7 +82,8 @@ namespace octane::internal {
    */
   TEST(ApiBridgeTest, healthGetOkHealthy) {
     test::MockFetch mockFetch;
-    EXPECT_CALL(mockFetch, request(HttpMethod::Get, "/health"))
+    EXPECT_CALL(mockFetch,
+                request(HttpMethod::Get, std::string_view("/health")))
       .Times(1)
       .WillOnce(testing::Return(ok(makeJsonResponse(
         R"(
@@ -92,7 +94,7 @@ namespace octane::internal {
         )"))));
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.healthGet();
-    EXPECT_TRUE(result);
+    EXPECT_TRUE(result) << result.err();
     EXPECT_EQ(result.get(),
               (HealthResult{
                 .health  = Health::Healthy,
@@ -106,7 +108,8 @@ namespace octane::internal {
    */
   TEST(ApiBridgeTest, healthGetOkDegraded) {
     test::MockFetch mockFetch;
-    EXPECT_CALL(mockFetch, request(HttpMethod::Get, "/health"))
+    EXPECT_CALL(mockFetch,
+                request(HttpMethod::Get, std::string_view("/health")))
       .Times(1)
       .WillOnce(testing::Return(ok(makeJsonResponse(
         R"(
@@ -117,7 +120,7 @@ namespace octane::internal {
         )"))));
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.healthGet();
-    EXPECT_TRUE(result);
+    EXPECT_TRUE(result) << result.err();
     EXPECT_EQ(result.get(),
               (HealthResult{
                 .health  = Health::Degraded,
@@ -131,7 +134,8 @@ namespace octane::internal {
    */
   TEST(ApiBridgeTest, healthGetOkFaulty) {
     test::MockFetch mockFetch;
-    EXPECT_CALL(mockFetch, request(HttpMethod::Get, "/health"))
+    EXPECT_CALL(mockFetch,
+                request(HttpMethod::Get, std::string_view("/health")))
       .Times(1)
       .WillOnce(testing::Return(ok(makeJsonResponse(
         R"(
@@ -142,7 +146,7 @@ namespace octane::internal {
         )"))));
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.healthGet();
-    EXPECT_TRUE(result);
+    EXPECT_TRUE(result) << result.err();
     EXPECT_EQ(result.get(),
               (HealthResult{
                 .health  = Health::Faulty,
@@ -156,13 +160,14 @@ namespace octane::internal {
    */
   TEST(ApiBridgeTest, healthGetErrorJson) {
     test::MockFetch mockFetch;
-    EXPECT_CALL(mockFetch, request(HttpMethod::Get, "/health"))
+    EXPECT_CALL(mockFetch,
+                request(HttpMethod::Get, std::string_view("/health")))
       .Times(1)
       .WillOnce(testing::Return(makeError(ERR_JSON_PARSE_FAILED, "")));
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.healthGet();
-    EXPECT_FALSE(result);
-    EXPECT_EQ(result.err().code, ERR_JSON_PARSE_FAILED);
+    EXPECT_FALSE(result) << result.get();
+    EXPECT_EQ(result.err().code, ERR_JSON_PARSE_FAILED) << result.err();
   }
   /**
    * @brief
@@ -171,7 +176,8 @@ namespace octane::internal {
    */
   TEST(ApiBridgeTest, healthGetErrorResponse) {
     test::MockFetch mockFetch;
-    EXPECT_CALL(mockFetch, request(HttpMethod::Get, "/health"))
+    EXPECT_CALL(mockFetch,
+                request(HttpMethod::Get, std::string_view("/health")))
       .Times(1)
       .WillOnce(testing::Return(ok(makeJsonResponse(
         R"(
@@ -182,8 +188,8 @@ namespace octane::internal {
         )"))));
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.healthGet();
-    EXPECT_FALSE(result);
-    EXPECT_EQ(result.err().code, ERR_INVALID_RESPONSE);
+    EXPECT_FALSE(result) << result.get();
+    EXPECT_EQ(result.err().code, ERR_INVALID_RESPONSE) << result.err();
   }
   /**
    * @brief
@@ -192,13 +198,14 @@ namespace octane::internal {
    */
   TEST(ApiBridgeTest, healthGetErrorCurl) {
     test::MockFetch mockFetch;
-    EXPECT_CALL(mockFetch, request(HttpMethod::Get, "/health"))
+    EXPECT_CALL(mockFetch,
+                request(HttpMethod::Get, std::string_view("/health")))
       .Times(1)
       .WillOnce(testing::Return(makeError(ERR_CURL_CONNECTION_FAILED, "")));
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.healthGet();
-    EXPECT_FALSE(result);
-    EXPECT_EQ(result.err().code, ERR_CURL_CONNECTION_FAILED);
+    EXPECT_FALSE(result) << result.get();
+    EXPECT_EQ(result.err().code, ERR_CURL_CONNECTION_FAILED) << result.err();
   }
   /**
    * @brief
@@ -207,21 +214,22 @@ namespace octane::internal {
    */
   TEST(ApiBridgeTest, healthGetErr2xxOk) {
     test::MockFetch mockFetch;
-    EXPECT_CALL(mockFetch, request(HttpMethod::Get, "/health"))
+    EXPECT_CALL(mockFetch,
+                request(HttpMethod::Get, std::string_view("/health")))
       .Times(1)
-      .WillOnce(
-        testing::Return(ok(makeJsonResponse(R"(
-        {
-          "code": "ERR_BAD_REQUEST",
-          "reason": ""
+      .WillOnce(testing::Return(ok(makeJsonResponse(
+        R"(
+          {
+            "code": "ERR_BAD_REQUEST",
+            "reason": ""
           }
         )",
-                                            400,
-                                            "HTTP/2 400 Bad Request"))));
+        400,
+        "HTTP/2 400 Bad Request"))));
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.healthGet();
-    EXPECT_FALSE(result);
-    EXPECT_EQ(result.err().code, "ERR_BAD_REQUEST");
+    EXPECT_FALSE(result) << result.get();
+    EXPECT_EQ(result.err().code, "ERR_BAD_REQUEST") << result.err();
   }
   /**
    * @brief
@@ -230,21 +238,22 @@ namespace octane::internal {
    */
   TEST(ApiBridgeTest, healthGetErr2xxErr) {
     test::MockFetch mockFetch;
-    EXPECT_CALL(mockFetch, request(HttpMethod::Get, "/health"))
+    EXPECT_CALL(mockFetch,
+                request(HttpMethod::Get, std::string_view("/health")))
       .Times(1)
-      .WillOnce(
-        testing::Return(ok(makeJsonResponse(R"(
-        {
-          "codeforces": "ERR_BAD_REQUEST",
-          "reason": ""
+      .WillOnce(testing::Return(ok(makeJsonResponse(
+        R"(
+          {
+            "codeforce": "ERR_BAD_REQUEST",
+            "reason": ""
           }
         )",
-                                            400,
-                                            "HTTP/2 400 Bad Request"))));
+        400,
+        "HTTP/2 400 Bad Request"))));
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.healthGet();
-    EXPECT_FALSE(result);
-    EXPECT_EQ(result.err().code, ERR_INVALID_RESPONSE);
+    EXPECT_FALSE(result) << result.get();
+    EXPECT_EQ(result.err().code, ERR_INVALID_RESPONSE) << result.err();
   }
   /**
    * @brief
@@ -256,15 +265,16 @@ namespace octane::internal {
     std::string name = "soon's room";
     std::string id   = "07040782538";
     auto json        = makeJson(R"({"name": "soon's room"})");
-    EXPECT_CALL(
-      mockFetch,
-      request(HttpMethod::Post, "/room", testing::Eq(testing::ByRef(json))))
+    EXPECT_CALL(mockFetch,
+                request(HttpMethod::Post,
+                        std::string_view("/room"),
+                        testing::Eq(testing::ByRef(json))))
       .Times(1)
       .WillOnce(
         testing::Return(ok(makeJsonResponse(R"({"id": "07040782538"})"))));
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.roomPost(name);
-    EXPECT_TRUE(result);
+    EXPECT_TRUE(result) << result.err();
     EXPECT_EQ(result.get(), id);
   }
   /**
@@ -276,16 +286,17 @@ namespace octane::internal {
     test::MockFetch mockFetch;
     std::string name = "soon's room";
     auto json        = makeJson(R"({"name": "soon's room"})");
-    EXPECT_CALL(
-      mockFetch,
-      request(HttpMethod::Post, "/room", testing::Eq(testing::ByRef(json))))
+    EXPECT_CALL(mockFetch,
+                request(HttpMethod::Post,
+                        std::string_view("/room"),
+                        testing::Eq(testing::ByRef(json))))
       .Times(1)
       .WillOnce(
         testing::Return(ok(makeJsonResponse(R"({"ideco": "07040782538"})"))));
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.roomPost(name);
-    EXPECT_FALSE(result);
-    EXPECT_EQ(result.err().code, ERR_INVALID_RESPONSE);
+    EXPECT_FALSE(result) << result.get();
+    EXPECT_EQ(result.err().code, ERR_INVALID_RESPONSE) << result.err();
   }
   /**
    * @brief
@@ -296,15 +307,16 @@ namespace octane::internal {
     test::MockFetch mockFetch;
     std::string name = "soon's room";
     auto json        = makeJson(R"({"name": "soon's room"})");
-    EXPECT_CALL(
-      mockFetch,
-      request(HttpMethod::Post, "/room", testing::Eq(testing::ByRef(json))))
+    EXPECT_CALL(mockFetch,
+                request(HttpMethod::Post,
+                        std::string_view("/room"),
+                        testing::Eq(testing::ByRef(json))))
       .Times(1)
       .WillOnce(testing::Return(makeError(ERR_JSON_PARSE_FAILED, "")));
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.roomPost(name);
-    EXPECT_FALSE(result);
-    EXPECT_EQ(result.err().code, ERR_JSON_PARSE_FAILED);
+    EXPECT_FALSE(result) << result.get();
+    EXPECT_EQ(result.err().code, ERR_JSON_PARSE_FAILED) << result.err();
   }
   /**
    * @brief
@@ -315,15 +327,16 @@ namespace octane::internal {
     test::MockFetch mockFetch;
     std::string name = "soon's room";
     auto json        = makeJson(R"({"name": "soon's room"})");
-    EXPECT_CALL(
-      mockFetch,
-      request(HttpMethod::Post, "/room", testing::Eq(testing::ByRef(json))))
+    EXPECT_CALL(mockFetch,
+                request(HttpMethod::Post,
+                        std::string_view("/room"),
+                        testing::Eq(testing::ByRef(json))))
       .Times(1)
       .WillOnce(testing::Return(makeError(ERR_CURL_CONNECTION_FAILED, "")));
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.roomPost(name);
-    EXPECT_FALSE(result);
-    EXPECT_EQ(result.err().code, ERR_CURL_CONNECTION_FAILED);
+    EXPECT_FALSE(result) << result.get();
+    EXPECT_EQ(result.err().code, ERR_CURL_CONNECTION_FAILED) << result.err();
   }
   /**
    * @brief
@@ -334,9 +347,10 @@ namespace octane::internal {
     test::MockFetch mockFetch;
     std::string name = "soon's room";
     auto json        = makeJson(R"({"name": "soon's room"})");
-    EXPECT_CALL(
-      mockFetch,
-      request(HttpMethod::Post, "/room", testing::Eq(testing::ByRef(json))))
+    EXPECT_CALL(mockFetch,
+                request(HttpMethod::Post,
+                        std::string_view("/room"),
+                        testing::Eq(testing::ByRef(json))))
       .Times(1)
       .WillOnce(
         testing::Return(ok(makeJsonResponse(R"(
@@ -349,8 +363,8 @@ namespace octane::internal {
                                             "HTTP/2 400 Bad Request"))));
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.roomPost(name);
-    EXPECT_FALSE(result);
-    EXPECT_EQ(result.err().code, "ERR_BAD_REQUEST");
+    EXPECT_FALSE(result) << result.get();
+    EXPECT_EQ(result.err().code, "ERR_BAD_REQUEST") << result.err();
   }
 
 } // namespace octane::internal

@@ -114,7 +114,7 @@ namespace octane::internal {
      * 成功した場合には何も返さず、失敗した場合は上記のエラーレスポンスを返す。
      */
     Result<_, ErrorResponse> roomIdPost(std::string_view id,
-      std::string_view name);
+                                        std::string_view name);
     /**
      * @brief use get method for /room/{id}/content
      * @details
@@ -129,7 +129,7 @@ namespace octane::internal {
      * 成功した場合にはルーム内にある文字列、またはバイナリデータを返し、失敗した場合には上記のエラーレスポンスを返す。
      */
     Result<std::variant<std::string, std::vector<std::uint8_t>>, ErrorResponse>
-      roomIdContentGet(std::string_view id);
+    roomIdContentGet(std::string_view id);
     /**
      * @brief use delete method for /room/{id}/content
      * @details
@@ -204,8 +204,8 @@ namespace octane::internal {
      * 成功した場合には何も返さず、失敗した場合には上記のエラーレスポンスを返す。
      */
     Result<_, ErrorResponse> roomIdStatusPut(std::string_view id,
-      const ContentStatus& contentStatus,
-      std::string_view hash);
+                                             const ContentStatus& contentStatus,
+                                             std::string_view hash);
     /**
      * @brief check if the given status code is 2xx
      * @details
@@ -216,7 +216,7 @@ namespace octane::internal {
      * ステータスコードが2xxである場合には何も返さず、そうでない場合には上記のエラーレスポンスを返す。
      */
     std::optional<error_t<ErrorResponse>> checkStatusCode(
-      internal::FetchResponse& response);
+      const internal::FetchResponse& response);
   };
 } // namespace octane::internal
 #endif // OCTANE_API_CLIENT_INTERNAL_API_BRIDGE_H_
