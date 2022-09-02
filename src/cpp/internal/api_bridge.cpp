@@ -18,15 +18,13 @@
 #include "include/error_code.h"
 
 namespace octane::internal {
-  ApiBridge::ApiBridge(std::string_view token,
-                       std::string_view origin,
-                       std::string_view baseUrl)
-    : fetch(token, origin, baseUrl, new internal::HttpClient()) {}
+  ApiBridge::ApiBridge(FetchBase* fetch) : fetch(fetch) {}
   Result<_, ErrorResponse> ApiBridge::init() {
-    return fetch.init();
+    return fetch->init();
   }
   Result<HealthResult, ErrorResponse> ApiBridge::healthGet() {
-    auto response = fetch.request(internal::HttpMethod::Get, "/health");
+    using namespace std::string_literals;
+    auto response = fetch->request(internal::HttpMethod::Get, "/health");
     if (!response) {
       return error(response.err());
     }
@@ -52,22 +50,25 @@ namespace octane::internal {
     if (!json["message"].IsString())
       return makeError(ERR_INVALID_RESPONSE,
                        "Invalid response, member 'message' type is not string");
-    if (json["health"].GetString() == "healthy") {
+    if (json["health"].GetString() == "healthy"s) {
       healthResult.health = Health::Healthy;
-    } else if (json["health"].GetString() == "degraded") {
+    } else if (json["health"].GetString() == "degraded"s) {
       healthResult.health = Health::Degraded;
-    } else if (json["health"].GetString() == "faulty") {
+    } else if (json["health"].GetString() == "faulty"s) {
       healthResult.health = Health::Faulty;
     } else {
       return makeError(
         ERR_INVALID_RESPONSE,
-        "Invalid response, member 'health' is not 'healthy', 'degraded' or 'faulty'");
+        "Invalid response, member 'health' is not 'healthy', 'degraded' or 'faulty' "s
+          + json["health"].GetString() + " was passed");
     }
     healthResult.message = json["message"].GetString();
     return ok(healthResult);
   }
   Result<std::string, ErrorResponse> ApiBridge::roomPost(
     std::string_view name) {
+    // ここにおそらくテストで引っ掛かっているようなところがあるかも知れません。
+    // これかもhttps://techoverflow.net/2020/01/13/how-to-fix-rapidjson-assertion-hasroot_-failed/
     rapidjson::StringBuffer buffer;
     rapidjson::Writer writer(buffer);
     writer.StartObject();
@@ -77,7 +78,7 @@ namespace octane::internal {
     rapidjson::Document uploadJson;
     uploadJson.Accept(writer);
     auto response
-      = fetch.request(internal::HttpMethod::Post, "/room", uploadJson);
+      = fetch->request(internal::HttpMethod::Post, "/room", uploadJson);
     if (!response) {
       return error(response.err());
     }
@@ -102,7 +103,7 @@ namespace octane::internal {
   }
   Result<RoomStatus, ErrorResponse> ApiBridge::roomIdGet(std::string_view id) {
     auto response
-      = fetch.request(internal::HttpMethod::Get, "/room/" + std::string(id));
+      = fetch->request(internal::HttpMethod::Get, "/room/" + std::string(id));
     if (!response) {
       return error(response.err());
     }
@@ -157,8 +158,8 @@ namespace octane::internal {
     return ok(roomStatus);
   }
   Result<_, ErrorResponse> ApiBridge::roomIdDelete(std::string_view id) {
-    auto response
-      = fetch.request(internal::HttpMethod::Delete, "/room/" + std::string(id));
+    auto response = fetch->request(internal::HttpMethod::Delete,
+                                   "/room/" + std::string(id));
     if (!response) {
       return error(response.err());
     }
@@ -177,7 +178,7 @@ namespace octane::internal {
     writer.EndObject();
     rapidjson::Document uploadJson;
     uploadJson.Accept(writer);
-    auto response = fetch.request(
+    auto response = fetch->request(
       internal::HttpMethod::Post, "/room/" + std::string(id), uploadJson);
     if (!response) {
       return error(response.err());
@@ -189,23 +190,24 @@ namespace octane::internal {
   }
   Result<std::variant<std::string, std::vector<std::uint8_t>>, ErrorResponse>
   ApiBridge::roomIdContentGet(std::string_view id) {
-    auto response = fetch.request(internal::HttpMethod::Get,
-                                  "/room/" + std::string(id) + "/content");
+    auto response = fetch->request(internal::HttpMethod::Get,
+                                   "/room/" + std::string(id) + "/content");
     if (!response) {
       return error(response.err());
     }
     if (auto err = checkStatusCode(response.get())) {
       return error(err.value());
     }
-    if (!std::holds_alternative<std::vector<uint8_t>>(response.get().body)) {
+    if (!std::holds_alternative<std::vector<std::uint8_t>>(
+          response.get().body)) {
       return makeError(ERR_INVALID_RESPONSE,
                        "Invalid response, binary not returned");
     }
-    return ok(std::get<std::vector<uint8_t>>(response.get().body));
+    return ok(std::get<std::vector<std::uint8_t>>(response.get().body));
   }
   Result<_, ErrorResponse> ApiBridge::roomIdContentDelete(std::string_view id) {
-    auto response = fetch.request(internal::HttpMethod::Delete,
-                                  "/room/" + std::string(id) + "/content");
+    auto response = fetch->request(internal::HttpMethod::Delete,
+                                   "/room/" + std::string(id) + "/content");
     if (!response) {
       return error(response.err());
     }
@@ -218,9 +220,9 @@ namespace octane::internal {
     std::string_view id,
     const std::variant<std::string, std::vector<std::uint8_t>>& contentData,
     std::string_view mime) {
-    std::vector<uint8_t> data;
-    if (std::holds_alternative<std::vector<uint8_t>>(contentData)) {
-      data = std::get<std::vector<uint8_t>>(contentData);
+    std::vector<std::uint8_t> data;
+    if (std::holds_alternative<std::vector<std::uint8_t>>(contentData)) {
+      data = std::get<std::vector<std::uint8_t>>(contentData);
     } else if (std::holds_alternative<std::string>(contentData)) {
       const std::string& stringData = std::get<std::string>(contentData);
       data.reserve(stringData.size());
@@ -229,10 +231,10 @@ namespace octane::internal {
       return makeError(ERR_INVALID_REQUEST,
                        "contentData is not string or binary");
     }
-    auto response = fetch.request(internal::HttpMethod::Put,
-                                  "/room/" + std::string(id) + "/content",
-                                  mime,
-                                  data);
+    auto response = fetch->request(internal::HttpMethod::Put,
+                                   "/room/" + std::string(id) + "/content",
+                                   mime,
+                                   data);
     if (!response) {
       return error(response.err());
     }
@@ -243,8 +245,9 @@ namespace octane::internal {
   }
   Result<ContentStatus, ErrorResponse> ApiBridge::roomIdStatusGet(
     std::string_view id) {
-    auto response = fetch.request(internal::HttpMethod::Get,
-                                  "/room/" + std::string(id) + "/status");
+    using namespace std::string_literals;
+    auto response = fetch->request(internal::HttpMethod::Get,
+                                   "/room/" + std::string(id) + "/status");
     if (!response) {
       return error(response.err());
     }
@@ -292,9 +295,9 @@ namespace octane::internal {
                        "Invalid response, member 'hash' type is not string");
     status.device    = json["device"].GetString();
     status.timestamp = json["timestamp"].GetUint64();
-    if (json["type"].GetString() == "file") {
+    if (json["type"].GetString() == "file"s) {
       status.type = ContentType::File;
-    } else if (json["type"].GetString() == "clipboard") {
+    } else if (json["type"].GetString() == "clipboard"s) {
       status.type = ContentType::Clipboard;
     } else {
       return makeError(
@@ -311,8 +314,8 @@ namespace octane::internal {
     return ok(status);
   }
   Result<_, ErrorResponse> ApiBridge::roomIdStatusDelete(std::string_view id) {
-    auto response = fetch.request(internal::HttpMethod::Delete,
-                                  "/room/" + std::string(id) + "/status");
+    auto response = fetch->request(internal::HttpMethod::Delete,
+                                   "/room/" + std::string(id) + "/status");
     if (!response) {
       return error(response.err());
     }
@@ -356,9 +359,9 @@ namespace octane::internal {
     rapidjson::Document uploadJson;
     uploadJson.Accept(writer);
 
-    auto response = fetch.request(internal::HttpMethod::Post,
-                                  "/room/" + std::string(id) + "/status",
-                                  uploadJson);
+    auto response = fetch->request(internal::HttpMethod::Post,
+                                   "/room/" + std::string(id) + "/status",
+                                   uploadJson);
     if (!response) {
       return error(response.err());
     }
@@ -380,15 +383,15 @@ namespace octane::internal {
     if (!json.HasMember("code"))
       return makeError(ERR_INVALID_RESPONSE,
                        "Invalid response, json doesn't have member 'code'");
-    if (!json.HasMember("message"))
+    if (!json.HasMember("reason"))
       return makeError(ERR_INVALID_RESPONSE,
                        "Invalid response, json doesn't have member 'message'");
     if (!json["code"].IsString())
       return makeError(ERR_INVALID_RESPONSE,
                        "Invalid response, member 'code' type is not string");
-    if (!json["message"].IsString())
+    if (!json["reason"].IsString())
       return makeError(ERR_INVALID_RESPONSE,
                        "Invalid response, member 'message' type is not string");
-    return makeError(json["code"].GetString(), json["message"].GetString());
+    return makeError(json["code"].GetString(), json["reason"].GetString());
   }
 } // namespace octane::internal

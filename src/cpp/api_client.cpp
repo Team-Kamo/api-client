@@ -21,7 +21,7 @@ namespace octane {
   ApiClient::ApiClient(std::string_view token,
                        std::string_view origin,
                        std::string_view baseUrl)
-    : bridge(token, origin, baseUrl), lastCheckedTime(0) {}
+    : bridge(new internal::Fetch(token, origin, baseUrl, new internal::HttpClient())), lastCheckedTime(0) {}
 
   ApiClient::~ApiClient() noexcept {}
 
@@ -161,20 +161,19 @@ namespace octane {
     if (!resultC) {
       return error(resultC.err());
     }
-    std::vector<uint8_t> hashData;
-    if (std::holds_alternative<std::vector<uint8_t>>(content.data)) {
-      hashData = std::get<std::vector<uint8_t>>(content.data);
-    }
-    else if (std::holds_alternative<std::string>(content.data)) {
+    std::vector<std::uint8_t> hashData;
+    if (std::holds_alternative<std::vector<std::uint8_t>>(content.data)) {
+      hashData = std::get<std::vector<std::uint8_t>>(content.data);
+    } else if (std::holds_alternative<std::string>(content.data)) {
       std::string hashDataString = std::get<std::string>(content.data);
       hashData.reserve(hashDataString.size());
-      std::copy(hashDataString.begin(),hashDataString.end(),hashData.begin());
-    }
-    else {
-      return makeError(ERR_INVALID_REQUEST, "content.data type is not binary or string");
+      std::copy(hashDataString.begin(), hashDataString.end(), hashData.begin());
+    } else {
+      return makeError(ERR_INVALID_REQUEST,
+                       "content.data type is not binary or string");
     }
     std::string hash = internal::generateHash(hashData);
-    auto resultS = bridge.roomIdStatusPut(id, content.contentStatus,hash);
+    auto resultS     = bridge.roomIdStatusPut(id, content.contentStatus, hash);
     if (!resultS) {
       return error(resultS.err());
     }

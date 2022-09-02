@@ -114,7 +114,7 @@ namespace octane::internal {
   /**
    * @brief HTTP通信を行うインタフェース。
    *
-   * @see HttpClient このインタフェースを実装したクラス。
+   * { @see HttpClient } このインタフェースを実装したクラス。
    *
    */
   class HttpClientBase {
@@ -138,7 +138,6 @@ namespace octane::internal {
     /**
      * @brief HTTPリクエストを発行する。
      * @details
-     * このメソッドは事前に一度必ず{ @see init }を呼ばなければならない。
      * 失敗した場合は以下のエラーレスポンスを返す。
      * - ERR_INCORRECT_HTTP_METHOD: GET, POST, PUT,
      * DELETE以外のメソッドを使用したり、GET, DELETEでボディ部を指定したとき
@@ -206,7 +205,7 @@ namespace octane::internal {
       char* buffer,
       size_t size,
       size_t nmemb,
-      std::pair<const std::vector<uint8_t>*, size_t>* stream);
+      std::pair<const std::vector<std::uint8_t>*, size_t>* stream);
 
     /**
      * @brief CURLでレスポンスのヘッダ部を受け取るためのコールバック。

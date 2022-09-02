@@ -18,6 +18,7 @@
 #include "include/error_code.h"
 
 namespace octane::internal {
+  FetchBase::~FetchBase() {}
   Fetch::Fetch(std::string_view token,
                std::string_view origin,
                std::string_view baseUrl,
@@ -26,6 +27,7 @@ namespace octane::internal {
   Result<_, ErrorResponse> Fetch::init() {
     return client->init();
   }
+  Fetch::~Fetch() {}
 
   Fetch::FetchResult Fetch::request(HttpMethod method, std::string_view url) {
     return request(method,
@@ -42,7 +44,7 @@ namespace octane::internal {
         ERR_INCORRECT_HTTP_METHOD,
         "Only Post and Put requests are allowed for requests with a body parts.");
     }
-    std::vector<uint8_t> decoded;
+    std::vector<std::uint8_t> decoded;
     rapidjson::StringBuffer buffer;
     rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
     body.Accept(writer);

@@ -65,7 +65,8 @@ namespace octane::internal {
         curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, request.body.size());
         break;
       case HttpMethod::Put: {
-        std::pair<const std::vector<uint8_t>*, size_t> pair(&request.body, 0);
+        std::pair<const std::vector<std::uint8_t>*, size_t> pair(&request.body,
+                                                                 0);
         curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);
         curl_easy_setopt(curl, CURLOPT_READDATA, &pair);
         curl_easy_setopt(curl, CURLOPT_INFILESIZE_LARGE, request.body.size());
@@ -147,7 +148,7 @@ namespace octane::internal {
     char* buffer,
     size_t size,
     size_t nmemb,
-    std::pair<const std::vector<uint8_t>*, size_t>* stream) {
+    std::pair<const std::vector<std::uint8_t>*, size_t>* stream) {
     size_t len = std::min(stream->first->size() - stream->second, size * nmemb);
     std::memcpy(buffer, stream->first->data() + stream->second, len);
     stream->second += len;
