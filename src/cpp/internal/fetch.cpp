@@ -117,7 +117,7 @@ namespace octane::internal {
     // curlして返ってきた結果のHTTPヘッダにContent-Type:application/jsonがあるときにはFetchResponse.bodyにjsonを代入する
     if (fetchResponse.mime == "application/json") {
       rapidjson::Document json;
-      json.Parse((char*)response.body.data());
+      json.Parse((char*)response.body.data(), response.body.size());
       if (json.HasParseError()) {
         const auto offset  = json.GetErrorOffset();
         const auto message = rapidjson::GetParseError_En(json.GetParseError());
