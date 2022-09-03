@@ -163,12 +163,15 @@ namespace octane::internal {
       responseHeader) {
     // 扱いやすいようにstring_viewでラップ(コピーが発生しないのでオーバーヘッドは無視できるほど小さいはず多分)
     std::string_view buf(buffer, size * nmemb);
-    auto pos = buf.find(": ");
-    if (pos == buf.npos) {
-      responseHeader->first = buf;
+    auto pos1 = buf.find(": ");
+    auto pos2 = buf.find("\r");
+    if (pos1 == buf.npos) {
+      if (responseHeader->first.empty()) {
+        responseHeader->first = buf.substr(0, pos2);
+      }
     } else {
-      std::string key(buf.substr(0, pos));
-      std::string val(buf.substr(pos + 2));
+      std::string key(buf.substr(0, pos1));
+      std::string val(buf.substr(pos1 + 2, pos2 - (pos1 + 2)));
       responseHeader->second[key] = val;
     }
     return size * nmemb;
