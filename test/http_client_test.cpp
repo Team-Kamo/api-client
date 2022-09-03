@@ -102,9 +102,11 @@ namespace octane::internal {
    */
   TEST(HttpClientTest, HeaderCallback) {
     constexpr const char* const headers[] = {
-      "Allow: GET,POST,PUT,DELETE",
-      "Content-Type: application/json; charset=utf-8",
-      "Content-Length: 500",
+      "HTTP/2 200 OK\r\n",
+      "Allow: GET,POST,PUT,DELETE\r\n",
+      "Content-Type: text/html; charset=utf-8\r\n",
+      "Content-Length: 500\r\n",
+      "\r\n",
     };
 
     HttpClient client;
@@ -116,15 +118,17 @@ namespace octane::internal {
       client.headerCallback((char*)header, 1, strlen(header), &responseHeader);
     }
 
+    auto& statusLine          = responseHeader.first;
     auto& responseHeaderField = responseHeader.second;
 
-    ASSERT_TRUE(responseHeaderField.contains("Allow"));
-    ASSERT_TRUE(responseHeaderField.contains("Content-Type"));
-    ASSERT_TRUE(responseHeaderField.contains("Content-Length"));
+    EXPECT_TRUE(responseHeaderField.contains("Allow"));
+    EXPECT_TRUE(responseHeaderField.contains("Content-Type"));
+    EXPECT_TRUE(responseHeaderField.contains("Content-Length"));
 
-    ASSERT_EQ(responseHeaderField["Allow"], "GET,POST,PUT,DELETE");
-    ASSERT_EQ(responseHeaderField["Content-Type"],
-              "application/json; charset=utf-8");
-    ASSERT_EQ(responseHeaderField["Content-Length"], "500");
+    EXPECT_EQ(statusLine, "HTTP/2 200 OK");
+
+    EXPECT_EQ(responseHeaderField["Allow"], "GET,POST,PUT,DELETE");
+    EXPECT_EQ(responseHeaderField["Content-Type"], "text/html; charset=utf-8");
+    EXPECT_EQ(responseHeaderField["Content-Length"], "500");
   }
 } // namespace octane::internal
