@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fetchresult_0',['FetchResult',['../classoctane_1_1internal_1_1_fetch.html#a5ddb90050375c384c989a0111f7e773f',1,'octane::internal::Fetch']]]
+  ['fetchresult_0',['FetchResult',['../classoctane_1_1internal_1_1_fetch_base.html#a1fd6fc80fed23ffa8f8c442e002eb032',1,'octane::internal::FetchBase']]]
 ];

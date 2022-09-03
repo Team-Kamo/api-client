@@ -86,26 +86,28 @@ $(function() {
 <div class="textblock"><code>#include &quot;<a class="el" href="http__client_8h_source.html">include/internal/http_client.h</a>&quot;</code><br />
 <code>#include &lt;curl/curl.h&gt;</code><br />
 <code>#include &lt;cstring&gt;</code><br />
+<code>#include &lt;ostream&gt;</code><br />
 <code>#include &quot;<a class="el" href="error__code_8h_source.html">include/error_code.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 http_client.cpp の依存先関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="http__client_8cpp__incl.png" border="0" usemap="#asrc_2cpp_2internal_2http__client_8cpp" alt=""/></div>
 <map name="asrc_2cpp_2internal_2http__client_8cpp" id="asrc_2cpp_2internal_2http__client_8cpp">
-<area shape="rect" title="http_client.hの実装。" alt="" coords="383,5,520,45"/>
-<area shape="rect" href="http__client_8h.html" title="HTTPクライアント。" alt="" coords="207,93,341,133"/>
-<area shape="rect" title=" " alt="" coords="365,101,444,126"/>
-<area shape="rect" title=" " alt="" coords="469,101,530,126"/>
-<area shape="rect" href="error__code_8h.html" title="エラーコードを定義する。" alt="" coords="554,101,693,126"/>
+<area shape="rect" title="http_client.hの実装。" alt="" coords="429,5,567,45"/>
+<area shape="rect" href="http__client_8h.html" title="HTTPクライアント。" alt="" coords="205,93,340,133"/>
+<area shape="rect" title=" " alt="" coords="364,101,443,126"/>
+<area shape="rect" title=" " alt="" coords="467,101,529,126"/>
+<area shape="rect" title=" " alt="" coords="553,101,622,126"/>
+<area shape="rect" href="error__code_8h.html" title="エラーコードを定義する。" alt="" coords="646,101,785,126"/>
 <area shape="rect" title=" " alt="" coords="5,181,132,207"/>
 <area shape="rect" title=" " alt="" coords="156,181,203,207"/>
 <area shape="rect" title=" " alt="" coords="257,255,312,280"/>
-<area shape="rect" title=" " alt="" coords="278,181,337,207"/>
-<area shape="rect" href="error__response_8h.html" title="エラーレスポンス。" alt="" coords="361,181,491,207"/>
-<area shape="rect" href="result_8h.html" title="RustのResultに触発されて作った結果を表す型を定義する。" alt="" coords="492,255,565,280"/>
-<area shape="rect" title=" " alt="" coords="379,255,467,280"/>
-<area shape="rect" title=" " alt="" coords="455,328,520,353"/>
-<area shape="rect" title=" " alt="" coords="545,328,598,353"/>
+<area shape="rect" title=" " alt="" coords="278,181,334,207"/>
+<area shape="rect" href="error__response_8h.html" title="エラーレスポンス。" alt="" coords="358,181,489,207"/>
+<area shape="rect" href="result_8h.html" title="RustのResultに触発されて作った結果を表す型を定義する。" alt="" coords="489,255,563,280"/>
+<area shape="rect" title=" " alt="" coords="379,255,465,280"/>
+<area shape="rect" title=" " alt="" coords="452,328,517,353"/>
+<area shape="rect" title=" " alt="" coords="542,328,595,353"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -127,6 +129,10 @@ http_client.cpp の依存先関係図:</div>
 <tr class="separator:a365c42befde57e9779228249bee9b8df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c85a41db1af45228350856bebcaad2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane_1_1internal.html#a4c85a41db1af45228350856bebcaad2a">octane::internal::operator==</a> (const HttpResponse &amp;a, const HttpResponse &amp;b)</td></tr>
 <tr class="separator:a4c85a41db1af45228350856bebcaad2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a257ec1e7e105d3afacf0bc2f80e1f3c7"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane_1_1internal.html#a257ec1e7e105d3afacf0bc2f80e1f3c7">octane::internal::operator&lt;&lt;</a> (std::ostream &amp;stream, const HttpRequest &amp;request)</td></tr>
+<tr class="separator:a257ec1e7e105d3afacf0bc2f80e1f3c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e74c4e9d5d59c257ee512fc2fd5367d"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane_1_1internal.html#a7e74c4e9d5d59c257ee512fc2fd5367d">octane::internal::operator&lt;&lt;</a> (std::ostream &amp;stream, const HttpResponse &amp;response)</td></tr>
+<tr class="separator:a7e74c4e9d5d59c257ee512fc2fd5367d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p >http_client.hの実装。 </p>

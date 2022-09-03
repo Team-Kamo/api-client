@@ -1,0 +1,424 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Octane API Client: octane::internal::FetchBase クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Octane API Client
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.5 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceoctane.html">octane</a></li><li class="navelem"><a class="el" href="namespaceoctane_1_1internal.html">internal</a></li><li class="navelem"><a class="el" href="classoctane_1_1internal_1_1_fetch_base.html">FetchBase</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">公開型</a> &#124;
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="classoctane_1_1internal_1_1_fetch_base-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle"><div class="title">octane::internal::FetchBase クラス<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>HttpClientクラスを通じてHTTP通信を行うインタフェース。  
+ <a href="classoctane_1_1internal_1_1_fetch_base.html#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="fetch_8h_source.html">fetch.h</a>&gt;</code></p>
+<div class="dynheader">
+octane::internal::FetchBase の継承関係図</div>
+<div class="dyncontent">
+<div class="center"><img src="classoctane_1_1internal_1_1_fetch_base__inherit__graph.png" border="0" usemap="#aoctane_1_1internal_1_1_fetch_base_inherit__map" alt="Inheritance graph"/></div>
+<map name="aoctane_1_1internal_1_1_fetch_base_inherit__map" id="aoctane_1_1internal_1_1_fetch_base_inherit__map">
+<area shape="rect" title="HttpClientクラスを通じてHTTP通信を行うインタフェース。" alt="" coords="5,5,188,31"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_fetch.html" title="HttpClientクラスを通じてHTTP通信を行う。" alt="" coords="21,79,173,104"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">凡例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+公開型</h2></td></tr>
+<tr class="memitem:a1fd6fc80fed23ffa8f8c442e002eb032"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1internal_1_1_fetch_base.html#a1fd6fc80fed23ffa8f8c442e002eb032">FetchResult</a> = <a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1internal_1_1_fetch_response.html">FetchResponse</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt;</td></tr>
+<tr class="separator:a1fd6fc80fed23ffa8f8c442e002eb032"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:a0a1b74353dd1d34ce8f7fbc8c2cb717b"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1internal_1_1_fetch_base.html#a0a1b74353dd1d34ce8f7fbc8c2cb717b">~FetchBase</a> () noexcept=0</td></tr>
+<tr class="separator:a0a1b74353dd1d34ce8f7fbc8c2cb717b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50f248788fa420baab778673dead51af"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1__.html">_</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1internal_1_1_fetch_base.html#a50f248788fa420baab778673dead51af">init</a> ()=0</td></tr>
+<tr class="memdesc:a50f248788fa420baab778673dead51af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetchのインスタンスを初期化する。  <a href="classoctane_1_1internal_1_1_fetch_base.html#a50f248788fa420baab778673dead51af">[詳解]</a><br /></td></tr>
+<tr class="separator:a50f248788fa420baab778673dead51af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a204cf835d57c87d11c39f35b1f757555"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classoctane_1_1internal_1_1_fetch_base.html#a1fd6fc80fed23ffa8f8c442e002eb032">FetchResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1internal_1_1_fetch_base.html#a204cf835d57c87d11c39f35b1f757555">request</a> (<a class="el" href="namespaceoctane_1_1internal.html#a164bed1ca702ea1cb6f0feb4ded22e73">HttpMethod</a> method, std::string_view url)=0</td></tr>
+<tr class="memdesc:a204cf835d57c87d11c39f35b1f757555"><td class="mdescLeft">&#160;</td><td class="mdescRight">APIへのボディ部を持たないリクエストを発行する。  <a href="classoctane_1_1internal_1_1_fetch_base.html#a204cf835d57c87d11c39f35b1f757555">[詳解]</a><br /></td></tr>
+<tr class="separator:a204cf835d57c87d11c39f35b1f757555"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1696b0605cb05c2403fdc3744eb5c08c"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classoctane_1_1internal_1_1_fetch_base.html#a1fd6fc80fed23ffa8f8c442e002eb032">FetchResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1internal_1_1_fetch_base.html#a1696b0605cb05c2403fdc3744eb5c08c">request</a> (<a class="el" href="namespaceoctane_1_1internal.html#a164bed1ca702ea1cb6f0feb4ded22e73">HttpMethod</a> method, std::string_view url, const rapidjson::Document &amp;body)=0</td></tr>
+<tr class="memdesc:a1696b0605cb05c2403fdc3744eb5c08c"><td class="mdescLeft">&#160;</td><td class="mdescRight">APIへのJSON形式のボディ部を持つリクエストを発行する。  <a href="classoctane_1_1internal_1_1_fetch_base.html#a1696b0605cb05c2403fdc3744eb5c08c">[詳解]</a><br /></td></tr>
+<tr class="separator:a1696b0605cb05c2403fdc3744eb5c08c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab84ee532e405231af8a3d86e9d38de03"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classoctane_1_1internal_1_1_fetch_base.html#a1fd6fc80fed23ffa8f8c442e002eb032">FetchResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1internal_1_1_fetch_base.html#ab84ee532e405231af8a3d86e9d38de03">request</a> (<a class="el" href="namespaceoctane_1_1internal.html#a164bed1ca702ea1cb6f0feb4ded22e73">HttpMethod</a> method, std::string_view url, std::string_view mimeType, const std::vector&lt; std::uint8_t &gt; &amp;body)=0</td></tr>
+<tr class="memdesc:ab84ee532e405231af8a3d86e9d38de03"><td class="mdescLeft">&#160;</td><td class="mdescRight">APIへの任意のContent-Typeのボディ部を持つリクエストを発行する。  <a href="classoctane_1_1internal_1_1_fetch_base.html#ab84ee532e405231af8a3d86e9d38de03">[詳解]</a><br /></td></tr>
+<tr class="separator:ab84ee532e405231af8a3d86e9d38de03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p >HttpClientクラスを通じてHTTP通信を行うインタフェース。 </p>
+<p >このインタフェースを実装したクラスは3xx番台のレスポンスを受けたときにリダイレクト処理を行わなければならない。 また、このリダイレクト処理はHTTPヘッダのLocationに従う。 { </p><dl class="section see"><dt>参照</dt><dd><a class="el" href="classoctane_1_1internal_1_1_fetch.html" title="HttpClientクラスを通じてHTTP通信を行う。">Fetch</a> } このインタフェースを実装したクラス。 </dd></dl>
+</div><h2 class="groupheader">型定義メンバ詳解</h2>
+<a id="a1fd6fc80fed23ffa8f8c442e002eb032" name="a1fd6fc80fed23ffa8f8c442e002eb032"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fd6fc80fed23ffa8f8c442e002eb032">&#9670;&#160;</a></span>FetchResult</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classoctane_1_1internal_1_1_fetch_base.html#a1fd6fc80fed23ffa8f8c442e002eb032">octane::internal::FetchBase::FetchResult</a> =  <a class="el" href="classoctane_1_1_result.html">Result</a>&lt;<a class="el" href="structoctane_1_1internal_1_1_fetch_response.html">FetchResponse</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">構築子と解体子</h2>
+<a id="a0a1b74353dd1d34ce8f7fbc8c2cb717b" name="a0a1b74353dd1d34ce8f7fbc8c2cb717b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a1b74353dd1d34ce8f7fbc8c2cb717b">&#9670;&#160;</a></span>~FetchBase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">octane::internal::FetchBase::~FetchBase </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a50f248788fa420baab778673dead51af" name="a50f248788fa420baab778673dead51af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50f248788fa420baab778673dead51af">&#9670;&#160;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1__.html">_</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt; octane::internal::FetchBase::init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Fetchのインスタンスを初期化する。 </p>
+<p >このメソッドはインスタンス一つにつき一度だけ呼び出すことができる。 また、インスタンスを作成した直後に呼び出さなければならない。 失敗した場合は次のエラーレスポンスを返す。</p><ul>
+<li>ERR_CURL_INITIALIZATION_FAILED: CURLの初期化に失敗したとき</li>
+</ul>
+<dl class="section return"><dt>戻り値</dt><dd>Result&lt;_, ErrorResponse&gt; 成功した場合は何も返さず、失敗した場合は上記のエラーレスポンスを返す。 </dd></dl>
+
+<p><a class="el" href="classoctane_1_1internal_1_1_fetch.html#a96e43ca1b274eb9969fd6542dfd130c5">octane::internal::Fetch</a>で実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classoctane_1_1internal_1_1_fetch_base_a50f248788fa420baab778673dead51af_icgraph.png" border="0" usemap="#aclassoctane_1_1internal_1_1_fetch_base_a50f248788fa420baab778673dead51af_icgraph" alt=""/></div>
+<map name="aclassoctane_1_1internal_1_1_fetch_base_a50f248788fa420baab778673dead51af_icgraph" id="aclassoctane_1_1internal_1_1_fetch_base_a50f248788fa420baab778673dead51af_icgraph">
+<area shape="rect" title="Fetchのインスタンスを初期化する。" alt="" coords="423,5,605,45"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#adb1d932c5cc7b07d9982738e63a5ed0e" title="Initialize" alt="" coords="200,5,375,45"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a90a36f3caf3ada6677d9782aadd5780c" title="Initialize" alt="" coords="5,13,152,38"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a204cf835d57c87d11c39f35b1f757555" name="a204cf835d57c87d11c39f35b1f757555"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a204cf835d57c87d11c39f35b1f757555">&#9670;&#160;</a></span>request() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classoctane_1_1internal_1_1_fetch_base.html#a1fd6fc80fed23ffa8f8c442e002eb032">FetchResult</a> octane::internal::FetchBase::request </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceoctane_1_1internal.html#a164bed1ca702ea1cb6f0feb4ded22e73">HttpMethod</a>&#160;</td>
+          <td class="paramname"><em>method</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>url</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>APIへのボディ部を持たないリクエストを発行する。 </p>
+<p >このメソッドはボディを持たないリクエストに使用する。 GET及びDELETEリクエストは必ずこのメソッドを使用しなければならない。 失敗した場合は次のエラーレスポンスを返す。</p><ul>
+<li>ERR_JSON_PARSE_FAILED: レスポンスのContent-Typeがapplication/jsonであったにもかかわらず正常なJSONデータがAPIから返却されなかったとき</li>
+<li>ERR_INCORRECT_HTTP_METHOD: GET, POST, PUT, DELETE以外のHTTPメソッドを指定したとき</li>
+<li>ERR_CURL_CONNECTION_FAILED: CURLの接続に失敗したとき</li>
+</ul>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">method</td><td>リクエストに使用するHTTPメソッド </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">url</td><td>APIへのURL </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>FetchResult 成功した場合はレスポンスのボディ部、失敗した場合は上記のエラーレスポンスを返す。 </dd></dl>
+
+<p><a class="el" href="classoctane_1_1internal_1_1_fetch.html#ab0c9d45e0266aafa331701fadf8569b2">octane::internal::Fetch</a>で実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classoctane_1_1internal_1_1_fetch_base_a204cf835d57c87d11c39f35b1f757555_icgraph.png" border="0" usemap="#aclassoctane_1_1internal_1_1_fetch_base_a204cf835d57c87d11c39f35b1f757555_icgraph" alt=""/></div>
+<map name="aclassoctane_1_1internal_1_1_fetch_base_a204cf835d57c87d11c39f35b1f757555_icgraph" id="aclassoctane_1_1internal_1_1_fetch_base_a204cf835d57c87d11c39f35b1f757555_icgraph">
+<area shape="rect" title="APIへのボディ部を持たないリクエストを発行する。" alt="" coords="405,325,588,365"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for /health" alt="" coords="183,5,357,45"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a150b61a254e64c188074e94d67737263" title="use delete method for /room/{id}/content" alt="" coords="183,133,357,173"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#afc0a82bb6d3e7c878da2c2f2c6e0aed0" title="use get method for /room/{id}/content" alt="" coords="183,261,357,301"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a554d65527982395e8b4095be5f312eb7" title="use put method for /room/{id}/content" alt="" coords="183,453,357,493"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae2c4f70b94f79adb66b1db81b118d809" title="use delete method for /room/{id}" alt="" coords="183,517,357,557"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a26186938de852177fc05cff45e037fc9" title="use get method for /room/{id}" alt="" coords="183,581,357,621"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a152a5325cd6f9c7992469a619e317fcf" title="use post method for /room/{id}" alt="" coords="183,197,357,237"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aeeccd95e2ec6beb6e01fbcd7c8667d80" title="use delete method for /room/{id}/status" alt="" coords="183,69,357,109"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae54da09b4a06e50855131f497fe1db6a" title="use get method for /room/{id}/status" alt="" coords="183,325,357,365"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ab744d0cd53dab5fea10c0c74fd227185" title="use put method for /room/{id}/status" alt="" coords="183,389,357,429"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ad509d17c76ac650318f92e78aa674b22" title="use post method for /room" alt="" coords="183,645,357,685"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a93ff968043aca8a60231e7b218689d9b" title="Return the server&#39;s status" alt="" coords="5,5,135,45"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#ab429c5e6842a3277b334d2e043467e85" title="Delete content from the room" alt="" coords="5,133,135,173"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a69da1feb8954aab68653fb303b966b47" title="Return content in the room" alt="" coords="5,261,135,301"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a4ec2a9c1cb3c9168e2ebf8b21fb2d968" title="Upload content to the room" alt="" coords="5,389,135,429"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a8459fa5374bfe4e039cecb1afd79b531" title="Delete the room" alt="" coords="5,517,135,557"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#abf9f627eef82ca6b148130e707f99fd7" title="Get the room&#39;s status" alt="" coords="5,581,135,621"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#aca5a441478ce67bb09dedc124834d5c2" title="Create a room" alt="" coords="5,645,135,685"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1696b0605cb05c2403fdc3744eb5c08c" name="a1696b0605cb05c2403fdc3744eb5c08c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1696b0605cb05c2403fdc3744eb5c08c">&#9670;&#160;</a></span>request() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classoctane_1_1internal_1_1_fetch_base.html#a1fd6fc80fed23ffa8f8c442e002eb032">FetchResult</a> octane::internal::FetchBase::request </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceoctane_1_1internal.html#a164bed1ca702ea1cb6f0feb4ded22e73">HttpMethod</a>&#160;</td>
+          <td class="paramname"><em>method</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>url</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const rapidjson::Document &amp;&#160;</td>
+          <td class="paramname"><em>body</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>APIへのJSON形式のボディ部を持つリクエストを発行する。 </p>
+<p >このメソッドはJSON形式のボディを持つリクエストに使用する。 GET及びDELETEリクエストはこのメソッドを使用してはならず、代わりに<code><a class="el" href="classoctane_1_1internal_1_1_fetch.html#ab0c9d45e0266aafa331701fadf8569b2">Fetch::request(HttpMethod method, std::string_view url)</a></code>を使用すること。 失敗した場合は次のエラーレスポンスを返す。</p><ul>
+<li>ERR_JSON_PARSE_FAILED: レスポンスのContent-Typeがapplication/jsonであったにもかかわらず正常なJSONデータがAPIから返却されなかったとき</li>
+<li>ERR_INCORRECT_HTTP_METHOD: POST, PUT以外のHTTPメソッドを指定したとき</li>
+<li>ERR_CURL_CONNECTION_FAILED: CURLの接続に失敗したとき</li>
+</ul>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">method</td><td>リクエストに使用するHTTPメソッド </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">url</td><td>APIへのURL </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">body</td><td>APIリクエストのボディ部 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>FetchResult 成功した場合はレスポンスのボディ部、失敗した場合は上記のエラーレスポンスを返す。 </dd></dl>
+
+<p><a class="el" href="classoctane_1_1internal_1_1_fetch.html#a6c11b7bd6d973f238d8c77fc6ac8d5c7">octane::internal::Fetch</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="ab84ee532e405231af8a3d86e9d38de03" name="ab84ee532e405231af8a3d86e9d38de03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab84ee532e405231af8a3d86e9d38de03">&#9670;&#160;</a></span>request() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classoctane_1_1internal_1_1_fetch_base.html#a1fd6fc80fed23ffa8f8c442e002eb032">FetchResult</a> octane::internal::FetchBase::request </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceoctane_1_1internal.html#a164bed1ca702ea1cb6f0feb4ded22e73">HttpMethod</a>&#160;</td>
+          <td class="paramname"><em>method</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>url</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>mimeType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::uint8_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>body</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>APIへの任意のContent-Typeのボディ部を持つリクエストを発行する。 </p>
+<p >このメソッドは任意のContent-Typeのボディを持つリクエストに使用する。 JSON形式のリクエストの場合は<code><a class="el" href="classoctane_1_1internal_1_1_fetch.html#a6c11b7bd6d973f238d8c77fc6ac8d5c7">Fetch::request(HttpMethod method,
+std::string_view url, const rapidjson::Document&amp; body)</a></code>の使用を推奨する。 GET及びDELETEリクエストはこのメソッドを使用してはならず、代わりに<code><a class="el" href="classoctane_1_1internal_1_1_fetch.html#ab0c9d45e0266aafa331701fadf8569b2">Fetch::request(HttpMethod method, std::string_view url)</a></code>を使用すること。 失敗した場合は次のエラーレスポンスを返す。</p><ul>
+<li>ERR_JSON_PARSE_FAILED: レスポンスのContent-Typeがapplication/jsonであったにもかかわらず正常なJSONデータがAPIから返却されなかったとき</li>
+<li>ERR_INCORRECT_HTTP_METHOD: POST, PUT以外のHTTPメソッドを指定したとき</li>
+<li>ERR_CURL_CONNECTION_FAILED: CURLの接続に失敗したとき</li>
+</ul>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">method</td><td>リクエストに使用するHTTPメソッド </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">url</td><td>APIへのURL </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">body</td><td>APIリクエストのボディ部 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>FetchResult 成功した場合はレスポンスのボディ部、失敗した場合は上記のエラーレスポンスを返す。 </dd></dl>
+
+<p><a class="el" href="classoctane_1_1internal_1_1_fetch.html#a9d2d6a2c25b81219b6ae19dc3650c5b8">octane::internal::Fetch</a>で実装されています。</p>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>src/include/internal/<a class="el" href="fetch_8h_source.html">fetch.h</a></li>
+<li>src/cpp/internal/<a class="el" href="fetch_8cpp.html">fetch.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+</small></address>
+</body>
+</html>

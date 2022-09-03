@@ -27,7 +27,15 @@ var menudata={children:[
 {text:"名前空間",url:"namespaces.html",children:[
 {text:"名前空間一覧",url:"namespaces.html"},
 {text:"名前空間メンバ",url:"namespacemembers.html",children:[
-{text:"全て",url:"namespacemembers.html"},
+{text:"全て",url:"namespacemembers.html",children:[
+{text:"c",url:"namespacemembers.html#index_c"},
+{text:"d",url:"namespacemembers.html#index_d"},
+{text:"e",url:"namespacemembers.html#index_e"},
+{text:"g",url:"namespacemembers.html#index_g"},
+{text:"h",url:"namespacemembers.html#index_h"},
+{text:"l",url:"namespacemembers.html#index_l"},
+{text:"m",url:"namespacemembers.html#index_m"},
+{text:"o",url:"namespacemembers.html#index_o"}]},
 {text:"関数",url:"namespacemembers_func.html"},
 {text:"変数",url:"namespacemembers_vars.html"},
 {text:"列挙型",url:"namespacemembers_enum.html"}]}]},
@@ -88,4 +96,5 @@ var menudata={children:[
 {text:"ファイル一覧",url:"files.html"},
 {text:"ファイルメンバ",url:"globals.html",children:[
 {text:"全て",url:"globals.html"},
+{text:"変数",url:"globals_vars.html"},
 {text:"マクロ定義",url:"globals_defs.html"}]}]}]}

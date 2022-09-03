@@ -80,24 +80,32 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="api__client_8h_source.html">api_client.h</a>&gt;</code></p>
+<p><code><a class="el" href="">getContentStatus</a></code>メソッドを呼んだ時の結果を表す構造体。  
+ <a href="structoctane_1_1_content_status.html#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="api__result__types_8h_source.html">api_result_types.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 公開変数類</h2></td></tr>
 <tr class="memitem:ae75661b140e0e44583af2feb067c9a45"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_content_status.html#ae75661b140e0e44583af2feb067c9a45">device</a></td></tr>
+<tr class="memdesc:ae75661b140e0e44583af2feb067c9a45"><td class="mdescLeft">&#160;</td><td class="mdescRight">デバイス名。  <a href="structoctane_1_1_content_status.html#ae75661b140e0e44583af2feb067c9a45">[詳解]</a><br /></td></tr>
 <tr class="separator:ae75661b140e0e44583af2feb067c9a45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ac16fb176a571681a8ddfb75cf83473"><td class="memItemLeft" align="right" valign="top">std::uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_content_status.html#a9ac16fb176a571681a8ddfb75cf83473">timestamp</a></td></tr>
+<tr class="memdesc:a9ac16fb176a571681a8ddfb75cf83473"><td class="mdescLeft">&#160;</td><td class="mdescRight">タイムスタンプ。  <a href="structoctane_1_1_content_status.html#a9ac16fb176a571681a8ddfb75cf83473">[詳解]</a><br /></td></tr>
 <tr class="separator:a9ac16fb176a571681a8ddfb75cf83473"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ccfe92e0ed91069b392f8d4f010c933"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4">ContentType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_content_status.html#a9ccfe92e0ed91069b392f8d4f010c933">type</a></td></tr>
+<tr class="memdesc:a9ccfe92e0ed91069b392f8d4f010c933"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンテンツの型。  <a href="structoctane_1_1_content_status.html#a9ccfe92e0ed91069b392f8d4f010c933">[詳解]</a><br /></td></tr>
 <tr class="separator:a9ccfe92e0ed91069b392f8d4f010c933"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43a579fa3f296f50ea967f1af872fe70"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_content_status.html#a43a579fa3f296f50ea967f1af872fe70">name</a></td></tr>
+<tr class="memdesc:a43a579fa3f296f50ea967f1af872fe70"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンテンツがファイル形式をとる場合、その名前。  <a href="structoctane_1_1_content_status.html#a43a579fa3f296f50ea967f1af872fe70">[詳解]</a><br /></td></tr>
 <tr class="separator:a43a579fa3f296f50ea967f1af872fe70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad612c1e2a67ba2187a92914732d04166"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_content_status.html#ad612c1e2a67ba2187a92914732d04166">mime</a></td></tr>
+<tr class="memdesc:ad612c1e2a67ba2187a92914732d04166"><td class="mdescLeft">&#160;</td><td class="mdescRight">MIME。  <a href="structoctane_1_1_content_status.html#ad612c1e2a67ba2187a92914732d04166">[詳解]</a><br /></td></tr>
 <tr class="separator:ad612c1e2a67ba2187a92914732d04166"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3806fa67a665d4924c2595d30dc60ffb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_content_status.html#a3806fa67a665d4924c2595d30dc60ffb">hash</a></td></tr>
-<tr class="separator:a3806fa67a665d4924c2595d30dc60ffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">メンバ詳解</h2>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p ><code><a class="el" href="">getContentStatus</a></code>メソッドを呼んだ時の結果を表す構造体。 </p>
+</div><h2 class="groupheader">メンバ詳解</h2>
 <a id="ae75661b140e0e44583af2feb067c9a45" name="ae75661b140e0e44583af2feb067c9a45"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae75661b140e0e44583af2feb067c9a45">&#9670;&#160;</a></span>device</h2>
 
@@ -110,19 +118,7 @@ $(function() {
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a3806fa67a665d4924c2595d30dc60ffb" name="a3806fa67a665d4924c2595d30dc60ffb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3806fa67a665d4924c2595d30dc60ffb">&#9670;&#160;</a></span>hash</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string octane::ContentStatus::hash</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>デバイス名。 </p>
 
 </div>
 </div>
@@ -138,6 +134,8 @@ $(function() {
       </table>
 </div><div class="memdoc">
 
+<p>MIME。 </p>
+
 </div>
 </div>
 <a id="a43a579fa3f296f50ea967f1af872fe70" name="a43a579fa3f296f50ea967f1af872fe70"></a>
@@ -151,6 +149,8 @@ $(function() {
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>コンテンツがファイル形式をとる場合、その名前。 </p>
 
 </div>
 </div>
@@ -166,6 +166,8 @@ $(function() {
       </table>
 </div><div class="memdoc">
 
+<p>タイムスタンプ。 </p>
+
 </div>
 </div>
 <a id="a9ccfe92e0ed91069b392f8d4f010c933" name="a9ccfe92e0ed91069b392f8d4f010c933"></a>
@@ -180,10 +182,12 @@ $(function() {
       </table>
 </div><div class="memdoc">
 
+<p>コンテンツの型。 </p>
+
 </div>
 </div>
 <hr/>この構造体詳解は次のファイルから抽出されました:<ul>
-<li>src/include/<a class="el" href="api__client_8h_source.html">api_client.h</a></li>
+<li>src/include/<a class="el" href="api__result__types_8h_source.html">api_result_types.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

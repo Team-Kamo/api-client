@@ -107,7 +107,7 @@ octane::internal::HttpClientBase の継承関係図</div>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p >HTTP通信を行うインタフェース。 </p>
-<dl class="section see"><dt>参照</dt><dd><a class="el" href="classoctane_1_1internal_1_1_http_client.html" title="HTTP通信を行う。">HttpClient</a> このインタフェースを実装したクラス。 </dd></dl>
+<p >{ </p><dl class="section see"><dt>参照</dt><dd><a class="el" href="classoctane_1_1internal_1_1_http_client.html" title="HTTP通信を行う。">HttpClient</a> } このインタフェースを実装したクラス。 </dd></dl>
 </div><h2 class="groupheader">構築子と解体子</h2>
 <a id="a346bd82445006fb38fd339bc06b62aa2" name="a346bd82445006fb38fd339bc06b62aa2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a346bd82445006fb38fd339bc06b62aa2">&#9670;&#160;</a></span>~HttpClientBase()</h2>
@@ -170,10 +170,8 @@ octane::internal::HttpClientBase の継承関係図</div>
 <div class="dyncontent">
 <div class="center"><img src="classoctane_1_1internal_1_1_http_client_base_af17a7fb609866e4294315e4fba2a711d_icgraph.png" border="0" usemap="#aclassoctane_1_1internal_1_1_http_client_base_af17a7fb609866e4294315e4fba2a711d_icgraph" alt=""/></div>
 <map name="aclassoctane_1_1internal_1_1_http_client_base_af17a7fb609866e4294315e4fba2a711d_icgraph" id="aclassoctane_1_1internal_1_1_http_client_base_af17a7fb609866e4294315e4fba2a711d_icgraph">
-<area shape="rect" title="HttpClientを初期化する。" alt="" coords="623,5,801,45"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_fetch.html#ab13d25961028289f8f3e21237fb5233b" title="Fetchのインスタンスを初期化する。" alt="" coords="423,5,575,45"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#adb1d932c5cc7b07d9982738e63a5ed0e" title="Initialize" alt="" coords="200,5,375,45"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a90a36f3caf3ada6677d9782aadd5780c" title="Initialize" alt="" coords="5,13,152,38"/>
+<area shape="rect" title="HttpClientを初期化する。" alt="" coords="205,5,381,45"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_fetch.html#a96e43ca1b274eb9969fd6542dfd130c5" title=" " alt="" coords="5,5,157,45"/>
 </map>
 </div>
 
@@ -214,11 +212,10 @@ octane::internal::HttpClientBase の継承関係図</div>
 </div><div class="memdoc">
 
 <p>HTTPリクエストを発行する。 </p>
-<p >このメソッドは事前に一度必ず{ </p><dl class="section see"><dt>参照</dt><dd><a class="el" href="classoctane_1_1internal_1_1_http_client_base.html#af17a7fb609866e4294315e4fba2a711d" title="HttpClientを初期化する。">init</a> }を呼ばなければならない。 失敗した場合は以下のエラーレスポンスを返す。<ul>
-<li><a class="el" href="namespaceoctane.html#a7cafcefa79f336082d35b64d4cec4d84" title="予期しないHTTPリクエストを発行したときに使用される。">ERR_INCORRECT_HTTP_METHOD</a>: GET, POST, PUT, DELETE以外のメソッドを使用したり、GET, DELETEでボディ部を指定したとき</li>
-<li><a class="el" href="namespaceoctane.html#ab58060f2188272708873292198100e21" title="CURLの処理に失敗したときに使用される。">ERR_CURL_CONNECTION_FAILED</a>: CURLの接続に失敗したとき</li>
+<p >失敗した場合は以下のエラーレスポンスを返す。</p><ul>
+<li>ERR_INCORRECT_HTTP_METHOD: GET, POST, PUT, DELETE以外のメソッドを使用したり、GET, DELETEでボディ部を指定したとき</li>
+<li>ERR_CURL_CONNECTION_FAILED: CURLの接続に失敗したとき</li>
 </ul>
-</dd></dl>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">origin</td><td>リクエスト先のオリジン。"http://localhost:3000"など。 </td></tr>

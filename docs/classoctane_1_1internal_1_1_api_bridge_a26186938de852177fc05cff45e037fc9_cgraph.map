@@ -1,9 +1,9 @@
 <map id="octane::internal::ApiBridge::roomIdGet" name="octane::internal::ApiBridge::roomIdGet">
-<area shape="rect" id="node1" title="use get method for room/:id api" alt="" coords="5,139,180,179"/>
-<area shape="rect" id="node2" href="$classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="228,5,403,45"/>
-<area shape="rect" id="node3" href="$namespaceoctane.html#a508d9040da1bea287606313174f69cbc" title="エラーレスポンスを作成するためのユーティリティ関数。" alt="" coords="451,70,580,95"/>
-<area shape="rect" id="node4" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="628,121,723,146"/>
-<area shape="rect" id="node5" href="$namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="473,171,557,197"/>
-<area shape="rect" id="node6" href="$namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835" title="正常系の型が_であるときに使用できるユーティリティ関数。" alt="" coords="274,246,357,271"/>
-<area shape="rect" id="node7" href="$classoctane_1_1internal_1_1_fetch.html#a3c27b88c73c1c64987c5e451409afa74" title="APIへのボディ部を持たないリクエストを発行する。" alt="" coords="239,320,391,360"/>
+<area shape="rect" id="node1" title="use get method for /room/{id}" alt="" coords="5,127,180,167"/>
+<area shape="rect" id="node2" href="$classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="232,45,407,85"/>
+<area shape="rect" id="node3" href="$namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="481,5,565,31"/>
+<area shape="rect" id="node4" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="636,81,731,107"/>
+<area shape="rect" id="node5" href="$namespaceoctane.html#a508d9040da1bea287606313174f69cbc" title="エラーレスポンスを作成するためのユーティリティ関数。" alt="" coords="459,107,588,132"/>
+<area shape="rect" id="node6" href="$namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835" title="正常系の型が_であるときに使用できるユーティリティ関数。" alt="" coords="278,235,361,260"/>
+<area shape="rect" id="node7" href="$classoctane_1_1internal_1_1_fetch_base.html#a204cf835d57c87d11c39f35b1f757555" title="APIへのボディ部を持たないリクエストを発行する。" alt="" coords="228,285,411,325"/>
 </map>

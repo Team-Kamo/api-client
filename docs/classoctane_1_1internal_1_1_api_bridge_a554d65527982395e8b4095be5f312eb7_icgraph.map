@@ -1,0 +1,4 @@
+<map id="octane::internal::ApiBridge::roomIdContentPut" name="octane::internal::ApiBridge::roomIdContentPut">
+<area shape="rect" id="node1" title="use put method for /room/{id}/content" alt="" coords="183,5,357,45"/>
+<area shape="rect" id="node2" href="$classoctane_1_1_api_client.html#a4ec2a9c1cb3c9168e2ebf8b21fb2d968" title="Upload content to the room" alt="" coords="5,5,135,45"/>
+</map>

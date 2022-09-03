@@ -1,10 +1,10 @@
 <map id="octane::ApiClient::health" name="octane::ApiClient::health">
-<area shape="rect" id="node1" title="Return the server&#39;s status" alt="" coords="5,163,136,203"/>
-<area shape="rect" id="node2" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="807,59,901,85"/>
-<area shape="rect" id="node3" href="$classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for health api" alt="" coords="184,163,359,203"/>
-<area shape="rect" id="node7" href="$namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835" title="正常系の型が_であるときに使用できるユーティリティ関数。" alt="" coords="453,358,535,383"/>
-<area shape="rect" id="node4" href="$classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="407,80,581,120"/>
-<area shape="rect" id="node5" href="$namespaceoctane.html#a508d9040da1bea287606313174f69cbc" title="エラーレスポンスを作成するためのユーティリティ関数。" alt="" coords="629,87,759,113"/>
-<area shape="rect" id="node6" href="$namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="652,166,736,191"/>
-<area shape="rect" id="node8" href="$classoctane_1_1internal_1_1_fetch.html#a3c27b88c73c1c64987c5e451409afa74" title="APIへのボディ部を持たないリクエストを発行する。" alt="" coords="418,269,570,309"/>
+<area shape="rect" id="node1" title="Return the server&#39;s status" alt="" coords="5,157,135,197"/>
+<area shape="rect" id="node2" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="813,135,908,160"/>
+<area shape="rect" id="node3" href="$classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for /health" alt="" coords="183,157,357,197"/>
+<area shape="rect" id="node7" href="$namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835" title="正常系の型が_であるときに使用できるユーティリティ関数。" alt="" coords="455,324,538,350"/>
+<area shape="rect" id="node4" href="$classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="409,185,584,225"/>
+<area shape="rect" id="node5" href="$namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="659,236,743,262"/>
+<area shape="rect" id="node6" href="$namespaceoctane.html#a508d9040da1bea287606313174f69cbc" title="エラーレスポンスを作成するためのユーティリティ関数。" alt="" coords="636,135,765,160"/>
+<area shape="rect" id="node8" href="$classoctane_1_1internal_1_1_fetch_base.html#a204cf835d57c87d11c39f35b1f757555" title="APIへのボディ部を持たないリクエストを発行する。" alt="" coords="405,70,588,110"/>
 </map>

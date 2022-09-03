@@ -72,10 +72,11 @@ $(function() {
   <div class="headertitle"><div class="title">Octane API Client </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><a class="anchor" id="md_README"></a> curl経由でAPIとの中継を担うライブラリ。</p>
-<p >GUI、CUI共にこのライブラリからAPIへアクセスする。</p>
+<div class="textblock"><p ><a class="anchor" id="md_README"></a> OctaneのAPIサーバとの通信を仲介し、後続のクライアント実装へ提供するための中間ライブラリ。</p>
+<p >APIとの煩雑なやりとりを隠蔽し、クライアント実装に必要な機能を提供することを目的に作られた。</p>
+<p >例えばAPIの制約上必要である30分に一回のヘルスチェックや連続して呼ぶ必要のあるAPIリクエストを自動的に呼び出すなどの機能を持つ。</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
-仕様</h1>
+APIリファレンス</h1>
 <p >ドキュメントは<a href="https://team-kamo.github.io/api-client/">こちら</a>。信頼と実績のDoxygen製。</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 ビルド&amp;テスト方法</h1>

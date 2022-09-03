@@ -94,6 +94,9 @@ $(function() {
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_content.html">Content</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><code><a class="el" href="">getContent</a></code>メソッドを呼んだ時の結果を表す構造体。  <a href="structoctane_1_1_content.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_content_status.html">ContentStatus</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><code><a class="el" href="">getContentStatus</a></code>メソッドを呼んだ時の結果を表す構造体。  <a href="structoctane_1_1_content_status.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_device.html">Device</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><code><a class="el" href="structoctane_1_1_room_status.html">RoomStatus</a></code>において<code><a class="el" href="">std::vector&lt;Device&gt;</a></code>の要素が取り得る値を表す列挙体。  <a href="structoctane_1_1_device.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,9 +135,15 @@ $(function() {
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 関数</h2></td></tr>
+<tr class="memitem:af3c2a0c04f69136723af059f0480a977"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#af3c2a0c04f69136723af059f0480a977">operator==</a> (const <a class="el" href="structoctane_1_1_health_result.html">HealthResult</a> &amp;a, const <a class="el" href="structoctane_1_1_health_result.html">HealthResult</a> &amp;b)</td></tr>
+<tr class="separator:af3c2a0c04f69136723af059f0480a977"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a912cfcd78f5b22d3a0feb33bf64c5efd"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a912cfcd78f5b22d3a0feb33bf64c5efd">operator&lt;&lt;</a> (std::ostream &amp;stream, const <a class="el" href="structoctane_1_1_health_result.html">HealthResult</a> &amp;healthResult)</td></tr>
+<tr class="separator:a912cfcd78f5b22d3a0feb33bf64c5efd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a508d9040da1bea287606313174f69cbc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoctane_1_1error__t.html">error_t</a>&lt; <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a508d9040da1bea287606313174f69cbc">makeError</a> (std::string_view code, std::string_view reason)</td></tr>
 <tr class="memdesc:a508d9040da1bea287606313174f69cbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">エラーレスポンスを作成するためのユーティリティ関数。  <a href="namespaceoctane.html#a508d9040da1bea287606313174f69cbc">[詳解]</a><br /></td></tr>
 <tr class="separator:a508d9040da1bea287606313174f69cbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad35dd0394ebd0240d08a17fb010e34c1"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#ad35dd0394ebd0240d08a17fb010e34c1">operator&lt;&lt;</a> (std::ostream &amp;stream, const <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &amp;<a class="el" href="namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327">err</a>)</td></tr>
+<tr class="separator:ad35dd0394ebd0240d08a17fb010e34c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f017b1c4b4453a03510ba4f01e6668a"><td class="memTemplParams" colspan="2">template&lt;typename T_OK &gt; </td></tr>
 <tr class="memitem:a3f017b1c4b4453a03510ba4f01e6668a"><td class="memTemplItemLeft" align="right" valign="top">decltype(auto)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a3f017b1c4b4453a03510ba4f01e6668a">ok</a> (const T_OK &amp;ok)</td></tr>
 <tr class="memdesc:a3f017b1c4b4453a03510ba4f01e6668a"><td class="mdescLeft">&#160;</td><td class="mdescRight">正常系の値を構築するためのユーティリティ関数。  <a href="namespaceoctane.html#a3f017b1c4b4453a03510ba4f01e6668a">[詳解]</a><br /></td></tr>
@@ -162,6 +171,20 @@ $(function() {
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 変数</h2></td></tr>
+<tr class="memitem:a96eff99c83d3347fc5d6986d70ebf0f2"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a96eff99c83d3347fc5d6986d70ebf0f2">LIBRARY_NAME</a> = &quot;Octane API Client&quot;</td></tr>
+<tr class="separator:a96eff99c83d3347fc5d6986d70ebf0f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b3adc173e870b16195fca8a3bc897a4"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a7b3adc173e870b16195fca8a3bc897a4">LIBRARY_VERSION</a> = &quot;v0.1.0&quot;</td></tr>
+<tr class="memdesc:a7b3adc173e870b16195fca8a3bc897a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">ライブラリバージョン。  <a href="namespaceoctane.html#a7b3adc173e870b16195fca8a3bc897a4">[詳解]</a><br /></td></tr>
+<tr class="separator:a7b3adc173e870b16195fca8a3bc897a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7616cdc5ee8905f23a55afd828b57aad"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a7616cdc5ee8905f23a55afd828b57aad">DEFAULT_API_TOKEN</a> = &quot;mock&quot;</td></tr>
+<tr class="memdesc:a7616cdc5ee8905f23a55afd828b57aad"><td class="mdescLeft">&#160;</td><td class="mdescRight">既定で使用されるAPIのトークン。  <a href="namespaceoctane.html#a7616cdc5ee8905f23a55afd828b57aad">[詳解]</a><br /></td></tr>
+<tr class="separator:a7616cdc5ee8905f23a55afd828b57aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0e2364531730418c76b95056b88beeb"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#ac0e2364531730418c76b95056b88beeb">DEFAULT_API_ORIGIN</a> = &quot;http://localhost:3000&quot;</td></tr>
+<tr class="memdesc:ac0e2364531730418c76b95056b88beeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">既定で使用されるAPIのオリジン。  <a href="namespaceoctane.html#ac0e2364531730418c76b95056b88beeb">[詳解]</a><br /></td></tr>
+<tr class="separator:ac0e2364531730418c76b95056b88beeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1b54c1eb7334d6c31aae14549d6a3ba"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#ad1b54c1eb7334d6c31aae14549d6a3ba">DEFAULT_API_BASE_URL</a> = &quot;/api/v1&quot;</td></tr>
+<tr class="memdesc:ad1b54c1eb7334d6c31aae14549d6a3ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">既定で使用されるAPIのベースURL。  <a href="namespaceoctane.html#ad1b54c1eb7334d6c31aae14549d6a3ba">[詳解]</a><br /></td></tr>
+<tr class="separator:ad1b54c1eb7334d6c31aae14549d6a3ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32c1cf2a9967d890ba562949285d39fe"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a32c1cf2a9967d890ba562949285d39fe">ERR_API_CLIENT_INITIALIZATION_FAILED</a> = &quot;ERR_API_CLIENT_INITIALIZATION_FAILED&quot;</td></tr>
 <tr class="memdesc:a32c1cf2a9967d890ba562949285d39fe"><td class="mdescLeft">&#160;</td><td class="mdescRight"><code><a class="el" href="classoctane_1_1_api_client.html">ApiClient</a></code>の初期化に失敗したときに使用される。  <a href="namespaceoctane.html#a32c1cf2a9967d890ba562949285d39fe">[詳解]</a><br /></td></tr>
 <tr class="separator:a32c1cf2a9967d890ba562949285d39fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -186,9 +209,6 @@ $(function() {
 <tr class="memitem:a7b27587dbd2d28891593cd7519003565"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a7b27587dbd2d28891593cd7519003565">ERR_INVALID_REQUEST</a> = &quot;ERR_INVALID_REQUEST&quot;</td></tr>
 <tr class="memdesc:a7b27587dbd2d28891593cd7519003565"><td class="mdescLeft">&#160;</td><td class="mdescRight">予期しないリクエストを発行したときに使用される。  <a href="namespaceoctane.html#a7b27587dbd2d28891593cd7519003565">[詳解]</a><br /></td></tr>
 <tr class="separator:a7b27587dbd2d28891593cd7519003565"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0719fc64f3c0e8fe2e7d545f73e005af"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a0719fc64f3c0e8fe2e7d545f73e005af">ERR_INVALID_STATUS_CODE</a> = &quot;ERR_INVALID_STATUS_CODE&quot;</td></tr>
-<tr class="memdesc:a0719fc64f3c0e8fe2e7d545f73e005af"><td class="mdescLeft">&#160;</td><td class="mdescRight">予期しないステータスコードが返されたときに使用される。  <a href="namespaceoctane.html#a0719fc64f3c0e8fe2e7d545f73e005af">[詳解]</a><br /></td></tr>
-<tr class="separator:a0719fc64f3c0e8fe2e7d545f73e005af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">列挙型詳解</h2>
 <a id="ab6ae76f8bafa760d30cd5a5863b0cea4" name="ab6ae76f8bafa760d30cd5a5863b0cea4"></a>
@@ -303,25 +323,27 @@ template&lt;typename T_Error &gt; </div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceoctane_a11bf84eb93d9625bf17de018e4491327_icgraph.png" border="0" usemap="#anamespaceoctane_a11bf84eb93d9625bf17de018e4491327_icgraph" alt=""/></div>
 <map name="anamespaceoctane_a11bf84eb93d9625bf17de018e4491327_icgraph" id="anamespaceoctane_a11bf84eb93d9625bf17de018e4491327_icgraph">
-<area shape="rect" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="407,333,491,358"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for health api" alt="" coords="184,5,359,45"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a150b61a254e64c188074e94d67737263" title="use delete method for room/:id/content api" alt="" coords="184,69,359,109"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aee95260574f0825495bf61003829d80c" title="use get method for room/:id/content api" alt="" coords="184,133,359,173"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a982f02890b89d82b649fe4bcf2dff1b3" title="use put method for room/:id/content api" alt="" coords="184,197,359,237"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae2c4f70b94f79adb66b1db81b118d809" title="use delete method for room/:id api" alt="" coords="184,261,359,301"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a26186938de852177fc05cff45e037fc9" title="use get method for room/:id api" alt="" coords="184,325,359,365"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a152a5325cd6f9c7992469a619e317fcf" title="use post method for room/:id api" alt="" coords="184,389,359,429"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aeeccd95e2ec6beb6e01fbcd7c8667d80" title="use delete method for room/:id/status api" alt="" coords="184,453,359,493"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ddc77106d7ff1e53b465002cc02f55a" title="use get method for room/:id/status api" alt="" coords="184,517,359,557"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aae96fc4c7a02e171425c0ff91606b4e0" title="use put method for room/:id/status api" alt="" coords="184,581,359,621"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ad509d17c76ac650318f92e78aa674b22" title="use post method for room api" alt="" coords="184,645,359,685"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a93ff968043aca8a60231e7b218689d9b" title="Return the server&#39;s status" alt="" coords="5,5,136,45"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#abcadeb1619b4f438c7d3605d7c29824f" title="Delete content from the room" alt="" coords="5,69,136,109"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#af293ce82a072d6f8fbdd4376b7452c36" title="Return content in the room" alt="" coords="5,133,136,173"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#acc69338fe35004772b219e7a24f78481" title="Upload content to the room" alt="" coords="5,197,136,237"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a8459fa5374bfe4e039cecb1afd79b531" title="Delete the room" alt="" coords="5,261,136,301"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#abf9f627eef82ca6b148130e707f99fd7" title="Get the room&#39;s status" alt="" coords="5,325,136,365"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#aca5a441478ce67bb09dedc124834d5c2" title="Create a room" alt="" coords="5,645,136,685"/>
+<area shape="rect" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="628,367,712,393"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="405,303,580,343"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for /health" alt="" coords="183,5,357,45"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a150b61a254e64c188074e94d67737263" title="use delete method for /room/{id}/content" alt="" coords="183,133,357,173"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#afc0a82bb6d3e7c878da2c2f2c6e0aed0" title="use get method for /room/{id}/content" alt="" coords="183,261,357,301"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a554d65527982395e8b4095be5f312eb7" title="use put method for /room/{id}/content" alt="" coords="183,453,357,493"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae2c4f70b94f79adb66b1db81b118d809" title="use delete method for /room/{id}" alt="" coords="183,517,357,557"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a26186938de852177fc05cff45e037fc9" title="use get method for /room/{id}" alt="" coords="183,581,357,621"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a152a5325cd6f9c7992469a619e317fcf" title="use post method for /room/{id}" alt="" coords="183,197,357,237"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aeeccd95e2ec6beb6e01fbcd7c8667d80" title="use delete method for /room/{id}/status" alt="" coords="183,69,357,109"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae54da09b4a06e50855131f497fe1db6a" title="use get method for /room/{id}/status" alt="" coords="183,325,357,365"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ab744d0cd53dab5fea10c0c74fd227185" title="use put method for /room/{id}/status" alt="" coords="183,389,357,429"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ad509d17c76ac650318f92e78aa674b22" title="use post method for /room" alt="" coords="183,645,357,685"/>
+<area shape="rect" href="namespaceoctane.html#ad35dd0394ebd0240d08a17fb010e34c1" title=" " alt="" coords="427,671,559,697"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a93ff968043aca8a60231e7b218689d9b" title="Return the server&#39;s status" alt="" coords="5,5,135,45"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#ab429c5e6842a3277b334d2e043467e85" title="Delete content from the room" alt="" coords="5,133,135,173"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a69da1feb8954aab68653fb303b966b47" title="Return content in the room" alt="" coords="5,261,135,301"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a4ec2a9c1cb3c9168e2ebf8b21fb2d968" title="Upload content to the room" alt="" coords="5,389,135,429"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a8459fa5374bfe4e039cecb1afd79b531" title="Delete the room" alt="" coords="5,517,135,557"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#abf9f627eef82ca6b148130e707f99fd7" title="Get the room&#39;s status" alt="" coords="5,581,135,621"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#aca5a441478ce67bb09dedc124834d5c2" title="Create a room" alt="" coords="5,645,135,685"/>
 </map>
 </div>
 
@@ -421,36 +443,38 @@ template&lt;typename T_Error , size_t N&gt; </div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceoctane_a11a1130b89597aa8ff1d5d8ca69d74ed_icgraph.png" border="0" usemap="#anamespaceoctane_a11a1130b89597aa8ff1d5d8ca69d74ed_icgraph" alt=""/></div>
 <map name="anamespaceoctane_a11a1130b89597aa8ff1d5d8ca69d74ed_icgraph" id="anamespaceoctane_a11a1130b89597aa8ff1d5d8ca69d74ed_icgraph">
-<area shape="rect" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="855,1026,949,1052"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#aca5a441478ce67bb09dedc124834d5c2" title="Create a room" alt="" coords="5,202,136,242"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#abcadeb1619b4f438c7d3605d7c29824f" title="Delete content from the room" alt="" coords="5,1047,136,1087"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a8459fa5374bfe4e039cecb1afd79b531" title="Delete the room" alt="" coords="5,1402,136,1442"/>
-<area shape="rect" href="classoctane_1_1_result.html#ab5dc7ca728727fe6fcf2ad6731277eb3" title="準正常系の値を定数値として取り出す。" alt="" coords="655,1508,785,1533"/>
-<area shape="rect" href="namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="454,900,538,925"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for health api" alt="" coords="184,271,359,311"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a93ff968043aca8a60231e7b218689d9b" title="Return the server&#39;s status" alt="" coords="5,119,136,159"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a150b61a254e64c188074e94d67737263" title="use delete method for room/:id/content api" alt="" coords="184,880,359,920"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aee95260574f0825495bf61003829d80c" title="use get method for room/:id/content api" alt="" coords="184,524,359,564"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#af293ce82a072d6f8fbdd4376b7452c36" title="Return content in the room" alt="" coords="5,512,136,552"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a982f02890b89d82b649fe4bcf2dff1b3" title="use put method for room/:id/content api" alt="" coords="184,430,359,470"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#acc69338fe35004772b219e7a24f78481" title="Upload content to the room" alt="" coords="5,344,136,384"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae2c4f70b94f79adb66b1db81b118d809" title="use delete method for room/:id api" alt="" coords="184,1275,359,1315"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a26186938de852177fc05cff45e037fc9" title="use get method for room/:id api" alt="" coords="184,1196,359,1236"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#abf9f627eef82ca6b148130e707f99fd7" title="Get the room&#39;s status" alt="" coords="5,1291,136,1331"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a152a5325cd6f9c7992469a619e317fcf" title="use post method for room/:id api" alt="" coords="184,944,359,984"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aeeccd95e2ec6beb6e01fbcd7c8667d80" title="use delete method for room/:id/status api" alt="" coords="184,1008,359,1048"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ddc77106d7ff1e53b465002cc02f55a" title="use get method for room/:id/status api" alt="" coords="184,1084,359,1124"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aae96fc4c7a02e171425c0ff91606b4e0" title="use put method for room/:id/status api" alt="" coords="184,803,359,843"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ad509d17c76ac650318f92e78aa674b22" title="use post method for room api" alt="" coords="184,366,359,406"/>
-<area shape="rect" href="classoctane_1_1error__t.html#a8c961c88b5b7d8ed425ad7e75a5b7f30" title=" " alt="" coords="645,1557,795,1582"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a90a36f3caf3ada6677d9782aadd5780c" title="Initialize" alt="" coords="647,1606,793,1632"/>
-<area shape="rect" href="namespaceoctane.html#a508d9040da1bea287606313174f69cbc" title="エラーレスポンスを作成するためのユーティリティ関数。" alt="" coords="655,677,785,702"/>
-<area shape="rect" href="classoctane_1_1error__t.html#a5f88fb2143fdd0af7505963b72d07b64" title=" " alt="" coords="633,1656,807,1696"/>
-<area shape="rect" href="classoctane_1_1_result.html#a75e8a3bfab37da3e786cfdd9c7348d43" title=" " alt="" coords="643,1721,797,1746"/>
-<area shape="rect" href="classoctane_1_1_result.html#a51e56850275cb524d62ad79cfbe74f7b" title=" " alt="" coords="639,1770,801,1796"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="409,835,583,875"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ae637622c392e4cf4ac4c9f33f71b0443" title=" " alt="" coords="407,582,585,622"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ac4698034c0997078b5ba13c7ed46e8bb" title=" " alt="" coords="407,670,585,710"/>
+<area shape="rect" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="848,1665,943,1690"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="406,776,581,816"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for /health" alt="" coords="183,212,357,252"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a93ff968043aca8a60231e7b218689d9b" title="Return the server&#39;s status" alt="" coords="5,85,135,125"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a150b61a254e64c188074e94d67737263" title="use delete method for /room/{id}/content" alt="" coords="183,371,357,411"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#ab429c5e6842a3277b334d2e043467e85" title="Delete content from the room" alt="" coords="5,339,135,379"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#afc0a82bb6d3e7c878da2c2f2c6e0aed0" title="use get method for /room/{id}/content" alt="" coords="183,567,357,607"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a69da1feb8954aab68653fb303b966b47" title="Return content in the room" alt="" coords="5,525,135,565"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a554d65527982395e8b4095be5f312eb7" title="use put method for /room/{id}/content" alt="" coords="183,1163,357,1203"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a4ec2a9c1cb3c9168e2ebf8b21fb2d968" title="Upload content to the room" alt="" coords="5,1163,135,1203"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae2c4f70b94f79adb66b1db81b118d809" title="use delete method for /room/{id}" alt="" coords="183,1545,357,1585"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a8459fa5374bfe4e039cecb1afd79b531" title="Delete the room" alt="" coords="5,1641,135,1681"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a26186938de852177fc05cff45e037fc9" title="use get method for /room/{id}" alt="" coords="183,1708,357,1748"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#abf9f627eef82ca6b148130e707f99fd7" title="Get the room&#39;s status" alt="" coords="5,1803,135,1843"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a152a5325cd6f9c7992469a619e317fcf" title="use post method for /room/{id}" alt="" coords="183,484,357,524"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aeeccd95e2ec6beb6e01fbcd7c8667d80" title="use delete method for /room/{id}/status" alt="" coords="183,307,357,347"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae54da09b4a06e50855131f497fe1db6a" title="use get method for /room/{id}/status" alt="" coords="183,776,357,816"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ab744d0cd53dab5fea10c0c74fd227185" title="use put method for /room/{id}/status" alt="" coords="183,985,357,1025"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ad509d17c76ac650318f92e78aa674b22" title="use post method for /room" alt="" coords="183,1809,357,1849"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#aca5a441478ce67bb09dedc124834d5c2" title="Create a room" alt="" coords="5,1961,135,2001"/>
+<area shape="rect" href="classoctane_1_1_result.html#ab5dc7ca728727fe6fcf2ad6731277eb3" title="準正常系の値を定数値として取り出す。" alt="" coords="650,2171,779,2197"/>
+<area shape="rect" href="namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="673,757,757,782"/>
+<area shape="rect" href="classoctane_1_1error__t.html#a8c961c88b5b7d8ed425ad7e75a5b7f30" title=" " alt="" coords="639,2221,790,2246"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a90a36f3caf3ada6677d9782aadd5780c" title="Initialize" alt="" coords="641,2270,788,2295"/>
+<area shape="rect" href="namespaceoctane.html#a508d9040da1bea287606313174f69cbc" title="エラーレスポンスを作成するためのユーティリティ関数。" alt="" coords="650,1398,779,1423"/>
+<area shape="rect" href="classoctane_1_1error__t.html#a5f88fb2143fdd0af7505963b72d07b64" title=" " alt="" coords="629,2320,800,2360"/>
+<area shape="rect" href="classoctane_1_1_result.html#a75e8a3bfab37da3e786cfdd9c7348d43" title=" " alt="" coords="639,2385,790,2410"/>
+<area shape="rect" href="classoctane_1_1_result.html#a51e56850275cb524d62ad79cfbe74f7b" title=" " alt="" coords="635,2434,794,2459"/>
+<area shape="rect" href="namespaceoctane.html#ad35dd0394ebd0240d08a17fb010e34c1" title=" " alt="" coords="427,625,559,650"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ae637622c392e4cf4ac4c9f33f71b0443" title=" " alt="" coords="405,1536,581,1576"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_fetch.html#a6c11b7bd6d973f238d8c77fc6ac8d5c7" title=" " alt="" coords="417,1600,569,1640"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ac4698034c0997078b5ba13c7ed46e8bb" title=" " alt="" coords="405,1472,581,1512"/>
 </map>
 </div>
 
@@ -492,7 +516,7 @@ template&lt;typename T_Error , size_t N&gt; </div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// 次のように記述できる</span></div>
 <div class="line"><span class="keywordflow">return</span> <a class="code hl_function" href="namespaceoctane.html#a508d9040da1bea287606313174f69cbc">makeError</a>(ERR_SOME_ERROR, <span class="stringliteral">&quot;Error!!!&quot;</span>);</div>
-<div class="ttc" id="anamespaceoctane_html_a508d9040da1bea287606313174f69cbc"><div class="ttname"><a href="namespaceoctane.html#a508d9040da1bea287606313174f69cbc">octane::makeError</a></div><div class="ttdeci">error_t&lt; ErrorResponse &gt; makeError(std::string_view code, std::string_view reason)</div><div class="ttdoc">エラーレスポンスを作成するためのユーティリティ関数。</div><div class="ttdef"><b>Definition:</b> error_response.cpp:14</div></div>
+<div class="ttc" id="anamespaceoctane_html_a508d9040da1bea287606313174f69cbc"><div class="ttname"><a href="namespaceoctane.html#a508d9040da1bea287606313174f69cbc">octane::makeError</a></div><div class="ttdeci">error_t&lt; ErrorResponse &gt; makeError(std::string_view code, std::string_view reason)</div><div class="ttdoc">エラーレスポンスを作成するためのユーティリティ関数。</div><div class="ttdef"><b>Definition:</b> error_response.cpp:16</div></div>
 <div class="ttc" id="astructoctane_1_1_error_response_html"><div class="ttname"><a href="structoctane_1_1_error_response.html">octane::ErrorResponse</a></div><div class="ttdoc">エラーを表す汎用構造体。</div><div class="ttdef"><b>Definition:</b> error_response.h:24</div></div>
 <div class="ttc" id="astructoctane_1_1_error_response_html_a66eea46892c2c328c5b7f31dcfcecc57"><div class="ttname"><a href="structoctane_1_1_error_response.html#a66eea46892c2c328c5b7f31dcfcecc57">octane::ErrorResponse::code</a></div><div class="ttdeci">std::string code</div><div class="ttdoc">エラーコード。</div><div class="ttdef"><b>Definition:</b> error_response.h:31</div></div>
 </div><!-- fragment --><dl class="params"><dt>引数</dt><dd>
@@ -517,28 +541,29 @@ template&lt;typename T_Error , size_t N&gt; </div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceoctane_a508d9040da1bea287606313174f69cbc_icgraph.png" border="0" usemap="#anamespaceoctane_a508d9040da1bea287606313174f69cbc_icgraph" alt=""/></div>
 <map name="anamespaceoctane_a508d9040da1bea287606313174f69cbc_icgraph" id="anamespaceoctane_a508d9040da1bea287606313174f69cbc_icgraph">
-<area shape="rect" title="エラーレスポンスを作成するためのユーティリティ関数。" alt="" coords="633,466,763,491"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="409,357,583,397"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for health api" alt="" coords="184,5,359,45"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aee95260574f0825495bf61003829d80c" title="use get method for room/:id/content api" alt="" coords="184,69,359,109"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a982f02890b89d82b649fe4bcf2dff1b3" title="use put method for room/:id/content api" alt="" coords="184,133,359,173"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a26186938de852177fc05cff45e037fc9" title="use get method for room/:id api" alt="" coords="184,453,359,493"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ddc77106d7ff1e53b465002cc02f55a" title="use get method for room/:id/status api" alt="" coords="184,517,359,557"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aae96fc4c7a02e171425c0ff91606b4e0" title="use put method for room/:id/status api" alt="" coords="184,581,359,621"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ad509d17c76ac650318f92e78aa674b22" title="use post method for room api" alt="" coords="184,645,359,685"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ae637622c392e4cf4ac4c9f33f71b0443" title=" " alt="" coords="407,643,585,683"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ac4698034c0997078b5ba13c7ed46e8bb" title=" " alt="" coords="407,731,585,771"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a150b61a254e64c188074e94d67737263" title="use delete method for room/:id/content api" alt="" coords="184,389,359,429"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae2c4f70b94f79adb66b1db81b118d809" title="use delete method for room/:id api" alt="" coords="184,325,359,365"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a152a5325cd6f9c7992469a619e317fcf" title="use post method for room/:id api" alt="" coords="184,197,359,237"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aeeccd95e2ec6beb6e01fbcd7c8667d80" title="use delete method for room/:id/status api" alt="" coords="184,261,359,301"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a93ff968043aca8a60231e7b218689d9b" title="Return the server&#39;s status" alt="" coords="5,5,136,45"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#abcadeb1619b4f438c7d3605d7c29824f" title="Delete content from the room" alt="" coords="5,389,136,429"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#af293ce82a072d6f8fbdd4376b7452c36" title="Return content in the room" alt="" coords="5,69,136,109"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#acc69338fe35004772b219e7a24f78481" title="Upload content to the room" alt="" coords="5,133,136,173"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a8459fa5374bfe4e039cecb1afd79b531" title="Delete the room" alt="" coords="5,325,136,365"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#abf9f627eef82ca6b148130e707f99fd7" title="Get the room&#39;s status" alt="" coords="5,453,136,493"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#aca5a441478ce67bb09dedc124834d5c2" title="Create a room" alt="" coords="5,645,136,685"/>
+<area shape="rect" title="エラーレスポンスを作成するためのユーティリティ関数。" alt="" coords="629,558,759,583"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="406,357,581,397"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for /health" alt="" coords="183,5,357,45"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#afc0a82bb6d3e7c878da2c2f2c6e0aed0" title="use get method for /room/{id}/content" alt="" coords="183,69,357,109"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a554d65527982395e8b4095be5f312eb7" title="use put method for /room/{id}/content" alt="" coords="183,517,357,557"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a4ec2a9c1cb3c9168e2ebf8b21fb2d968" title="Upload content to the room" alt="" coords="5,549,135,589"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a26186938de852177fc05cff45e037fc9" title="use get method for /room/{id}" alt="" coords="183,453,357,493"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae54da09b4a06e50855131f497fe1db6a" title="use get method for /room/{id}/status" alt="" coords="183,133,357,173"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ab744d0cd53dab5fea10c0c74fd227185" title="use put method for /room/{id}/status" alt="" coords="183,581,357,621"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ad509d17c76ac650318f92e78aa674b22" title="use post method for /room" alt="" coords="183,696,357,736"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ae637622c392e4cf4ac4c9f33f71b0443" title=" " alt="" coords="405,741,581,781"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_fetch.html#a6c11b7bd6d973f238d8c77fc6ac8d5c7" title=" " alt="" coords="417,805,569,845"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ac4698034c0997078b5ba13c7ed46e8bb" title=" " alt="" coords="405,893,581,933"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a150b61a254e64c188074e94d67737263" title="use delete method for /room/{id}/content" alt="" coords="183,197,357,237"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae2c4f70b94f79adb66b1db81b118d809" title="use delete method for /room/{id}" alt="" coords="183,389,357,429"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a152a5325cd6f9c7992469a619e317fcf" title="use post method for /room/{id}" alt="" coords="183,261,357,301"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aeeccd95e2ec6beb6e01fbcd7c8667d80" title="use delete method for /room/{id}/status" alt="" coords="183,325,357,365"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a93ff968043aca8a60231e7b218689d9b" title="Return the server&#39;s status" alt="" coords="5,5,135,45"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#ab429c5e6842a3277b334d2e043467e85" title="Delete content from the room" alt="" coords="5,261,135,301"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a69da1feb8954aab68653fb303b966b47" title="Return content in the room" alt="" coords="5,133,135,173"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a8459fa5374bfe4e039cecb1afd79b531" title="Delete the room" alt="" coords="5,389,135,429"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#abf9f627eef82ca6b148130e707f99fd7" title="Get the room&#39;s status" alt="" coords="5,453,135,493"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#aca5a441478ce67bb09dedc124834d5c2" title="Create a room" alt="" coords="5,696,135,736"/>
 </map>
 </div>
 
@@ -584,33 +609,33 @@ template&lt;typename T_OK  = _&gt; </div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceoctane_a4278ebdd8868424048d63d57af2bc835_icgraph.png" border="0" usemap="#anamespaceoctane_a4278ebdd8868424048d63d57af2bc835_icgraph" alt=""/></div>
 <map name="anamespaceoctane_a4278ebdd8868424048d63d57af2bc835_icgraph" id="anamespaceoctane_a4278ebdd8868424048d63d57af2bc835_icgraph">
-<area shape="rect" title="正常系の型が_であるときに使用できるユーティリティ関数。" alt="" coords="453,617,536,642"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#aca5a441478ce67bb09dedc124834d5c2" title="Create a room" alt="" coords="27,813,157,853"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#abcadeb1619b4f438c7d3605d7c29824f" title="Delete content from the room" alt="" coords="27,35,157,75"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a8459fa5374bfe4e039cecb1afd79b531" title="Delete the room" alt="" coords="27,272,157,312"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#af293ce82a072d6f8fbdd4376b7452c36" title="Return content in the room" alt="" coords="27,363,157,403"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#abf9f627eef82ca6b148130e707f99fd7" title="Get the room&#39;s status" alt="" coords="27,731,157,771"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a93ff968043aca8a60231e7b218689d9b" title="Return the server&#39;s status" alt="" coords="27,143,157,183"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for health api" alt="" coords="229,171,403,211"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ae637622c392e4cf4ac4c9f33f71b0443" title=" " alt="" coords="227,413,405,453"/>
-<area shape="rect" href="namespaceoctane.html#a3f017b1c4b4453a03510ba4f01e6668a" title="正常系の値を構築するためのユーティリティ関数。" alt="" coords="275,617,357,642"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ac4698034c0997078b5ba13c7ed46e8bb" title=" " alt="" coords="227,552,405,592"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a150b61a254e64c188074e94d67737263" title="use delete method for room/:id/content api" alt="" coords="229,5,403,45"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aee95260574f0825495bf61003829d80c" title="use get method for room/:id/content api" alt="" coords="229,349,403,389"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a982f02890b89d82b649fe4bcf2dff1b3" title="use put method for room/:id/content api" alt="" coords="229,896,403,936"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#acc69338fe35004772b219e7a24f78481" title="Upload content to the room" alt="" coords="27,1052,157,1092"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae2c4f70b94f79adb66b1db81b118d809" title="use delete method for room/:id api" alt="" coords="229,285,403,325"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a26186938de852177fc05cff45e037fc9" title="use get method for room/:id api" alt="" coords="229,667,403,707"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a152a5325cd6f9c7992469a619e317fcf" title="use post method for room/:id api" alt="" coords="229,960,403,1000"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aeeccd95e2ec6beb6e01fbcd7c8667d80" title="use delete method for room/:id/status api" alt="" coords="229,1024,403,1064"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ddc77106d7ff1e53b465002cc02f55a" title="use get method for room/:id/status api" alt="" coords="229,1088,403,1128"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aae96fc4c7a02e171425c0ff91606b4e0" title="use put method for room/:id/status api" alt="" coords="229,1152,403,1192"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ad509d17c76ac650318f92e78aa674b22" title="use post method for room api" alt="" coords="229,832,403,872"/>
-<area shape="rect" href="classoctane_1_1_result.html#aa73cd832003f87fa7eb73531bddc7e30" title="正常系の値を定数値として取り出す。" alt="" coords="25,567,159,593"/>
-<area shape="rect" href="classoctane_1_1ok__t.html#a2ae4f28e289ef05b67afb38d58e83cb6" title=" " alt="" coords="29,617,155,642"/>
-<area shape="rect" href="classoctane_1_1ok__t.html#a630469510a2cba69f993ee977f0c9a9f" title=" " alt="" coords="5,667,179,707"/>
-<area shape="rect" href="classoctane_1_1_result.html#a75e8a3bfab37da3e786cfdd9c7348d43" title=" " alt="" coords="15,469,169,494"/>
-<area shape="rect" href="classoctane_1_1_result.html#a51e56850275cb524d62ad79cfbe74f7b" title=" " alt="" coords="11,518,173,543"/>
+<area shape="rect" title="正常系の型が_であるときに使用できるユーティリティ関数。" alt="" coords="448,599,531,625"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#aca5a441478ce67bb09dedc124834d5c2" title="Create a room" alt="" coords="26,35,155,75"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#ab429c5e6842a3277b334d2e043467e85" title="Delete content from the room" alt="" coords="26,203,155,243"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a8459fa5374bfe4e039cecb1afd79b531" title="Delete the room" alt="" coords="26,764,155,804"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a69da1feb8954aab68653fb303b966b47" title="Return content in the room" alt="" coords="26,395,155,435"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#abf9f627eef82ca6b148130e707f99fd7" title="Get the room&#39;s status" alt="" coords="26,849,155,889"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a93ff968043aca8a60231e7b218689d9b" title="Return the server&#39;s status" alt="" coords="26,957,155,997"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for /health" alt="" coords="225,949,399,989"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ae637622c392e4cf4ac4c9f33f71b0443" title=" " alt="" coords="224,1064,400,1104"/>
+<area shape="rect" href="namespaceoctane.html#a3f017b1c4b4453a03510ba4f01e6668a" title="正常系の値を構築するためのユーティリティ関数。" alt="" coords="271,1129,353,1154"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ac4698034c0997078b5ba13c7ed46e8bb" title=" " alt="" coords="224,1203,400,1243"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a150b61a254e64c188074e94d67737263" title="use delete method for /room/{id}/content" alt="" coords="225,171,399,211"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#afc0a82bb6d3e7c878da2c2f2c6e0aed0" title="use get method for /room/{id}/content" alt="" coords="225,299,399,339"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a554d65527982395e8b4095be5f312eb7" title="use put method for /room/{id}/content" alt="" coords="225,592,399,632"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a4ec2a9c1cb3c9168e2ebf8b21fb2d968" title="Upload content to the room" alt="" coords="26,564,155,604"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae2c4f70b94f79adb66b1db81b118d809" title="use delete method for /room/{id}" alt="" coords="225,720,399,760"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a26186938de852177fc05cff45e037fc9" title="use get method for /room/{id}" alt="" coords="225,835,399,875"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a152a5325cd6f9c7992469a619e317fcf" title="use post method for /room/{id}" alt="" coords="225,363,399,403"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aeeccd95e2ec6beb6e01fbcd7c8667d80" title="use delete method for /room/{id}/status" alt="" coords="225,235,399,275"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae54da09b4a06e50855131f497fe1db6a" title="use get method for /room/{id}/status" alt="" coords="225,427,399,467"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ab744d0cd53dab5fea10c0c74fd227185" title="use put method for /room/{id}/status" alt="" coords="225,656,399,696"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ad509d17c76ac650318f92e78aa674b22" title="use post method for /room" alt="" coords="225,5,399,45"/>
+<area shape="rect" href="classoctane_1_1_result.html#aa73cd832003f87fa7eb73531bddc7e30" title="正常系の値を定数値として取り出す。" alt="" coords="25,1079,157,1105"/>
+<area shape="rect" href="classoctane_1_1ok__t.html#a2ae4f28e289ef05b67afb38d58e83cb6" title=" " alt="" coords="27,1129,154,1154"/>
+<area shape="rect" href="classoctane_1_1ok__t.html#a630469510a2cba69f993ee977f0c9a9f" title=" " alt="" coords="5,1179,176,1219"/>
+<area shape="rect" href="classoctane_1_1_result.html#a75e8a3bfab37da3e786cfdd9c7348d43" title=" " alt="" coords="15,1243,166,1269"/>
+<area shape="rect" href="classoctane_1_1_result.html#a51e56850275cb524d62ad79cfbe74f7b" title=" " alt="" coords="11,1030,170,1055"/>
 </map>
 </div>
 
@@ -719,7 +744,173 @@ template&lt;typename T_OK &gt; </div>
 
 </div>
 </div>
+<a id="ad35dd0394ebd0240d08a17fb010e34c1" name="ad35dd0394ebd0240d08a17fb010e34c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad35dd0394ebd0240d08a17fb010e34c1">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; octane::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &amp;&#160;</td>
+          <td class="paramname"><em>err</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceoctane_ad35dd0394ebd0240d08a17fb010e34c1_cgraph.png" border="0" usemap="#anamespaceoctane_ad35dd0394ebd0240d08a17fb010e34c1_cgraph" alt=""/></div>
+<map name="anamespaceoctane_ad35dd0394ebd0240d08a17fb010e34c1_cgraph" id="anamespaceoctane_ad35dd0394ebd0240d08a17fb010e34c1_cgraph">
+<area shape="rect" title=" " alt="" coords="5,29,137,55"/>
+<area shape="rect" href="namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="185,29,269,55"/>
+<area shape="rect" href="namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="317,29,412,55"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a912cfcd78f5b22d3a0feb33bf64c5efd" name="a912cfcd78f5b22d3a0feb33bf64c5efd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a912cfcd78f5b22d3a0feb33bf64c5efd">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; octane::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structoctane_1_1_health_result.html">HealthResult</a> &amp;&#160;</td>
+          <td class="paramname"><em>healthResult</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af3c2a0c04f69136723af059f0480a977" name="af3c2a0c04f69136723af059f0480a977"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3c2a0c04f69136723af059f0480a977">&#9670;&#160;</a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool octane::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structoctane_1_1_health_result.html">HealthResult</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structoctane_1_1_health_result.html">HealthResult</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">変数詳解</h2>
+<a id="ad1b54c1eb7334d6c31aae14549d6a3ba" name="ad1b54c1eb7334d6c31aae14549d6a3ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1b54c1eb7334d6c31aae14549d6a3ba">&#9670;&#160;</a></span>DEFAULT_API_BASE_URL</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto octane::DEFAULT_API_BASE_URL = &quot;/api/v1&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>既定で使用されるAPIのベースURL。 </p>
+
+</div>
+</div>
+<a id="ac0e2364531730418c76b95056b88beeb" name="ac0e2364531730418c76b95056b88beeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0e2364531730418c76b95056b88beeb">&#9670;&#160;</a></span>DEFAULT_API_ORIGIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto octane::DEFAULT_API_ORIGIN = &quot;http://localhost:3000&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>既定で使用されるAPIのオリジン。 </p>
+
+</div>
+</div>
+<a id="a7616cdc5ee8905f23a55afd828b57aad" name="a7616cdc5ee8905f23a55afd828b57aad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7616cdc5ee8905f23a55afd828b57aad">&#9670;&#160;</a></span>DEFAULT_API_TOKEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto octane::DEFAULT_API_TOKEN = &quot;mock&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>既定で使用されるAPIのトークン。 </p>
+
+</div>
+</div>
 <a id="a32c1cf2a9967d890ba562949285d39fe" name="a32c1cf2a9967d890ba562949285d39fe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a32c1cf2a9967d890ba562949285d39fe">&#9670;&#160;</a></span>ERR_API_CLIENT_INITIALIZATION_FAILED</h2>
 
@@ -864,30 +1055,6 @@ template&lt;typename T_OK &gt; </div>
 
 </div>
 </div>
-<a id="a0719fc64f3c0e8fe2e7d545f73e005af" name="a0719fc64f3c0e8fe2e7d545f73e005af"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0719fc64f3c0e8fe2e7d545f73e005af">&#9670;&#160;</a></span>ERR_INVALID_STATUS_CODE</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr auto octane::ERR_INVALID_STATUS_CODE = &quot;ERR_INVALID_STATUS_CODE&quot;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>予期しないステータスコードが返されたときに使用される。 </p>
-
-</div>
-</div>
 <a id="af8552f757e6e3a0e1af42ee5031a1117" name="af8552f757e6e3a0e1af42ee5031a1117"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af8552f757e6e3a0e1af42ee5031a1117">&#9670;&#160;</a></span>ERR_JSON_PARSE_FAILED</h2>
 
@@ -933,6 +1100,54 @@ template&lt;typename T_OK &gt; </div>
 </div><div class="memdoc">
 
 <p>サーバに障害が発生し、正常に動作できないときに使用される。 </p>
+
+</div>
+</div>
+<a id="a96eff99c83d3347fc5d6986d70ebf0f2" name="a96eff99c83d3347fc5d6986d70ebf0f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96eff99c83d3347fc5d6986d70ebf0f2">&#9670;&#160;</a></span>LIBRARY_NAME</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto octane::LIBRARY_NAME = &quot;Octane API Client&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >ライブラリ名。Octane API Client。 </p>
+
+</div>
+</div>
+<a id="a7b3adc173e870b16195fca8a3bc897a4" name="a7b3adc173e870b16195fca8a3bc897a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b3adc173e870b16195fca8a3bc897a4">&#9670;&#160;</a></span>LIBRARY_VERSION</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto octane::LIBRARY_VERSION = &quot;v0.1.0&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ライブラリバージョン。 </p>
+<p >命名規則はv{MAJOR}.{MINOR}.{PATCH}である。 </p>
 
 </div>
 </div>

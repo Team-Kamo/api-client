@@ -85,11 +85,11 @@ $(function() {
 クラス</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1internal_1_1_api_bridge.html">ApiBridge</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1internal_1_1_content_status.html">ContentStatus</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><code><a class="el" href="">getContentStatus</a></code>メソッドを呼んだ時の結果を表す構造体。  <a href="structoctane_1_1internal_1_1_content_status.html#details">[詳解]</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1internal_1_1_fetch.html">Fetch</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">HttpClientクラスを通じてHTTP通信を行う。  <a href="classoctane_1_1internal_1_1_fetch.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1internal_1_1_fetch_base.html">FetchBase</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">HttpClientクラスを通じてHTTP通信を行うインタフェース。  <a href="classoctane_1_1internal_1_1_fetch_base.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1internal_1_1_fetch_response.html">FetchResponse</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetchのレスポンスを表す構造体。  <a href="structoctane_1_1internal_1_1_fetch_response.html#details">[詳解]</a><br /></td></tr>
@@ -126,13 +126,22 @@ $(function() {
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 関数</h2></td></tr>
-<tr class="memitem:a7e567b63d242d3eb64af63c3d11644d3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane_1_1internal.html#a7e567b63d242d3eb64af63c3d11644d3">generateHash</a> (const std::vector&lt; std::uint8_t &gt; &amp;src)</td></tr>
-<tr class="memdesc:a7e567b63d242d3eb64af63c3d11644d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">ハッシュ値を生成する。  <a href="namespaceoctane_1_1internal.html#a7e567b63d242d3eb64af63c3d11644d3">[詳解]</a><br /></td></tr>
-<tr class="separator:a7e567b63d242d3eb64af63c3d11644d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ac79355eeebef070d37bb2e4330284a"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane_1_1internal.html#a8ac79355eeebef070d37bb2e4330284a">convToHexMono</a> (std::uint8_t number)</td></tr>
+<tr class="separator:a8ac79355eeebef070d37bb2e4330284a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31fb34aee3d745d64fb7045d47f1cffa"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane_1_1internal.html#a31fb34aee3d745d64fb7045d47f1cffa">convToHex</a> (const std::vector&lt; std::uint8_t &gt; &amp;data)</td></tr>
+<tr class="memdesc:a31fb34aee3d745d64fb7045d47f1cffa"><td class="mdescLeft">&#160;</td><td class="mdescRight">バイナリシーケンスを16進数文字列に変換する。  <a href="namespaceoctane_1_1internal.html#a31fb34aee3d745d64fb7045d47f1cffa">[詳解]</a><br /></td></tr>
+<tr class="separator:a31fb34aee3d745d64fb7045d47f1cffa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a777574b3ff26edf6d32ebd38ffa3cd99"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane_1_1internal.html#a777574b3ff26edf6d32ebd38ffa3cd99">generateHash</a> (const std::vector&lt; std::uint8_t &gt; &amp;src)</td></tr>
+<tr class="memdesc:a777574b3ff26edf6d32ebd38ffa3cd99"><td class="mdescLeft">&#160;</td><td class="mdescRight">ハッシュ値を生成する。  <a href="namespaceoctane_1_1internal.html#a777574b3ff26edf6d32ebd38ffa3cd99">[詳解]</a><br /></td></tr>
+<tr class="separator:a777574b3ff26edf6d32ebd38ffa3cd99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a365c42befde57e9779228249bee9b8df"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane_1_1internal.html#a365c42befde57e9779228249bee9b8df">operator==</a> (const <a class="el" href="structoctane_1_1internal_1_1_http_request.html">HttpRequest</a> &amp;a, const <a class="el" href="structoctane_1_1internal_1_1_http_request.html">HttpRequest</a> &amp;b)</td></tr>
 <tr class="separator:a365c42befde57e9779228249bee9b8df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c85a41db1af45228350856bebcaad2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane_1_1internal.html#a4c85a41db1af45228350856bebcaad2a">operator==</a> (const <a class="el" href="structoctane_1_1internal_1_1_http_response.html">HttpResponse</a> &amp;a, const <a class="el" href="structoctane_1_1internal_1_1_http_response.html">HttpResponse</a> &amp;b)</td></tr>
 <tr class="separator:a4c85a41db1af45228350856bebcaad2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a257ec1e7e105d3afacf0bc2f80e1f3c7"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane_1_1internal.html#a257ec1e7e105d3afacf0bc2f80e1f3c7">operator&lt;&lt;</a> (std::ostream &amp;stream, const <a class="el" href="structoctane_1_1internal_1_1_http_request.html">HttpRequest</a> &amp;request)</td></tr>
+<tr class="separator:a257ec1e7e105d3afacf0bc2f80e1f3c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e74c4e9d5d59c257ee512fc2fd5367d"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane_1_1internal.html#a7e74c4e9d5d59c257ee512fc2fd5367d">operator&lt;&lt;</a> (std::ostream &amp;stream, const <a class="el" href="structoctane_1_1internal_1_1_http_response.html">HttpResponse</a> &amp;response)</td></tr>
+<tr class="separator:a7e74c4e9d5d59c257ee512fc2fd5367d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">列挙型詳解</h2>
 <a id="a164bed1ca702ea1cb6f0feb4ded22e73" name="a164bed1ca702ea1cb6f0feb4ded22e73"></a>
@@ -204,14 +213,90 @@ $(function() {
 </div>
 </div>
 <h2 class="groupheader">関数詳解</h2>
-<a id="a7e567b63d242d3eb64af63c3d11644d3" name="a7e567b63d242d3eb64af63c3d11644d3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e567b63d242d3eb64af63c3d11644d3">&#9670;&#160;</a></span>generateHash()</h2>
+<a id="a31fb34aee3d745d64fb7045d47f1cffa" name="a31fb34aee3d745d64fb7045d47f1cffa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31fb34aee3d745d64fb7045d47f1cffa">&#9670;&#160;</a></span>convToHex()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; std::uint8_t &gt; octane::internal::generateHash </td>
+          <td class="memname">std::string octane::internal::convToHex </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::uint8_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>バイナリシーケンスを16進数文字列に変換する。 </p>
+<p >標準ライブラリにそんくらいの機能あるやろとか言ってはいけない。</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>変換元のデータ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>std::string 変換したデータ </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceoctane_1_1internal_a31fb34aee3d745d64fb7045d47f1cffa_cgraph.png" border="0" usemap="#anamespaceoctane_1_1internal_a31fb34aee3d745d64fb7045d47f1cffa_cgraph" alt=""/></div>
+<map name="anamespaceoctane_1_1internal_a31fb34aee3d745d64fb7045d47f1cffa_cgraph" id="anamespaceoctane_1_1internal_a31fb34aee3d745d64fb7045d47f1cffa_cgraph">
+<area shape="rect" title="バイナリシーケンスを16進数文字列に変換する。" alt="" coords="5,13,188,38"/>
+<area shape="rect" href="namespaceoctane_1_1internal.html#a8ac79355eeebef070d37bb2e4330284a" title=" " alt="" coords="236,5,395,45"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceoctane_1_1internal_a31fb34aee3d745d64fb7045d47f1cffa_icgraph.png" border="0" usemap="#anamespaceoctane_1_1internal_a31fb34aee3d745d64fb7045d47f1cffa_icgraph" alt=""/></div>
+<map name="anamespaceoctane_1_1internal_a31fb34aee3d745d64fb7045d47f1cffa_icgraph" id="anamespaceoctane_1_1internal_a31fb34aee3d745d64fb7045d47f1cffa_icgraph">
+<area shape="rect" title="バイナリシーケンスを16進数文字列に変換する。" alt="" coords="429,13,612,38"/>
+<area shape="rect" href="namespaceoctane_1_1internal.html#a777574b3ff26edf6d32ebd38ffa3cd99" title="ハッシュ値を生成する。" alt="" coords="183,13,381,38"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a4ec2a9c1cb3c9168e2ebf8b21fb2d968" title="Upload content to the room" alt="" coords="5,5,135,45"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8ac79355eeebef070d37bb2e4330284a" name="a8ac79355eeebef070d37bb2e4330284a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ac79355eeebef070d37bb2e4330284a">&#9670;&#160;</a></span>convToHexMono()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char octane::internal::convToHexMono </td>
+          <td>(</td>
+          <td class="paramtype">std::uint8_t&#160;</td>
+          <td class="paramname"><em>number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceoctane_1_1internal_a8ac79355eeebef070d37bb2e4330284a_icgraph.png" border="0" usemap="#anamespaceoctane_1_1internal_a8ac79355eeebef070d37bb2e4330284a_icgraph" alt=""/></div>
+<map name="anamespaceoctane_1_1internal_a8ac79355eeebef070d37bb2e4330284a_icgraph" id="anamespaceoctane_1_1internal_a8ac79355eeebef070d37bb2e4330284a_icgraph">
+<area shape="rect" title=" " alt="" coords="660,5,819,45"/>
+<area shape="rect" href="namespaceoctane_1_1internal.html#a31fb34aee3d745d64fb7045d47f1cffa" title="バイナリシーケンスを16進数文字列に変換する。" alt="" coords="429,13,612,38"/>
+<area shape="rect" href="namespaceoctane_1_1internal.html#a777574b3ff26edf6d32ebd38ffa3cd99" title="ハッシュ値を生成する。" alt="" coords="183,13,381,38"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a4ec2a9c1cb3c9168e2ebf8b21fb2d968" title="Upload content to the room" alt="" coords="5,5,135,45"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a777574b3ff26edf6d32ebd38ffa3cd99" name="a777574b3ff26edf6d32ebd38ffa3cd99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a777574b3ff26edf6d32ebd38ffa3cd99">&#9670;&#160;</a></span>generateHash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string octane::internal::generateHash </td>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; std::uint8_t &gt; &amp;&#160;</td>
           <td class="paramname"><em>src</em></td><td>)</td>
@@ -228,7 +313,82 @@ $(function() {
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>戻り値</dt><dd>std::vector&lt;std::uint8_t&gt; 生成されたハッシュ値。 </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd>std::string 生成されたハッシュ値。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceoctane_1_1internal_a777574b3ff26edf6d32ebd38ffa3cd99_cgraph.png" border="0" usemap="#anamespaceoctane_1_1internal_a777574b3ff26edf6d32ebd38ffa3cd99_cgraph" alt=""/></div>
+<map name="anamespaceoctane_1_1internal_a777574b3ff26edf6d32ebd38ffa3cd99_cgraph" id="anamespaceoctane_1_1internal_a777574b3ff26edf6d32ebd38ffa3cd99_cgraph">
+<area shape="rect" title="ハッシュ値を生成する。" alt="" coords="5,13,204,38"/>
+<area shape="rect" href="namespaceoctane_1_1internal.html#a31fb34aee3d745d64fb7045d47f1cffa" title="バイナリシーケンスを16進数文字列に変換する。" alt="" coords="252,13,435,38"/>
+<area shape="rect" href="namespaceoctane_1_1internal.html#a8ac79355eeebef070d37bb2e4330284a" title=" " alt="" coords="483,5,641,45"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceoctane_1_1internal_a777574b3ff26edf6d32ebd38ffa3cd99_icgraph.png" border="0" usemap="#anamespaceoctane_1_1internal_a777574b3ff26edf6d32ebd38ffa3cd99_icgraph" alt=""/></div>
+<map name="anamespaceoctane_1_1internal_a777574b3ff26edf6d32ebd38ffa3cd99_icgraph" id="anamespaceoctane_1_1internal_a777574b3ff26edf6d32ebd38ffa3cd99_icgraph">
+<area shape="rect" title="ハッシュ値を生成する。" alt="" coords="183,13,381,38"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a4ec2a9c1cb3c9168e2ebf8b21fb2d968" title="Upload content to the room" alt="" coords="5,5,135,45"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a257ec1e7e105d3afacf0bc2f80e1f3c7" name="a257ec1e7e105d3afacf0bc2f80e1f3c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a257ec1e7e105d3afacf0bc2f80e1f3c7">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; octane::internal::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structoctane_1_1internal_1_1_http_request.html">HttpRequest</a> &amp;&#160;</td>
+          <td class="paramname"><em>request</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7e74c4e9d5d59c257ee512fc2fd5367d" name="a7e74c4e9d5d59c257ee512fc2fd5367d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e74c4e9d5d59c257ee512fc2fd5367d">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; octane::internal::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structoctane_1_1internal_1_1_http_response.html">HttpResponse</a> &amp;&#160;</td>
+          <td class="paramname"><em>response</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

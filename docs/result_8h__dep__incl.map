@@ -2,12 +2,12 @@
 <area shape="rect" id="node1" title="RustのResultに触発されて作った結果を表す型を定義する。" alt="" coords="267,5,399,31"/>
 <area shape="rect" id="node2" href="$api__client_8h.html" title=" " alt="" coords="29,423,184,449"/>
 <area shape="rect" id="node4" href="$error__response_8h.html" title="エラーレスポンス。" alt="" coords="240,79,427,104"/>
-<area shape="rect" id="node6" href="$api__bridge_8h.html" title=" " alt="" coords="216,328,347,368"/>
+<area shape="rect" id="node6" href="$api__bridge_8h.html" title="APIclientとAPI一つ一つを結びつける。" alt="" coords="217,328,348,368"/>
 <area shape="rect" id="node8" href="$fetch_8h.html" title="fetch.hの実装" alt="" coords="399,240,529,280"/>
 <area shape="rect" id="node10" href="$http__client_8h.html" title="HTTPクライアント。" alt="" coords="501,152,632,192"/>
 <area shape="rect" id="node3" href="$api__client_8cpp.html" title=" " alt="" coords="32,504,181,529"/>
 <area shape="rect" id="node5" href="$error__response_8cpp.html" title="error_response.hの実装。" alt="" coords="145,159,325,185"/>
-<area shape="rect" id="node7" href="$api__bridge_8cpp.html" title=" " alt="" coords="215,416,347,456"/>
-<area shape="rect" id="node9" href="$fetch_8cpp.html" title=" " alt="" coords="379,335,549,361"/>
+<area shape="rect" id="node7" href="$api__bridge_8cpp.html" title=" " alt="" coords="217,416,349,456"/>
+<area shape="rect" id="node9" href="$fetch_8cpp.html" title=" " alt="" coords="380,335,548,361"/>
 <area shape="rect" id="node11" href="$http__client_8cpp.html" title="http_client.hの実装。" alt="" coords="554,240,691,280"/>
 </map>

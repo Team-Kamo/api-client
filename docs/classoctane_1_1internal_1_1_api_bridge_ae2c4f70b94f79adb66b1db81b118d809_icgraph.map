@@ -1,4 +1,4 @@
 <map id="octane::internal::ApiBridge::roomIdDelete" name="octane::internal::ApiBridge::roomIdDelete">
-<area shape="rect" id="node1" title="use delete method for room/:id api" alt="" coords="184,5,359,45"/>
-<area shape="rect" id="node2" href="$classoctane_1_1_api_client.html#a8459fa5374bfe4e039cecb1afd79b531" title="Delete the room" alt="" coords="5,5,136,45"/>
+<area shape="rect" id="node1" title="use delete method for /room/{id}" alt="" coords="183,5,357,45"/>
+<area shape="rect" id="node2" href="$classoctane_1_1_api_client.html#a8459fa5374bfe4e039cecb1afd79b531" title="Delete the room" alt="" coords="5,5,135,45"/>
 </map>

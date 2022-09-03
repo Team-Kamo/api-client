@@ -226,11 +226,10 @@ octane::internal::HttpClient 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >HTTPリクエストを発行する。このメソッドは事前に一度必ず{ </p><dl class="section see"><dt>参照</dt><dd><a class="el" href="classoctane_1_1internal_1_1_http_client_base.html#af17a7fb609866e4294315e4fba2a711d" title="HttpClientを初期化する。">init</a> }を呼ばなければならない。 失敗した場合は以下のエラーレスポンスを返す。<ul>
-<li><a class="el" href="namespaceoctane.html#a7cafcefa79f336082d35b64d4cec4d84" title="予期しないHTTPリクエストを発行したときに使用される。">ERR_INCORRECT_HTTP_METHOD</a>: GET, POST, PUT, DELETE以外のメソッドを使用したり、GET, DELETEでボディ部を指定したとき</li>
-<li><a class="el" href="namespaceoctane.html#ab58060f2188272708873292198100e21" title="CURLの処理に失敗したときに使用される。">ERR_CURL_CONNECTION_FAILED</a>: CURLの接続に失敗したとき</li>
+<p >HTTPリクエストを発行する。失敗した場合は以下のエラーレスポンスを返す。</p><ul>
+<li>ERR_INCORRECT_HTTP_METHOD: GET, POST, PUT, DELETE以外のメソッドを使用したり、GET, DELETEでボディ部を指定したとき</li>
+<li>ERR_CURL_CONNECTION_FAILED: CURLの接続に失敗したとき</li>
 </ul>
-</dd></dl>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">origin</td><td>リクエスト先のオリジン。"http://localhost:3000"など。 </td></tr>

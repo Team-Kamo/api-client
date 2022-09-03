@@ -1,0 +1,4 @@
+<map id="octane::internal::Fetch" name="octane::internal::Fetch">
+<area shape="rect" id="node1" title="HttpClientクラスを通じてHTTP通信を行う。" alt="" coords="21,79,173,104"/>
+<area shape="rect" id="node2" href="$classoctane_1_1internal_1_1_fetch_base.html" title="HttpClientクラスを通じてHTTP通信を行うインタフェース。" alt="" coords="5,5,188,31"/>
+</map>

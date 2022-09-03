@@ -81,14 +81,17 @@ $(function() {
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define OCTANE_API_CLIENT_INTERNAL_HASH_H_</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceoctane_1_1internal.html">octane::internal</a> {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  std::vector&lt;std::uint8_t&gt; <a class="code hl_function" href="namespaceoctane_1_1internal.html#a7e567b63d242d3eb64af63c3d11644d3">generateHash</a>(<span class="keyword">const</span> std::vector&lt;std::uint8_t&gt;&amp; src);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>} <span class="comment">// namespace octane::internal</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif </span><span class="comment">// OCTANE_API_CLIENT_INTERNAL_HASH_H_</span></div>
-<div class="ttc" id="anamespaceoctane_1_1internal_html"><div class="ttname"><a href="namespaceoctane_1_1internal.html">octane::internal</a></div><div class="ttdef"><b>Definition:</b> api_bridge.cpp:20</div></div>
-<div class="ttc" id="anamespaceoctane_1_1internal_html_a7e567b63d242d3eb64af63c3d11644d3"><div class="ttname"><a href="namespaceoctane_1_1internal.html#a7e567b63d242d3eb64af63c3d11644d3">octane::internal::generateHash</a></div><div class="ttdeci">std::vector&lt; std::uint8_t &gt; generateHash(const std::vector&lt; std::uint8_t &gt; &amp;src)</div><div class="ttdoc">ハッシュ値を生成する。</div><div class="ttdef"><b>Definition:</b> hash.cpp:7</div></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceoctane_1_1internal.html">octane::internal</a> {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  std::string <a class="code hl_function" href="namespaceoctane_1_1internal.html#a31fb34aee3d745d64fb7045d47f1cffa">convToHex</a>(<span class="keyword">const</span> std::vector&lt;std::uint8_t&gt;&amp; data);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  std::string <a class="code hl_function" href="namespaceoctane_1_1internal.html#a777574b3ff26edf6d32ebd38ffa3cd99">generateHash</a>(<span class="keyword">const</span> std::vector&lt;std::uint8_t&gt;&amp; src);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>} <span class="comment">// namespace octane::internal</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif </span><span class="comment">// OCTANE_API_CLIENT_INTERNAL_HASH_H_</span></div>
+<div class="ttc" id="anamespaceoctane_1_1internal_html"><div class="ttname"><a href="namespaceoctane_1_1internal.html">octane::internal</a></div><div class="ttdef"><b>Definition:</b> api_bridge.cpp:25</div></div>
+<div class="ttc" id="anamespaceoctane_1_1internal_html_a31fb34aee3d745d64fb7045d47f1cffa"><div class="ttname"><a href="namespaceoctane_1_1internal.html#a31fb34aee3d745d64fb7045d47f1cffa">octane::internal::convToHex</a></div><div class="ttdeci">std::string convToHex(const std::vector&lt; std::uint8_t &gt; &amp;data)</div><div class="ttdoc">バイナリシーケンスを16進数文字列に変換する。</div><div class="ttdef"><b>Definition:</b> hash.cpp:14</div></div>
+<div class="ttc" id="anamespaceoctane_1_1internal_html_a777574b3ff26edf6d32ebd38ffa3cd99"><div class="ttname"><a href="namespaceoctane_1_1internal.html#a777574b3ff26edf6d32ebd38ffa3cd99">octane::internal::generateHash</a></div><div class="ttdeci">std::string generateHash(const std::vector&lt; std::uint8_t &gt; &amp;src)</div><div class="ttdoc">ハッシュ値を生成する。</div><div class="ttdef"><b>Definition:</b> hash.cpp:24</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
