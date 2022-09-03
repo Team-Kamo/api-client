@@ -109,28 +109,8 @@ namespace octane::internal {
     if (code != CURLE_OK) {
       return makeError(ERR_CURL_CONNECTION_FAILED, curl_easy_strerror(code));
     }
-
-    HttpResponse response;
-    response.statusLine     = std::move(responseHeader.first);
-    auto pos1               = response.statusLine.find(" ");
-    auto pos2               = response.statusLine.substr(pos1).find(" ");
-    response.statusCode     = stoi(response.statusLine.substr(pos1, pos2));
-    std::string httpVersion = response.statusLine.substr(0, pos1);
-    if (httpVersion == "HTTP/1.0") {
-      response.version = HttpVersion::Http1_0;
-    } else if (httpVersion == "HTTP/1.1") {
-      response.version = HttpVersion::Http1_1;
-    } else if (httpVersion == "HTTP/2") {
-      response.version = HttpVersion::Http2;
-    } else if (httpVersion == "HTTP/3") {
-      response.version = HttpVersion::Http3;
-    } else {
-      makeError(ERR_INVALID_RESPONSE, "http version was invalid");
-    }
-    response.headerField = std::move(responseHeader.second);
-    response.body        = std::move(chunk);
-
-    return ok(response);
+    //レスポンスを正しい形にして返す。
+    return makeHttpResponse(std::move(responseHeader), std::move(chunk));
   }
 
   size_t HttpClient::writeCallback(char* buffer,
@@ -176,6 +156,30 @@ namespace octane::internal {
     }
     return size * nmemb;
   }
+  Result<HttpResponse, ErrorResponse> HttpClient::makeHttpResponse(
+    std::pair<std::string, std::map<std::string, std::string>>&& responseHeader,
+    std::vector<std::uint8_t>&& chunk) {
+    HttpResponse response;
+    response.statusLine = std::move(responseHeader.first);
+    auto pos1           = response.statusLine.find(" ");
+    auto pos2           = response.statusLine.substr(pos1 + 1).find(" ");
+    response.statusCode = std::stoi(response.statusLine.substr(pos1 + 1, pos2));
+    std::string httpVersion = response.statusLine.substr(0, pos1);
+    if (httpVersion == "HTTP/1.0") {
+      response.version = HttpVersion::Http1_0;
+    } else if (httpVersion == "HTTP/1.1") {
+      response.version = HttpVersion::Http1_1;
+    } else if (httpVersion == "HTTP/2") {
+      response.version = HttpVersion::Http2;
+    } else if (httpVersion == "HTTP/3") {
+      response.version = HttpVersion::Http3;
+    } else {
+      return makeError(ERR_INVALID_RESPONSE, "http version was invalid");
+    }
+    response.headerField = std::move(responseHeader.second);
+    response.body        = std::move(chunk);
+    return ok(response);
+  }
 
   bool operator==(const HttpRequest& a, const HttpRequest& b) {
     if (a.method != b.method) return false;
@@ -188,7 +192,7 @@ namespace octane::internal {
   bool operator==(const HttpResponse& a, const HttpResponse& b) {
     if (a.statusCode != b.statusCode) return false;
     if (a.statusLine != b.statusLine) return false;
-    if (a.statusCode != b.statusCode) return false;
+    if (a.version != b.version) return false;
     if (a.headerField != b.headerField) return false;
     if (a.body != b.body) return false;
     return true;
@@ -265,8 +269,28 @@ namespace octane::internal {
     body.resize(response.body.size());
     std::copy(response.body.begin(), response.body.end(), body.begin());
 
+    std::string version;
+    switch (response.version) {
+      case HttpVersion::Http1_0:
+        version = "HTTP/1.0";
+        break;
+      case HttpVersion::Http1_1:
+        version = "HTTP/1.1";
+        break;
+      case HttpVersion::Http2:
+        version = "HTTP/2";
+        break;
+      case HttpVersion::Http3:
+        version = "HTTP/3";
+        break;
+      default:
+        version = "UNKNOWN";
+    }
+
     stream << "statusLine = " << response.statusLine
-           << ", headers = " << headers << ", body = " << body;
+           << ", statusCode = " << response.statusCode
+           << ", version = " << version << ", headers = " << headers
+           << ", body = " << body;
 
     return stream;
   }

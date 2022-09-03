@@ -158,6 +158,8 @@ namespace octane::internal {
     FRIEND_TEST(HttpClientTest, WriteCallback);
     FRIEND_TEST(HttpClientTest, ReadCallback);
     FRIEND_TEST(HttpClientTest, HeaderCallback);
+    FRIEND_TEST(HttpClientTest, MakeHttpResponseOk);
+    FRIEND_TEST(HttpClientTest, MakeHttpResponseErr);
 
   public:
     virtual ~HttpClient() noexcept;
@@ -225,6 +227,18 @@ namespace octane::internal {
       size_t nmemb,
       std::pair<std::string, std::map<std::string, std::string>>*
         responseHeader);
+    /**
+     * @brief fetchにレスポンスを返す際に{@link HttpResponse}型に加工する。
+     * 失敗した場合は次のエラーレスポンスを返す。
+     * - ERR_INVALID_RESPONSE: レスポンスにエラーがある時。
+     * @param responseHeader[in] レスポンスのヘッダ部。
+     * @param chunk[in] レスポンスのボディ部。
+     * @return HttpResponse fetchに返される加工済みのレスポンス
+     */
+    Result<HttpResponse, ErrorResponse> makeHttpResponse(
+      std::pair<std::string, std::map<std::string, std::string>>&&
+        responseHeader,
+      std::vector<std::uint8_t>&& chunk);
   };
 } // namespace octane::internal
 
