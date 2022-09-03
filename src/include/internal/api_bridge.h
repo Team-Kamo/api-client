@@ -1,7 +1,7 @@
 /**
  * @file api_bridge.h
  * @author soon (kento.soon@gmail.com)
- * @brief
+ * @brief APIclientとAPI一つ一つを結びつける。
  * @version 0.1
  * @date 2022-09-01
  *

@@ -1,3 +1,13 @@
+/**
+ * @file http_client.h
+ * @author cosocaf (cosocaf@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2022-09-03
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
 #ifndef OCTANE_API_CLIENT_API_SCHEMA_H_
 #define OCTANE_API_CLIENT_API_SCHEMA_H_
 
