@@ -263,7 +263,7 @@ namespace octane::internal {
   TEST(ApiBridgeTest, roomPostOk) {
     test::MockFetch mockFetch;
     std::string name = "soon's room";
-    std::string id   = "07040782538";
+    std::uint64_t id = 7040782538;
     auto json        = makeJson(R"({"name": "soon's room"})");
     EXPECT_CALL(mockFetch,
                 request(HttpMethod::Post,
@@ -271,7 +271,7 @@ namespace octane::internal {
                         testing::Eq(testing::ByRef(json))))
       .Times(1)
       .WillOnce(
-        testing::Return(ok(makeJsonResponse(R"({"id": "07040782538"})"))));
+        testing::Return(ok(makeJsonResponse(R"({"id": "7040782538"})"))));
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.roomPost(name);
     EXPECT_TRUE(result) << result.err();
@@ -292,7 +292,7 @@ namespace octane::internal {
                         testing::Eq(testing::ByRef(json))))
       .Times(1)
       .WillOnce(
-        testing::Return(ok(makeJsonResponse(R"({"ideco": "07040782538"})"))));
+        testing::Return(ok(makeJsonResponse(R"({"ideco": "7040782538"})"))));
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.roomPost(name);
     EXPECT_FALSE(result) << result.get();
@@ -366,5 +366,132 @@ namespace octane::internal {
     EXPECT_FALSE(result) << result.get();
     EXPECT_EQ(result.err().code, "ERR_BAD_REQUEST") << result.err();
   }
-
+  /**
+   * @brief
+   * roomIdGetにおいてFetchが成功し、ルームのステータスを返す時にApiBridgeがそれをそのまま返してくれるかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdGetOk) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+    EXPECT_CALL(mockFetch,
+                request(HttpMethod::Post, std::string_view("/room/" + id)))
+      .Times(1)
+      .WillOnce(testing::Return(ok(makeJsonResponse(R"(
+        {
+          "devices": [{"name": "soon's thinkpad", "timestamp": 50220835}],
+          "name" : "soon's super cool octane room"
+          }
+        )"))));
+    RoomStatus roomStatus{};
+    Device device{};
+    device.name      = "soon's thinkpad";
+    device.timestamp = 50220835;
+    roomStatus.devices.push_back(device);
+    roomStatus.name = "soon's super cool octane room";
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdGet(id);
+    EXPECT_TRUE(result) << result.err();
+    EXPECT_EQ(result.get(), roomStatus) << result.get();
+  }
+  /**
+   * @brief
+   * roomIdGetにおいてにおいてFetchがレスポンスの誤りで失敗した時にApiBridgeがエラーを返してくれるかどうかをテストする。これはjsonのメンバに誤りがある場合をテストしている。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdGetErrResponse) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+    EXPECT_CALL(mockFetch,
+                request(HttpMethod::Post, std::string_view("/room/" + id)))
+      .Times(1)
+      .WillOnce(testing::Return(ok(makeJsonResponse(R"(
+        {
+          "Devices": [{"name": "soon's thinkpad", "timestamp": 50220835}],
+          "Name" : "soon's super cool octane room"
+          }
+        )"))));
+    RoomStatus roomStatus{};
+    Device device{};
+    device.name      = "soon's thinkpad";
+    device.timestamp = 50220835;
+    roomStatus.devices.push_back(device);
+    roomStatus.name = "soon's super cool octane room";
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdGet(id);
+    EXPECT_FALSE(result) << result.get();
+    EXPECT_EQ(result.err().code, ERR_INVALID_RESPONSE) << result.err();
+  }
+  /**
+   * @brief
+   * roomPostにおいてFetchがjsonのパースで失敗した時にApiBridgeがエラーを返してくれるかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdGetErrJson) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+    EXPECT_CALL(mockFetch,
+                request(HttpMethod::Post, std::string_view("/room/" + id)))
+      .Times(1)
+      .WillOnce(testing::Return(makeError(ERR_JSON_PARSE_FAILED, "")));
+    RoomStatus roomStatus{};
+    Device device{};
+    device.name      = "soon's thinkpad";
+    device.timestamp = 50220835;
+    roomStatus.devices.push_back(device);
+    roomStatus.name = "soon's super cool octane room";
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdGet(id);
+    EXPECT_FALSE(result) << result.get();
+    EXPECT_EQ(result.err().code, ERR_JSON_PARSE_FAILED) << result.err();
+  }
+  /**
+   * @brief
+   * roomPostにおいてFetchがcURLの接続に失敗した時にApiBridgeがエラーを返してくれるかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdGetErrCurl) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+    EXPECT_CALL(mockFetch,
+                request(HttpMethod::Post, std::string_view("/room/" + id)))
+      .Times(1)
+      .WillOnce(testing::Return(makeError(ERR_CURL_CONNECTION_FAILED, "")));
+    RoomStatus roomStatus{};
+    Device device{};
+    device.name      = "soon's thinkpad";
+    device.timestamp = 50220835;
+    roomStatus.devices.push_back(device);
+    roomStatus.name = "soon's super cool octane room";
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdGet(id);
+    EXPECT_FALSE(result) << result.get();
+    EXPECT_EQ(result.err().code, ERR_CURL_CONNECTION_FAILED) << result.err();
+  }
+  /**
+   * @brief
+   * roomIdGetにおいてFetchが2xx以外のステータスコードを返すときにサーバからもらうエラーレスポンスをそのまま返してくれるかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdGet2xx) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+    EXPECT_CALL(mockFetch,
+                request(HttpMethod::Post,
+                        std::string_view("/room/" + std::to_string(id))))
+      .Times(1)
+      .WillOnce(
+        testing::Return(ok(makeJsonResponse(R"(
+        {
+          "code": "ERR_BAD_REQUEST",
+          "reason": ""
+          }
+        )",
+                                            400,
+                                            "HTTP/2 400 Bad Request"))));
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdGet(id);
+    EXPECT_FALSE(result) << result.get();
+    EXPECT_EQ(result.err().code, "ERR_BAD_REQUEST") << result.err();
+  }
 } // namespace octane::internal

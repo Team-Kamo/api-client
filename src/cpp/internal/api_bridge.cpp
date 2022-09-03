@@ -91,7 +91,7 @@ namespace octane::internal {
       .message = json["message"].GetString(),
     });
   }
-  Result<std::string, ErrorResponse> ApiBridge::roomPost(
+  Result<std::uint64_t, ErrorResponse> ApiBridge::roomPost(
     std::string_view name) {
     rapidjson::Document uploadJson(rapidjson::kObjectType);
     uploadJson.AddMember("name",
@@ -115,12 +115,11 @@ namespace octane::internal {
     if (auto err = verifyJson(json, SCHEMA_ROOM_POST)) {
       return error(err.value());
     }
-
-    return ok(json["id"].GetString());
+    return ok(json["id"].GetUint64());
   }
-  Result<RoomStatus, ErrorResponse> ApiBridge::roomIdGet(std::string_view id) {
-    auto response
-      = fetch->request(internal::HttpMethod::Get, "/room/" + std::string(id));
+  Result<RoomStatus, ErrorResponse> ApiBridge::roomIdGet(std::uint64_t id) {
+    auto response = fetch->request(internal::HttpMethod::Get,
+                                   "/room/" + std::to_string(id));
     if (!response) {
       return error(response.err());
     }
@@ -148,9 +147,9 @@ namespace octane::internal {
       .devices = devices,
     });
   }
-  Result<_, ErrorResponse> ApiBridge::roomIdDelete(std::string_view id) {
+  Result<_, ErrorResponse> ApiBridge::roomIdDelete(std::uint64_t id) {
     auto response = fetch->request(internal::HttpMethod::Delete,
-                                   "/room/" + std::string(id));
+                                   "/room/" + std::to_string(id));
     if (!response) {
       return error(response.err());
     }
@@ -159,14 +158,14 @@ namespace octane::internal {
     }
     return ok();
   }
-  Result<_, ErrorResponse> ApiBridge::roomIdPost(std::string_view id,
+  Result<_, ErrorResponse> ApiBridge::roomIdPost(std::uint64_t id,
                                                  std::string_view name) {
     rapidjson::Document uploadJson(rapidjson::kObjectType);
     uploadJson.AddMember("name",
                          rapidjson::StringRef(name.data(), name.size()),
                          uploadJson.GetAllocator());
     auto response = fetch->request(
-      internal::HttpMethod::Post, "/room/" + std::string(id), uploadJson);
+      internal::HttpMethod::Post, "/room/" + std::to_string(id), uploadJson);
     if (!response) {
       return error(response.err());
     }
@@ -176,9 +175,9 @@ namespace octane::internal {
     return ok();
   }
   Result<std::variant<std::string, std::vector<std::uint8_t>>, ErrorResponse>
-  ApiBridge::roomIdContentGet(std::string_view id) {
+  ApiBridge::roomIdContentGet(std::uint64_t id) {
     auto response = fetch->request(internal::HttpMethod::Get,
-                                   "/room/" + std::string(id) + "/content");
+                                   "/room/" + std::to_string(id) + "/content");
     if (!response) {
       return error(response.err());
     }
@@ -192,9 +191,9 @@ namespace octane::internal {
     }
     return ok(std::get<std::vector<std::uint8_t>>(response.get().body));
   }
-  Result<_, ErrorResponse> ApiBridge::roomIdContentDelete(std::string_view id) {
+  Result<_, ErrorResponse> ApiBridge::roomIdContentDelete(std::uint64_t id) {
     auto response = fetch->request(internal::HttpMethod::Delete,
-                                   "/room/" + std::string(id) + "/content");
+                                   "/room/" + std::to_string(id) + "/content");
     if (!response) {
       return error(response.err());
     }
@@ -204,7 +203,7 @@ namespace octane::internal {
     return ok();
   }
   Result<_, ErrorResponse> ApiBridge::roomIdContentPut(
-    std::string_view id,
+    std::uint64_t id,
     const std::variant<std::string, std::vector<std::uint8_t>>& contentData,
     std::string_view mime) {
     std::vector<std::uint8_t> data;
@@ -219,7 +218,7 @@ namespace octane::internal {
                        "contentData is not string or binary");
     }
     auto response = fetch->request(internal::HttpMethod::Put,
-                                   "/room/" + std::string(id) + "/content",
+                                   "/room/" + std::to_string(id) + "/content",
                                    mime,
                                    data);
     if (!response) {
@@ -231,10 +230,10 @@ namespace octane::internal {
     return ok();
   }
   Result<ContentStatus, ErrorResponse> ApiBridge::roomIdStatusGet(
-    std::string_view id) {
+    std::uint64_t id) {
     using namespace std::string_literals;
     auto response = fetch->request(internal::HttpMethod::Get,
-                                   "/room/" + std::string(id) + "/status");
+                                   "/room/" + std::to_string(id) + "/status");
     if (!response) {
       return error(response.err());
     }
@@ -268,9 +267,9 @@ namespace octane::internal {
     }
     return ok(std::move(status));
   }
-  Result<_, ErrorResponse> ApiBridge::roomIdStatusDelete(std::string_view id) {
+  Result<_, ErrorResponse> ApiBridge::roomIdStatusDelete(std::uint64_t id) {
     auto response = fetch->request(internal::HttpMethod::Delete,
-                                   "/room/" + std::string(id) + "/status");
+                                   "/room/" + std::to_string(id) + "/status");
     if (!response) {
       return error(response.err());
     }
@@ -280,7 +279,7 @@ namespace octane::internal {
     return ok();
   }
   Result<_, ErrorResponse> ApiBridge::roomIdStatusPut(
-    std::string_view id,
+    std::uint64_t id,
     const ContentStatus& contentStatus,
     std::string_view hash) {
     rapidjson::Document uploadJson(rapidjson::kObjectType);
@@ -313,7 +312,7 @@ namespace octane::internal {
                          rapidjson::StringRef(hash.data(), hash.size()),
                          uploadJson.GetAllocator());
     auto response = fetch->request(internal::HttpMethod::Post,
-                                   "/room/" + std::string(id) + "/status",
+                                   "/room/" + std::to_string(id) + "/status",
                                    uploadJson);
     if (!response) {
       return error(response.err());

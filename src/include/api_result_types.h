@@ -66,6 +66,8 @@ namespace octane {
     /** @brief ルームに接続している全てのデバイス。 */
     std::vector<Device> devices;
   };
+  bool operator==(const RoomStatus& a, const RoomStatus& b);
+  std::ostream& operator<<(std::ostream& stream, const RoomStatus& roomStatus);
   /**
    * @brief {@link
    * Content}の型がファイルなのか、クリップボードなのかを表す列挙体。
