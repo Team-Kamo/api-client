@@ -131,4 +131,54 @@ namespace octane::internal {
     EXPECT_EQ(responseHeaderField["Content-Type"], "text/html; charset=utf-8");
     EXPECT_EQ(responseHeaderField["Content-Length"], "500");
   }
+  /**
+   * @brief HttpClient::makeHttpResponseが正常に動作するかをテストする。
+   *
+   */
+  TEST(HttpClientTest, MakeHttpResponseOk) {
+    HttpClient client;
+    client.init();
+
+    std::pair<std::string, std::map<std::string, std::string>> responseHeader;
+    responseHeader.first                    = "HTTP/2 200 OK";
+    responseHeader.second["Allow"]          = "GET,POST,PUT,DELETE";
+    responseHeader.second["Content-Type"]   = "text/html; charset=utf-8";
+    responseHeader.second["Content-Length"] = "500";
+    constexpr const char str[]              = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    std::vector<std::uint8_t> chunk;
+    for (auto c : str) chunk.push_back(c);
+    HttpResponse response{};
+    response.body                          = chunk;
+    response.headerField["Allow"]          = "GET,POST,PUT,DELETE";
+    response.headerField["Content-Type"]   = "text/html; charset=utf-8";
+    response.headerField["Content-Length"] = "500";
+    response.statusCode                    = 200;
+    response.statusLine                    = "HTTP/2 200 OK";
+    response.version                       = HttpVersion::Http2;
+    auto result
+      = client.makeHttpResponse(std::move(responseHeader), std::move(chunk));
+    EXPECT_FALSE(result) << response << result.get();
+    EXPECT_EQ(result.get(), response) << response << result.get();
+  }
+  /**
+   * @brief HttpClient::makeHttpResponseが正常に動作するかをテストする。
+   *
+   */
+  TEST(HttpClientTest, MakeHttpResponseErr) {
+    HttpClient client;
+    client.init();
+
+    std::pair<std::string, std::map<std::string, std::string>> responseHeader;
+    responseHeader.first                    = "HTTP/334 200 OK";
+    responseHeader.second["Allow"]          = "GET,POST,PUT,DELETE";
+    responseHeader.second["Content-Type"]   = "text/html; charset=utf-8";
+    responseHeader.second["Content-Length"] = "500";
+    constexpr const char str[]              = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    std::vector<std::uint8_t> chunk;
+    for (auto c : str) chunk.push_back(c);
+    auto result
+      = client.makeHttpResponse(std::move(responseHeader), std::move(chunk));
+    EXPECT_FALSE(result) << result.get();
+    EXPECT_EQ(result.err().code, ERR_INVALID_RESPONSE) << result.err().code;
+  }
 } // namespace octane::internal
