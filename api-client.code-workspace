@@ -1,0 +1,143 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.associations": {
+      "*.h": "cpp",
+      "*.txt": "plaintext",
+      "CMakeLists.txt": "cmake",
+      "*.html": "html",
+      "*.i": "cpp",
+      "qwidget": "cpp",
+      "qmainwindow": "cpp",
+      "qhboxlayout": "cpp",
+      "qlabel": "cpp",
+      "qpushbutton": "cpp",
+      "qlineedit": "cpp",
+      "qtabwidget": "cpp",
+      "qformlayout": "cpp",
+      "algorithm": "cpp",
+      "any": "cpp",
+      "array": "cpp",
+      "atomic": "cpp",
+      "bit": "cpp",
+      "cctype": "cpp",
+      "charconv": "cpp",
+      "chrono": "cpp",
+      "clocale": "cpp",
+      "cmath": "cpp",
+      "codecvt": "cpp",
+      "compare": "cpp",
+      "concepts": "cpp",
+      "condition_variable": "cpp",
+      "cstddef": "cpp",
+      "cstdint": "cpp",
+      "cstdio": "cpp",
+      "cstdlib": "cpp",
+      "cstring": "cpp",
+      "ctime": "cpp",
+      "cwchar": "cpp",
+      "deque": "cpp",
+      "exception": "cpp",
+      "format": "cpp",
+      "forward_list": "cpp",
+      "fstream": "cpp",
+      "functional": "cpp",
+      "future": "cpp",
+      "hash_map": "cpp",
+      "hash_set": "cpp",
+      "initializer_list": "cpp",
+      "iomanip": "cpp",
+      "ios": "cpp",
+      "iosfwd": "cpp",
+      "iostream": "cpp",
+      "istream": "cpp",
+      "iterator": "cpp",
+      "limits": "cpp",
+      "list": "cpp",
+      "locale": "cpp",
+      "map": "cpp",
+      "memory": "cpp",
+      "mutex": "cpp",
+      "new": "cpp",
+      "numeric": "cpp",
+      "optional": "cpp",
+      "ostream": "cpp",
+      "ratio": "cpp",
+      "regex": "cpp",
+      "set": "cpp",
+      "sstream": "cpp",
+      "stack": "cpp",
+      "stdexcept": "cpp",
+      "stop_token": "cpp",
+      "streambuf": "cpp",
+      "string": "cpp",
+      "system_error": "cpp",
+      "thread": "cpp",
+      "tuple": "cpp",
+      "type_traits": "cpp",
+      "typeinfo": "cpp",
+      "unordered_map": "cpp",
+      "unordered_set": "cpp",
+      "utility": "cpp",
+      "variant": "cpp",
+      "vector": "cpp",
+      "xfacet": "cpp",
+      "xhash": "cpp",
+      "xiosbase": "cpp",
+      "xlocale": "cpp",
+      "xlocbuf": "cpp",
+      "xlocinfo": "cpp",
+      "xlocmes": "cpp",
+      "xlocmon": "cpp",
+      "xlocnum": "cpp",
+      "xloctime": "cpp",
+      "xmemory": "cpp",
+      "xstddef": "cpp",
+      "xstring": "cpp",
+      "xtr1common": "cpp",
+      "xtree": "cpp",
+      "xutility": "cpp",
+      "qabstractnativeeventfilter": "cpp",
+      "qapplication": "cpp",
+      "qdebug": "cpp"
+    },
+    "cmake.configureSettings": {
+      "OCTANE_API_CLIENT_ENABLE_TESTING": "ON"
+    }
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build",
+        "type": "shell",
+        "command": "cd ${workspaceFolder} && cmake --build build",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "(api_bridge_test) 起動",
+        "type": "cppvsdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/build/test/Debug/api_bridge_test.exe",
+        "args": [],
+        "stopAtEntry": false,
+        "cwd": "${fileDirname}",
+        "console": "internalConsole",
+        "environment": [],
+        "preLaunchTask": "build"
+      }
+    ]
+  }
+}

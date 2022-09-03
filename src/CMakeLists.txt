@@ -4,6 +4,7 @@ add_library(
   octane_api_client
   cpp/api_client.cpp
   cpp/error_response.cpp
+  cpp/api_result_types.cpp
   cpp/internal/fetch.cpp
   cpp/internal/http_client.cpp
   cpp/internal/api_bridge.cpp

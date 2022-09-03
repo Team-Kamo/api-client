@@ -41,6 +41,97 @@ namespace octane::internal {
     /** @brief レスポンスのステータスライン。 */
     std::string statusLine;
   };
+
+  /**
+   * @brief HttpClientクラスを通じてHTTP通信を行うインタフェース。
+   * @details
+   * このインタフェースを実装したクラスは3xx番台のレスポンスを受けたときにリダイレクト処理を行わなければならない。
+   * また、このリダイレクト処理はHTTPヘッダのLocationに従う。
+   * { @see Fetch } このインタフェースを実装したクラス。
+   *
+   */
+  class FetchBase {
+  public:
+    using FetchResult             = Result<FetchResponse, ErrorResponse>;
+    virtual ~FetchBase() noexcept = 0;
+    /**
+     * @brief Fetchのインスタンスを初期化する。
+     * @details
+     * このメソッドはインスタンス一つにつき一度だけ呼び出すことができる。
+     * また、インスタンスを作成した直後に呼び出さなければならない。
+     * 失敗した場合は次のエラーレスポンスを返す。
+     * - ERR_CURL_INITIALIZATION_FAILED: CURLの初期化に失敗したとき
+     *
+     * @return Result<_, ErrorResponse>
+     * 成功した場合は何も返さず、失敗した場合は上記のエラーレスポンスを返す。
+     */
+    virtual Result<_, ErrorResponse> init() = 0;
+    /**
+     * @brief APIへのボディ部を持たないリクエストを発行する。
+     * @details
+     * このメソッドはボディを持たないリクエストに使用する。
+     * GET及びDELETEリクエストは必ずこのメソッドを使用しなければならない。
+     * 失敗した場合は次のエラーレスポンスを返す。
+     * - ERR_JSON_PARSE_FAILED:
+     * レスポンスのContent-Typeがapplication/jsonであったにもかかわらず正常なJSONデータがAPIから返却されなかったとき
+     * - ERR_INCORRECT_HTTP_METHOD: GET, POST, PUT,
+     * DELETE以外のHTTPメソッドを指定したとき
+     * - ERR_CURL_CONNECTION_FAILED: CURLの接続に失敗したとき
+     *
+     * @param[in] method リクエストに使用するHTTPメソッド
+     * @param[in] url APIへのURL
+     * @return FetchResult
+     * 成功した場合はレスポンスのボディ部、失敗した場合は上記のエラーレスポンスを返す。
+     */
+    virtual FetchResult request(HttpMethod method, std::string_view url) = 0;
+    /**
+     * @brief APIへのJSON形式のボディ部を持つリクエストを発行する。
+     * @details
+     * このメソッドはJSON形式のボディを持つリクエストに使用する。
+     * GET及びDELETEリクエストはこのメソッドを使用してはならず、代わりに{@link
+     * Fetch::request(HttpMethod method, std::string_view url)}を使用すること。
+     * 失敗した場合は次のエラーレスポンスを返す。
+     * - ERR_JSON_PARSE_FAILED:
+     * レスポンスのContent-Typeがapplication/jsonであったにもかかわらず正常なJSONデータがAPIから返却されなかったとき
+     * - ERR_INCORRECT_HTTP_METHOD: POST, PUT以外のHTTPメソッドを指定したとき
+     * - ERR_CURL_CONNECTION_FAILED: CURLの接続に失敗したとき
+     *
+     * @param[in] method リクエストに使用するHTTPメソッド
+     * @param[in] url APIへのURL
+     * @param[in] body APIリクエストのボディ部
+     * @return FetchResult
+     * 成功した場合はレスポンスのボディ部、失敗した場合は上記のエラーレスポンスを返す。
+     */
+    virtual FetchResult request(HttpMethod method,
+                                std::string_view url,
+                                const rapidjson::Document& body)
+      = 0;
+    /**
+     * @brief APIへの任意のContent-Typeのボディ部を持つリクエストを発行する。
+     * @details
+     * このメソッドは任意のContent-Typeのボディを持つリクエストに使用する。
+     * JSON形式のリクエストの場合は{@link Fetch::request(HttpMethod method,
+     * std::string_view url, const rapidjson::Document& body)}の使用を推奨する。
+     * GET及びDELETEリクエストはこのメソッドを使用してはならず、代わりに{@link
+     * Fetch::request(HttpMethod method, std::string_view url)}を使用すること。
+     * 失敗した場合は次のエラーレスポンスを返す。
+     * - ERR_JSON_PARSE_FAILED:
+     * レスポンスのContent-Typeがapplication/jsonであったにもかかわらず正常なJSONデータがAPIから返却されなかったとき
+     * - ERR_INCORRECT_HTTP_METHOD: POST, PUT以外のHTTPメソッドを指定したとき
+     * - ERR_CURL_CONNECTION_FAILED: CURLの接続に失敗したとき
+     *
+     * @param[in] method リクエストに使用するHTTPメソッド
+     * @param[in] url APIへのURL
+     * @param[in] body APIリクエストのボディ部
+     * @return FetchResult
+     * 成功した場合はレスポンスのボディ部、失敗した場合は上記のエラーレスポンスを返す。
+     */
+    virtual FetchResult request(HttpMethod method,
+                                std::string_view url,
+                                std::string_view mimeType,
+                                const std::vector<std::uint8_t>& body)
+      = 0;
+  };
   /**
    * @brief HttpClientクラスを通じてHTTP通信を行う。
    * @details
@@ -48,16 +139,13 @@ namespace octane::internal {
    * また、このリダイレクト処理はHTTPヘッダのLocationに従う。
    *
    */
-  class Fetch {
+  class Fetch : public FetchBase {
     std::string token;
     std::string origin;
     std::string baseUrl;
-
     HttpClientBase* client;
 
   public:
-    using FetchResult = Result<FetchResponse, ErrorResponse>;
-
     /**
      * @brief Construct a new Fetch object
      * @details
@@ -81,84 +169,33 @@ namespace octane::internal {
           std::string_view origin,
           std::string_view baseUrl,
           HttpClientBase* client);
+    virtual ~Fetch() noexcept;
     /**
-     * @brief Fetchのインスタンスを初期化する。
-     * @details
-     * このメソッドはインスタンス一つにつき一度だけ呼び出すことができる。
-     * また、インスタンスを作成した直後に呼び出さなければならない。
-     * 失敗した場合は次のエラーレスポンスを返す。
-     * - ERR_CURL_INITIALIZATION_FAILED: CURLの初期化に失敗したとき
-     *
-     * @return Result<_, ErrorResponse>
-     * 成功した場合は何も返さず、失敗した場合は上記のエラーレスポンスを返す。
+     * {@inheritDoc}
      */
-    Result<_, ErrorResponse> init();
+    virtual Result<_, ErrorResponse> init() override;
     /**
-     * @brief APIへのボディ部を持たないリクエストを発行する。
-     * @details
-     * このメソッドはボディを持たないリクエストに使用する。
-     * GET及びDELETEリクエストは必ずこのメソッドを使用しなければならない。
-     * 失敗した場合は次のエラーレスポンスを返す。
-     * - ERR_JSON_PARSE_FAILED:
-     * レスポンスのContent-Typeがapplication/jsonであったにもかかわらず正常なJSONデータがAPIから返却されなかったとき
-     * - ERR_INCORRECT_HTTP_METHOD: GET, POST, PUT,
-     * DELETE以外のHTTPメソッドを指定したとき
-     * - ERR_CURL_CONNECTION_FAILED: CURLの接続に失敗したとき
-     *
-     * @param[in] method リクエストに使用するHTTPメソッド
-     * @param[in] url APIへのURL
-     * @return FetchResult
-     * 成功した場合はレスポンスのボディ部、失敗した場合は上記のエラーレスポンスを返す。
+     * {@inheritDoc}
      */
-    FetchResult request(HttpMethod method, std::string_view url);
+    virtual FetchResult request(HttpMethod method, std::string_view url) override;
     /**
-     * @brief APIへのJSON形式のボディ部を持つリクエストを発行する。
-     * @details
-     * このメソッドはJSON形式のボディを持つリクエストに使用する。
-     * GET及びDELETEリクエストはこのメソッドを使用してはならず、代わりに{@link
-     * Fetch::request(HttpMethod method, std::string_view url)}を使用すること。
-     * 失敗した場合は次のエラーレスポンスを返す。
-     * - ERR_JSON_PARSE_FAILED:
-     * レスポンスのContent-Typeがapplication/jsonであったにもかかわらず正常なJSONデータがAPIから返却されなかったとき
-     * - ERR_INCORRECT_HTTP_METHOD: POST, PUT以外のHTTPメソッドを指定したとき
-     * - ERR_CURL_CONNECTION_FAILED: CURLの接続に失敗したとき
-     *
-     * @param[in] method リクエストに使用するHTTPメソッド
-     * @param[in] url APIへのURL
-     * @param[in] body APIリクエストのボディ部
-     * @return FetchResult
-     * 成功した場合はレスポンスのボディ部、失敗した場合は上記のエラーレスポンスを返す。
+     * {@inheritDoc}
      */
-    FetchResult request(HttpMethod method,
+    virtual FetchResult request(HttpMethod method,
                         std::string_view url,
-                        const rapidjson::Document& body);
+                        const rapidjson::Document& body) override;
     /**
-     * @brief APIへの任意のContent-Typeのボディ部を持つリクエストを発行する。
-     * このメソッドは任意のContent-Typeのボディを持つリクエストに使用する。
-     * JSON形式のリクエストの場合は{@link Fetch::request(HttpMethod method,
-     * std::string_view url, const rapidjson::Document& body)}の使用を推奨する。
-     * GET及びDELETEリクエストはこのメソッドを使用してはならず、代わりに{@link
-     * Fetch::request(HttpMethod method, std::string_view url)}を使用すること。
-     * 失敗した場合は次のエラーレスポンスを返す。
-     * - ERR_JSON_PARSE_FAILED:
-     * レスポンスのContent-Typeがapplication/jsonであったにもかかわらず正常なJSONデータがAPIから返却されなかったとき
-     * - ERR_INCORRECT_HTTP_METHOD: POST, PUT以外のHTTPメソッドを指定したとき
-     * - ERR_CURL_CONNECTION_FAILED: CURLの接続に失敗したとき
-     *
-     * @param[in] method リクエストに使用するHTTPメソッド
-     * @param[in] url APIへのURL
-     * @param[in] body APIリクエストのボディ部
-     * @return FetchResult
-     * 成功した場合はレスポンスのボディ部、失敗した場合は上記のエラーレスポンスを返す。
+     * {@inheritDoc}
      */
-    FetchResult request(HttpMethod method,
+    virtual FetchResult request(HttpMethod method,
                         std::string_view url,
                         std::string_view mimeType,
-                        const std::vector<std::uint8_t>& body);
+                        const std::vector<std::uint8_t>& body) override;
 
   private:
     /**
      * @brief Fetchクラスが内部的にHttpClientとの通信を行うためのメソッド。
+     * @details
      * 各publicな{@link Fetch::request}は内部でこのメソッドをコールする。
      * 失敗した場合は次のエラーレスポンスを返す。
      * - ERR_JSON_PARSE_FAILED:

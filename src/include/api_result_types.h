@@ -16,6 +16,7 @@
 #include <string_view>
 #include <variant>
 #include <vector>
+#include <ostream>
 
 namespace octane {
   /**
@@ -41,6 +42,8 @@ namespace octane {
     /** @brief ユーザに詳細を通知するメッセージ。 */
     std::optional<std::string> message;
   };
+  bool operator==(const HealthResult& a, const HealthResult& b);
+  std::ostream& operator<<(std::ostream& stream, const HealthResult& healthResult);
   /**
    * @brief
    * {@link RoomStatus}において{@link

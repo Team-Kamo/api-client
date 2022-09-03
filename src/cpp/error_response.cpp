@@ -10,6 +10,8 @@
  */
 #include "include/error_response.h"
 
+#include <ostream>
+
 namespace octane {
   error_t<ErrorResponse> makeError(std::string_view code,
                                    std::string_view reason) {
@@ -17,5 +19,10 @@ namespace octane {
       .code   = std::string(code),
       .reason = std::string(reason),
     });
+  }
+  std::ostream& operator<<(std::ostream& stream, const ErrorResponse& err) {
+    stream << "{\n\t.code = " << err.code << "\n\t.reason = " << err.reason
+           << "\n}";
+    return stream;
   }
 } // namespace octane
