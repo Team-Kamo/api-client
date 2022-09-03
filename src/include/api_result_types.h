@@ -12,97 +12,103 @@
 #define OCTANE_API_CLIENT_API_RESULT_TYPES_H_
 
 #include <optional>
+#include <ostream>
 #include <string>
 #include <string_view>
 #include <variant>
 #include <vector>
-#include <ostream>
 
 namespace octane {
   /**
-   * @brief {@link HealthResult}において、{@link
-   * Health}の取り得る値を表す列挙体。
+   * @brief Used in {@link HealthResult}, represents the server's status.
    *
    */
   enum struct Health {
-    /** @brief サーバーが正常に動いている時の戻り値。*/
+    /** @brief The server is working. */
     Healthy,
-    /** @brief サーバーに障害が発生している時の戻り値。*/
+    /** @brief There are incidents happening in the server. */
     Degraded,
-    /** @brief サーバーが使用不能である時の戻り値。*/
+    /** @brief The server is dead. */
     Faulty,
   };
   /**
-   * @brief {@link health}メソッドを呼んだ時の結果を表す構造体。
+   * @brief Result for {@link health}, has the server's status and message.
    *
    */
   struct HealthResult {
-    /** @brief サーバーの状態。 */
+    /** @brief Status of the server. */
     Health health;
-    /** @brief ユーザに詳細を通知するメッセージ。 */
+    /** @brief Message which describe details of the server's status. */
     std::optional<std::string> message;
   };
   bool operator==(const HealthResult& a, const HealthResult& b);
-  std::ostream& operator<<(std::ostream& stream, const HealthResult& healthResult);
+  std::ostream& operator<<(std::ostream& stream,
+                           const HealthResult& healthResult);
   /**
    * @brief
-   * {@link RoomStatus}において{@link
-   * std::vector<Device>}の要素が取り得る値を表す列挙体。
+   * Used in {@link RoomStatus}'s devices, has the information of each device
+   * connected to the room.
    *
    */
   struct Device {
-    /** @brief デバイス名。 */
+    /** @brief An unique name for the device which is connected to the room,
+     * such as collodi's fedora linux.*/
     std::string name;
-    /** @brief タイムスタンプ。*/
+    /** @brief Timestamp of when did this device connect to the room. */
     std::uint64_t timestamp;
   };
   /**
-   * @brief {@link getRoomStatus}メソッドを呼んだ時の結果を表す構造体。
+   * @brief Result for {@link getRoomStatus}, has the status of the room.
    *
    */
   struct RoomStatus {
-    /** @brief ルームの名前。 */
+    /** @brief Name of the room. */
     std::string name;
-    /** @brief ルームに接続している全てのデバイス。 */
+    /** @brief Information for all of the devices connected to the room. */
     std::vector<Device> devices;
+    /** @brief Id of the room. */
+    std::uint64_t id;
   };
   bool operator==(const RoomStatus& a, const RoomStatus& b);
   std::ostream& operator<<(std::ostream& stream, const RoomStatus& roomStatus);
   /**
-   * @brief {@link
-   * Content}の型がファイルなのか、クリップボードなのかを表す列挙体。
+   * @brief Used in {@link ContentStatus}, represents the type of {@link
+   * Content}
    *
    */
   enum struct ContentType {
-    /** @brief {@link Content}の型がファイルであることを表す。 */
+    /** @brief Type of {@link Content} is file. */
     File,
-    /** @brief {@link Content}の型がクリップボードであることを表す。 */
+    /** @brief Type of {@link Content} is file. */
     Clipboard,
   };
   /**
-   * @brief {@link getContentStatus}メソッドを呼んだ時の結果を表す構造体。
+   * @brief Result for {@link getContentStatus}, has the status of {@link
+   * Content}
    *
    */
   struct ContentStatus {
-    /** @brief デバイス名。*/
+    /** @brief Device which uploaded this content.*/
     std::string device;
-    /** @brief タイムスタンプ。*/
+    /** @brief Timestamp of when did this content get uploaded.*/
     std::uint64_t timestamp;
-    /** @brief コンテンツの型。*/
+    /** @brief Type of {@link Content}.*/
     ContentType type;
-    /** @brief コンテンツがファイル形式をとる場合、その名前。*/
+    /** @brief Optional: If the type is file, then this represents it's name.*/
     std::optional<std::string> name;
-    /** @brief MIME。*/
+    /** @brief MIME.*/
     std::string mime;
   };
   /**
-   * @brief {@link getContent}メソッドを呼んだ時の結果を表す構造体。
+   * @brief Result for {@link getContent}, has data and {@link
+   * ContentStatus}
    *
    */
   struct Content {
-    /** @brief コンテンツの状態。*/
+    /** @brief {@link ContentStatus}*/
     ContentStatus contentStatus;
-    /** @brief コンテンツのデータ。*/
+    /** @brief The data of {@link Content}, is a variant of string and binary.
+     */
     std::variant<std::string, std::vector<std::uint8_t>> data;
   };
 };     // namespace octane
