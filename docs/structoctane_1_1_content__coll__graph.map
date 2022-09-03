@@ -1,4 +1,4 @@
 <map id="octane::Content" name="octane::Content">
-<area shape="rect" id="node1" title="getContentメソッドを呼んだ時の結果を表す構造体。" alt="" coords="24,93,139,119"/>
-<area shape="rect" id="node2" href="$structoctane_1_1_content_status.html" title="getContentStatusメソッドを呼んだ時の結果を表す構造体。" alt="" coords="5,5,157,31"/>
+<area shape="rect" id="node1" title="Result for getContent, has data and ContentStatus." alt="" coords="24,93,139,119"/>
+<area shape="rect" id="node2" href="$structoctane_1_1_content_status.html" title="Result for getContentStatus, has the status of Content." alt="" coords="5,5,157,31"/>
 </map>

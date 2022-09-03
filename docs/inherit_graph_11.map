@@ -1,4 +1,4 @@
-<map id="クラス階層図" name="クラス階層図">
-<area shape="rect" id="node1" href="$classoctane_1_1internal_1_1_http_client_base.html" title="HTTP通信を行うインタフェース。" alt="" coords="5,5,213,31"/>
-<area shape="rect" id="node2" href="$classoctane_1_1internal_1_1_http_client.html" title="HTTP通信を行う。" alt="" coords="261,5,440,31"/>
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classoctane_1_1internal_1_1_http_client_base.html" title="HTTP通信を行うインタフェース。" alt="" coords="5,5,212,31"/>
+<area shape="rect" id="node2" href="$classoctane_1_1internal_1_1_http_client.html" title="HTTP通信を行う。" alt="" coords="260,5,436,31"/>
 </map>

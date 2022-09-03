@@ -1,0 +1,9 @@
+<map id="octane::internal::ApiBridge::roomIdDelete" name="octane::internal::ApiBridge::roomIdDelete">
+<area shape="rect" id="node1" title="use delete method for /room/{id}" alt="" coords="5,150,180,190"/>
+<area shape="rect" id="node2" href="$classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="232,83,407,123"/>
+<area shape="rect" id="node3" href="$namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="481,5,565,31"/>
+<area shape="rect" id="node4" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="636,81,731,107"/>
+<area shape="rect" id="node6" href="$namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835" title="正常系の型が_であるときに使用できるユーティリティ関数。" alt="" coords="278,232,361,257"/>
+<area shape="rect" id="node7" href="$classoctane_1_1internal_1_1_fetch_base.html#a204cf835d57c87d11c39f35b1f757555" title="APIへのボディ部を持たないリクエストを発行する。" alt="" coords="228,282,411,322"/>
+<area shape="rect" id="node5" href="$namespaceoctane.html#a508d9040da1bea287606313174f69cbc" title="エラーレスポンスを作成するためのユーティリティ関数。" alt="" coords="459,107,588,132"/>
+</map>

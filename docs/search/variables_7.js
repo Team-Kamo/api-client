@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['name_0',['name',['../structoctane_1_1_device.html#a9eb9cf421c4b4ece009372a6919172f6',1,'octane::Device::name()'],['../structoctane_1_1_room_status.html#a67a2578ac1112d7046c8668f1343afc1',1,'octane::RoomStatus::name()'],['../structoctane_1_1_content_status.html#a43a579fa3f296f50ea967f1af872fe70',1,'octane::ContentStatus::name()']]]
+  ['message_0',['message',['../structoctane_1_1_health_result.html#a967d18755cbfcc463e14083ec1b19b2e',1,'octane::HealthResult']]],
+  ['method_1',['method',['../structoctane_1_1internal_1_1_http_request.html#ae704269ee7b09cff50709b795f2db438',1,'octane::internal::HttpRequest']]],
+  ['mime_2',['mime',['../structoctane_1_1_content_status.html#ad612c1e2a67ba2187a92914732d04166',1,'octane::ContentStatus::mime()'],['../structoctane_1_1internal_1_1_fetch_response.html#a958f747de7309d0c9ca3dbb162f7e1dd',1,'octane::internal::FetchResponse::mime()']]]
 ];

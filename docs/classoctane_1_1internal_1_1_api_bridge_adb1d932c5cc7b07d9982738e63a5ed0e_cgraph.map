@@ -1,4 +1,4 @@
 <map id="octane::internal::ApiBridge::init" name="octane::internal::ApiBridge::init">
-<area shape="rect" id="node1" title="Initialize" alt="" coords="5,5,180,45"/>
+<area shape="rect" id="node1" title="Initialize." alt="" coords="5,5,180,45"/>
 <area shape="rect" id="node2" href="$classoctane_1_1internal_1_1_fetch_base.html#a50f248788fa420baab778673dead51af" title="Fetchのインスタンスを初期化する。" alt="" coords="228,5,411,45"/>
 </map>

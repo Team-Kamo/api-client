@@ -2,27 +2,27 @@
 <area shape="rect" id="node1" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="848,1665,943,1690"/>
 <area shape="rect" id="node2" href="$classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="406,776,581,816"/>
 <area shape="rect" id="node3" href="$classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for /health" alt="" coords="183,212,357,252"/>
-<area shape="rect" id="node4" href="$classoctane_1_1_api_client.html#a93ff968043aca8a60231e7b218689d9b" title="Return the server&#39;s status" alt="" coords="5,85,135,125"/>
-<area shape="rect" id="node5" href="$classoctane_1_1internal_1_1_api_bridge.html#a150b61a254e64c188074e94d67737263" title="use delete method for /room/{id}/content" alt="" coords="183,371,357,411"/>
-<area shape="rect" id="node6" href="$classoctane_1_1_api_client.html#ab429c5e6842a3277b334d2e043467e85" title="Delete content from the room" alt="" coords="5,339,135,379"/>
-<area shape="rect" id="node7" href="$classoctane_1_1internal_1_1_api_bridge.html#afc0a82bb6d3e7c878da2c2f2c6e0aed0" title="use get method for /room/{id}/content" alt="" coords="183,567,357,607"/>
-<area shape="rect" id="node8" href="$classoctane_1_1_api_client.html#a69da1feb8954aab68653fb303b966b47" title="Return content in the room" alt="" coords="5,525,135,565"/>
-<area shape="rect" id="node9" href="$classoctane_1_1internal_1_1_api_bridge.html#a554d65527982395e8b4095be5f312eb7" title="use put method for /room/{id}/content" alt="" coords="183,1163,357,1203"/>
-<area shape="rect" id="node10" href="$classoctane_1_1_api_client.html#a4ec2a9c1cb3c9168e2ebf8b21fb2d968" title="Upload content to the room" alt="" coords="5,1163,135,1203"/>
-<area shape="rect" id="node11" href="$classoctane_1_1internal_1_1_api_bridge.html#ae2c4f70b94f79adb66b1db81b118d809" title="use delete method for /room/{id}" alt="" coords="183,1545,357,1585"/>
-<area shape="rect" id="node12" href="$classoctane_1_1_api_client.html#a8459fa5374bfe4e039cecb1afd79b531" title="Delete the room" alt="" coords="5,1641,135,1681"/>
-<area shape="rect" id="node13" href="$classoctane_1_1internal_1_1_api_bridge.html#a26186938de852177fc05cff45e037fc9" title="use get method for /room/{id}" alt="" coords="183,1708,357,1748"/>
-<area shape="rect" id="node14" href="$classoctane_1_1_api_client.html#abf9f627eef82ca6b148130e707f99fd7" title="Get the room&#39;s status" alt="" coords="5,1803,135,1843"/>
-<area shape="rect" id="node15" href="$classoctane_1_1internal_1_1_api_bridge.html#a152a5325cd6f9c7992469a619e317fcf" title="use post method for /room/{id}" alt="" coords="183,484,357,524"/>
-<area shape="rect" id="node16" href="$classoctane_1_1internal_1_1_api_bridge.html#aeeccd95e2ec6beb6e01fbcd7c8667d80" title="use delete method for /room/{id}/status" alt="" coords="183,307,357,347"/>
-<area shape="rect" id="node17" href="$classoctane_1_1internal_1_1_api_bridge.html#ae54da09b4a06e50855131f497fe1db6a" title="use get method for /room/{id}/status" alt="" coords="183,776,357,816"/>
-<area shape="rect" id="node18" href="$classoctane_1_1internal_1_1_api_bridge.html#ab744d0cd53dab5fea10c0c74fd227185" title="use put method for /room/{id}/status" alt="" coords="183,985,357,1025"/>
-<area shape="rect" id="node19" href="$classoctane_1_1internal_1_1_api_bridge.html#ad509d17c76ac650318f92e78aa674b22" title="use post method for /room" alt="" coords="183,1809,357,1849"/>
-<area shape="rect" id="node20" href="$classoctane_1_1_api_client.html#aca5a441478ce67bb09dedc124834d5c2" title="Create a room" alt="" coords="5,1961,135,2001"/>
+<area shape="rect" id="node4" href="$classoctane_1_1_api_client.html#a93ff968043aca8a60231e7b218689d9b" title="Return the server&#39;s status." alt="" coords="5,85,135,125"/>
+<area shape="rect" id="node5" href="$classoctane_1_1internal_1_1_api_bridge.html#a8cede5a0248ff2662e179b8a2b19b8b2" title="use delete method for /room/{id}/content" alt="" coords="183,371,357,411"/>
+<area shape="rect" id="node6" href="$classoctane_1_1_api_client.html#a281c1632699c75eef4dce4e0ce32e559" title="Delete content from the room." alt="" coords="5,339,135,379"/>
+<area shape="rect" id="node7" href="$classoctane_1_1internal_1_1_api_bridge.html#ae5236ca6f694a95f302a881758e16b20" title="use get method for /room/{id}/content" alt="" coords="183,567,357,607"/>
+<area shape="rect" id="node8" href="$classoctane_1_1_api_client.html#aad50514035736da26c1a3f826f68c98b" title="Return content in the room." alt="" coords="5,525,135,565"/>
+<area shape="rect" id="node9" href="$classoctane_1_1internal_1_1_api_bridge.html#a55f1f244706c935e38545e5f66308753" title="use put method for /room/{id}/content" alt="" coords="183,1163,357,1203"/>
+<area shape="rect" id="node10" href="$classoctane_1_1_api_client.html#a36f0bbb4e8408949067cd90db4ce78e2" title="Upload content to the room." alt="" coords="5,1163,135,1203"/>
+<area shape="rect" id="node11" href="$classoctane_1_1internal_1_1_api_bridge.html#aa83124ddc28125ae40dd2e6da0f29061" title="use delete method for /room/{id}" alt="" coords="183,1545,357,1585"/>
+<area shape="rect" id="node12" href="$classoctane_1_1_api_client.html#a13ede84235b6e7f2eac352fb4c0f4719" title="Delete the room." alt="" coords="5,1641,135,1681"/>
+<area shape="rect" id="node13" href="$classoctane_1_1internal_1_1_api_bridge.html#afb7b22629f6212edad71b7289ddc6618" title="use get method for /room/{id}" alt="" coords="183,1708,357,1748"/>
+<area shape="rect" id="node14" href="$classoctane_1_1_api_client.html#a33e36c2ab52815cf4c7fefa3e1f7b5aa" title="Get the room&#39;s status." alt="" coords="5,1803,135,1843"/>
+<area shape="rect" id="node15" href="$classoctane_1_1internal_1_1_api_bridge.html#abad3e1c394ae37e3538a2ba32b8f06ab" title="use post method for /room/{id}" alt="" coords="183,484,357,524"/>
+<area shape="rect" id="node16" href="$classoctane_1_1internal_1_1_api_bridge.html#a5b01879a21e410469c4e8a7494ae0f6c" title="use delete method for /room/{id}/status" alt="" coords="183,307,357,347"/>
+<area shape="rect" id="node17" href="$classoctane_1_1internal_1_1_api_bridge.html#a01f98886f7272847b83c6c56b0af6fd6" title="use get method for /room/{id}/status" alt="" coords="183,776,357,816"/>
+<area shape="rect" id="node18" href="$classoctane_1_1internal_1_1_api_bridge.html#a0e57b82c4d1afa56a8877eac44750d49" title="use put method for /room/{id}/status" alt="" coords="183,985,357,1025"/>
+<area shape="rect" id="node19" href="$classoctane_1_1internal_1_1_api_bridge.html#ae717c194d35ff413c9bd93566d8077a6" title="use post method for /room" alt="" coords="183,1809,357,1849"/>
+<area shape="rect" id="node20" href="$classoctane_1_1_api_client.html#a62b656d21ec4eb86a2cad9caaf5423df" title="Create a room." alt="" coords="5,1961,135,2001"/>
 <area shape="rect" id="node21" href="$classoctane_1_1_result.html#ab5dc7ca728727fe6fcf2ad6731277eb3" title="準正常系の値を定数値として取り出す。" alt="" coords="650,2171,779,2197"/>
 <area shape="rect" id="node22" href="$namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="673,757,757,782"/>
 <area shape="rect" id="node24" href="$classoctane_1_1error__t.html#a8c961c88b5b7d8ed425ad7e75a5b7f30" title=" " alt="" coords="639,2221,790,2246"/>
-<area shape="rect" id="node25" href="$classoctane_1_1_api_client.html#a90a36f3caf3ada6677d9782aadd5780c" title="Initialize" alt="" coords="641,2270,788,2295"/>
+<area shape="rect" id="node25" href="$classoctane_1_1_api_client.html#a90a36f3caf3ada6677d9782aadd5780c" title="Initialize." alt="" coords="641,2270,788,2295"/>
 <area shape="rect" id="node26" href="$namespaceoctane.html#a508d9040da1bea287606313174f69cbc" title="エラーレスポンスを作成するためのユーティリティ関数。" alt="" coords="650,1398,779,1423"/>
 <area shape="rect" id="node30" href="$classoctane_1_1error__t.html#a5f88fb2143fdd0af7505963b72d07b64" title=" " alt="" coords="629,2320,800,2360"/>
 <area shape="rect" id="node31" href="$classoctane_1_1_result.html#a75e8a3bfab37da3e786cfdd9c7348d43" title=" " alt="" coords="639,2385,790,2410"/>

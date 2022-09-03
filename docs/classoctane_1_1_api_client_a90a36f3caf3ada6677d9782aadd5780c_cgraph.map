@@ -1,6 +1,6 @@
 <map id="octane::ApiClient::init" name="octane::ApiClient::init">
-<area shape="rect" id="node1" title="Initialize" alt="" coords="5,59,152,84"/>
+<area shape="rect" id="node1" title="Initialize." alt="" coords="5,59,152,84"/>
 <area shape="rect" id="node2" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="240,29,335,55"/>
-<area shape="rect" id="node3" href="$classoctane_1_1internal_1_1_api_bridge.html#adb1d932c5cc7b07d9982738e63a5ed0e" title="Initialize" alt="" coords="200,79,375,119"/>
+<area shape="rect" id="node3" href="$classoctane_1_1internal_1_1_api_bridge.html#adb1d932c5cc7b07d9982738e63a5ed0e" title="Initialize." alt="" coords="200,79,375,119"/>
 <area shape="rect" id="node4" href="$classoctane_1_1internal_1_1_fetch_base.html#a50f248788fa420baab778673dead51af" title="Fetchのインスタンスを初期化する。" alt="" coords="423,79,605,119"/>
 </map>

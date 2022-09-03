@@ -1,5 +1,5 @@
 <map id="octane::ApiClient::health" name="octane::ApiClient::health">
-<area shape="rect" id="node1" title="Return the server&#39;s status" alt="" coords="5,157,135,197"/>
+<area shape="rect" id="node1" title="Return the server&#39;s status." alt="" coords="5,157,135,197"/>
 <area shape="rect" id="node2" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="813,135,908,160"/>
 <area shape="rect" id="node3" href="$classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for /health" alt="" coords="183,157,357,197"/>
 <area shape="rect" id="node7" href="$namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835" title="正常系の型が_であるときに使用できるユーティリティ関数。" alt="" coords="455,324,538,350"/>
