@@ -270,8 +270,7 @@ namespace octane::internal {
                         std::string_view("/room"),
                         testing::Eq(testing::ByRef(json))))
       .Times(1)
-      .WillOnce(
-        testing::Return(ok(makeJsonResponse(R"({"id": "7040782538"})"))));
+      .WillOnce(testing::Return(ok(makeJsonResponse(R"({"id": 7040782538})"))));
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.roomPost(name);
     EXPECT_TRUE(result) << result.err();
@@ -292,7 +291,7 @@ namespace octane::internal {
                         testing::Eq(testing::ByRef(json))))
       .Times(1)
       .WillOnce(
-        testing::Return(ok(makeJsonResponse(R"({"ideco": "7040782538"})"))));
+        testing::Return(ok(makeJsonResponse(R"({"ideco": 7040782538})"))));
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.roomPost(name);
     EXPECT_FALSE(result) << result.get();
@@ -374,13 +373,15 @@ namespace octane::internal {
   TEST(ApiBridgeTest, roomIdGetOk) {
     test::MockFetch mockFetch;
     std::uint64_t id = 7040782538;
-    EXPECT_CALL(mockFetch,
-                request(HttpMethod::Post, std::string_view("/room/" + id)))
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Get, std::string_view("/room/" + std::to_string(id))))
       .Times(1)
       .WillOnce(testing::Return(ok(makeJsonResponse(R"(
         {
           "devices": [{"name": "soon's thinkpad", "timestamp": 50220835}],
-          "name" : "soon's super cool octane room"
+          "name" : "soon's super cool octane room",
+          "id": 7040782538
           }
         )"))));
     RoomStatus roomStatus{};
@@ -389,6 +390,7 @@ namespace octane::internal {
     device.timestamp = 50220835;
     roomStatus.devices.push_back(device);
     roomStatus.name = "soon's super cool octane room";
+    roomStatus.id = id;
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.roomIdGet(id);
     EXPECT_TRUE(result) << result.err();
@@ -402,13 +404,15 @@ namespace octane::internal {
   TEST(ApiBridgeTest, roomIdGetErrResponse) {
     test::MockFetch mockFetch;
     std::uint64_t id = 7040782538;
-    EXPECT_CALL(mockFetch,
-                request(HttpMethod::Post, std::string_view("/room/" + id)))
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Get, std::string_view("/room/" + std::to_string(id))))
       .Times(1)
       .WillOnce(testing::Return(ok(makeJsonResponse(R"(
         {
           "Devices": [{"name": "soon's thinkpad", "timestamp": 50220835}],
-          "Name" : "soon's super cool octane room"
+          "Name" : "soon's super cool octane room",
+          "Id": 7040782538
           }
         )"))));
     RoomStatus roomStatus{};
@@ -430,8 +434,9 @@ namespace octane::internal {
   TEST(ApiBridgeTest, roomIdGetErrJson) {
     test::MockFetch mockFetch;
     std::uint64_t id = 7040782538;
-    EXPECT_CALL(mockFetch,
-                request(HttpMethod::Post, std::string_view("/room/" + id)))
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Get, std::string_view("/room/" + std::to_string(id))))
       .Times(1)
       .WillOnce(testing::Return(makeError(ERR_JSON_PARSE_FAILED, "")));
     RoomStatus roomStatus{};
@@ -453,8 +458,9 @@ namespace octane::internal {
   TEST(ApiBridgeTest, roomIdGetErrCurl) {
     test::MockFetch mockFetch;
     std::uint64_t id = 7040782538;
-    EXPECT_CALL(mockFetch,
-                request(HttpMethod::Post, std::string_view("/room/" + id)))
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Get, std::string_view("/room/" + std::to_string(id))))
       .Times(1)
       .WillOnce(testing::Return(makeError(ERR_CURL_CONNECTION_FAILED, "")));
     RoomStatus roomStatus{};
@@ -476,9 +482,9 @@ namespace octane::internal {
   TEST(ApiBridgeTest, roomIdGet2xx) {
     test::MockFetch mockFetch;
     std::uint64_t id = 7040782538;
-    EXPECT_CALL(mockFetch,
-                request(HttpMethod::Post,
-                        std::string_view("/room/" + std::to_string(id))))
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Get, std::string_view("/room/" + std::to_string(id))))
       .Times(1)
       .WillOnce(
         testing::Return(ok(makeJsonResponse(R"(

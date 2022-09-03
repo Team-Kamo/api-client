@@ -157,11 +157,11 @@ namespace octane::internal {
     response.version                       = HttpVersion::Http2;
     auto result
       = client.makeHttpResponse(std::move(responseHeader), std::move(chunk));
-    EXPECT_FALSE(result) << response << result.get();
+    EXPECT_TRUE(result) << response << result.err();
     EXPECT_EQ(result.get(), response) << response << result.get();
   }
   /**
-   * @brief HttpClient::makeHttpResponseが正常に動作するかをテストする。
+   * @brief HttpClient::makeHttpResponseにおいて返されたヘッダのHTTPのバージョンにエラーがあった場合、エラーを返すかどうかをテストする。
    *
    */
   TEST(HttpClientTest, MakeHttpResponseErr) {

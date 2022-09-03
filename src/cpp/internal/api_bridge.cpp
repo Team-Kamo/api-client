@@ -142,10 +142,9 @@ namespace octane::internal {
       devices.emplace_back(device["name"].GetString(),
                            device["timestamp"].GetUint64());
     }
-    return ok(RoomStatus{
-      .name    = json["name"].GetString(),
-      .devices = devices,
-    });
+    return ok(RoomStatus{ .name    = json["name"].GetString(),
+                          .devices = devices,
+                          .id      = json["id"].GetUint64() });
   }
   Result<_, ErrorResponse> ApiBridge::roomIdDelete(std::uint64_t id) {
     auto response = fetch->request(internal::HttpMethod::Delete,
