@@ -69,10 +69,10 @@ namespace octane::internal {
      * - ERR_CURL_CONNECTION_FAILED: CURLの接続に失敗した時
      * また、2xx以外のレスポンスが返された時には、同様のエラーレスポンスの形式でサーバから渡ってきたエラーをそのまま返す。
      * @param[in] name ルームの名前
-     * @return Result<std::string, ErrorResponse>
+     * @return Result<uint64_t, ErrorResponse>
      * 成功した場合はルームのidを返し、失敗した場合は上記のエラーレスポンスを返す。
      */
-    Result<std::string, ErrorResponse> roomPost(std::string_view name);
+    Result<std::uint64_t, ErrorResponse> roomPost(std::string_view name);
     /**
      * @brief use get method for /room/{id}
      * @details
@@ -88,7 +88,7 @@ namespace octane::internal {
      * 成功した場合はルームのステータス{@link
      * RoomStatus}を返し、失敗した場合は上記のエラーレスポンスを返す。
      */
-    Result<RoomStatus, ErrorResponse> roomIdGet(std::string_view id);
+    Result<RoomStatus, ErrorResponse> roomIdGet(std::uint64_t id);
     /**
      * @brief use delete method for /room/{id}
      * @details
@@ -100,7 +100,7 @@ namespace octane::internal {
      * @return Result<_, ErrorResponse>
      * 成功した場合には何も返さず、失敗した場合は上記のエラーレスポンスを返す。
      */
-    Result<_, ErrorResponse> roomIdDelete(std::string_view id);
+    Result<_, ErrorResponse> roomIdDelete(std::uint64_t id);
     /**
      * @brief use post method for /room/{id}
      * @details
@@ -113,7 +113,7 @@ namespace octane::internal {
      * @return Result<_, ErrorResponse>
      * 成功した場合には何も返さず、失敗した場合は上記のエラーレスポンスを返す。
      */
-    Result<_, ErrorResponse> roomIdPost(std::string_view id,
+    Result<_, ErrorResponse> roomIdPost(std::uint64_t id,
                                         std::string_view name);
     /**
      * @brief use get method for /room/{id}/content
@@ -129,7 +129,7 @@ namespace octane::internal {
      * 成功した場合にはルーム内にある文字列、またはバイナリデータを返し、失敗した場合には上記のエラーレスポンスを返す。
      */
     Result<std::variant<std::string, std::vector<std::uint8_t>>, ErrorResponse>
-    roomIdContentGet(std::string_view id);
+    roomIdContentGet(std::uint64_t id);
     /**
      * @brief use delete method for /room/{id}/content
      * @details
@@ -142,7 +142,7 @@ namespace octane::internal {
      * @return Result<_, ErrorResponse>
      * 成功した場合には何も返さず、失敗した場合には上記のエラーレスポンスを返す。
      */
-    Result<_, ErrorResponse> roomIdContentDelete(std::string_view id);
+    Result<_, ErrorResponse> roomIdContentDelete(std::uint64_t id);
     /**
      * @brief use put method for /room/{id}/content
      * @details
@@ -158,7 +158,7 @@ namespace octane::internal {
      * 成功した場合には何も返さず、失敗した場合には上記のエラーレスポンスを返す。
      */
     Result<_, ErrorResponse> roomIdContentPut(
-      std::string_view id,
+      std::uint64_t id,
       const std::variant<std::string, std::vector<std::uint8_t>>& contentData,
       std::string_view mime);
     /**
@@ -176,7 +176,7 @@ namespace octane::internal {
      * 成功した場合にはコンテンツの状態{@link
      * ContentStatus}を返し、失敗した場合には上記のエラーレスポンスを返す。
      */
-    Result<ContentStatus, ErrorResponse> roomIdStatusGet(std::string_view id);
+    Result<ContentStatus, ErrorResponse> roomIdStatusGet(std::uint64_t id);
     /**
      * @brief use delete method for /room/{id}/status
      * @details
@@ -189,7 +189,7 @@ namespace octane::internal {
      * @return Result<_, ErrorResponse>
      * 成功した場合には何も返さず、失敗した場合には上記のエラーレスポンスを返す。
      */
-    Result<_, ErrorResponse> roomIdStatusDelete(std::string_view id);
+    Result<_, ErrorResponse> roomIdStatusDelete(std::uint64_t id);
     /**
      * @brief use put method for /room/{id}/status
      * @details
@@ -203,7 +203,7 @@ namespace octane::internal {
      * @return Result<_, ErrorResponse>
      * 成功した場合には何も返さず、失敗した場合には上記のエラーレスポンスを返す。
      */
-    Result<_, ErrorResponse> roomIdStatusPut(std::string_view id,
+    Result<_, ErrorResponse> roomIdStatusPut(std::uint64_t id,
                                              const ContentStatus& contentStatus,
                                              std::string_view hash);
     /**

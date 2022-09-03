@@ -21,7 +21,9 @@ namespace octane {
   ApiClient::ApiClient(std::string_view token,
                        std::string_view origin,
                        std::string_view baseUrl)
-    : bridge(new internal::Fetch(token, origin, baseUrl, new internal::HttpClient())), lastCheckedTime(0) {}
+    : bridge(
+      new internal::Fetch(token, origin, baseUrl, new internal::HttpClient())),
+      lastCheckedTime(0) {}
 
   ApiClient::~ApiClient() noexcept {}
 
@@ -67,7 +69,7 @@ namespace octane {
     return ok(result.get());
   }
 
-  Result<std::string, ErrorResponse> ApiClient::createRoom(
+  Result<std::uint64_t, ErrorResponse> ApiClient::createRoom(
     std::string_view name) {
     const auto checkHealthResult = checkHealth();
     if (!checkHealthResult) {
@@ -80,8 +82,7 @@ namespace octane {
     return ok(result.get());
   }
 
-  Result<RoomStatus, ErrorResponse> ApiClient::getRoomStatus(
-    std::string_view id) {
+  Result<RoomStatus, ErrorResponse> ApiClient::getRoomStatus(std::uint64_t id) {
     const auto checkHealthResult = checkHealth();
     if (!checkHealthResult) {
       return error(checkHealthResult.err());
@@ -93,7 +94,7 @@ namespace octane {
     return ok(result.get());
   }
 
-  Result<_, ErrorResponse> ApiClient::deleteRoom(std::string_view id) {
+  Result<_, ErrorResponse> ApiClient::deleteRoom(std::uint64_t id) {
     const auto checkHealthResult = checkHealth();
     if (!checkHealthResult) {
       return error(checkHealthResult.err());
@@ -105,7 +106,7 @@ namespace octane {
     return ok();
   }
 
-  Result<Content, ErrorResponse> ApiClient::getContent(std::string_view id,
+  Result<Content, ErrorResponse> ApiClient::getContent(std::uint64_t id,
                                                        std::string_view name) {
     const auto checkHealthResult = checkHealth();
     if (!checkHealthResult) {
@@ -129,7 +130,7 @@ namespace octane {
     return ok(content);
   }
 
-  Result<_, ErrorResponse> ApiClient::deleteContent(std::string_view id,
+  Result<_, ErrorResponse> ApiClient::deleteContent(std::uint64_t id,
                                                     std::string_view name) {
     const auto checkHealthResult = checkHealth();
     if (!checkHealthResult) {
@@ -150,7 +151,7 @@ namespace octane {
     return ok();
   }
 
-  Result<_, ErrorResponse> ApiClient::uploadContent(std::string_view id,
+  Result<_, ErrorResponse> ApiClient::uploadContent(std::uint64_t id,
                                                     std::string_view name,
                                                     const Content& content) {
     const auto checkHealthResult = checkHealth();

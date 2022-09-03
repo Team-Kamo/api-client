@@ -27,7 +27,26 @@ namespace octane {
     } else {
       health = "unknown";
     }
-    stream << "health = " << health << ", message = " << healthResult.message.value_or("<nullopt>");
+    stream << "health = " << health
+           << ", message = " << healthResult.message.value_or("<nullopt>");
+    return stream;
+  };
+  bool operator==(const RoomStatus& a, const RoomStatus& b) {
+    bool isEqual = true;
+    if (a.name != b.name) isEqual = false;
+    if (a.devices.size() != b.devices.size()) isEqual = false;
+    for (int i = 0; i < a.devices.size(); i++) {
+      if (a.devices[i].name != b.devices[i].name) isEqual = false;
+      if (a.devices[i].timestamp != b.devices[i].timestamp) isEqual = false;
+    }
+    return isEqual;
+  }
+  std::ostream& operator<<(std::ostream& stream, const RoomStatus& RoomStatus) {
+    stream << "name = " << RoomStatus.name << ", devices = [";
+    for (const auto& device : RoomStatus.devices) {
+      stream << "{ name = " << device.name
+             << " timestamp = " << device.timestamp;
+    }
     return stream;
   };
 } // namespace octane

@@ -56,40 +56,40 @@ namespace octane {
      * @brief Create a room
      *
      * @param[in] name Room name
-     * @return Result<std::string, ErrorResponse> Returns room id on success
+     * @return Result<std::uint64_t, ErrorResponse> Returns room id on success
      */
-    Result<std::string, ErrorResponse> createRoom(std::string_view name);
+    Result<std::uint64_t, ErrorResponse> createRoom(std::string_view name);
     /**
      * @brief Get the room's status
      *
      * @param[in] id
      * @return Result<RoomStatus, ErrorResponse>
      */
-    Result<RoomStatus, ErrorResponse> getRoomStatus(std::string_view id);
+    Result<RoomStatus, ErrorResponse> getRoomStatus(std::uint64_t id);
     /**
      * @brief Delete the room
      *
      * @param[in] id
      * @return Result<_, ErrorResponse>
      */
-    Result<_, ErrorResponse> deleteRoom(std::string_view id);
+    Result<_, ErrorResponse> deleteRoom(std::uint64_t id);
     /**
      * @brief Return content in the room
-     * 
-     * @param[in] id 
-     * @param[in] name 
-     * @return Result<Content, ErrorResponse> 
+     *
+     * @param[in] id
+     * @param[in] name
+     * @return Result<Content, ErrorResponse>
      */
-    Result<Content, ErrorResponse> getContent(std::string_view id,
+    Result<Content, ErrorResponse> getContent(std::uint64_t id,
                                               std::string_view name);
     /**
      * @brief Delete content from the room
-     * 
-     * @param id 
-     * @param name 
-     * @return Result<_, ErrorResponse> 
+     *
+     * @param id
+     * @param name
+     * @return Result<_, ErrorResponse>
      */
-    Result<_, ErrorResponse> deleteContent(std::string_view id,
+    Result<_, ErrorResponse> deleteContent(std::uint64_t id,
                                            std::string_view name);
     /**
      * @brief Upload content to the room
@@ -98,7 +98,7 @@ namespace octane {
      * @param[in] name
      * @return Result<_, ErrorResponse>
      */
-    Result<_, ErrorResponse> uploadContent(std::string_view id,
+    Result<_, ErrorResponse> uploadContent(std::uint64_t id,
                                            std::string_view name,
                                            const Content& content);
 
