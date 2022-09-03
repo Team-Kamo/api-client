@@ -166,7 +166,7 @@ namespace octane::internal {
     auto pos1 = buf.find(": ");
     auto pos2 = buf.find("\r");
     if (pos1 == buf.npos) {
-      if (!responseHeader->first.size()) {
+      if (responseHeader->first.empty()) {
         responseHeader->first = buf.substr(0, pos2);
       }
     } else {
