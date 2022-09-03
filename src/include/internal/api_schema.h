@@ -1,7 +1,7 @@
 /**
  * @file http_client.h
  * @author cosocaf (cosocaf@gmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2022-09-03
  *
@@ -53,7 +53,7 @@ namespace octane::internal {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string",
+          "type": "number",
           "title": "id"
         }
       },
@@ -65,6 +65,10 @@ namespace octane::internal {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
       "type": "object",
       "properties": {
+        "id": {
+          "type": "number",
+          "title": "id"
+        },
         "name": {
           "type": "string",
           "title": "name"
@@ -88,7 +92,7 @@ namespace octane::internal {
           "title": "devices"
         }
       },
-      "required": ["devices", "name"]
+      "required": ["devices", "id", "name"]
     }
   )";
   constexpr auto SCHEMA_ROOM_ID_DELETE        = R"(
@@ -130,39 +134,20 @@ namespace octane::internal {
         "mime": {
           "type": "string",
           "title": "mime"
+        },
+        "hash": {
+          "type": "string",
+          "title": "hash"
         }
       },
-      "required": ["device", "mime", "timestamp", "type"]
+      "required": ["device", "hash", "mime", "timestamp", "type"]
     }
   )";
   constexpr auto SCHEMA_ROOM_ID_STATUS_PUT    = R"(
     {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
       "type": "object",
-      "properties": {
-        "device": {
-          "type": "string",
-          "title": "device"
-        },
-        "timestamp": {
-          "type": "number",
-          "title": "timestamp"
-        },
-        "type": {
-          "enum": ["clipboard", "file"],
-          "type": "string",
-          "title": "type"
-        },
-        "name": {
-          "type": "string",
-          "title": "name"
-        },
-        "mime": {
-          "type": "string",
-          "title": "mime"
-        }
-      },
-      "required": ["device", "mime", "timestamp", "type"]
+      "properties": {}
     }
   )";
   constexpr auto SCHEMA_ROOM_ID_STATUS_DELETE = R"(
