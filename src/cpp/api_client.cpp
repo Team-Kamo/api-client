@@ -99,7 +99,8 @@ namespace octane {
       return error(checkHealthResult.err());
     }
     auto result = bridge.roomIdPost(id, name);
-    if (!result) {
+    // NOTE: 一時的な処理。
+    if (!result && result.err().code != ERR_DUP_DEVICE) {
       return error(result.err());
     }
     connectionStatus.id          = id;
@@ -108,6 +109,9 @@ namespace octane {
     Response response{};
     response.health  = checkHealthResult.get().health;
     response.message = checkHealthResult.get().message;
+    if (!result) {
+      return error(result.err());
+    }
     return ok(response);
   }
 

@@ -38,6 +38,7 @@ namespace octane {
    * getRoomStatus()} and {@link deleteRoom()} was passed nothing. */
   constexpr auto ERR_ROOM_ID_UNDEFINED = "ERR_ROOM_ID_UNDEFINED";
   constexpr auto ERR_ROOM_DISCONNECTED = "ERR_ROOM_DISCONNECTED";
+  constexpr auto ERR_DUP_DEVICE        = "ERR_DUP_DEVICE";
 } // namespace octane
 
 #endif // OCTANE_API_CLIENT_ERROR_CODE_H_
