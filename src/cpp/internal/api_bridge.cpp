@@ -210,11 +210,10 @@ namespace octane::internal {
       data = std::get<std::vector<std::uint8_t>>(contentData);
     } else if (std::holds_alternative<std::string>(contentData)) {
       const std::string& stringData = std::get<std::string>(contentData);
-      data.reserve(stringData.size());
+      data.resize(stringData.size());
       std::copy(stringData.begin(), stringData.end(), data.begin());
     } else {
-      return makeError(ERR_INVALID_REQUEST,
-                       "contentData is not string or binary");
+      std::abort();
     }
     auto response = fetch->request(internal::HttpMethod::Put,
                                    "/room/" + std::to_string(id) + "/content",
