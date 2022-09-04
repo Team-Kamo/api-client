@@ -220,11 +220,10 @@ namespace octane {
       hashData = std::get<std::vector<std::uint8_t>>(content.data);
     } else if (std::holds_alternative<std::string>(content.data)) {
       std::string hashDataString = std::get<std::string>(content.data);
-      hashData.reserve(hashDataString.size());
+      hashData.resize(hashDataString.size());
       std::copy(hashDataString.begin(), hashDataString.end(), hashData.begin());
     } else {
-      return makeError(ERR_INVALID_REQUEST,
-                       "Content data type is not binary or string");
+      std::abort();
     }
     std::string hash = internal::generateHash(hashData);
     auto resultS     = bridge.roomIdStatusPut(
