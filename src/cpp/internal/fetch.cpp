@@ -111,10 +111,12 @@ namespace octane::internal {
     FetchResponse fetchResponse;
     fetchResponse.statusLine = response.statusLine;
     fetchResponse.statusCode = response.statusCode;
+    fetchResponse.header     = response.headerField;
     std::string contentType  = response.headerField["Content-Type"];
     auto pos                 = contentType.find("; ");
     fetchResponse.mime       = contentType.substr(0, pos);
-    // curlして返ってきた結果のHTTPヘッダにContent-Type:application/jsonがあるときにはFetchResponse.bodyにjsonを代入する
+    // curlして返ってきた結果のHTTPヘッダにContent-Type:
+    // application/jsonがあるときにはFetchResponse.bodyにjsonを代入する
     if (fetchResponse.mime == "application/json") {
       rapidjson::Document json;
       json.Parse((char*)response.body.data(), response.body.size());

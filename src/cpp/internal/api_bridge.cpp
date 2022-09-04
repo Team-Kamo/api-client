@@ -325,15 +325,24 @@ namespace octane::internal {
     if (100 <= response.statusCode && response.statusCode < 300)
       return std::nullopt;
     if (!std::holds_alternative<rapidjson::Document>(response.body)) {
-      std::string body;
+      std::string body = "";
       body.resize(std::get<std::vector<std::uint8_t>>(response.body).size());
       std::copy(std::get<std::vector<std::uint8_t>>(response.body).begin(),
                 std::get<std::vector<std::uint8_t>>(response.body).end(),
                 body.begin());
-      return makeError(
-        ERR_INVALID_RESPONSE,
-        "Invalid response, json not returned. mime = " + response.mime
-          + " status line = " + response.statusLine + " body = " + body);
+      std::string headers;
+      for (auto itr = response.header.begin(); itr != response.header.end();
+           itr++) {
+        headers.append(itr->first);
+        headers.append(": ");
+        headers.append(itr->second);
+        headers.append(" ");
+      }
+
+      return makeError(ERR_INVALID_RESPONSE,
+                       "Invalid response, json not returned." + headers
+                         + "status line = " + response.statusLine
+                         + " body = " + body);
     }
     const rapidjson::Document& json
       = std::get<rapidjson::Document>(response.body);
