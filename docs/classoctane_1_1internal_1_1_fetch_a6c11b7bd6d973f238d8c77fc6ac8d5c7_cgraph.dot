@@ -1,0 +1,17 @@
+digraph "octane::internal::Fetch::request"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [label="octane::internal::Fetch\l::request",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="steelblue1",style="solid"];
+  Node2 [label="octane::makeError",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespaceoctane.html#a508d9040da1bea287606313174f69cbc",tooltip="Utility function to create error response."];
+  Node2 -> Node3 [color="steelblue1",style="solid"];
+  Node3 [label="octane::error",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed",tooltip="Utility function used to construct quasi-normal state values."];
+  Node3 -> Node3 [color="steelblue1",style="solid"];
+  Node1 -> Node4 [color="steelblue1",style="solid"];
+  Node4 [label="octane::internal::Fetch\l::request",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classoctane_1_1internal_1_1_fetch.html#ab0c9d45e0266aafa331701fadf8569b2",tooltip=" "];
+  Node4 -> Node4 [color="steelblue1",style="solid"];
+}

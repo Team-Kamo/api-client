@@ -1,0 +1,19 @@
+digraph "src/include/api_result_types.h"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [label="src/include/api_result\l_types.h",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Types which are used to return in api client."];
+  Node1 -> Node2 [dir="back",color="steelblue1",style="solid"];
+  Node2 [label="src/cpp/api_result\l_types.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$api__result__types_8cpp.html",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="steelblue1",style="solid"];
+  Node3 [label="src/include/api_client.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$api__client_8h.html",tooltip=" "];
+  Node3 -> Node4 [dir="back",color="steelblue1",style="solid"];
+  Node4 [label="src/cpp/api_client.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$api__client_8cpp.html",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="steelblue1",style="solid"];
+  Node5 [label="src/include/internal\l/api_bridge.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$api__bridge_8h.html",tooltip="APIclientとAPI一つ一つを結びつける。"];
+  Node5 -> Node6 [dir="back",color="steelblue1",style="solid"];
+  Node6 [label="src/cpp/internal/api\l_bridge.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$api__bridge_8cpp.html",tooltip=" "];
+  Node5 -> Node3 [dir="back",color="steelblue1",style="solid"];
+}

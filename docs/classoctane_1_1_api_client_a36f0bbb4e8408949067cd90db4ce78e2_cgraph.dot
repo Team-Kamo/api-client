@@ -1,0 +1,54 @@
+digraph "octane::ApiClient::uploadContent"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [label="octane::ApiClient::\luploadContent",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Upload content to the room."];
+  Node1 -> Node2 [color="steelblue1",style="solid"];
+  Node2 [label="octane::error",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed",tooltip="Utility function used to construct quasi-normal state values."];
+  Node2 -> Node2 [color="steelblue1",style="solid"];
+  Node1 -> Node3 [color="steelblue1",style="solid"];
+  Node3 [label="octane::internal::generateHash",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespaceoctane_1_1internal.html#a777574b3ff26edf6d32ebd38ffa3cd99",tooltip="ハッシュ値を生成する。"];
+  Node3 -> Node4 [color="steelblue1",style="solid"];
+  Node4 [label="octane::internal::convToHex",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespaceoctane_1_1internal.html#a31fb34aee3d745d64fb7045d47f1cffa",tooltip="バイナリシーケンスを16進数文字列に変換する。"];
+  Node4 -> Node5 [color="steelblue1",style="solid"];
+  Node5 [label="octane::internal::convTo\lHexMono",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespaceoctane_1_1internal.html#a8ac79355eeebef070d37bb2e4330284a",tooltip=" "];
+  Node1 -> Node6 [color="steelblue1",style="solid"];
+  Node6 [label="octane::makeError",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespaceoctane.html#a508d9040da1bea287606313174f69cbc",tooltip="Utility function to create error response."];
+  Node6 -> Node2 [color="steelblue1",style="solid"];
+  Node1 -> Node7 [color="steelblue1",style="solid"];
+  Node7 [label="octane::ok",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835",tooltip="Utitlity function used when the normal state type is _."];
+  Node7 -> Node7 [color="steelblue1",style="solid"];
+  Node1 -> Node8 [color="steelblue1",style="solid"];
+  Node8 [label="octane::internal::ApiBridge\l::roomIdContentPut",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classoctane_1_1internal_1_1_api_bridge.html#a55f1f244706c935e38545e5f66308753",tooltip="use put method for /room/{id}/content"];
+  Node8 -> Node9 [color="steelblue1",style="solid"];
+  Node9 [label="octane::internal::ApiBridge\l::checkStatusCode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f",tooltip="check if the given status code is 2xx"];
+  Node9 -> Node10 [color="steelblue1",style="solid"];
+  Node10 [label="octane::err",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327",tooltip="Utility function to construct quasi-normal state values."];
+  Node10 -> Node2 [color="steelblue1",style="solid"];
+  Node9 -> Node2 [color="steelblue1",style="solid"];
+  Node9 -> Node6 [color="steelblue1",style="solid"];
+  Node8 -> Node10 [color="steelblue1",style="solid"];
+  Node8 -> Node2 [color="steelblue1",style="solid"];
+  Node8 -> Node6 [color="steelblue1",style="solid"];
+  Node8 -> Node7 [color="steelblue1",style="solid"];
+  Node8 -> Node11 [color="steelblue1",style="solid"];
+  Node11 [label="octane::internal::FetchBase\l::request",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classoctane_1_1internal_1_1_fetch_base.html#a204cf835d57c87d11c39f35b1f757555",tooltip="APIへのボディ部を持たないリクエストを発行する。"];
+  Node1 -> Node12 [color="steelblue1",style="solid"];
+  Node12 [label="octane::internal::ApiBridge\l::roomIdPost",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classoctane_1_1internal_1_1_api_bridge.html#abad3e1c394ae37e3538a2ba32b8f06ab",tooltip="use post method for /room/{id}"];
+  Node12 -> Node9 [color="steelblue1",style="solid"];
+  Node12 -> Node10 [color="steelblue1",style="solid"];
+  Node12 -> Node2 [color="steelblue1",style="solid"];
+  Node12 -> Node7 [color="steelblue1",style="solid"];
+  Node12 -> Node11 [color="steelblue1",style="solid"];
+  Node1 -> Node13 [color="steelblue1",style="solid"];
+  Node13 [label="octane::internal::ApiBridge\l::roomIdStatusPut",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classoctane_1_1internal_1_1_api_bridge.html#a0e57b82c4d1afa56a8877eac44750d49",tooltip="use put method for /room/{id}/status"];
+  Node13 -> Node9 [color="steelblue1",style="solid"];
+  Node13 -> Node10 [color="steelblue1",style="solid"];
+  Node13 -> Node2 [color="steelblue1",style="solid"];
+  Node13 -> Node6 [color="steelblue1",style="solid"];
+  Node13 -> Node7 [color="steelblue1",style="solid"];
+  Node13 -> Node11 [color="steelblue1",style="solid"];
+}
