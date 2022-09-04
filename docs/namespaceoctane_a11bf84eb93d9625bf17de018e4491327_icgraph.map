@@ -3,7 +3,7 @@
 <area shape="rect" id="node2" href="$classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="407,353,581,393"/>
 <area shape="rect" id="node3" href="$classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for /health" alt="" coords="184,5,359,45"/>
 <area shape="rect" id="node4" href="$classoctane_1_1internal_1_1_api_bridge.html#a8cede5a0248ff2662e179b8a2b19b8b2" title="use delete method for /room/{id}/content" alt="" coords="184,69,359,109"/>
-<area shape="rect" id="node6" href="$classoctane_1_1internal_1_1_api_bridge.html#ae5236ca6f694a95f302a881758e16b20" title="use get method for /room/{id}/content" alt="" coords="184,197,359,237"/>
+<area shape="rect" id="node6" href="$classoctane_1_1internal_1_1_api_bridge.html#aa364f92253bef8f2c2d0fb078946cf00" title="use get method for /room/{id}/content" alt="" coords="184,197,359,237"/>
 <area shape="rect" id="node8" href="$classoctane_1_1internal_1_1_api_bridge.html#a55f1f244706c935e38545e5f66308753" title="use put method for /room/{id}/content" alt="" coords="184,325,359,365"/>
 <area shape="rect" id="node10" href="$classoctane_1_1internal_1_1_api_bridge.html#aa83124ddc28125ae40dd2e6da0f29061" title="use delete method for /room/{id}" alt="" coords="184,389,359,429"/>
 <area shape="rect" id="node12" href="$classoctane_1_1internal_1_1_api_bridge.html#afb7b22629f6212edad71b7289ddc6618" title="use get method for /room/{id}" alt="" coords="184,453,359,493"/>

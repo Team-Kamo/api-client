@@ -2,7 +2,7 @@
 <area shape="rect" id="node1" title="APIへのボディ部を持たないリクエストを発行する。" alt="" coords="407,325,589,365"/>
 <area shape="rect" id="node2" href="$classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for /health" alt="" coords="184,5,359,45"/>
 <area shape="rect" id="node3" href="$classoctane_1_1internal_1_1_api_bridge.html#a8cede5a0248ff2662e179b8a2b19b8b2" title="use delete method for /room/{id}/content" alt="" coords="184,69,359,109"/>
-<area shape="rect" id="node5" href="$classoctane_1_1internal_1_1_api_bridge.html#ae5236ca6f694a95f302a881758e16b20" title="use get method for /room/{id}/content" alt="" coords="184,261,359,301"/>
+<area shape="rect" id="node5" href="$classoctane_1_1internal_1_1_api_bridge.html#aa364f92253bef8f2c2d0fb078946cf00" title="use get method for /room/{id}/content" alt="" coords="184,261,359,301"/>
 <area shape="rect" id="node7" href="$classoctane_1_1internal_1_1_api_bridge.html#a55f1f244706c935e38545e5f66308753" title="use put method for /room/{id}/content" alt="" coords="184,517,359,557"/>
 <area shape="rect" id="node9" href="$classoctane_1_1internal_1_1_api_bridge.html#aa83124ddc28125ae40dd2e6da0f29061" title="use delete method for /room/{id}" alt="" coords="184,133,359,173"/>
 <area shape="rect" id="node11" href="$classoctane_1_1internal_1_1_api_bridge.html#afb7b22629f6212edad71b7289ddc6618" title="use get method for /room/{id}" alt="" coords="184,325,359,365"/>

@@ -40,6 +40,8 @@ namespace octane::internal {
     int statusCode;
     /** @brief レスポンスのステータスライン。 */
     std::string statusLine;
+    /** @brief レスポンスのヘッダ部(ステータスラインを除く)。 */
+    std::map<std::string,std::string> header;
   };
 
   /**
@@ -177,20 +179,21 @@ namespace octane::internal {
     /**
      * {@inheritDoc}
      */
-    virtual FetchResult request(HttpMethod method, std::string_view url) override;
+    virtual FetchResult request(HttpMethod method,
+                                std::string_view url) override;
     /**
      * {@inheritDoc}
      */
     virtual FetchResult request(HttpMethod method,
-                        std::string_view url,
-                        const rapidjson::Document& body) override;
+                                std::string_view url,
+                                const rapidjson::Document& body) override;
     /**
      * {@inheritDoc}
      */
     virtual FetchResult request(HttpMethod method,
-                        std::string_view url,
-                        std::string_view mimeType,
-                        const std::vector<std::uint8_t>& body) override;
+                                std::string_view url,
+                                std::string_view mimeType,
+                                const std::vector<std::uint8_t>& body) override;
 
   private:
     /**
