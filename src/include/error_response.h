@@ -70,6 +70,7 @@ namespace octane {
    */
   error_t<ErrorResponse> makeError(std::string_view code,
                                    std::string_view reason);
+  bool operator==(const ErrorResponse& a, const ErrorResponse& b);
   std::ostream& operator<<(std::ostream& stream, const ErrorResponse& err);
 } // namespace octane
 #endif // OCTANE_API_CLIENT_ERROR_RESPONSE_H_

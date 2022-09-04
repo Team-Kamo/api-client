@@ -10,6 +10,18 @@
 
 namespace octane::internal {
   namespace {
+    // std::ostream& operator<<(std::ostream& stream,
+    //                          const std::vector<std::uint8_t>& body) {
+
+    //   stream << data;
+    //   return stream;
+    // }
+    std::string toString(const std::vector<std::uint8_t>& body) {
+      std::string data;
+      data.resize(body.size());
+      std::copy(body.begin(), body.end(), data.begin());
+      return data;
+    }
     FetchResponse makeEmptyResponse(int statusCode = 200,
                                     std::string_view statusLine
                                     = "HTTP/2 200 OK") {
@@ -408,7 +420,7 @@ namespace octane::internal {
   }
   /**
    * @brief
-   * roomIdGetにおいてにおいてFetchがレスポンスの誤りで失敗した時にApiBridgeがエラーを返してくれるかどうかをテストする。これはjsonのメンバに誤りがある場合をテストしている。
+   * roomIdGetにおいてにおいてFetchは成功したがレスポンスの誤りがあった時にApiBridgeがエラーを返してくれるかどうかをテストする。これはjsonのメンバに誤りがある場合をテストしている。
    *
    */
   TEST(ApiBridgeTest, roomIdGetErrResponse) {
@@ -645,6 +657,83 @@ namespace octane::internal {
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.roomIdPost(id, name);
     EXPECT_FALSE(result);
+    EXPECT_EQ(result.err().code, "ERR_BAD_REQUEST") << result.err();
+  }
+  /**
+   * @brief
+   * roomIdContentGetにおいてFetchが成功し、バイナリが送られてきた時にApiBridgeがバイナリを返してくれるかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdContentGetOk) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Get, std::string_view("/room/" + std::to_string(id) + "/content")))
+      .Times(1)
+      .WillOnce(testing::Return(ok(makeBinaryResponse())));
+    std::string data = "AAABBBCCC";
+    std::vector<uint8_t> body;
+    body.resize(data.size());
+    std::copy(data.begin(), data.end(), body.begin());
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdContentGet(id);
+    EXPECT_TRUE(result) << result.err();
+    EXPECT_EQ(result.get(), body) << toString(result.get());
+  }
+  /**
+   * @brief
+   * roomIdContentGetにおいてFetchが成功し、jsonが送られてきた時にApiBridgeがエラーを返してくれるかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdContentGetErrJsonInvalid) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Get, std::string_view("/room/" + std::to_string(id) + "/content")))
+      .Times(1)
+      .WillOnce(testing::Return(ok(makeJsonResponse(
+        R"({"name": "soon's macbook air 13manyenguraidegakuwaridekaemashitaureshiine!"})"))));
+    std::string data = "AAABBBCCC";
+    std::vector<uint8_t> body;
+    body.resize(data.size());
+    std::copy(data.begin(), data.end(), body.begin());
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdContentGet(id);
+    EXPECT_FALSE(result) << toString(result.get());
+    EXPECT_EQ(
+      result.err(),
+      (ErrorResponse{ .code   = ERR_INVALID_RESPONSE,
+                      .reason = "Invalid response, binary not returned" }))
+      << result.err();
+  }
+  /**
+   * @brief
+   * roomIdContentGetにおいてFetchが2xx以外のステータスコードを返すときにサーバからもらうエラーレスポンスをそのまま返してくれるかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdContentGet2xx) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Get, std::string_view("/room/" + std::to_string(id) + "/content")))
+      .Times(1)
+      .WillOnce(
+        testing::Return(ok(makeJsonResponse(R"(
+        {
+          "code": "ERR_BAD_REQUEST",
+          "reason": ""
+          }
+        )",
+                                            400,
+                                            "HTTP/2 400 Bad Request"))));
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdContentGet(id);
+    EXPECT_FALSE(result) << toString(result.get());
     EXPECT_EQ(result.err().code, "ERR_BAD_REQUEST") << result.err();
   }
 } // namespace octane::internal

@@ -323,7 +323,7 @@ namespace octane::internal {
   }
   std::optional<error_t<ErrorResponse>> ApiBridge::checkStatusCode(
     const internal::FetchResponse& response) {
-    if (200 <= response.statusCode && response.statusCode < 300)
+    if (100 <= response.statusCode && response.statusCode < 300)
       return std::nullopt;
     if (!std::holds_alternative<rapidjson::Document>(response.body)) {
       return makeError(
