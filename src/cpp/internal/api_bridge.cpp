@@ -333,7 +333,7 @@ namespace octane::internal {
       return makeError(
         ERR_INVALID_RESPONSE,
         "Invalid response, json not returned. mime = " + response.mime
-          + " status line = " + response.statusLine + "body = " + body);
+          + " status line = " + response.statusLine + " body = " + body);
     }
     const rapidjson::Document& json
       = std::get<rapidjson::Document>(response.body);
