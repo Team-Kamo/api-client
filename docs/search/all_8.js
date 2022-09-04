@@ -3,7 +3,7 @@ var searchData=
   ['hash_2ecpp_0',['hash.cpp',['../hash_8cpp.html',1,'']]],
   ['hash_2eh_1',['hash.h',['../hash_8h.html',1,'']]],
   ['headerfield_2',['headerField',['../structoctane_1_1internal_1_1_http_request.html#aa0cbcae65bf8f3e5934b333376f58fbf',1,'octane::internal::HttpRequest::headerField()'],['../structoctane_1_1internal_1_1_http_response.html#aaa1334b1bb12a9087f6f5c1becf8b506',1,'octane::internal::HttpResponse::headerField()']]],
-  ['health_3',['health',['../structoctane_1_1_health_result.html#a7cf1fca201bfb39c56551ba0c4f019af',1,'octane::HealthResult::health()'],['../classoctane_1_1_api_client.html#a93ff968043aca8a60231e7b218689d9b',1,'octane::ApiClient::health()']]],
+  ['health_3',['health',['../structoctane_1_1_health_result.html#a7cf1fca201bfb39c56551ba0c4f019af',1,'octane::HealthResult::health()'],['../structoctane_1_1_response.html#a8a3ccc1a8b2cb901f16a0003f129221e',1,'octane::Response::health()']]],
   ['health_4',['Health',['../namespaceoctane.html#a1f009b9e200bd7209934b50ab7b01900',1,'octane']]],
   ['healthget_5',['healthGet',['../classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935',1,'octane::internal::ApiBridge']]],
   ['healthresult_6',['HealthResult',['../structoctane_1_1_health_result.html',1,'octane']]],

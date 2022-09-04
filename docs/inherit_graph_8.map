@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classoctane_1_1internal_1_1_api_bridge.html" title=" " alt="" coords="5,5,180,31"/>
+<area shape="rect" id="node1" href="$classoctane_1_1internal_1_1_fetch_base.html" title="HttpClientクラスを通じてHTTP通信を行うインタフェース。" alt="" coords="5,5,188,31"/>
+<area shape="rect" id="node2" href="$classoctane_1_1internal_1_1_fetch.html" title="HttpClientクラスを通じてHTTP通信を行う。" alt="" coords="236,5,388,31"/>
 </map>

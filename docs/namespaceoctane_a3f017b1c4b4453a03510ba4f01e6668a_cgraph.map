@@ -1,4 +1,4 @@
 <map id="octane::ok" name="octane::ok">
-<area shape="rect" id="node1" title="正常系の値を構築するためのユーティリティ関数。" alt="" coords="5,29,88,55"/>
-<area shape="rect" id="node2" href="$namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835" title="正常系の型が_であるときに使用できるユーティリティ関数。" alt="" coords="136,29,219,55"/>
+<area shape="rect" id="node1" title="Utility function used to construct normal state values." alt="" coords="5,29,88,55"/>
+<area shape="rect" id="node2" href="$namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835" title="Utitlity function used when the normal state type is _." alt="" coords="136,29,219,55"/>
 </map>

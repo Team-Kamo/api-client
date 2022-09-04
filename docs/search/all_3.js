@@ -10,5 +10,5 @@ var searchData=
   ['contenttype_7',['ContentType',['../namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4',1,'octane']]],
   ['convtohex_8',['convToHex',['../namespaceoctane_1_1internal.html#a31fb34aee3d745d64fb7045d47f1cffa',1,'octane::internal']]],
   ['convtohexmono_9',['convToHexMono',['../namespaceoctane_1_1internal.html#a8ac79355eeebef070d37bb2e4330284a',1,'octane::internal']]],
-  ['createroom_10',['createRoom',['../classoctane_1_1_api_client.html#a62b656d21ec4eb86a2cad9caaf5423df',1,'octane::ApiClient']]]
+  ['createroom_10',['createRoom',['../classoctane_1_1_api_client.html#a89347a6ec561c41d9fdc7f3f6996dc2d',1,'octane::ApiClient']]]
 ];

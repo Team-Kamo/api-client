@@ -1,4 +1,4 @@
 <map id="octane::Result::err" name="octane::Result::err">
-<area shape="rect" id="node1" title="準正常系の値を取り出す。" alt="" coords="5,29,136,55"/>
-<area shape="rect" id="node2" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="184,29,279,55"/>
+<area shape="rect" id="node1" title="Get the value of quasi&#45;normal state." alt="" coords="5,29,136,55"/>
+<area shape="rect" id="node2" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="Utility function used to construct quasi&#45;normal state values." alt="" coords="184,29,279,55"/>
 </map>

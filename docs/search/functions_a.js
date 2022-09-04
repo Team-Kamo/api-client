@@ -11,5 +11,5 @@ var searchData=
   ['roomidstatusdelete_8',['roomIdStatusDelete',['../classoctane_1_1internal_1_1_api_bridge.html#a5b01879a21e410469c4e8a7494ae0f6c',1,'octane::internal::ApiBridge']]],
   ['roomidstatusget_9',['roomIdStatusGet',['../classoctane_1_1internal_1_1_api_bridge.html#a01f98886f7272847b83c6c56b0af6fd6',1,'octane::internal::ApiBridge']]],
   ['roomidstatusput_10',['roomIdStatusPut',['../classoctane_1_1internal_1_1_api_bridge.html#a0e57b82c4d1afa56a8877eac44750d49',1,'octane::internal::ApiBridge']]],
-  ['roompost_11',['roomPost',['../classoctane_1_1internal_1_1_api_bridge.html#ae717c194d35ff413c9bd93566d8077a6',1,'octane::internal::ApiBridge']]]
+  ['roompost_11',['roomPost',['../classoctane_1_1internal_1_1_api_bridge.html#a2e121429a143bc0b958bac123ce0dd05',1,'octane::internal::ApiBridge']]]
 ];

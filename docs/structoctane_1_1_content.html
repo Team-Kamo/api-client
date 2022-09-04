@@ -80,17 +80,27 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Structure used as result for <code><a class="el" href="">getContent</a></code>, has data and <code><a class="el" href="structoctane_1_1_content_status.html">ContentStatus</a></code>.  
+<p>Structure used as result for <code><a class="el" href="">getContent</a></code>, has data and <code><a class="el" href="structoctane_1_1_content_status.html">ContentStatus</a></code> and inherits <code><a class="el" href="structoctane_1_1_response.html">Response</a></code>.  
  <a href="structoctane_1_1_content.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="api__result__types_8h_source.html">api_result_types.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for octane::Content:</div>
+<div class="dyncontent">
+<div class="center"><img src="structoctane_1_1_content__inherit__graph.png" border="0" usemap="#aoctane_1_1_content_inherit__map" alt="Inheritance graph"/></div>
+<map name="aoctane_1_1_content_inherit__map" id="aoctane_1_1_content_inherit__map">
+<area shape="rect" title="Structure used as result for getContent, has data and ContentStatus and inherits Response." alt="" coords="12,79,127,104"/>
+<area shape="rect" href="structoctane_1_1_response.html" title="Structure used/inherited in various methods of ApiClient, has the server&#39;s status." alt="" coords="5,5,133,31"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for octane::Content:</div>
 <div class="dyncontent">
 <div class="center"><img src="structoctane_1_1_content__coll__graph.png" border="0" usemap="#aoctane_1_1_content_coll__map" alt="Collaboration graph"/></div>
 <map name="aoctane_1_1_content_coll__map" id="aoctane_1_1_content_coll__map">
-<area shape="rect" title="Result for getContent, has data and ContentStatus." alt="" coords="24,93,139,119"/>
-<area shape="rect" href="structoctane_1_1_content_status.html" title="Result for getContentStatus, has the status of Content." alt="" coords="5,5,157,31"/>
+<area shape="rect" title="Structure used as result for getContent, has data and ContentStatus and inherits Response." alt="" coords="95,93,209,119"/>
+<area shape="rect" href="structoctane_1_1_response.html" title="Structure used/inherited in various methods of ApiClient, has the server&#39;s status." alt="" coords="5,5,133,31"/>
+<area shape="rect" href="structoctane_1_1_content_status.html" title="Structure used in Content, has the status of Content." alt="" coords="158,5,311,31"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -102,9 +112,14 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a3e3dff8dcf95c76bfbf9b85922ee7ac3"><td class="memItemLeft" align="right" valign="top">std::variant&lt; std::string, std::vector&lt; std::uint8_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_content.html#a3e3dff8dcf95c76bfbf9b85922ee7ac3">data</a></td></tr>
 <tr class="memdesc:a3e3dff8dcf95c76bfbf9b85922ee7ac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The data of <code><a class="el" href="structoctane_1_1_content.html">Content</a></code>, is a variant of string and binary.  <a href="structoctane_1_1_content.html#a3e3dff8dcf95c76bfbf9b85922ee7ac3">More...</a><br /></td></tr>
 <tr class="separator:a3e3dff8dcf95c76bfbf9b85922ee7ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_attribs_structoctane_1_1_response"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_structoctane_1_1_response')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="structoctane_1_1_response.html">octane::Response</a></td></tr>
+<tr class="memitem:a8a3ccc1a8b2cb901f16a0003f129221e inherit pub_attribs_structoctane_1_1_response"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceoctane.html#a1f009b9e200bd7209934b50ab7b01900">Health</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_response.html#a8a3ccc1a8b2cb901f16a0003f129221e">health</a></td></tr>
+<tr class="separator:a8a3ccc1a8b2cb901f16a0003f129221e inherit pub_attribs_structoctane_1_1_response"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2100774e7b83d41e8c35707866c19a80 inherit pub_attribs_structoctane_1_1_response"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_response.html#a2100774e7b83d41e8c35707866c19a80">message</a></td></tr>
+<tr class="separator:a2100774e7b83d41e8c35707866c19a80 inherit pub_attribs_structoctane_1_1_response"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Structure used as result for <code><a class="el" href="">getContent</a></code>, has data and <code><a class="el" href="structoctane_1_1_content_status.html">ContentStatus</a></code>. </p>
+<div class="textblock"><p >Structure used as result for <code><a class="el" href="">getContent</a></code>, has data and <code><a class="el" href="structoctane_1_1_content_status.html">ContentStatus</a></code> and inherits <code><a class="el" href="structoctane_1_1_response.html">Response</a></code>. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a71df256a398f8728fdea1e7c58ae44bf" name="a71df256a398f8728fdea1e7c58ae44bf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a71df256a398f8728fdea1e7c58ae44bf">&#9670;&#160;</a></span>contentStatus</h2>

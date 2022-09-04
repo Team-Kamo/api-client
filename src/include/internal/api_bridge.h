@@ -69,10 +69,11 @@ namespace octane::internal {
      * - ERR_CURL_CONNECTION_FAILED: CURLの接続に失敗した時
      * また、2xx以外のレスポンスが返された時には、同様のエラーレスポンスの形式でサーバから渡ってきたエラーをそのまま返す。
      * @param[in] name ルームの名前
-     * @return Result<uint64_t, ErrorResponse>
-     * 成功した場合はルームのidを返し、失敗した場合は上記のエラーレスポンスを返す。
+     * @return Result<RoomId, ErrorResponse>
+     * 成功した場合はルームのid{@link
+     * RoomId}を返し、失敗した場合は上記のエラーレスポンスを返す。
      */
-    Result<std::uint64_t, ErrorResponse> roomPost(std::string_view name);
+    Result<RoomId, ErrorResponse> roomPost(std::string_view name);
     /**
      * @brief use get method for /room/{id}
      * @details

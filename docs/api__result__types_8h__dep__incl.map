@@ -1,5 +1,5 @@
 <map id="src/include/api_result_types.h" name="src/include/api_result_types.h">
-<area shape="rect" id="node1" title=" " alt="" coords="95,5,241,45"/>
+<area shape="rect" id="node1" title="Types which are used to return in api client." alt="" coords="95,5,241,45"/>
 <area shape="rect" id="node2" href="$api__result__types_8cpp.html" title=" " alt="" coords="5,93,131,133"/>
 <area shape="rect" id="node3" href="$api__client_8h.html" title=" " alt="" coords="91,189,245,214"/>
 <area shape="rect" id="node5" href="$api__bridge_8h.html" title="APIclientとAPI一つ一つを結びつける。" alt="" coords="205,93,336,133"/>
