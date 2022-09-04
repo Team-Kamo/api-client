@@ -15,7 +15,8 @@ namespace octane {
   /** @brief Used when {@link ApiClient} initialization failed.*/
   constexpr auto ERR_API_CLIENT_INITIALIZATION_FAILED
     = "ERR_API_CLIENT_INITIALIZATION_FAILED";
-  /** @brief Used when the server has incidents and is currently not available. */
+  /** @brief Used when the server has incidents and is currently not available.
+   */
   constexpr auto ERR_SERVER_HEALTH_STATUS_FAULTY
     = "ERR_SERVER_HEALTH_STATUS_FAULTY";
   /** @brief Used when cURL initialization failed, such as in{@link
@@ -33,6 +34,10 @@ namespace octane {
   constexpr auto ERR_INVALID_RESPONSE = "ERR_INVALID_RESPONSE";
   /** @brief Used when an unexpected request was issued. */
   constexpr auto ERR_INVALID_REQUEST = "ERR_INVALID_REQUEST";
+  /** @brief Used when you are not connected to a room but {@link
+   * getRoomStatus()} and {@link deleteRoom()} was passed nothing. */
+  constexpr auto ERR_ROOM_ID_UNDEFINED = "ERR_ROOM_ID_UNDEFINED";
+  constexpr auto ERR_ROOM_DISCONNECTED = "ERR_ROOM_DISCONNECTED";
 } // namespace octane
 
 #endif // OCTANE_API_CLIENT_ERROR_CODE_H_
