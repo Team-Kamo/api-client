@@ -1,7 +1,7 @@
 /**
  * @file api-client.h
  * @author cosocaf (cosocaf@gmail.com)
- * @brief APIクライアント。
+ * @brief Api client.
  * @version 0.1
  * @date 2022-08-30
  *

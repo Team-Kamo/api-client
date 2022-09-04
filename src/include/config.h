@@ -1,7 +1,7 @@
 /**
  * @file config.h
  * @author cosocaf (cosocaf@gmail.com)
- * @brief コンパイル時に使用する定数を定義する。
+ * @brief Define constants which are used on compiling.
  * @version 0.1
  * @date 2022-09-02
  *
@@ -12,21 +12,21 @@
 #define OCTANE_API_CLIENT_CONFIG_H_
 
 namespace octane {
-  /** ライブラリ名。Octane API Client。*/
+  /** Library name. Octane API Client。*/
   constexpr auto LIBRARY_NAME = "Octane API Client";
   /**
-   * @brief ライブラリバージョン。
+   * @brief Library version.
    * @details
-   * 命名規則はv{MAJOR}.{MINOR}.{PATCH}である。
+   * Naming conventions are v{MAJOR}.{MINOR}.{PATCH}
    *
    */
   constexpr auto LIBRARY_VERSION = "v0.1.0";
 
-  /** @brief 既定で使用されるAPIのトークン。*/
+  /** @brief Default API token. */
   constexpr auto DEFAULT_API_TOKEN = "mock";
-  /** @brief 既定で使用されるAPIのオリジン。*/
+  /** @brief Default API origin. */
   constexpr auto DEFAULT_API_ORIGIN = "http://localhost:3000";
-  /** @brief 既定で使用されるAPIのベースURL。*/
+  /** @brief Default base URL.*/
   constexpr auto DEFAULT_API_BASE_URL = "/api/v1";
 }; // namespace octane
 

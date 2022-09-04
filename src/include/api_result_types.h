@@ -1,7 +1,7 @@
 /**
  * @file api_result_types.h
  * @author soon (kento.soon@gmail.com)
- * @brief
+ * @brief Types which are used to return  in api client.
  * @version 0.1
  * @date 2022-09-01
  *
@@ -20,7 +20,7 @@
 
 namespace octane {
   /**
-   * @brief Used in {@link HealthResult}, represents the server's status.
+   * @brief Enum used in {@link HealthResult}, represents the server's status.
    *
    */
   enum struct Health {
@@ -32,7 +32,8 @@ namespace octane {
     Faulty,
   };
   /**
-   * @brief Result for {@link health}, has the server's status and message.
+   * @brief Structure used as result for {@link health}, has the server's status
+   * and message.
    *
    */
   struct HealthResult {
@@ -46,8 +47,8 @@ namespace octane {
                            const HealthResult& healthResult);
   /**
    * @brief
-   * Used in {@link RoomStatus}'s devices, has the information of each device
-   * connected to the room.
+   * Structure used in {@link RoomStatus}'s devices, has the information of each
+   * device connected to the room.
    *
    */
   struct Device {
@@ -58,7 +59,8 @@ namespace octane {
     std::uint64_t timestamp;
   };
   /**
-   * @brief Result for {@link getRoomStatus}, has the status of the room.
+   * @brief Structure used as result for {@link getRoomStatus}, has the status
+   * of the room.
    *
    */
   struct RoomStatus {
@@ -72,7 +74,7 @@ namespace octane {
   bool operator==(const RoomStatus& a, const RoomStatus& b);
   std::ostream& operator<<(std::ostream& stream, const RoomStatus& roomStatus);
   /**
-   * @brief Used in {@link ContentStatus}, represents the type of {@link
+   * @brief Enum used in {@link ContentStatus}, represents the type of {@link
    * Content}
    *
    */
@@ -83,8 +85,9 @@ namespace octane {
     Clipboard,
   };
   /**
-   * @brief Result for {@link getContentStatus}, has the status of {@link
-   * Content}
+   * @brief Structure used as result for {@link getContentStatus}, has the
+   * status of
+   * {@link Content}
    *
    */
   struct ContentStatus {
@@ -100,15 +103,14 @@ namespace octane {
     std::string mime;
   };
   /**
-   * @brief Result for {@link getContent}, has data and {@link
+   * @brief Structure used as result for {@link getContent}, has data and {@link
    * ContentStatus}
    *
    */
   struct Content {
-    /** @brief {@link ContentStatus}*/
+    /** @brief The status of {@link Content}.*/
     ContentStatus contentStatus;
-    /** @brief The data of {@link Content}, is a variant of string and binary.
-     */
+    /** @brief The data of {@link Content}, is a variant of string and binary.*/
     std::variant<std::string, std::vector<std::uint8_t>> data;
   };
 };     // namespace octane
