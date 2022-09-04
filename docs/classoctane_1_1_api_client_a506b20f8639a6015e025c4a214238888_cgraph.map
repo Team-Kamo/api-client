@@ -1,0 +1,10 @@
+<map id="octane::ApiClient::deleteContent" name="octane::ApiClient::deleteContent">
+<area shape="rect" id="node1" title="Deletes the room&#39;s content." alt="" coords="5,42,136,82"/>
+<area shape="rect" id="node2" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="Utility function used to construct quasi&#45;normal state values." alt="" coords="815,156,909,182"/>
+<area shape="rect" id="node3" href="$namespaceoctane.html#a508d9040da1bea287606313174f69cbc" title="Utility function to create error response." alt="" coords="637,106,767,131"/>
+<area shape="rect" id="node4" href="$namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835" title="Utitlity function used when the normal state type is _." alt="" coords="457,99,539,124"/>
+<area shape="rect" id="node5" href="$classoctane_1_1internal_1_1_api_bridge.html#a8cede5a0248ff2662e179b8a2b19b8b2" title="use delete method for /room/{id}/content" alt="" coords="184,177,359,217"/>
+<area shape="rect" id="node6" href="$classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="411,149,585,189"/>
+<area shape="rect" id="node7" href="$namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327" title="Utility function to construct quasi&#45;normal state values." alt="" coords="660,207,744,232"/>
+<area shape="rect" id="node8" href="$classoctane_1_1internal_1_1_fetch_base.html#a204cf835d57c87d11c39f35b1f757555" title="APIへのボディ部を持たないリクエストを発行する。" alt="" coords="407,264,589,304"/>
+</map>

@@ -7,6 +7,8 @@ var searchData=
   ['err_5finvalid_5frequest_4',['ERR_INVALID_REQUEST',['../namespaceoctane.html#a7b27587dbd2d28891593cd7519003565',1,'octane']]],
   ['err_5finvalid_5fresponse_5',['ERR_INVALID_RESPONSE',['../namespaceoctane.html#a5da164e559661be90535b3968521b775',1,'octane']]],
   ['err_5fjson_5fparse_5ffailed_6',['ERR_JSON_PARSE_FAILED',['../namespaceoctane.html#af8552f757e6e3a0e1af42ee5031a1117',1,'octane']]],
-  ['err_5fserver_5fhealth_5fstatus_5ffaulty_7',['ERR_SERVER_HEALTH_STATUS_FAULTY',['../namespaceoctane.html#ab03e35a80fea5e125fb3b7b3b71167a0',1,'octane']]],
-  ['error_8',['error',['../classoctane_1_1_result.html#a45614885ab4c69c53b3046f530bcca1e',1,'octane::Result']]]
+  ['err_5froom_5fdisconnected_7',['ERR_ROOM_DISCONNECTED',['../namespaceoctane.html#ad13481c23daf1cf32a0410bca85c459c',1,'octane']]],
+  ['err_5froom_5fid_5fundefined_8',['ERR_ROOM_ID_UNDEFINED',['../namespaceoctane.html#aef2e62331d61bc90deca14340c6f2550',1,'octane']]],
+  ['err_5fserver_5fhealth_5fstatus_5ffaulty_9',['ERR_SERVER_HEALTH_STATUS_FAULTY',['../namespaceoctane.html#ab03e35a80fea5e125fb3b7b3b71167a0',1,'octane']]],
+  ['error_10',['error',['../classoctane_1_1_result.html#a45614885ab4c69c53b3046f530bcca1e',1,'octane::Result']]]
 ];

@@ -1,4 +1,4 @@
 <map id="octane::internal::ApiBridge::roomIdContentGet" name="octane::internal::ApiBridge::roomIdContentGet">
 <area shape="rect" id="node1" title="use get method for /room/{id}/content" alt="" coords="184,5,359,45"/>
-<area shape="rect" id="node2" href="$classoctane_1_1_api_client.html#aad50514035736da26c1a3f826f68c98b" title="Gets the room&#39;s content." alt="" coords="5,5,136,45"/>
+<area shape="rect" id="node2" href="$classoctane_1_1_api_client.html#a57723a0864001a21c14aa01e55a7e715" title="Gets the room&#39;s content." alt="" coords="5,5,136,45"/>
 </map>
