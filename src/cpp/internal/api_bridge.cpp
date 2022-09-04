@@ -171,8 +171,8 @@ namespace octane::internal {
     }
     return ok();
   }
-  Result<std::variant<std::string, std::vector<std::uint8_t>>, ErrorResponse>
-  ApiBridge::roomIdContentGet(std::uint64_t id) {
+  Result<std::vector<std::uint8_t>, ErrorResponse> ApiBridge::roomIdContentGet(
+    std::uint64_t id) {
     auto response = fetch->request(internal::HttpMethod::Get,
                                    "/room/" + std::to_string(id) + "/content");
     if (!response) {
@@ -308,7 +308,7 @@ namespace octane::internal {
     uploadJson.AddMember("hash",
                          rapidjson::StringRef(hash.data(), hash.size()),
                          uploadJson.GetAllocator());
-    auto response = fetch->request(internal::HttpMethod::Post,
+    auto response = fetch->request(internal::HttpMethod::Put,
                                    "/room/" + std::to_string(id) + "/status",
                                    uploadJson);
     if (!response) {
