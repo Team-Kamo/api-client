@@ -223,6 +223,11 @@ Variables</h2></td></tr>
 <tr class="memitem:a7b27587dbd2d28891593cd7519003565"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a7b27587dbd2d28891593cd7519003565">ERR_INVALID_REQUEST</a> = &quot;ERR_INVALID_REQUEST&quot;</td></tr>
 <tr class="memdesc:a7b27587dbd2d28891593cd7519003565"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used when an unexpected request was issued.  <a href="namespaceoctane.html#a7b27587dbd2d28891593cd7519003565">More...</a><br /></td></tr>
 <tr class="separator:a7b27587dbd2d28891593cd7519003565"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef2e62331d61bc90deca14340c6f2550"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#aef2e62331d61bc90deca14340c6f2550">ERR_ROOM_ID_UNDEFINED</a> = &quot;ERR_ROOM_ID_UNDEFINED&quot;</td></tr>
+<tr class="memdesc:aef2e62331d61bc90deca14340c6f2550"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used when you are not connected to a room but <code><a class="el" href="">getRoomStatus()</a></code> and <code><a class="el" href="">deleteRoom()</a></code> was passed nothing.  <a href="namespaceoctane.html#aef2e62331d61bc90deca14340c6f2550">More...</a><br /></td></tr>
+<tr class="separator:aef2e62331d61bc90deca14340c6f2550"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad13481c23daf1cf32a0410bca85c459c"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#ad13481c23daf1cf32a0410bca85c459c">ERR_ROOM_DISCONNECTED</a> = &quot;ERR_ROOM_DISCONNECTED&quot;</td></tr>
+<tr class="separator:ad13481c23daf1cf32a0410bca85c459c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="ab6ae76f8bafa760d30cd5a5863b0cea4" name="ab6ae76f8bafa760d30cd5a5863b0cea4"></a>
@@ -337,25 +342,26 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceoctane_a11bf84eb93d9625bf17de018e4491327_icgraph.png" border="0" usemap="#anamespaceoctane_a11bf84eb93d9625bf17de018e4491327_icgraph" alt=""/></div>
 <map name="anamespaceoctane_a11bf84eb93d9625bf17de018e4491327_icgraph" id="anamespaceoctane_a11bf84eb93d9625bf17de018e4491327_icgraph">
-<area shape="rect" title="Utility function to construct quasi&#45;normal state values." alt="" coords="629,367,713,393"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="407,303,581,343"/>
+<area shape="rect" title="Utility function to construct quasi&#45;normal state values." alt="" coords="629,361,713,386"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="407,353,581,393"/>
 <area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for /health" alt="" coords="184,5,359,45"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a8cede5a0248ff2662e179b8a2b19b8b2" title="use delete method for /room/{id}/content" alt="" coords="184,133,359,173"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae5236ca6f694a95f302a881758e16b20" title="use get method for /room/{id}/content" alt="" coords="184,261,359,301"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a55f1f244706c935e38545e5f66308753" title="use put method for /room/{id}/content" alt="" coords="184,453,359,493"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aa83124ddc28125ae40dd2e6da0f29061" title="use delete method for /room/{id}" alt="" coords="184,517,359,557"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#afb7b22629f6212edad71b7289ddc6618" title="use get method for /room/{id}" alt="" coords="184,581,359,621"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#abad3e1c394ae37e3538a2ba32b8f06ab" title="use post method for /room/{id}" alt="" coords="184,197,359,237"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5b01879a21e410469c4e8a7494ae0f6c" title="use delete method for /room/{id}/status" alt="" coords="184,69,359,109"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a01f98886f7272847b83c6c56b0af6fd6" title="use get method for /room/{id}/status" alt="" coords="184,325,359,365"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a0e57b82c4d1afa56a8877eac44750d49" title="use put method for /room/{id}/status" alt="" coords="184,389,359,429"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a8cede5a0248ff2662e179b8a2b19b8b2" title="use delete method for /room/{id}/content" alt="" coords="184,69,359,109"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae5236ca6f694a95f302a881758e16b20" title="use get method for /room/{id}/content" alt="" coords="184,197,359,237"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a55f1f244706c935e38545e5f66308753" title="use put method for /room/{id}/content" alt="" coords="184,325,359,365"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aa83124ddc28125ae40dd2e6da0f29061" title="use delete method for /room/{id}" alt="" coords="184,389,359,429"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#afb7b22629f6212edad71b7289ddc6618" title="use get method for /room/{id}" alt="" coords="184,453,359,493"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#abad3e1c394ae37e3538a2ba32b8f06ab" title="use post method for /room/{id}" alt="" coords="184,517,359,557"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5b01879a21e410469c4e8a7494ae0f6c" title="use delete method for /room/{id}/status" alt="" coords="184,581,359,621"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a01f98886f7272847b83c6c56b0af6fd6" title="use get method for /room/{id}/status" alt="" coords="184,133,359,173"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a0e57b82c4d1afa56a8877eac44750d49" title="use put method for /room/{id}/status" alt="" coords="184,261,359,301"/>
 <area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a2e121429a143bc0b958bac123ce0dd05" title="use post method for /room" alt="" coords="184,645,359,685"/>
 <area shape="rect" href="namespaceoctane.html#ad35dd0394ebd0240d08a17fb010e34c1" title=" " alt="" coords="428,671,560,697"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a6361230cb088f06f1bb46ee334246d23" title="Deletes the room&#39;s content." alt="" coords="5,133,136,173"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#aad50514035736da26c1a3f826f68c98b" title="Gets the room&#39;s content." alt="" coords="5,261,136,301"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#aa4e3ad68e735399c082029c5a41cf411" title="Upload content to the room." alt="" coords="5,389,136,429"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a69f387b810a1fec847a2446a365e9c09" title="Deletes the room." alt="" coords="5,517,136,557"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a33e36c2ab52815cf4c7fefa3e1f7b5aa" title="Gets the room&#39;s status." alt="" coords="5,581,136,621"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a506b20f8639a6015e025c4a214238888" title="Deletes the room&#39;s content." alt="" coords="5,69,136,109"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a57723a0864001a21c14aa01e55a7e715" title="Gets the room&#39;s content." alt="" coords="5,181,136,221"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a0aca880c2faa076d42ac5caeca47e4c2" title="Uploads content to the room." alt="" coords="5,277,136,317"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a6d53d65b7b226ac32a5a442d37e4d4d7" title="Deletes the room." alt="" coords="5,389,136,429"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a7c08f94814368cec35a6a06c69b17bab" title="Gets the room&#39;s status." alt="" coords="5,453,136,493"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#ac17f6aa6f3515cee81b34091b6584db1" title="Connects to the room." alt="" coords="5,517,136,557"/>
 <area shape="rect" href="classoctane_1_1_api_client.html#a89347a6ec561c41d9fdc7f3f6996dc2d" title="Creates a room." alt="" coords="5,645,136,685"/>
 </map>
 </div>
@@ -456,37 +462,38 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceoctane_a11a1130b89597aa8ff1d5d8ca69d74ed_icgraph.png" border="0" usemap="#anamespaceoctane_a11a1130b89597aa8ff1d5d8ca69d74ed_icgraph" alt=""/></div>
 <map name="anamespaceoctane_a11a1130b89597aa8ff1d5d8ca69d74ed_icgraph" id="anamespaceoctane_a11a1130b89597aa8ff1d5d8ca69d74ed_icgraph">
-<area shape="rect" title="Utility function used to construct quasi&#45;normal state values." alt="" coords="855,1661,949,1686"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="409,823,583,863"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for /health" alt="" coords="184,632,359,672"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a8cede5a0248ff2662e179b8a2b19b8b2" title="use delete method for /room/{id}/content" alt="" coords="184,275,359,315"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a6361230cb088f06f1bb46ee334246d23" title="Deletes the room&#39;s content." alt="" coords="5,226,136,266"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae5236ca6f694a95f302a881758e16b20" title="use get method for /room/{id}/content" alt="" coords="184,475,359,515"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#aad50514035736da26c1a3f826f68c98b" title="Gets the room&#39;s content." alt="" coords="5,443,136,483"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a55f1f244706c935e38545e5f66308753" title="use put method for /room/{id}/content" alt="" coords="184,1138,359,1178"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#aa4e3ad68e735399c082029c5a41cf411" title="Upload content to the room." alt="" coords="5,1138,136,1178"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aa83124ddc28125ae40dd2e6da0f29061" title="use delete method for /room/{id}" alt="" coords="184,1466,359,1506"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a69f387b810a1fec847a2446a365e9c09" title="Deletes the room." alt="" coords="5,1575,136,1615"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#afb7b22629f6212edad71b7289ddc6618" title="use get method for /room/{id}" alt="" coords="184,1755,359,1795"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a33e36c2ab52815cf4c7fefa3e1f7b5aa" title="Gets the room&#39;s status." alt="" coords="5,1907,136,1947"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#abad3e1c394ae37e3538a2ba32b8f06ab" title="use post method for /room/{id}" alt="" coords="184,411,359,451"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5b01879a21e410469c4e8a7494ae0f6c" title="use delete method for /room/{id}/status" alt="" coords="184,176,359,216"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a01f98886f7272847b83c6c56b0af6fd6" title="use get method for /room/{id}/status" alt="" coords="184,766,359,806"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a0e57b82c4d1afa56a8877eac44750d49" title="use put method for /room/{id}/status" alt="" coords="184,982,359,1022"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a2e121429a143bc0b958bac123ce0dd05" title="use post method for /room" alt="" coords="184,1654,359,1694"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a89347a6ec561c41d9fdc7f3f6996dc2d" title="Creates a room." alt="" coords="5,1748,136,1788"/>
-<area shape="rect" href="classoctane_1_1_result.html#ab5dc7ca728727fe6fcf2ad6731277eb3" title="Get the value of quasi&#45;normal state as a constant." alt="" coords="655,2117,785,2142"/>
-<area shape="rect" href="namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327" title="Utility function to construct quasi&#45;normal state values." alt="" coords="678,697,762,722"/>
-<area shape="rect" href="classoctane_1_1error__t.html#a8c961c88b5b7d8ed425ad7e75a5b7f30" title=" " alt="" coords="645,2166,795,2192"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#ab61a0d4d59c02cbfcae0611ac7ee0a47" title="Run this method at first.(Since no exeptions are allowed in the constructor, we need this method to i..." alt="" coords="647,2216,793,2241"/>
-<area shape="rect" href="namespaceoctane.html#a508d9040da1bea287606313174f69cbc" title="Utility function to create error response." alt="" coords="655,1350,785,1376"/>
-<area shape="rect" href="classoctane_1_1error__t.html#a5f88fb2143fdd0af7505963b72d07b64" title=" " alt="" coords="633,2266,807,2306"/>
-<area shape="rect" href="classoctane_1_1_result.html#a75e8a3bfab37da3e786cfdd9c7348d43" title=" " alt="" coords="643,2330,797,2356"/>
-<area shape="rect" href="classoctane_1_1_result.html#a51e56850275cb524d62ad79cfbe74f7b" title=" " alt="" coords="639,2380,801,2405"/>
-<area shape="rect" href="namespaceoctane.html#ad35dd0394ebd0240d08a17fb010e34c1" title=" " alt="" coords="430,520,562,545"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ae637622c392e4cf4ac4c9f33f71b0443" title=" " alt="" coords="407,1546,585,1586"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_fetch.html#a6c11b7bd6d973f238d8c77fc6ac8d5c7" title=" " alt="" coords="420,1343,572,1383"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ac4698034c0997078b5ba13c7ed46e8bb" title=" " alt="" coords="407,1482,585,1522"/>
+<area shape="rect" title="Utility function used to construct quasi&#45;normal state values." alt="" coords="855,1056,949,1081"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="409,890,583,930"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for /health" alt="" coords="184,909,359,949"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a8cede5a0248ff2662e179b8a2b19b8b2" title="use delete method for /room/{id}/content" alt="" coords="184,681,359,721"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a506b20f8639a6015e025c4a214238888" title="Deletes the room&#39;s content." alt="" coords="5,681,136,721"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae5236ca6f694a95f302a881758e16b20" title="use get method for /room/{id}/content" alt="" coords="184,1251,359,1291"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a57723a0864001a21c14aa01e55a7e715" title="Gets the room&#39;s content." alt="" coords="5,1879,136,1919"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a55f1f244706c935e38545e5f66308753" title="use put method for /room/{id}/content" alt="" coords="184,1917,359,1957"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a0aca880c2faa076d42ac5caeca47e4c2" title="Uploads content to the room." alt="" coords="5,2126,136,2166"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aa83124ddc28125ae40dd2e6da0f29061" title="use delete method for /room/{id}" alt="" coords="184,579,359,619"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a6d53d65b7b226ac32a5a442d37e4d4d7" title="Deletes the room." alt="" coords="5,579,136,619"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#afb7b22629f6212edad71b7289ddc6618" title="use get method for /room/{id}" alt="" coords="184,991,359,1031"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a7c08f94814368cec35a6a06c69b17bab" title="Gets the room&#39;s status." alt="" coords="5,1049,136,1089"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#abad3e1c394ae37e3538a2ba32b8f06ab" title="use post method for /room/{id}" alt="" coords="184,203,359,243"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#ac17f6aa6f3515cee81b34091b6584db1" title="Connects to the room." alt="" coords="5,77,136,117"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5b01879a21e410469c4e8a7494ae0f6c" title="use delete method for /room/{id}/status" alt="" coords="184,370,359,410"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a01f98886f7272847b83c6c56b0af6fd6" title="use get method for /room/{id}/status" alt="" coords="184,1785,359,1825"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a0e57b82c4d1afa56a8877eac44750d49" title="use put method for /room/{id}/status" alt="" coords="184,2075,359,2115"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a2e121429a143bc0b958bac123ce0dd05" title="use post method for /room" alt="" coords="184,434,359,474"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a89347a6ec561c41d9fdc7f3f6996dc2d" title="Creates a room." alt="" coords="5,365,136,405"/>
+<area shape="rect" href="classoctane_1_1_result.html#ab5dc7ca728727fe6fcf2ad6731277eb3" title="Get the value of quasi&#45;normal state as a constant." alt="" coords="655,2184,785,2209"/>
+<area shape="rect" href="namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327" title="Utility function to construct quasi&#45;normal state values." alt="" coords="678,815,762,840"/>
+<area shape="rect" href="classoctane_1_1error__t.html#a8c961c88b5b7d8ed425ad7e75a5b7f30" title=" " alt="" coords="645,2285,795,2311"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#ab61a0d4d59c02cbfcae0611ac7ee0a47" title="Run this method at first.(Since no exeptions are allowed in the constructor, we need this method to i..." alt="" coords="647,2335,793,2360"/>
+<area shape="rect" href="namespaceoctane.html#a508d9040da1bea287606313174f69cbc" title="Utility function to create error response." alt="" coords="655,1613,785,1639"/>
+<area shape="rect" href="classoctane_1_1error__t.html#a5f88fb2143fdd0af7505963b72d07b64" title=" " alt="" coords="633,2435,807,2475"/>
+<area shape="rect" href="classoctane_1_1_result.html#a75e8a3bfab37da3e786cfdd9c7348d43" title=" " alt="" coords="643,2500,797,2525"/>
+<area shape="rect" href="classoctane_1_1_result.html#a51e56850275cb524d62ad79cfbe74f7b" title=" " alt="" coords="639,2549,801,2575"/>
+<area shape="rect" href="namespaceoctane.html#ad35dd0394ebd0240d08a17fb010e34c1" title=" " alt="" coords="430,637,562,663"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ae637622c392e4cf4ac4c9f33f71b0443" title=" " alt="" coords="407,1663,585,1703"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_fetch.html#a6c11b7bd6d973f238d8c77fc6ac8d5c7" title=" " alt="" coords="420,1727,572,1767"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ac4698034c0997078b5ba13c7ed46e8bb" title=" " alt="" coords="407,1866,585,1906"/>
 </map>
 </div>
 
@@ -554,28 +561,29 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceoctane_a508d9040da1bea287606313174f69cbc_icgraph.png" border="0" usemap="#anamespaceoctane_a508d9040da1bea287606313174f69cbc_icgraph" alt=""/></div>
 <map name="anamespaceoctane_a508d9040da1bea287606313174f69cbc_icgraph" id="anamespaceoctane_a508d9040da1bea287606313174f69cbc_icgraph">
-<area shape="rect" title="Utility function to create error response." alt="" coords="633,554,763,579"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="409,357,583,397"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for /health" alt="" coords="184,5,359,45"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae5236ca6f694a95f302a881758e16b20" title="use get method for /room/{id}/content" alt="" coords="184,133,359,173"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a55f1f244706c935e38545e5f66308753" title="use put method for /room/{id}/content" alt="" coords="184,453,359,493"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#aa4e3ad68e735399c082029c5a41cf411" title="Upload content to the room." alt="" coords="5,485,136,525"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#afb7b22629f6212edad71b7289ddc6618" title="use get method for /room/{id}" alt="" coords="184,632,359,672"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a01f98886f7272847b83c6c56b0af6fd6" title="use get method for /room/{id}/status" alt="" coords="184,69,359,109"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a0e57b82c4d1afa56a8877eac44750d49" title="use put method for /room/{id}/status" alt="" coords="184,517,359,557"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a2e121429a143bc0b958bac123ce0dd05" title="use post method for /room" alt="" coords="184,696,359,736"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ae637622c392e4cf4ac4c9f33f71b0443" title=" " alt="" coords="407,731,585,771"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_fetch.html#a6c11b7bd6d973f238d8c77fc6ac8d5c7" title=" " alt="" coords="420,795,572,835"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ac4698034c0997078b5ba13c7ed46e8bb" title=" " alt="" coords="407,883,585,923"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a8cede5a0248ff2662e179b8a2b19b8b2" title="use delete method for /room/{id}/content" alt="" coords="184,325,359,365"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aa83124ddc28125ae40dd2e6da0f29061" title="use delete method for /room/{id}" alt="" coords="184,197,359,237"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#abad3e1c394ae37e3538a2ba32b8f06ab" title="use post method for /room/{id}" alt="" coords="184,261,359,301"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5b01879a21e410469c4e8a7494ae0f6c" title="use delete method for /room/{id}/status" alt="" coords="184,389,359,429"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a6361230cb088f06f1bb46ee334246d23" title="Deletes the room&#39;s content." alt="" coords="5,325,136,365"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#aad50514035736da26c1a3f826f68c98b" title="Gets the room&#39;s content." alt="" coords="5,133,136,173"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a69f387b810a1fec847a2446a365e9c09" title="Deletes the room." alt="" coords="5,197,136,237"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a33e36c2ab52815cf4c7fefa3e1f7b5aa" title="Gets the room&#39;s status." alt="" coords="5,632,136,672"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a89347a6ec561c41d9fdc7f3f6996dc2d" title="Creates a room." alt="" coords="5,696,136,736"/>
+<area shape="rect" title="Utility function to create error response." alt="" coords="633,661,763,686"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="409,463,583,503"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for /health" alt="" coords="184,239,359,279"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a506b20f8639a6015e025c4a214238888" title="Deletes the room&#39;s content." alt="" coords="5,213,136,253"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae5236ca6f694a95f302a881758e16b20" title="use get method for /room/{id}/content" alt="" coords="184,175,359,215"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a57723a0864001a21c14aa01e55a7e715" title="Gets the room&#39;s content." alt="" coords="5,60,136,100"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a55f1f244706c935e38545e5f66308753" title="use put method for /room/{id}/content" alt="" coords="184,623,359,663"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a0aca880c2faa076d42ac5caeca47e4c2" title="Uploads content to the room." alt="" coords="5,584,136,624"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a6d53d65b7b226ac32a5a442d37e4d4d7" title="Deletes the room." alt="" coords="5,648,136,688"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#afb7b22629f6212edad71b7289ddc6618" title="use get method for /room/{id}" alt="" coords="184,801,359,841"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a7c08f94814368cec35a6a06c69b17bab" title="Gets the room&#39;s status." alt="" coords="5,855,136,895"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a01f98886f7272847b83c6c56b0af6fd6" title="use get method for /room/{id}/status" alt="" coords="184,60,359,100"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a0e57b82c4d1afa56a8877eac44750d49" title="use put method for /room/{id}/status" alt="" coords="184,559,359,599"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a2e121429a143bc0b958bac123ce0dd05" title="use post method for /room" alt="" coords="184,687,359,727"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ae637622c392e4cf4ac4c9f33f71b0443" title=" " alt="" coords="407,967,585,1007"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_fetch.html#a6c11b7bd6d973f238d8c77fc6ac8d5c7" title=" " alt="" coords="420,1031,572,1071"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ac4698034c0997078b5ba13c7ed46e8bb" title=" " alt="" coords="407,1119,585,1159"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a8cede5a0248ff2662e179b8a2b19b8b2" title="use delete method for /room/{id}/content" alt="" coords="184,303,359,343"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aa83124ddc28125ae40dd2e6da0f29061" title="use delete method for /room/{id}" alt="" coords="184,495,359,535"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#abad3e1c394ae37e3538a2ba32b8f06ab" title="use post method for /room/{id}" alt="" coords="184,367,359,407"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5b01879a21e410469c4e8a7494ae0f6c" title="use delete method for /room/{id}/status" alt="" coords="184,431,359,471"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#ac17f6aa6f3515cee81b34091b6584db1" title="Connects to the room." alt="" coords="5,367,136,407"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a89347a6ec561c41d9fdc7f3f6996dc2d" title="Creates a room." alt="" coords="5,712,136,752"/>
 </map>
 </div>
 
@@ -621,32 +629,33 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceoctane_a4278ebdd8868424048d63d57af2bc835_icgraph.png" border="0" usemap="#anamespaceoctane_a4278ebdd8868424048d63d57af2bc835_icgraph" alt=""/></div>
 <map name="anamespaceoctane_a4278ebdd8868424048d63d57af2bc835_icgraph" id="anamespaceoctane_a4278ebdd8868424048d63d57af2bc835_icgraph">
-<area shape="rect" title="Utitlity function used when the normal state type is _." alt="" coords="453,572,536,597"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a89347a6ec561c41d9fdc7f3f6996dc2d" title="Creates a room." alt="" coords="27,28,157,68"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a6361230cb088f06f1bb46ee334246d23" title="Deletes the room&#39;s content." alt="" coords="27,203,157,243"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a69f387b810a1fec847a2446a365e9c09" title="Deletes the room." alt="" coords="27,755,157,795"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#aad50514035736da26c1a3f826f68c98b" title="Gets the room&#39;s content." alt="" coords="27,382,157,422"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#a33e36c2ab52815cf4c7fefa3e1f7b5aa" title="Gets the room&#39;s status." alt="" coords="27,844,157,884"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for /health" alt="" coords="229,950,403,990"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#ab61a0d4d59c02cbfcae0611ac7ee0a47" title="Run this method at first.(Since no exeptions are allowed in the constructor, we need this method to i..." alt="" coords="243,1014,389,1040"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ae637622c392e4cf4ac4c9f33f71b0443" title=" " alt="" coords="227,1064,405,1104"/>
-<area shape="rect" href="namespaceoctane.html#a3f017b1c4b4453a03510ba4f01e6668a" title="Utility function used to construct normal state values." alt="" coords="275,1129,357,1154"/>
+<area shape="rect" title="Utitlity function used when the normal state type is _." alt="" coords="453,586,536,611"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#ac17f6aa6f3515cee81b34091b6584db1" title="Connects to the room." alt="" coords="27,35,157,75"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a89347a6ec561c41d9fdc7f3f6996dc2d" title="Creates a room." alt="" coords="27,672,157,712"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a506b20f8639a6015e025c4a214238888" title="Deletes the room&#39;s content." alt="" coords="27,143,157,183"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a6d53d65b7b226ac32a5a442d37e4d4d7" title="Deletes the room." alt="" coords="27,264,157,304"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a57723a0864001a21c14aa01e55a7e715" title="Gets the room&#39;s content." alt="" coords="27,780,157,820"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a7c08f94814368cec35a6a06c69b17bab" title="Gets the room&#39;s status." alt="" coords="27,551,157,591"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5ba018c516d67ccf9d3bd603cb1a0935" title="use get method for /health" alt="" coords="229,349,403,389"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#ab61a0d4d59c02cbfcae0611ac7ee0a47" title="Run this method at first.(Since no exeptions are allowed in the constructor, we need this method to i..." alt="" coords="243,414,389,439"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_http_client.html#ae637622c392e4cf4ac4c9f33f71b0443" title=" " alt="" coords="227,464,405,504"/>
+<area shape="rect" href="namespaceoctane.html#a3f017b1c4b4453a03510ba4f01e6668a" title="Utility function used to construct normal state values." alt="" coords="275,937,357,962"/>
 <area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a8cede5a0248ff2662e179b8a2b19b8b2" title="use delete method for /room/{id}/content" alt="" coords="229,171,403,211"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae5236ca6f694a95f302a881758e16b20" title="use get method for /room/{id}/content" alt="" coords="229,350,403,390"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a55f1f244706c935e38545e5f66308753" title="use put method for /room/{id}/content" alt="" coords="229,592,403,632"/>
-<area shape="rect" href="classoctane_1_1_api_client.html#aa4e3ad68e735399c082029c5a41cf411" title="Upload content to the room." alt="" coords="27,564,157,604"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aa83124ddc28125ae40dd2e6da0f29061" title="use delete method for /room/{id}" alt="" coords="229,771,403,811"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#afb7b22629f6212edad71b7289ddc6618" title="use get method for /room/{id}" alt="" coords="229,886,403,926"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#abad3e1c394ae37e3538a2ba32b8f06ab" title="use post method for /room/{id}" alt="" coords="229,414,403,454"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5b01879a21e410469c4e8a7494ae0f6c" title="use delete method for /room/{id}/status" alt="" coords="229,235,403,275"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a01f98886f7272847b83c6c56b0af6fd6" title="use get method for /room/{id}/status" alt="" coords="229,478,403,518"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a0e57b82c4d1afa56a8877eac44750d49" title="use put method for /room/{id}/status" alt="" coords="229,656,403,696"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a2e121429a143bc0b958bac123ce0dd05" title="use post method for /room" alt="" coords="229,56,403,96"/>
-<area shape="rect" href="classoctane_1_1_result.html#aa73cd832003f87fa7eb73531bddc7e30" title="Get the value of normal state as a constant." alt="" coords="25,1178,159,1204"/>
-<area shape="rect" href="classoctane_1_1ok__t.html#a2ae4f28e289ef05b67afb38d58e83cb6" title=" " alt="" coords="29,1228,155,1253"/>
-<area shape="rect" href="classoctane_1_1ok__t.html#a630469510a2cba69f993ee977f0c9a9f" title=" " alt="" coords="5,1015,179,1055"/>
-<area shape="rect" href="classoctane_1_1_result.html#a75e8a3bfab37da3e786cfdd9c7348d43" title=" " alt="" coords="15,1080,169,1105"/>
-<area shape="rect" href="classoctane_1_1_result.html#a51e56850275cb524d62ad79cfbe74f7b" title=" " alt="" coords="11,1129,173,1154"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#ae5236ca6f694a95f302a881758e16b20" title="use get method for /room/{id}/content" alt="" coords="229,872,403,912"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a55f1f244706c935e38545e5f66308753" title="use put method for /room/{id}/content" alt="" coords="229,1115,403,1155"/>
+<area shape="rect" href="classoctane_1_1_api_client.html#a0aca880c2faa076d42ac5caeca47e4c2" title="Uploads content to the room." alt="" coords="27,1115,157,1155"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aa83124ddc28125ae40dd2e6da0f29061" title="use delete method for /room/{id}" alt="" coords="229,235,403,275"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#afb7b22629f6212edad71b7289ddc6618" title="use get method for /room/{id}" alt="" coords="229,579,403,619"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#abad3e1c394ae37e3538a2ba32b8f06ab" title="use post method for /room/{id}" alt="" coords="229,5,403,45"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a5b01879a21e410469c4e8a7494ae0f6c" title="use delete method for /room/{id}/status" alt="" coords="229,987,403,1027"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a01f98886f7272847b83c6c56b0af6fd6" title="use get method for /room/{id}/status" alt="" coords="229,757,403,797"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a0e57b82c4d1afa56a8877eac44750d49" title="use put method for /room/{id}/status" alt="" coords="229,1051,403,1091"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#a2e121429a143bc0b958bac123ce0dd05" title="use post method for /room" alt="" coords="229,643,403,683"/>
+<area shape="rect" href="classoctane_1_1_result.html#aa73cd832003f87fa7eb73531bddc7e30" title="Get the value of normal state as a constant." alt="" coords="25,943,159,969"/>
+<area shape="rect" href="classoctane_1_1ok__t.html#a2ae4f28e289ef05b67afb38d58e83cb6" title=" " alt="" coords="29,993,155,1018"/>
+<area shape="rect" href="classoctane_1_1ok__t.html#a630469510a2cba69f993ee977f0c9a9f" title=" " alt="" coords="5,1043,179,1083"/>
+<area shape="rect" href="classoctane_1_1_result.html#a75e8a3bfab37da3e786cfdd9c7348d43" title=" " alt="" coords="15,845,169,870"/>
+<area shape="rect" href="classoctane_1_1_result.html#a51e56850275cb524d62ad79cfbe74f7b" title=" " alt="" coords="11,894,173,919"/>
 </map>
 </div>
 
@@ -1199,6 +1208,52 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Used when JSON parse failed. </p>
+
+</div>
+</div>
+<a id="ad13481c23daf1cf32a0410bca85c459c" name="ad13481c23daf1cf32a0410bca85c459c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad13481c23daf1cf32a0410bca85c459c">&#9670;&#160;</a></span>ERR_ROOM_DISCONNECTED</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto octane::ERR_ROOM_DISCONNECTED = &quot;ERR_ROOM_DISCONNECTED&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aef2e62331d61bc90deca14340c6f2550" name="aef2e62331d61bc90deca14340c6f2550"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef2e62331d61bc90deca14340c6f2550">&#9670;&#160;</a></span>ERR_ROOM_ID_UNDEFINED</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto octane::ERR_ROOM_ID_UNDEFINED = &quot;ERR_ROOM_ID_UNDEFINED&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Used when you are not connected to a room but <code><a class="el" href="">getRoomStatus()</a></code> and <code><a class="el" href="">deleteRoom()</a></code> was passed nothing. </p>
 
 </div>
 </div>

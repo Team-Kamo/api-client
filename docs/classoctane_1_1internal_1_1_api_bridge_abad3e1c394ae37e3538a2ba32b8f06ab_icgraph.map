@@ -1,6 +1,4 @@
 <map id="octane::internal::ApiBridge::roomIdPost" name="octane::internal::ApiBridge::roomIdPost">
-<area shape="rect" id="node1" title="use post method for /room/{id}" alt="" coords="184,69,359,109"/>
-<area shape="rect" id="node2" href="$classoctane_1_1_api_client.html#a6361230cb088f06f1bb46ee334246d23" title="Deletes the room&#39;s content." alt="" coords="5,5,136,45"/>
-<area shape="rect" id="node3" href="$classoctane_1_1_api_client.html#aad50514035736da26c1a3f826f68c98b" title="Gets the room&#39;s content." alt="" coords="5,69,136,109"/>
-<area shape="rect" id="node4" href="$classoctane_1_1_api_client.html#aa4e3ad68e735399c082029c5a41cf411" title="Upload content to the room." alt="" coords="5,133,136,173"/>
+<area shape="rect" id="node1" title="use post method for /room/{id}" alt="" coords="184,5,359,45"/>
+<area shape="rect" id="node2" href="$classoctane_1_1_api_client.html#ac17f6aa6f3515cee81b34091b6584db1" title="Connects to the room." alt="" coords="5,5,136,45"/>
 </map>
