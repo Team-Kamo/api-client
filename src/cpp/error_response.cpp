@@ -20,7 +20,9 @@ namespace octane {
       .reason = std::string(reason),
     });
   }
-
+  bool operator==(const ErrorResponse& a, const ErrorResponse& b) {
+    return (a.code == b.code && a.reason == b.reason);
+  }
   std::ostream& operator<<(std::ostream& stream, const ErrorResponse& err) {
     stream << "{\n\t.code = " << err.code << "\n\t.reason = " << err.reason
            << "\n}";
