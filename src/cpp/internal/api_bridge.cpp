@@ -137,8 +137,10 @@ namespace octane::internal {
 
     std::vector<Device> devices;
     for (const auto& device : json["devices"].GetArray()) {
-      devices.emplace_back(device["name"].GetString(),
-                           device["timestamp"].GetUint64());
+      devices.push_back(Device{
+        .name      = device["name"].GetString(),
+        .timestamp = device["timestamp"].GetUint64(),
+      });
     }
     return ok(RoomStatus{ .name    = json["name"].GetString(),
                           .devices = devices,
