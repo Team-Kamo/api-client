@@ -1,6 +1,6 @@
 <map id="octane::internal::Fetch::request" name="octane::internal::Fetch::request">
 <area shape="rect" id="node1" title=" " alt="" coords="5,63,157,103"/>
-<area shape="rect" id="node2" href="$namespaceoctane.html#a508d9040da1bea287606313174f69cbc" title="エラーレスポンスを作成するためのユーティリティ関数。" alt="" coords="217,29,346,55"/>
+<area shape="rect" id="node2" href="$namespaceoctane.html#a508d9040da1bea287606313174f69cbc" title="Utility function to create error response." alt="" coords="217,29,346,55"/>
 <area shape="rect" id="node4" href="$classoctane_1_1internal_1_1_fetch.html#ab0c9d45e0266aafa331701fadf8569b2" title=" " alt="" coords="205,103,357,143"/>
-<area shape="rect" id="node3" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="405,29,500,55"/>
+<area shape="rect" id="node3" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="Utility function used to construct quasi&#45;normal state values." alt="" coords="405,29,500,55"/>
 </map>

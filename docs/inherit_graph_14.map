@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classoctane_1_1ok__t.html" title="正常系の型のみを規定したいときに使えるユーティリティクラス。" alt="" coords="5,5,131,31"/>
+<area shape="rect" id="node1" href="$structoctane_1_1_response.html" title="Structure used/inherited in various methods of ApiClient, has the server&#39;s status." alt="" coords="5,55,133,80"/>
+<area shape="rect" id="node2" href="$structoctane_1_1_content.html" title="Structure used as result for getContent, has data and ContentStatus and inherits Response." alt="" coords="195,5,310,31"/>
+<area shape="rect" id="node3" href="$structoctane_1_1_room_id.html" title="Structure used as result for createRoom, has the room id and inherits Response." alt="" coords="195,55,310,80"/>
+<area shape="rect" id="node4" href="$structoctane_1_1_room_status.html" title="Structure used as result for getRoomStatus, has the status of the room and inherits Response." alt="" coords="181,104,324,129"/>
 </map>

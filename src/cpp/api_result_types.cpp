@@ -31,6 +31,13 @@ namespace octane {
            << ", message = " << healthResult.message.value_or("<nullopt>");
     return stream;
   };
+  bool operator==(const RoomId& a, const RoomId& b) {
+    return (a.id == b.id);
+  }
+  std::ostream& operator<<(std::ostream& stream, const RoomId& roomId) {
+    stream << "id = " << roomId.id;
+    return stream;
+  };
   bool operator==(const RoomStatus& a, const RoomStatus& b) {
     bool isEqual = true;
     if (a.name != b.name) isEqual = false;
@@ -41,9 +48,9 @@ namespace octane {
     }
     return isEqual;
   }
-  std::ostream& operator<<(std::ostream& stream, const RoomStatus& RoomStatus) {
-    stream << "name = " << RoomStatus.name << ", devices = [";
-    for (const auto& device : RoomStatus.devices) {
+  std::ostream& operator<<(std::ostream& stream, const RoomStatus& roomStatus) {
+    stream << "name = " << roomStatus.name << ", devices = [";
+    for (const auto& device : roomStatus.devices) {
       stream << "{ name = " << device.name
              << " timestamp = " << device.timestamp;
     }

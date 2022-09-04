@@ -27,20 +27,27 @@ namespace octane {
 
   ApiClient::~ApiClient() noexcept {}
 
-  Result<std::optional<std::string>, ErrorResponse> ApiClient::init() {
+  Result<Response, ErrorResponse> ApiClient::init() {
     auto result = bridge.init();
     if (!result) {
       return error(result.err());
     }
-    return checkHealth();
+    const auto checkHealthResult = checkHealth();
+    if (!checkHealthResult) {
+      return error(checkHealthResult.err());
+    }
+    Response response{};
+    response.health  = checkHealthResult.get().health;
+    response.message = checkHealthResult.get().message;
+    return ok(response);
   }
 
-  Result<std::optional<std::string>, ErrorResponse> ApiClient::checkHealth() {
+  Result<HealthResult, ErrorResponse> ApiClient::checkHealth() {
     uint64_t now = std::chrono::duration_cast<std::chrono::seconds>(
                      std::chrono::system_clock::now().time_since_epoch())
                      .count();
     if (now - lastCheckedTime < 1800) {
-      return ok(std::nullopt);
+      return ok(lastCheckedHealth);
     }
 
     auto healthResult = health();
@@ -50,15 +57,15 @@ namespace octane {
 
     const auto& [health, message] = healthResult.get();
     if (health == Health::Faulty) {
-      return error(
-        makeError(ERR_SERVER_HEALTH_STATUS_FAULTY, message.value_or("")));
+      return makeError(ERR_SERVER_HEALTH_STATUS_FAULTY, message.value_or(""));
     }
 
     if (health != Health::Healthy && health != Health::Degraded) {
       std::abort();
     }
-    lastCheckedTime = now;
-    return ok(message);
+    lastCheckedHealth = healthResult.get();
+    lastCheckedTime   = now;
+    return ok(lastCheckedHealth);
   }
 
   Result<HealthResult, ErrorResponse> ApiClient::health() {
@@ -69,8 +76,7 @@ namespace octane {
     return ok(result.get());
   }
 
-  Result<std::uint64_t, ErrorResponse> ApiClient::createRoom(
-    std::string_view name) {
+  Result<RoomId, ErrorResponse> ApiClient::createRoom(std::string_view name) {
     const auto checkHealthResult = checkHealth();
     if (!checkHealthResult) {
       return error(checkHealthResult.err());
@@ -79,7 +85,10 @@ namespace octane {
     if (!result) {
       return error(result.err());
     }
-    return ok(result.get());
+    auto response    = result.get();
+    response.health  = checkHealthResult.get().health;
+    response.message = checkHealthResult.get().message;
+    return ok(response);
   }
 
   Result<RoomStatus, ErrorResponse> ApiClient::getRoomStatus(std::uint64_t id) {
@@ -91,10 +100,13 @@ namespace octane {
     if (!result) {
       return error(result.err());
     }
-    return ok(result.get());
+    auto response    = result.get();
+    response.health  = checkHealthResult.get().health;
+    response.message = checkHealthResult.get().message;
+    return ok(response);
   }
 
-  Result<_, ErrorResponse> ApiClient::deleteRoom(std::uint64_t id) {
+  Result<Response, ErrorResponse> ApiClient::deleteRoom(std::uint64_t id) {
     const auto checkHealthResult = checkHealth();
     if (!checkHealthResult) {
       return error(checkHealthResult.err());
@@ -103,7 +115,10 @@ namespace octane {
     if (!result) {
       return error(result.err());
     }
-    return ok();
+    Response response{};
+    response.health  = checkHealthResult.get().health;
+    response.message = checkHealthResult.get().message;
+    return ok(response);
   }
 
   Result<Content, ErrorResponse> ApiClient::getContent(std::uint64_t id,
@@ -112,6 +127,7 @@ namespace octane {
     if (!checkHealthResult) {
       return error(checkHealthResult.err());
     }
+    // TODO: これを呼ぶタイミングを変更する
     auto resultC = bridge.roomIdPost(id, name);
     if (!resultC) {
       return error(resultC.err());
@@ -126,16 +142,22 @@ namespace octane {
     if (!result) {
       return error(result.err());
     }
-    content.data = result.get();
+    content.data     = result.get();
+    auto response    = content;
+    response.health  = checkHealthResult.get().health;
+    response.message = checkHealthResult.get().message;
+    return ok(response);
     return ok(content);
   }
 
-  Result<_, ErrorResponse> ApiClient::deleteContent(std::uint64_t id,
-                                                    std::string_view name) {
+  Result<Response, ErrorResponse> ApiClient::deleteContent(
+    std::uint64_t id,
+    std::string_view name) {
     const auto checkHealthResult = checkHealth();
     if (!checkHealthResult) {
       return error(checkHealthResult.err());
     }
+    // TODO: これを呼ぶタイミングを変更する
     auto resultC = bridge.roomIdPost(id, name);
     if (!resultC) {
       return error(resultC.err());
@@ -148,16 +170,21 @@ namespace octane {
     if (!result) {
       return error(result.err());
     }
-    return ok();
+    Response response{};
+    response.health  = checkHealthResult.get().health;
+    response.message = checkHealthResult.get().message;
+    return ok(response);
   }
 
-  Result<_, ErrorResponse> ApiClient::uploadContent(std::uint64_t id,
-                                                    std::string_view name,
-                                                    const Content& content) {
+  Result<Response, ErrorResponse> ApiClient::uploadContent(
+    std::uint64_t id,
+    std::string_view name,
+    const Content& content) {
     const auto checkHealthResult = checkHealth();
     if (!checkHealthResult) {
       return error(checkHealthResult.err());
     }
+    // TODO: これを呼ぶタイミングを変更する
     auto resultC = bridge.roomIdPost(id, name);
     if (!resultC) {
       return error(resultC.err());
@@ -183,6 +210,9 @@ namespace octane {
     if (!result) {
       return error(result.err());
     }
-    return ok();
+    Response response{};
+    response.health  = checkHealthResult.get().health;
+    response.message = checkHealthResult.get().message;
+    return ok(response);
   }
 } // namespace octane

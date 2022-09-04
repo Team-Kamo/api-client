@@ -18,6 +18,8 @@
 #include <variant>
 #include <vector>
 
+#include "./result.h"
+
 namespace octane {
   /**
    * @brief Enum used in {@link HealthResult}, represents the server's status.
@@ -46,6 +48,15 @@ namespace octane {
   std::ostream& operator<<(std::ostream& stream,
                            const HealthResult& healthResult);
   /**
+   * @brief Structure used/inherited in various methods of {@link ApiClient},
+   * has the server's status.
+   *
+   */
+  struct Response {
+    Health health;
+    std::optional<std::string> message;
+  };
+  /**
    * @brief
    * Structure used in {@link RoomStatus}'s devices, has the information of each
    * device connected to the room.
@@ -60,10 +71,10 @@ namespace octane {
   };
   /**
    * @brief Structure used as result for {@link getRoomStatus}, has the status
-   * of the room.
+   * of the room and inherits {@link Response}.
    *
    */
-  struct RoomStatus {
+  struct RoomStatus : Response {
     /** @brief Name of the room. */
     std::string name;
     /** @brief Information for all of the devices connected to the room. */
@@ -85,9 +96,8 @@ namespace octane {
     Clipboard,
   };
   /**
-   * @brief Structure used as result for {@link getContentStatus}, has the
-   * status of
-   * {@link Content}
+   * @brief Structure used in {@link Content}, has the
+   * status of {@link Content}.
    *
    */
   struct ContentStatus {
@@ -104,14 +114,24 @@ namespace octane {
   };
   /**
    * @brief Structure used as result for {@link getContent}, has data and {@link
-   * ContentStatus}
+   * ContentStatus} and inherits {@link Response}.
    *
    */
-  struct Content {
+  struct Content : Response {
     /** @brief The status of {@link Content}.*/
     ContentStatus contentStatus;
     /** @brief The data of {@link Content}, is a variant of string and binary.*/
     std::variant<std::string, std::vector<std::uint8_t>> data;
   };
+  /**
+   * @brief Structure used as result for {@link createRoom}, has the room id and
+   * inherits {@link Response}.
+   *
+   */
+  struct RoomId : Response {
+    std::uint64_t id;
+  };
+  bool operator==(const RoomId& a, const RoomId& b);
+  std::ostream& operator<<(std::ostream& stream, const RoomId& roomId);
 };     // namespace octane
 #endif // OCTANE_API_CLIENT_API_RESULT_TYPES_H_

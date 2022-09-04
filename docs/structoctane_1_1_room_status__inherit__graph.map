@@ -1,0 +1,4 @@
+<map id="octane::RoomStatus" name="octane::RoomStatus">
+<area shape="rect" id="node1" title="Structure used as result for getRoomStatus, has the status of the room and inherits Response." alt="" coords="5,79,148,104"/>
+<area shape="rect" id="node2" href="$structoctane_1_1_response.html" title="Structure used/inherited in various methods of ApiClient, has the server&#39;s status." alt="" coords="13,5,141,31"/>
+</map>

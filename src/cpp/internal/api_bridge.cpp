@@ -91,8 +91,7 @@ namespace octane::internal {
       .message = json["message"].GetString(),
     });
   }
-  Result<std::uint64_t, ErrorResponse> ApiBridge::roomPost(
-    std::string_view name) {
+  Result<RoomId, ErrorResponse> ApiBridge::roomPost(std::string_view name) {
     rapidjson::Document uploadJson(rapidjson::kObjectType);
     uploadJson.AddMember("name",
                          rapidjson::StringRef(name.data(), name.size()),
@@ -111,11 +110,10 @@ namespace octane::internal {
     }
     rapidjson::Document& json
       = std::get<rapidjson::Document>(response.get().body);
-
     if (auto err = verifyJson(json, SCHEMA_ROOM_POST)) {
       return error(err.value());
     }
-    return ok(json["id"].GetUint64());
+    return ok(RoomId{ .id = json["id"].GetUint64() });
   }
   Result<RoomStatus, ErrorResponse> ApiBridge::roomIdGet(std::uint64_t id) {
     auto response = fetch->request(internal::HttpMethod::Get,

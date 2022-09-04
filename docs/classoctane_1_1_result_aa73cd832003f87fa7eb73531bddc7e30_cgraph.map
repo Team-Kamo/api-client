@@ -1,5 +1,5 @@
 <map id="octane::Result::get" name="octane::Result::get">
-<area shape="rect" id="node1" title="正常系の値を定数値として取り出す。" alt="" coords="5,29,139,55"/>
-<area shape="rect" id="node2" href="$namespaceoctane.html#a3f017b1c4b4453a03510ba4f01e6668a" title="正常系の値を構築するためのユーティリティ関数。" alt="" coords="187,29,269,55"/>
-<area shape="rect" id="node3" href="$namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835" title="正常系の型が_であるときに使用できるユーティリティ関数。" alt="" coords="317,29,400,55"/>
+<area shape="rect" id="node1" title="Get the value of normal state as a constant." alt="" coords="5,29,139,55"/>
+<area shape="rect" id="node2" href="$namespaceoctane.html#a3f017b1c4b4453a03510ba4f01e6668a" title="Utility function used to construct normal state values." alt="" coords="187,29,269,55"/>
+<area shape="rect" id="node3" href="$namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835" title="Utitlity function used when the normal state type is _." alt="" coords="317,29,400,55"/>
 </map>

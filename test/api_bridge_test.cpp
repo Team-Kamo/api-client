@@ -271,7 +271,9 @@ namespace octane::internal {
   TEST(ApiBridgeTest, roomPostOk) {
     test::MockFetch mockFetch;
     std::string name = "soon's room";
+    RoomId roomId{};
     std::uint64_t id = 7040782538;
+    roomId.id        = id;
     auto json        = makeJson(R"({"name": "soon's room"})");
     EXPECT_CALL(mockFetch,
                 request(HttpMethod::Post,
@@ -282,7 +284,7 @@ namespace octane::internal {
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.roomPost(name);
     EXPECT_TRUE(result) << result.err();
-    EXPECT_EQ(result.get(), id);
+    EXPECT_EQ(result.get(), roomId);
   }
   /**
    * @brief

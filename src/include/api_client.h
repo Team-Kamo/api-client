@@ -21,6 +21,7 @@ namespace octane {
   class ApiClient {
     internal::ApiBridge bridge;
     std::uint64_t lastCheckedTime;
+    HealthResult lastCheckedHealth;
 
   public:
     /**
@@ -40,78 +41,172 @@ namespace octane {
     ~ApiClient() noexcept;
 
     /**
-     * @brief Initialize
-     *
+     * @brief Run this method at first.(Since no exeptions are allowed in the
+     * constructor, we need this method to initailize the system.)
+     * @details
+     * This method can be called once for each instance, and should be called
+     * right after an instance is created.
+     * If it fails, the following error response will be returned.
+     * - ERR_CURL_INITIALIZATION_FAILED
+     * - ERR_JSON_PARSE_FAILED
+     * - ERR_INVALID_RESPONSE
+     * - ERR_CURL_CONNECTION_FAILED
+     * - ERR_SERVER_HEALTH_STATUS_FAULTY
+     * Additionaly, when a response other than a 2xx is returned, the error
+     * passed from the server in the form of error response is returned.
      * @return Result<std::optional<std::string>, ErrorResponse>
+     * On success, it will return {@link Response}.
+     * On failure, it will return the error response written above.
      */
-    Result<std::optional<std::string>, ErrorResponse> init();
-
+    Result<Response, ErrorResponse> init();
     /**
-     * @brief Return the server's status
-     *
-     * @return Result<HealthResult, ErrorResponse>
-     */
-    Result<HealthResult, ErrorResponse> health();
-    /**
-     * @brief Create a room
-     *
+     * @brief Creates a room
+     * @details
+     * This method creates a room and returns {@link RoomId} when you pass the
+     * room name. If it fails, the following error response will be returned.
+     * - ERR_JSON_PARSE_FAILED
+     * - ERR_INVALID_RESPONSE
+     * - ERR_CURL_CONNECTION_FAILED
+     * - ERR_SERVER_HEALTH_STATUS_FAULTY
+     * Additionaly, when a response other than 2xx is returned, the
+     * error passed from the server in the form of error response is returned.
      * @param[in] name Room name
-     * @return Result<std::uint64_t, ErrorResponse> Returns room id on success
+     * @return Result<RoomId, ErrorResponse>
+     * On success, it will return {@link RoomId}.
+     * On failure, it will return the error response written above.
      */
-    Result<std::uint64_t, ErrorResponse> createRoom(std::string_view name);
+    Result<RoomId, ErrorResponse> createRoom(std::string_view name);
     /**
-     * @brief Get the room's status
-     *
-     * @param[in] id
+     * @brief Gets the room's status
+     * @details
+     * This method returns {@link RoomStatus} when you pass the room id.
+     * If it fails, the following error response will be returned.
+     * - ERR_JSON_PARSE_FAILED
+     * - ERR_INVALID_RESPONSE
+     * - ERR_CURL_CONNECTION_FAILED
+     * - ERR_SERVER_HEALTH_STATUS_FAULTY
+     * Additionaly, when a response other than 2xx is returned, the
+     * error passed from the server in the form of error response is returned.
+     * @param[in] id Room id
      * @return Result<RoomStatus, ErrorResponse>
+     * On success, it will return {@link RoomStatus}.
+     * On failure, it will return the error response written above.
      */
     Result<RoomStatus, ErrorResponse> getRoomStatus(std::uint64_t id);
     /**
-     * @brief Delete the room
-     *
-     * @param[in] id
-     * @return Result<_, ErrorResponse>
+     * @brief Deletes the room
+     * @details
+     * This method deletes the room when you pass the room id.
+     * If it fails, the following error response will be returned.
+     * - ERR_CURL_CONNECTION_FAILED
+     * - ERR_SERVER_HEALTH_STATUS_FAULTY
+     * Additionaly, when a response other than 2xx is returned, the
+     * error passed from the server in the form of error response is returned.
+     * @param[in] id Room id
+     * @return Result<Response, ErrorResponse>
+     * On success, it will return {@link Response}
+     * On failure, it will return the error response written above.
      */
-    Result<_, ErrorResponse> deleteRoom(std::uint64_t id);
+    Result<Response, ErrorResponse> deleteRoom(std::uint64_t id);
     /**
-     * @brief Return content in the room
-     *
-     * @param[in] id
-     * @param[in] name
+     * @brief Gets the room's content
+     * @details
+     * This method returns the room's {@link Content} when you
+     * pass the room id and device name.
+     * If it fails, the following error response will be returned.
+     * - ERR_JSON_PARSE_FAILED
+     * - ERR_INVALID_RESPONSE
+     * - ERR_CURL_CONNECTION_FAILED
+     * - ERR_SERVER_HEALTH_STATUS_FAULTY
+     * Additionaly, when a response other than 2xx is returned, the
+     * error passed from the server in the form of error response is returned.
+     * @param[in] id Room id
+     * @param[in] name Device name
      * @return Result<Content, ErrorResponse>
+     * On success, it will return {@link Content}.
+     * On failure, it will return the error response written above.
      */
     Result<Content, ErrorResponse> getContent(std::uint64_t id,
                                               std::string_view name);
     /**
-     * @brief Delete content from the room
+     * @brief Deletes the room's content
+     * @details
+     * This method deletes the room's content.
+     *  If it fails, the following error response will be returned.
+     * - ERR_CURL_CONNECTION_FAILED
+     * - ERR_SERVER_HEALTH_STATUS_FAULTY
+     * Additionaly, when a response other than 2xx is returned, the
+     * error passed from the server in the form of error response is returned.
+     * @param[in] id Room id
+     * @param[in] name Device name
+     * @return Result<Content, ErrorResponse>
+     * On success, it will return {@link Response}.
+     * On failure, it will return the error response written above.
      *
      * @param id
      * @param name
-     * @return Result<_, ErrorResponse>
+     * @return Result<Response, ErrorResponse>
      */
-    Result<_, ErrorResponse> deleteContent(std::uint64_t id,
-                                           std::string_view name);
+    Result<Response, ErrorResponse> deleteContent(std::uint64_t id,
+                                                  std::string_view name);
     /**
      * @brief Upload content to the room
-     *
-     * @param[in] id
-     * @param[in] name
-     * @return Result<_, ErrorResponse>
+     * @details
+     * This method uploads the content (file or clipboard) to the room in type
+     * {@link Content} when you pass the room id and device name. If it fails,
+     * the following error response will be returned.
+     * - ERR_CURL_CONNECTION_FAILED
+     * - ERR_SERVER_HEALTH_STATUS_FAULTY
+     * Additionaly, when a response other than 2xx is returned, the
+     * error passed from the server in the form of error response is returned.
+     * @param[in] id Room id
+     * @param[in] name Device name
+     * @param[in] content Content you want to upload
+     * @return Result<Response, ErrorResponse>
+     * On success, it will return {@link Response}.
+     * On failure, it will return the error response written above.
      */
-    Result<_, ErrorResponse> uploadContent(std::uint64_t id,
-                                           std::string_view name,
-                                           const Content& content);
+    Result<Response, ErrorResponse> uploadContent(std::uint64_t id,
+                                                  std::string_view name,
+                                                  const Content& content);
 
   private:
-    Result<std::optional<std::string>, ErrorResponse> checkHealth();
     /**
-     * @brief Connect to the room
-     * @details The user doesn't have to call this method since it's only used
-     * in api_client
-     * @param[in] id
-     * @param name
-     * @return Result<_,ErrorResponse>
+     * @brief Returns the server's status
+     * @details
+     * This pricate method returns the server's status in type {@link
+     * HealthResult}. If it fails, the following error response will be
+     * returned.
+     * - ERR_JSON_PARSE_FAILED
+     * - ERR_INVALID_RESPONSE
+     * - ERR_CURL_CONNECTION_FAILED
+     * - ERR_SERVER_HEALTH_STATUS_FAULTY
+     * Additionaly, when a response other than 2xx is returned, the
+     * error passed from the server in the form of error response is returned.
+     * @return Result<HealthResult, ErrorResponse>
+     * On success, it will return {@link HealthResult}.
+     * On failure, it will return the error response written above.
      */
+    Result<HealthResult, ErrorResponse> health();
+    /**
+     * @brief Calls health if this method was previously called more than 30
+     * minutes ago
+     * @details
+     * This private method checks if the client has called this method more than
+     * 30 minutes ago, and if so, this method calls health, and if the server is
+     * not faulty, it returns {@link HealthResult}.
+     * If it fails, the following error response will be returned.
+     * - ERR_JSON_PARSE_FAILED
+     * - ERR_INVALID_RESPONSE
+     * - ERR_CURL_CONNECTION_FAILED
+     * - ERR_SERVER_HEALTH_STATUS_FAULTY
+     * Additionaly, when a response other than 2xx is returned, the
+     * error passed from the server in the form of error response is returned.
+     * @return Result<HealthResult, ErrorResponse>
+     * On success, it will return {@link HealthResult}.
+     * On failure, it will return the error response written above.
+     */
+    Result<HealthResult, ErrorResponse> checkHealth();
   };
 } // namespace octane
 

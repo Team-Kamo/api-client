@@ -1,9 +1,12 @@
 <map id="src/include/api_result_types.h" name="src/include/api_result_types.h">
-<area shape="rect" id="node1" title=" " alt="" coords="191,5,337,45"/>
+<area shape="rect" id="node1" title="Types which are used to return in api client." alt="" coords="241,5,386,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,93,72,119"/>
 <area shape="rect" id="node3" title=" " alt="" coords="96,93,165,119"/>
 <area shape="rect" id="node4" title=" " alt="" coords="190,93,245,119"/>
-<area shape="rect" id="node5" title=" " alt="" coords="269,93,355,119"/>
-<area shape="rect" id="node6" title=" " alt="" coords="379,93,437,119"/>
-<area shape="rect" id="node7" title=" " alt="" coords="461,93,517,119"/>
+<area shape="rect" id="node5" title=" " alt="" coords="269,93,357,119"/>
+<area shape="rect" id="node6" title=" " alt="" coords="381,93,443,119"/>
+<area shape="rect" id="node7" title=" " alt="" coords="467,93,525,119"/>
+<area shape="rect" id="node8" href="$result_8h.html" title="Define type to represent the result, inspired by Rust&#39;s &quot;Result&quot;." alt="" coords="550,93,623,119"/>
+<area shape="rect" id="node9" title=" " alt="" coords="511,167,577,192"/>
+<area shape="rect" id="node10" title=" " alt="" coords="601,167,655,192"/>
 </map>

@@ -4,8 +4,8 @@
 <area shape="rect" id="node3" title=" " alt="" coords="156,93,203,119"/>
 <area shape="rect" id="node4" title=" " alt="" coords="257,167,312,192"/>
 <area shape="rect" id="node5" title=" " alt="" coords="278,93,337,119"/>
-<area shape="rect" id="node6" href="$error__response_8h.html" title="エラーレスポンス。" alt="" coords="361,93,491,119"/>
-<area shape="rect" id="node8" href="$result_8h.html" title="RustのResultに触発されて作った結果を表す型を定義する。" alt="" coords="492,167,565,192"/>
+<area shape="rect" id="node6" href="$error__response_8h.html" title="Error response." alt="" coords="361,93,491,119"/>
+<area shape="rect" id="node8" href="$result_8h.html" title="Define type to represent the result, inspired by Rust&#39;s &quot;Result&quot;." alt="" coords="492,167,565,192"/>
 <area shape="rect" id="node7" title=" " alt="" coords="379,167,467,192"/>
 <area shape="rect" id="node9" title=" " alt="" coords="455,240,520,265"/>
 <area shape="rect" id="node10" title=" " alt="" coords="545,240,598,265"/>

@@ -1,0 +1,7 @@
+<map id="octane::ApiClient::init" name="octane::ApiClient::init">
+<area shape="rect" id="node1" title="Run this method at first.(Since no exeptions are allowed in the constructor, we need this method to i..." alt="" coords="5,87,152,112"/>
+<area shape="rect" id="node2" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="Utility function used to construct quasi&#45;normal state values." alt="" coords="240,29,335,55"/>
+<area shape="rect" id="node3" href="$classoctane_1_1internal_1_1_api_bridge.html#adb1d932c5cc7b07d9982738e63a5ed0e" title="Initialize." alt="" coords="200,79,375,119"/>
+<area shape="rect" id="node5" href="$namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835" title="Utitlity function used when the normal state type is _." alt="" coords="246,168,329,193"/>
+<area shape="rect" id="node4" href="$classoctane_1_1internal_1_1_fetch_base.html#a50f248788fa420baab778673dead51af" title="Fetchのインスタンスを初期化する。" alt="" coords="423,79,605,119"/>
+</map>

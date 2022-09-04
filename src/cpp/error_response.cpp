@@ -20,6 +20,7 @@ namespace octane {
       .reason = std::string(reason),
     });
   }
+
   std::ostream& operator<<(std::ostream& stream, const ErrorResponse& err) {
     stream << "{\n\t.code = " << err.code << "\n\t.reason = " << err.reason
            << "\n}";

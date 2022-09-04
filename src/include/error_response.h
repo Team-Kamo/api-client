@@ -34,7 +34,8 @@ namespace octane {
     /**
      * @brief Reason why the error ocurred.
      * @details
-     * {@link ErrorResponse::code}は機械向けのものだが、こちらは人間が読む用の文字列。
+     * {@link
+     * ErrorResponse::code}は機械向けのものだが、こちらは人間が読む用の文字列。
      * デバッグ効率を上げるためになるべく具体的な情報を入れたいところ。
      * {@link ErrorResponse::code} is for machines, but this is strings for
      * human beings to read. We want to include as much specific information as
@@ -43,12 +44,13 @@ namespace octane {
      */
     std::string reason;
   };
-
   /**
    * @brief Utility function to create error response.
    * @details
-   * Function which returns type Result<T, ErrorResponse>,
-   * created to make it easier to return errors.
+   * Result<T, ErrorResponse>という形式の戻り値をもつ関数で
+   * より楽にエラーを返すために作られた。
+   * Created to make it easier to return errors in functions which return
+   * Result<T, ErrorResponse>.
    *
    * @code {.cpp}
    * // 通常次のように記述しなければならないところ

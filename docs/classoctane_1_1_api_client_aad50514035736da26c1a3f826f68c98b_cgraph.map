@@ -1,12 +1,12 @@
 <map id="octane::ApiClient::getContent" name="octane::ApiClient::getContent">
-<area shape="rect" id="node1" title="Return content in the room." alt="" coords="5,164,135,204"/>
-<area shape="rect" id="node2" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="813,307,908,333"/>
-<area shape="rect" id="node3" href="$namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835" title="正常系の型が_であるときに使用できるユーティリティ関数。" alt="" coords="455,117,538,142"/>
-<area shape="rect" id="node4" href="$classoctane_1_1internal_1_1_api_bridge.html#ae5236ca6f694a95f302a881758e16b20" title="use get method for /room/{id}/content" alt="" coords="183,228,357,268"/>
-<area shape="rect" id="node9" href="$classoctane_1_1internal_1_1_api_bridge.html#abad3e1c394ae37e3538a2ba32b8f06ab" title="use post method for /room/{id}" alt="" coords="183,164,357,204"/>
-<area shape="rect" id="node10" href="$classoctane_1_1internal_1_1_api_bridge.html#a01f98886f7272847b83c6c56b0af6fd6" title="use get method for /room/{id}/status" alt="" coords="183,325,357,365"/>
-<area shape="rect" id="node5" href="$classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="409,383,584,423"/>
-<area shape="rect" id="node6" href="$namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="659,307,743,333"/>
-<area shape="rect" id="node7" href="$namespaceoctane.html#a508d9040da1bea287606313174f69cbc" title="エラーレスポンスを作成するためのユーティリティ関数。" alt="" coords="636,445,765,470"/>
-<area shape="rect" id="node8" href="$classoctane_1_1internal_1_1_fetch_base.html#a204cf835d57c87d11c39f35b1f757555" title="APIへのボディ部を持たないリクエストを発行する。" alt="" coords="405,167,588,207"/>
+<area shape="rect" id="node1" title="Gets the room&#39;s content." alt="" coords="5,164,136,204"/>
+<area shape="rect" id="node2" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="Utility function used to construct quasi&#45;normal state values." alt="" coords="815,307,909,332"/>
+<area shape="rect" id="node3" href="$namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835" title="Utitlity function used when the normal state type is _." alt="" coords="457,116,539,142"/>
+<area shape="rect" id="node4" href="$classoctane_1_1internal_1_1_api_bridge.html#ae5236ca6f694a95f302a881758e16b20" title="use get method for /room/{id}/content" alt="" coords="184,228,359,268"/>
+<area shape="rect" id="node9" href="$classoctane_1_1internal_1_1_api_bridge.html#abad3e1c394ae37e3538a2ba32b8f06ab" title="use post method for /room/{id}" alt="" coords="184,164,359,204"/>
+<area shape="rect" id="node10" href="$classoctane_1_1internal_1_1_api_bridge.html#a01f98886f7272847b83c6c56b0af6fd6" title="use get method for /room/{id}/status" alt="" coords="184,325,359,365"/>
+<area shape="rect" id="node5" href="$classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="411,382,585,422"/>
+<area shape="rect" id="node6" href="$namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327" title="Utility function to construct quasi&#45;normal state values." alt="" coords="660,307,744,332"/>
+<area shape="rect" id="node7" href="$namespaceoctane.html#a508d9040da1bea287606313174f69cbc" title="Utility function to create error response." alt="" coords="637,444,767,470"/>
+<area shape="rect" id="node8" href="$classoctane_1_1internal_1_1_fetch_base.html#a204cf835d57c87d11c39f35b1f757555" title="APIへのボディ部を持たないリクエストを発行する。" alt="" coords="407,166,589,206"/>
 </map>

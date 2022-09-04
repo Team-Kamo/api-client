@@ -1,5 +1,5 @@
 <map id="octane::operator&lt;&lt;" name="octane::operator&lt;&lt;">
 <area shape="rect" id="node1" title=" " alt="" coords="5,29,137,55"/>
-<area shape="rect" id="node2" href="$namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="185,29,269,55"/>
-<area shape="rect" id="node3" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="準正常系の値を構築するためのユーティリティ関数。" alt="" coords="317,29,412,55"/>
+<area shape="rect" id="node2" href="$namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327" title="Utility function to construct quasi&#45;normal state values." alt="" coords="185,29,269,55"/>
+<area shape="rect" id="node3" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="Utility function used to construct quasi&#45;normal state values." alt="" coords="317,29,412,55"/>
 </map>
