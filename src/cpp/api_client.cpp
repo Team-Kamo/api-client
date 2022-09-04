@@ -91,12 +91,39 @@ namespace octane {
     return ok(response);
   }
 
-  Result<RoomStatus, ErrorResponse> ApiClient::getRoomStatus(std::uint64_t id) {
+  Result<Response, ErrorResponse> ApiClient::connectRoom(
+    std::uint64_t id,
+    std::string_view name) {
     const auto checkHealthResult = checkHealth();
     if (!checkHealthResult) {
       return error(checkHealthResult.err());
     }
-    auto result = bridge.roomIdGet(id);
+    auto result = bridge.roomIdPost(id, name);
+    if (!result) {
+      return error(result.err());
+    }
+    connectionStatus.id          = id;
+    connectionStatus.isConnected = true;
+    connectionStatus.name        = name;
+    Response response{};
+    response.health  = checkHealthResult.get().health;
+    response.message = checkHealthResult.get().message;
+    return ok(response);
+  }
+
+  Result<RoomStatus, ErrorResponse> ApiClient::getRoomStatus(
+    std::optional<std::uint64_t> id) {
+    const auto checkHealthResult = checkHealth();
+    if (!checkHealthResult) {
+      return error(checkHealthResult.err());
+    }
+    if (!id.has_value() && !connectionStatus.isConnected) {
+      return makeError(
+        ERR_ROOM_ID_UNDEFINED,
+        "Room id is undefined even though this device is disconnected from a room");
+    }
+    auto result
+      = bridge.roomIdGet(id.has_value() ? id.value() : connectionStatus.id);
     if (!result) {
       return error(result.err());
     }
@@ -106,12 +133,19 @@ namespace octane {
     return ok(response);
   }
 
-  Result<Response, ErrorResponse> ApiClient::deleteRoom(std::uint64_t id) {
+  Result<Response, ErrorResponse> ApiClient::deleteRoom(
+    std::optional<std::uint64_t> id) {
     const auto checkHealthResult = checkHealth();
     if (!checkHealthResult) {
       return error(checkHealthResult.err());
     }
-    auto result = bridge.roomIdDelete(id);
+    if (!id.has_value() && !connectionStatus.isConnected) {
+      return makeError(
+        ERR_ROOM_ID_UNDEFINED,
+        "Room id is undefined even though this device is disconnected from a room");
+    }
+    auto result
+      = bridge.roomIdDelete(id.has_value() ? id.value() : connectionStatus.id);
     if (!result) {
       return error(result.err());
     }
@@ -121,24 +155,22 @@ namespace octane {
     return ok(response);
   }
 
-  Result<Content, ErrorResponse> ApiClient::getContent(std::uint64_t id,
-                                                       std::string_view name) {
+  Result<Content, ErrorResponse> ApiClient::getContent() {
     const auto checkHealthResult = checkHealth();
     if (!checkHealthResult) {
       return error(checkHealthResult.err());
     }
-    // TODO: これを呼ぶタイミングを変更する
-    auto resultC = bridge.roomIdPost(id, name);
-    if (!resultC) {
-      return error(resultC.err());
+    if (!connectionStatus.isConnected) {
+      return makeError(ERR_ROOM_DISCONNECTED,
+                       "This device is disconnected from the room");
     }
-    auto resultS = bridge.roomIdStatusGet(id);
+    auto resultS = bridge.roomIdStatusGet(connectionStatus.id);
     if (!resultS) {
       return error(resultS.err());
     }
     Content content{};
     content.contentStatus = resultS.get();
-    auto result           = bridge.roomIdContentGet(id);
+    auto result           = bridge.roomIdContentGet(connectionStatus.id);
     if (!result) {
       return error(result.err());
     }
@@ -150,23 +182,16 @@ namespace octane {
     return ok(content);
   }
 
-  Result<Response, ErrorResponse> ApiClient::deleteContent(
-    std::uint64_t id,
-    std::string_view name) {
+  Result<Response, ErrorResponse> ApiClient::deleteContent() {
     const auto checkHealthResult = checkHealth();
     if (!checkHealthResult) {
       return error(checkHealthResult.err());
     }
-    // TODO: これを呼ぶタイミングを変更する
-    auto resultC = bridge.roomIdPost(id, name);
-    if (!resultC) {
-      return error(resultC.err());
+    if (!connectionStatus.isConnected) {
+      return makeError(ERR_ROOM_DISCONNECTED,
+                       "This device is disconnected from the room");
     }
-    auto resultS = bridge.roomIdStatusDelete(id);
-    if (!resultS) {
-      return error(resultS.err());
-    }
-    auto result = bridge.roomIdContentDelete(id);
+    auto result = bridge.roomIdContentDelete(connectionStatus.id);
     if (!result) {
       return error(result.err());
     }
@@ -177,17 +202,14 @@ namespace octane {
   }
 
   Result<Response, ErrorResponse> ApiClient::uploadContent(
-    std::uint64_t id,
-    std::string_view name,
     const Content& content) {
     const auto checkHealthResult = checkHealth();
     if (!checkHealthResult) {
       return error(checkHealthResult.err());
     }
-    // TODO: これを呼ぶタイミングを変更する
-    auto resultC = bridge.roomIdPost(id, name);
-    if (!resultC) {
-      return error(resultC.err());
+    if (!connectionStatus.isConnected) {
+      return makeError(ERR_ROOM_DISCONNECTED,
+                       "This device is disconnected from the room");
     }
     std::vector<std::uint8_t> hashData;
     if (std::holds_alternative<std::vector<std::uint8_t>>(content.data)) {
@@ -198,15 +220,16 @@ namespace octane {
       std::copy(hashDataString.begin(), hashDataString.end(), hashData.begin());
     } else {
       return makeError(ERR_INVALID_REQUEST,
-                       "content.data type is not binary or string");
+                       "Content data type is not binary or string");
     }
     std::string hash = internal::generateHash(hashData);
-    auto resultS     = bridge.roomIdStatusPut(id, content.contentStatus, hash);
+    auto resultS     = bridge.roomIdStatusPut(
+      connectionStatus.id, content.contentStatus, hash);
     if (!resultS) {
       return error(resultS.err());
     }
-    auto result
-      = bridge.roomIdContentPut(id, content.data, content.contentStatus.mime);
+    auto result = bridge.roomIdContentPut(
+      connectionStatus.id, content.data, content.contentStatus.mime);
     if (!result) {
       return error(result.err());
     }

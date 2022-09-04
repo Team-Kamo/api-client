@@ -22,6 +22,20 @@ namespace octane {
     internal::ApiBridge bridge;
     std::uint64_t lastCheckedTime;
     HealthResult lastCheckedHealth;
+    struct ConnectionStatus {
+      bool isConnected;
+      /**
+       * @brief Room id which the user is connected to.
+       *
+       */
+      std::uint64_t id;
+      /**
+       * @brief An unique name for the device which is connected to the room.
+       *
+       */
+      std::string name;
+    };
+    ConnectionStatus connectionStatus{ .isConnected = false };
 
   public:
     /**
@@ -62,8 +76,9 @@ namespace octane {
     /**
      * @brief Creates a room
      * @details
-     * This method creates a room and returns {@link RoomId} when you pass the
-     * room name. If it fails, the following error response will be returned.
+     * This method creates a room, and
+     * returns {@link RoomId} when you pass the room name. If it fails, the
+     * following error response will be returned.
      * - ERR_JSON_PARSE_FAILED
      * - ERR_INVALID_RESPONSE
      * - ERR_CURL_CONNECTION_FAILED
@@ -77,14 +92,35 @@ namespace octane {
      */
     Result<RoomId, ErrorResponse> createRoom(std::string_view name);
     /**
+     * @brief Connects to the room
+     * @details
+     * This method connects to the room when you pass the room id and device
+     * name. This method should be used only once per each room.
+     * If it fails, the following error response will be returned.
+     * - ERR_CURL_CONNECTION_FAILED
+     * - ERR_SERVER_HEALTH_STATUS_FAULTY
+     * Additionaly, when a response other than 2xx is returned, the
+     * error passed from the server in the form of error response is returned.
+     * @param[in] id Room id
+     * @param[in] name Device name
+     * @return Result<Response, ErrorResponse>
+     * On success, it will return {@link Response}.
+     * On failure, it will return the error respose written above.
+     */
+    Result<Response, ErrorResponse> connectRoom(std::uint64_t id,
+                                                std::string_view name);
+    /**
      * @brief Gets the room's status
      * @details
      * This method returns {@link RoomStatus} when you pass the room id.
-     * If it fails, the following error response will be returned.
+     * If you pass nothing and you are connected to a room, it will return the
+     * {@link RoomStatus} for that room. If it fails, the following error
+     * response will be returned.
      * - ERR_JSON_PARSE_FAILED
      * - ERR_INVALID_RESPONSE
      * - ERR_CURL_CONNECTION_FAILED
      * - ERR_SERVER_HEALTH_STATUS_FAULTY
+     * - ERR_ROOM_ID_UNDEFINED
      * Additionaly, when a response other than 2xx is returned, the
      * error passed from the server in the form of error response is returned.
      * @param[in] id Room id
@@ -92,12 +128,14 @@ namespace octane {
      * On success, it will return {@link RoomStatus}.
      * On failure, it will return the error response written above.
      */
-    Result<RoomStatus, ErrorResponse> getRoomStatus(std::uint64_t id);
+    Result<RoomStatus, ErrorResponse> getRoomStatus(
+      std::optional<std::uint64_t> id = std::nullopt);
     /**
      * @brief Deletes the room
      * @details
      * This method deletes the room when you pass the room id.
-     * If it fails, the following error response will be returned.
+     * If you pass nothing and you are connected to a room, it will delete that
+     * room. If it fails, the following error response will be returned.
      * - ERR_CURL_CONNECTION_FAILED
      * - ERR_SERVER_HEALTH_STATUS_FAULTY
      * Additionaly, when a response other than 2xx is returned, the
@@ -107,68 +145,57 @@ namespace octane {
      * On success, it will return {@link Response}
      * On failure, it will return the error response written above.
      */
-    Result<Response, ErrorResponse> deleteRoom(std::uint64_t id);
+    Result<Response, ErrorResponse> deleteRoom(std::optional<std::uint64_t> id
+                                               = std::nullopt);
     /**
      * @brief Gets the room's content
      * @details
-     * This method returns the room's {@link Content} when you
-     * pass the room id and device name.
+     * This method returns the room's {@link Content}.
      * If it fails, the following error response will be returned.
      * - ERR_JSON_PARSE_FAILED
      * - ERR_INVALID_RESPONSE
      * - ERR_CURL_CONNECTION_FAILED
      * - ERR_SERVER_HEALTH_STATUS_FAULTY
+     * - ERR_ROOM_DISCONNECTED
      * Additionaly, when a response other than 2xx is returned, the
      * error passed from the server in the form of error response is returned.
-     * @param[in] id Room id
-     * @param[in] name Device name
      * @return Result<Content, ErrorResponse>
      * On success, it will return {@link Content}.
      * On failure, it will return the error response written above.
      */
-    Result<Content, ErrorResponse> getContent(std::uint64_t id,
-                                              std::string_view name);
+    Result<Content, ErrorResponse> getContent();
     /**
      * @brief Deletes the room's content
      * @details
-     * This method deletes the room's content.
+     * This method deletes the room's {@link Content}.
      *  If it fails, the following error response will be returned.
      * - ERR_CURL_CONNECTION_FAILED
      * - ERR_SERVER_HEALTH_STATUS_FAULTY
+     * - ERR_ROOM_DISCONNECTED
      * Additionaly, when a response other than 2xx is returned, the
      * error passed from the server in the form of error response is returned.
-     * @param[in] id Room id
-     * @param[in] name Device name
-     * @return Result<Content, ErrorResponse>
+     * @return Result<Response, ErrorResponse>
      * On success, it will return {@link Response}.
      * On failure, it will return the error response written above.
-     *
-     * @param id
-     * @param name
-     * @return Result<Response, ErrorResponse>
      */
-    Result<Response, ErrorResponse> deleteContent(std::uint64_t id,
-                                                  std::string_view name);
+    Result<Response, ErrorResponse> deleteContent();
     /**
-     * @brief Upload content to the room
+     * @brief Uploads content to the room
      * @details
-     * This method uploads the content (file or clipboard) to the room in type
-     * {@link Content} when you pass the room id and device name. If it fails,
-     * the following error response will be returned.
+     * This method uploads the content (file or clipboard) to the room, by
+     * passing it {@link Content}. If it fails, the following error response
+     * will be returned.
      * - ERR_CURL_CONNECTION_FAILED
      * - ERR_SERVER_HEALTH_STATUS_FAULTY
+     * - ERR_ROOM_DISCONNECTED
      * Additionaly, when a response other than 2xx is returned, the
      * error passed from the server in the form of error response is returned.
-     * @param[in] id Room id
-     * @param[in] name Device name
      * @param[in] content Content you want to upload
      * @return Result<Response, ErrorResponse>
      * On success, it will return {@link Response}.
      * On failure, it will return the error response written above.
      */
-    Result<Response, ErrorResponse> uploadContent(std::uint64_t id,
-                                                  std::string_view name,
-                                                  const Content& content);
+    Result<Response, ErrorResponse> uploadContent(const Content& content);
 
   private:
     /**
