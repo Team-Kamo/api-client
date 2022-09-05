@@ -25,7 +25,11 @@ namespace octane {
       new internal::Fetch(token, origin, baseUrl, new internal::HttpClient())),
       lastCheckedTime(0) {}
 
-  ApiClient::~ApiClient() noexcept {}
+  ApiClient::~ApiClient() noexcept {
+    if (connectionStatus.isConnected == true) {
+      disconnectRoom(connectionStatus.id, connectionStatus.name);
+    }
+  }
 
   Result<Response, ErrorResponse> ApiClient::init() {
     auto result = bridge.init();
@@ -207,7 +211,8 @@ namespace octane {
     }
     std::string hash = internal::generateHash(hashData);
     if (resultS.get().second != hash) {
-      return makeError(ERR_CONTENT_HASH_MISMATCH, "Content data doesn't match with its own hash value");
+      return makeError(ERR_CONTENT_HASH_MISMATCH,
+                       "Content data doesn't match with its own hash value");
     }
     auto response    = content;
     response.health  = checkHealthResult.get().health;
