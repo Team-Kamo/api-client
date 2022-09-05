@@ -296,19 +296,17 @@ namespace octane::internal {
     uploadJson.AddMember("timestamp",
                          rapidjson::Value().SetUint64(contentStatus.timestamp),
                          uploadJson.GetAllocator());
+    uploadJson.AddMember("name", "", uploadJson.GetAllocator());
     if (contentStatus.type == ContentType::File) {
       uploadJson.AddMember("mime",
                            rapidjson::StringRef(contentStatus.mime.data(),
                                                 contentStatus.mime.size()),
                            uploadJson.GetAllocator());
       uploadJson.AddMember("type", "file", uploadJson.GetAllocator());
-      uploadJson.AddMember("name", "", uploadJson.GetAllocator());
     } else if (contentStatus.type == ContentType::Clipboard) {
       uploadJson.AddMember("mime", "text/plain", uploadJson.GetAllocator());
       uploadJson.AddMember("type", "clipboard", uploadJson.GetAllocator());
-      uploadJson.AddMember("name", "", uploadJson.GetAllocator());
     } else if (contentStatus.type == ContentType::MultiFile) {
-      // TODO:MultiFileの時の処理
       uploadJson.AddMember(
         "mime", "application/x-7z-compressed", uploadJson.GetAllocator());
       uploadJson.AddMember("type", "multi-file", uploadJson.GetAllocator());
@@ -347,7 +345,6 @@ namespace octane::internal {
         headers.append(itr->second);
         headers.append(" ");
       }
-
       return makeError(ERR_INVALID_RESPONSE,
                        "Invalid response, json not returned." + headers
                          + "status line = " + response.statusLine

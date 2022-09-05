@@ -270,9 +270,9 @@ namespace octane {
       }
       std::vector<FileInfo> MultiFiles
         = std::get<std::vector<FileInfo>>(content.data);
-      // TODO:ファイルそれぞれを圧縮して、最終的にcontentDataに格納する
-      // MultiFilesを操作して頑張る。
-
+      for (auto file : MultiFiles) {
+      }
+      // TODO:ファイルそれぞれを圧縮して、最終的にcontentDataに格納する。
     } else {
       std::abort();
     }
@@ -294,7 +294,9 @@ namespace octane {
     return ok(response);
   }
   std::vector<std::uint8_t> ApiClient::createBinary(
-    const std::variant<std::string, std::vector<uint8_t>, std::vector<FileInfo>>& input) {
+    const std::variant<std::string,
+                       std::vector<uint8_t>,
+                       std::vector<FileInfo>>& input) {
     assert(!std::holds_alternative<std::vector<FileInfo>>(input));
     if (std::holds_alternative<std::vector<std::uint8_t>>(input)) {
       return std::get<std::vector<std::uint8_t>>(input);
