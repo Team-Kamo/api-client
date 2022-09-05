@@ -13,4 +13,4 @@ add_library(
 
 target_include_directories(octane_api_client PUBLIC ${OCTANE_API_CLIENT_INCLUDE_DIRS})
 
-target_link_libraries(octane_api_client PRIVATE OpenSSL::SSL CURL::libcurl ${ZLIB} cryptopp::cryptopp)
+target_link_libraries(octane_api_client PRIVATE OpenSSL::SSL CURL::libcurl ${ZLIB} cryptopp::cryptopp archive_static)

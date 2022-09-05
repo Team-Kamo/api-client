@@ -30,6 +30,8 @@ set(ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(SRC_DIR ${ROOT_DIR}/src)
 set(TEST_DIR ${ROOT_DIR}/test)
 
+set(ENABLE_TEST OFF)
+
 set(CMAKE_USE_OPENSSL)
 include(FindOpenSSL)
 include(FindCURL)
@@ -79,10 +81,18 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(cryptopp-cmake)
 
 FetchContent_Declare(
+  libarchive
+  GIT_REPOSITORY https://github.com/libarchive/libarchive
+  GIT_TAG v3.6.1
+)
+FetchContent_MakeAvailable(libarchive)
+
+FetchContent_Declare(
   googletest
   GIT_REPOSITORY https://github.com/google/googletest.git
   GIT_TAG release-1.12.1
 )
+
 
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
@@ -96,9 +106,13 @@ set(
   ${CMAKE_BINARY_DIR}/include
   ${rapidjson_SOURCE_DIR}/include
   ${cryptopp_SOURCE_DIR}
+  ${libarchive_SOURCE_DIR}
   ${googletest_SOURCE_DIR}/googletest/include
   ${gmock_SOURCE_DIR}/include
 )
+message("*****************************************************")
+message(${libarchive_SOURCE_DIR})
+message("*****************************************************")
 
 add_subdirectory(${SRC_DIR})
 

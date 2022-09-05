@@ -1046,4 +1046,225 @@ namespace octane::internal {
     EXPECT_FALSE(result) << result.get().first << " " << result.get().second;
     EXPECT_EQ(result.err().code, "ERR_BAD_REQUEST") << result.err();
   }
+  /**
+   * @brief
+   * roomIdStatusDeleteにおいてFetchが成功したときにApiBridgeが何も返さないかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdStatusDeleteOk) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Delete,
+              std::string_view("/room/" + std::to_string(id) + "/status")))
+      .Times(1)
+      .WillOnce(testing::Return(ok(makeEmptyResponse())));
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdStatusDelete(id);
+    EXPECT_TRUE(result) << result.err();
+  }
+  /**
+   * @brief
+   * roomIdStatusDeleteにおいてFetchが2xx以外のステータスコードを返すときにサーバからもらうエラーレスポンスをそのまま返してくれるかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdStatusDelete2xx) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Delete,
+              std::string_view("/room/" + std::to_string(id) + "/status")))
+      .Times(1)
+      .WillOnce(
+        testing::Return(ok(makeJsonResponse(R"(
+        {
+          "code": "ERR_BAD_REQUEST",
+          "reason": ""
+          }
+        )",
+                                            400,
+                                            "HTTP/2 400 Bad Request"))));
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdStatusDelete(id);
+    EXPECT_FALSE(result);
+    EXPECT_EQ(result.err().code, "ERR_BAD_REQUEST") << result.err();
+  }
+  /**
+   * @brief
+   * roomIdStatusPutにおいてFileを送信してFetchが成功したときにApiBridgeが何も返さないかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdStatusPutOkFile) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+    std::string hash = "20202020";
+    ContentStatus contentStatus{};
+    contentStatus.device    = "soon's macbook";
+    contentStatus.mime      = "application/pdf";
+    contentStatus.name      = "";
+    contentStatus.timestamp = 20202020;
+    contentStatus.type      = ContentType::File;
+    auto json               = makeJson(R"({
+      "device": "soon's macbook",
+      "mime": "application/pdf",
+      "name": "",
+      "timestamp": 20202020,
+      "type": file
+    })");
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Put,
+              std::string_view("/room/" + std::to_string(id) + "/status"),
+              testing::Eq(testing::ByRef(json))))
+      .Times(1)
+      .WillOnce(testing::Return(ok(makeEmptyResponse())));
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdStatusPut(id, contentStatus, hash);
+    EXPECT_TRUE(result) << result.err();
+  }
+  /**
+   * @brief
+   * roomIdStatusPutにおいてClipboardを送信してFetchが成功したときにApiBridgeが何も返さないかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdStatusPutOkClip) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+    std::string hash = "20202020";
+    ContentStatus contentStatus{};
+    contentStatus.device    = "soon's macbook";
+    contentStatus.mime      = "text/plain";
+    contentStatus.name      = "";
+    contentStatus.timestamp = 20202020;
+    contentStatus.type      = ContentType::Clipboard;
+    auto json               = makeJson(R"({
+      "device": "soon's macbook",
+      "mime": "text/plain",
+      "name": "",
+      "timestamp": 20202020,
+      "type": file
+    })");
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Put,
+              std::string_view("/room/" + std::to_string(id) + "/status"),
+              testing::Eq(testing::ByRef(json))))
+      .Times(1)
+      .WillOnce(testing::Return(ok(makeEmptyResponse())));
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdStatusPut(id, contentStatus, hash);
+    EXPECT_TRUE(result) << result.err();
+  }
+  /**
+   * @brief
+   * roomIdStatusPutにおいてClipboardを送信してmimeにtext/plainとは異なる値が入っていたら、
+   * roomIdStatusPut内部でmimeの中身をtext/plainに書き換え、それから
+   * ApiBridgeが何も返さないかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdStatusPutOkClipMimeCollapse) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+    std::string hash = "20202020";
+    ContentStatus contentStatus{};
+    contentStatus.device    = "soon's macbook";
+    contentStatus.mime      = "image/png";
+    contentStatus.name      = "";
+    contentStatus.timestamp = 20202020;
+    contentStatus.type      = ContentType::Clipboard;
+    auto json               = makeJson(R"({
+      "device": "soon's macbook",
+      "mime": "text/plain",
+      "name": "",
+      "timestamp": 20202020,
+      "type": file
+    })");
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Put,
+              std::string_view("/room/" + std::to_string(id) + "/status"),
+              testing::Eq(testing::ByRef(json))))
+      .Times(1)
+      .WillOnce(testing::Return(ok(makeEmptyResponse())));
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdStatusPut(id, contentStatus, hash);
+    EXPECT_TRUE(result) << result.err();
+  }
+  /**
+   * @brief
+   * roomIdStatusPutにおいてMultiFileを送信してFetchが成功したときにApiBridgeが何も返さないかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdStatusPutOkMulti) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+    std::string hash = "20202020";
+    ContentStatus contentStatus{};
+    contentStatus.device    = "soon's macbook";
+    contentStatus.mime      = "application/x-7z-compressed";
+    contentStatus.name      = "";
+    contentStatus.timestamp = 20202020;
+    contentStatus.type      = ContentType::MultiFile;
+    auto json               = makeJson(R"({
+      "device": "soon's macbook",
+      "mime": "application/x-7z-compressed",
+      "name": "",
+      "timestamp": 20202020,
+      "type": file
+    })");
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Put,
+              std::string_view("/room/" + std::to_string(id) + "/status"),
+              testing::Eq(testing::ByRef(json))))
+      .Times(1)
+      .WillOnce(testing::Return(ok(makeEmptyResponse())));
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdStatusPut(id, contentStatus, hash);
+    EXPECT_TRUE(result) << result.err();
+  }
+  /**
+   * @brief
+   * roomIdStatusPutにおいてFetchが2xx以外のステータスコードを返すときにサーバからもらうエラーレスポンスをそのまま返してくれるかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdStatusPut2xx) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+    std::string hash = "20202020";
+    ContentStatus contentStatus{};
+    contentStatus.device    = "soon's macbook";
+    contentStatus.mime      = "application/x-7z-compressed";
+    contentStatus.name      = "";
+    contentStatus.timestamp = 20202020;
+    contentStatus.type      = ContentType::MultiFile;
+    auto json               = makeJson(R"({
+      "device": "soon's macbook",
+      "mime": "application/x-7z-compressed",
+      "name": "",
+      "timestamp": 20202020,
+      "type": file
+    })");
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Put,
+              std::string_view("/room/" + std::to_string(id) + "/status"),
+              testing::Eq(testing::ByRef(json))))
+      .Times(1)
+      .WillOnce(
+        testing::Return(ok(makeJsonResponse(R"(
+        {
+          "code": "ERR_BAD_REQUEST",
+          "reason": ""
+          }
+        )",
+                                            400,
+                                            "HTTP/2 400 Bad Request"))));
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdStatusPut(id, contentStatus, hash);
+    EXPECT_FALSE(result);
+    EXPECT_EQ(result.err().code, "ERR_BAD_REQUEST") << result.err();
+  }
 } // namespace octane::internal
