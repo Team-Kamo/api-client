@@ -10,12 +10,6 @@
 
 namespace octane::internal {
   namespace {
-    // std::ostream& operator<<(std::ostream& stream,
-    //                          const std::vector<std::uint8_t>& body) {
-
-    //   stream << data;
-    //   return stream;
-    // }
     std::string toString(const std::vector<std::uint8_t>& body) {
       std::string data;
       data.resize(body.size());
@@ -857,7 +851,6 @@ namespace octane::internal {
     auto result = apiBridge.roomIdContentPut(id, data, mime);
     EXPECT_TRUE(result);
   }
-
   /**
    * @brief
    * roomIdContentPutにおいてFetchが2xx以外のステータスコードを返すときにサーバからもらうエラーレスポンスをそのまま返してくれるかどうかをテストする。
@@ -890,6 +883,167 @@ namespace octane::internal {
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.roomIdContentPut(id, body, mime);
     EXPECT_FALSE(result);
+    EXPECT_EQ(result.err().code, "ERR_BAD_REQUEST") << result.err();
+  }
+  /**
+   * @brief
+   * roomIdStatusGetにおいてFetchが成功し、ファイル形式で帰ってきた時に、ApiBridgeがルームのステータスを返してくれるかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdStatusGetOkFile) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Get,
+              std::string_view("/room/" + std::to_string(id) + "/status")))
+      .Times(1)
+      .WillOnce(testing::Return(ok(makeJsonResponse(R"(
+        {
+          "device": "soon's windows",
+          "timestamp": 20202020,
+          "type": "file",
+          "mime": "application/pdf",
+          "name": "filename",
+          "hash": "101010"
+          }
+        )"))));
+    ContentStatus contentStatus{ .device    = "soon's windows",
+                                 .type      = ContentType::File,
+                                 .mime      = "application/pdf",
+                                 .name      = "filename",
+                                 .timestamp = 20202020 };
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdStatusGet(id);
+    EXPECT_TRUE(result) << result.err();
+    EXPECT_EQ(result.get().first, contentStatus)
+      << result.get().first << contentStatus;
+    EXPECT_EQ(result.get().second, "101010") << result.get().second;
+  }
+  /**
+   * @brief
+   * roomIdStatusGetにおいてFetchが成功し、クリップボード形式で帰ってきた時に、ApiBridgeがルームのステータスを返してくれるかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdStatusGetOkClip) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Get,
+              std::string_view("/room/" + std::to_string(id) + "/status")))
+      .Times(1)
+      .WillOnce(testing::Return(ok(makeJsonResponse(R"(
+        {
+          "device": "soon's windows",
+          "timestamp": 20202020,
+          "type": "clipboard",
+          "mime": "text",
+          "name": "",
+          "hash": "101010"
+          }
+        )"))));
+    ContentStatus contentStatus{ .device    = "soon's windows",
+                                 .type      = ContentType::Clipboard,
+                                 .mime      = "text",
+                                 .name      = "",
+                                 .timestamp = 20202020 };
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdStatusGet(id);
+    EXPECT_TRUE(result) << result.err();
+    EXPECT_EQ(result.get().first, contentStatus)
+      << result.get().first << contentStatus;
+    EXPECT_EQ(result.get().second, "101010") << result.get().second;
+  }
+  /**
+   * @brief
+   * roomIdStatusGetにおいてFetchが成功し、クリップボード形式で帰ってきた時に、なぜかファイル名があったとしても、ApiBridgeがname
+   * = "" であるようなルームのステータスを返してくれるかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdStatusGetOkClipName) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Get,
+              std::string_view("/room/" + std::to_string(id) + "/status")))
+      .Times(1)
+      .WillOnce(testing::Return(ok(makeJsonResponse(R"(
+        {
+          "device": "soon's windows",
+          "timestamp": 20202020,
+          "type": "clipboard",
+          "mime": "text",
+          "name": "nazekanamaegaaru",
+          "hash": "101010"
+          }
+        )"))));
+    ContentStatus contentStatus{ .device    = "soon's windows",
+                                 .type      = ContentType::Clipboard,
+                                 .mime      = "text",
+                                 .name      = "",
+                                 .timestamp = 20202020 };
+
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdStatusGet(id);
+    EXPECT_TRUE(result) << result.err();
+    EXPECT_EQ(result.get().first, contentStatus)
+      << result.get().first << contentStatus;
+    EXPECT_EQ(result.get().second, "101010") << result.get().second;
+  }
+  /**
+   * @brief
+   * roomIdStatusGetにおいてFetchが成功したがレスポンスの誤りがあったときに、ApiBridgeがエラーを返してくれるかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdStatusGetErrResponse) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Get,
+              std::string_view("/room/" + std::to_string(id) + "/status")))
+      .Times(1)
+      .WillOnce(testing::Return(ok(makeJsonResponse(R"(
+        {
+          "device": "soon's windows",
+          "timestamp": 20202020,
+          "type": "clipboard",
+          "mime": "application/pdf",
+          "name": ""
+          }
+        )"))));
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdStatusGet(id);
+    EXPECT_FALSE(result) << result.get().first << " " << result.get().second;
+    EXPECT_EQ(result.err().code, ERR_INVALID_RESPONSE) << result.err().code;
+  }
+  /**
+   * @brief
+   * roomIdStatusGetにおいてFetchが2xx以外のステータスコードを返すときにサーバからもらうエラーレスポンスをそのまま返してくれるかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdStatusGet2xx) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+    EXPECT_CALL(
+      mockFetch,
+      request(HttpMethod::Get,
+              std::string_view("/room/" + std::to_string(id) + "/status")))
+      .Times(1)
+      .WillOnce(
+        testing::Return(ok(makeJsonResponse(R"(
+        {
+          "code": "ERR_BAD_REQUEST",
+          "reason": ""
+          }
+        )",
+                                            400,
+                                            "HTTP/2 400 Bad Request"))));
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdStatusGet(id);
+    EXPECT_FALSE(result) << result.get().first << " " << result.get().second;
     EXPECT_EQ(result.err().code, "ERR_BAD_REQUEST") << result.err();
   }
 } // namespace octane::internal
