@@ -56,4 +56,26 @@ namespace octane {
     }
     return stream;
   };
+  bool operator==(const ContentStatus& a, const ContentStatus& b) {
+    if (a.device != b.device) return false;
+    if (a.mime != b.mime) return false;
+    if (a.name != b.name) return false;
+    if (!(int(a.timestamp) == int(b.timestamp))) return false;
+    if (!(a.type == b.type)) return false;
+    return true;
+  }
+  std::ostream& operator<<(std::ostream& stream,
+                           const ContentStatus& contentStatus) {
+    std::string type;
+    if (contentStatus.type == ContentType::Clipboard) {
+      type = "clipboard";
+    } else if (contentStatus.type == ContentType::File) {
+      type = "file";
+    }
+    stream << "device = " << contentStatus.device
+           << " mime = " << contentStatus.mime
+           << " name = " << contentStatus.name.value_or("")
+           << " timestamp = " << contentStatus.timestamp << " type = " << type;
+    return stream;
+  };
 } // namespace octane

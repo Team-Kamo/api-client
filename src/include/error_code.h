@@ -36,9 +36,10 @@ namespace octane {
   constexpr auto ERR_INVALID_REQUEST = "ERR_INVALID_REQUEST";
   /** @brief Used when you are not connected to a room but {@link
    * getRoomStatus()} and {@link deleteRoom()} was passed nothing. */
-  constexpr auto ERR_ROOM_ID_UNDEFINED = "ERR_ROOM_ID_UNDEFINED";
-  constexpr auto ERR_ROOM_DISCONNECTED = "ERR_ROOM_DISCONNECTED";
-  constexpr auto ERR_DUP_DEVICE        = "ERR_DUP_DEVICE";
+  constexpr auto ERR_ROOM_ID_UNDEFINED     = "ERR_ROOM_ID_UNDEFINED";
+  constexpr auto ERR_ROOM_DISCONNECTED     = "ERR_ROOM_DISCONNECTED";
+  constexpr auto ERR_DUP_DEVICE            = "ERR_DUP_DEVICE";
+  constexpr auto ERR_CONTENT_HASH_MISMATCH = "ERR_CONTENT_HASH_MISMATCH";
 } // namespace octane
 
 #endif // OCTANE_API_CLIENT_ERROR_CODE_H_

@@ -112,6 +112,9 @@ namespace octane {
     /** @brief MIME.*/
     std::string mime;
   };
+  bool operator==(const ContentStatus& a, const ContentStatus& b);
+  std::ostream& operator<<(std::ostream& stream,
+                           const ContentStatus& contentStatus);
   /**
    * @brief Structure used as result for {@link getContent}, has data and {@link
    * ContentStatus} and inherits {@link Response}.

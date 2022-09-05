@@ -188,17 +188,31 @@ namespace octane {
       return error(resultS.err());
     }
     Content content{};
-    content.contentStatus = resultS.get();
+    content.contentStatus = resultS.get().first;
     auto result           = bridge.roomIdContentGet(connectionStatus.id);
     if (!result) {
       return error(result.err());
     }
-    content.data     = result.get();
+    content.data = result.get();
+    // validate hash value
+    std::vector<std::uint8_t> hashData;
+    if (std::holds_alternative<std::vector<std::uint8_t>>(content.data)) {
+      hashData = std::get<std::vector<std::uint8_t>>(content.data);
+    } else if (std::holds_alternative<std::string>(content.data)) {
+      std::string hashDataString = std::get<std::string>(content.data);
+      hashData.resize(hashDataString.size());
+      std::copy(hashDataString.begin(), hashDataString.end(), hashData.begin());
+    } else {
+      std::abort();
+    }
+    std::string hash = internal::generateHash(hashData);
+    if (resultS.get().second != hash) {
+      return makeError(ERR_CONTENT_HASH_MISMATCH, "Content data doesn't match with its own hash value");
+    }
     auto response    = content;
     response.health  = checkHealthResult.get().health;
     response.message = checkHealthResult.get().message;
     return ok(response);
-    return ok(content);
   }
 
   Result<Response, ErrorResponse> ApiClient::deleteContent() {
@@ -230,6 +244,7 @@ namespace octane {
       return makeError(ERR_ROOM_DISCONNECTED,
                        "This device is disconnected from the room");
     }
+    // generate hash value
     std::vector<std::uint8_t> hashData;
     if (std::holds_alternative<std::vector<std::uint8_t>>(content.data)) {
       hashData = std::get<std::vector<std::uint8_t>>(content.data);
