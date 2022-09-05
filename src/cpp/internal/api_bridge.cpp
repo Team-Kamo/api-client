@@ -231,8 +231,8 @@ namespace octane::internal {
     }
     return ok();
   }
-  Result<ContentStatus, ErrorResponse> ApiBridge::roomIdStatusGet(
-    std::uint64_t id) {
+  Result<std::pair<ContentStatus, std::string>, ErrorResponse>
+  ApiBridge::roomIdStatusGet(std::uint64_t id) {
     using namespace std::string_literals;
     auto response = fetch->request(internal::HttpMethod::Get,
                                    "/room/" + std::to_string(id) + "/status");
@@ -258,16 +258,18 @@ namespace octane::internal {
       { "clipboard", ContentType::Clipboard },
     };
 
-    ContentStatus status{
-      .device    = json["device"].GetString(),
-      .timestamp = json["timestamp"].GetUint64(),
-      .type      = typeMap.at(json["type"].GetString()),
-      .mime      = json["mime"].GetString(),
-    };
-    if (status.type == ContentType::Clipboard) {
+    ContentStatus status{ .device    = json["device"].GetString(),
+                          .timestamp = json["timestamp"].GetUint64(),
+                          .type      = typeMap.at(json["type"].GetString()),
+                          .mime      = json["mime"].GetString(),
+                          .name      = "" };
+    if (status.type == ContentType::File) {
       status.name = json["name"].GetString();
     }
-    return ok(std::move(status));
+    std::pair<ContentStatus, std::string> result;
+    result.first  = status;
+    result.second = json["hash"].GetString();
+    return ok(result);
   }
   Result<_, ErrorResponse> ApiBridge::roomIdStatusDelete(std::uint64_t id) {
     auto response = fetch->request(internal::HttpMethod::Delete,
@@ -302,9 +304,7 @@ namespace octane::internal {
     } else if (contentStatus.type == ContentType::Clipboard) {
       uploadJson.AddMember("type", "clipboard", uploadJson.GetAllocator());
     } else {
-      return makeError(
-        ERR_INVALID_REQUEST,
-        "Invalid request, contentStatus.type is not 'File' or 'Clipboard'");
+      std::abort();
     }
     uploadJson.AddMember("mime",
                          rapidjson::StringRef(contentStatus.mime.data(),
