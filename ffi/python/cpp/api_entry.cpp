@@ -1,5 +1,3 @@
-#define NOMINMAX
-#include <Windows.h>
 #include <include/api_client.h>
 #include <include/error_code.h>
 
