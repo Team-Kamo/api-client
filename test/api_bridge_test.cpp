@@ -585,16 +585,16 @@ namespace octane::internal {
   }
   /**
    * @brief
-   * roomIdPostにおいてFetchが成功した時にApiBridgeが何も返さないかどうかをテストする。
+   * roomIdPostにおいてConnectリクエストを出し、Fetchが成功した時にApiBridgeが何も返さないかどうかをテストする。
    *
    */
-  TEST(ApiBridgeTest, roomIdPostOk) {
+  TEST(ApiBridgeTest, roomIdPostOkConnect) {
     test::MockFetch mockFetch;
     std::uint64_t id = 7040782538;
     std::string name
       = "soon's macbook air 13manyenguraidegakuwaridekaemashitaureshiine!";
     auto json = makeJson(
-      R"({"name": "soon's macbook air 13manyenguraidegakuwaridekaemashitaureshiine!"})");
+      R"({"name": "soon's macbook air 13manyenguraidegakuwaridekaemashitaureshiine!", "request": "connect"})");
     EXPECT_CALL(mockFetch,
                 request(HttpMethod::Post,
                         std::string_view("/room/" + std::to_string(id)),
@@ -602,7 +602,29 @@ namespace octane::internal {
       .Times(1)
       .WillOnce(testing::Return(ok(makeEmptyResponse())));
     ApiBridge apiBridge(&mockFetch);
-    auto result = apiBridge.roomIdPost(id, name);
+    auto result = apiBridge.roomIdPost(id, name, "connect");
+    EXPECT_TRUE(result) << result.err();
+  }
+  /**
+   * @brief
+   * roomIdPostにおいてDisonnectリクエストを出し、Fetchが成功した時にApiBridgeが何も返さないかどうかをテストする。
+   *
+   */
+  TEST(ApiBridgeTest, roomIdPostOkDisonnect) {
+    test::MockFetch mockFetch;
+    std::uint64_t id = 7040782538;
+    std::string name
+      = "soon's macbook air 13manyenguraidegakuwaridekaemashitaureshiine!";
+    auto json = makeJson(
+      R"({"name": "soon's macbook air 13manyenguraidegakuwaridekaemashitaureshiine!", "request": "disconnect"})");
+    EXPECT_CALL(mockFetch,
+                request(HttpMethod::Post,
+                        std::string_view("/room/" + std::to_string(id)),
+                        testing::Eq(testing::ByRef(json))))
+      .Times(1)
+      .WillOnce(testing::Return(ok(makeEmptyResponse())));
+    ApiBridge apiBridge(&mockFetch);
+    auto result = apiBridge.roomIdPost(id, name, "disconnect");
     EXPECT_TRUE(result) << result.err();
   }
   /**
@@ -616,7 +638,7 @@ namespace octane::internal {
     std::string name
       = "soon's macbook air 13manyenguraidegakuwaridekaemashitaureshiine!";
     auto json = makeJson(
-      R"({"name": "soon's macbook air 13manyenguraidegakuwaridekaemashitaureshiine!"})");
+      R"({"name": "soon's macbook air 13manyenguraidegakuwaridekaemashitaureshiine!", "request": "connect"})");
     EXPECT_CALL(mockFetch,
                 request(HttpMethod::Post,
                         std::string_view("/room/" + std::to_string(id)),
@@ -624,7 +646,7 @@ namespace octane::internal {
       .Times(1)
       .WillOnce(testing::Return(makeError(ERR_CURL_CONNECTION_FAILED, "")));
     ApiBridge apiBridge(&mockFetch);
-    auto result = apiBridge.roomIdPost(id, name);
+    auto result = apiBridge.roomIdPost(id, name, "connect");
     EXPECT_FALSE(result);
     EXPECT_EQ(result.err().code, ERR_CURL_CONNECTION_FAILED) << result.err();
   }
@@ -639,7 +661,7 @@ namespace octane::internal {
     std::string name
       = "soon's macbook air 13manyenguraidegakuwaridekaemashitaureshiine!";
     auto json = makeJson(
-      R"({"name": "soon's macbook air 13manyenguraidegakuwaridekaemashitaureshiine!"})");
+      R"({"name": "soon's macbook air 13manyenguraidegakuwaridekaemashitaureshiine!", "request": "connect"})");
     EXPECT_CALL(mockFetch,
                 request(HttpMethod::Post,
                         std::string_view("/room/" + std::to_string(id)),
@@ -655,7 +677,7 @@ namespace octane::internal {
                                             400,
                                             "HTTP/2 400 Bad Request"))));
     ApiBridge apiBridge(&mockFetch);
-    auto result = apiBridge.roomIdPost(id, name);
+    auto result = apiBridge.roomIdPost(id, name, "connect");
     EXPECT_FALSE(result);
     EXPECT_EQ(result.err().code, "ERR_BAD_REQUEST") << result.err();
   }

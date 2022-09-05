@@ -95,8 +95,8 @@ namespace octane {
      * @brief Connects to the room
      * @details
      * This method connects to the room when you pass the room id and device
-     * name. This method should be used only once per each room.
-     * If it fails, the following error response will be returned.
+     * name. This method should not be called after you are connected. If it
+     * fails, the following error response will be returned.
      * - ERR_CURL_CONNECTION_FAILED
      * - ERR_SERVER_HEALTH_STATUS_FAULTY
      * Additionaly, when a response other than 2xx is returned, the
@@ -109,6 +109,24 @@ namespace octane {
      */
     Result<Response, ErrorResponse> connectRoom(std::uint64_t id,
                                                 std::string_view name);
+    /**
+     * @brief Disconnects from the room
+     * @details
+     * This method disconnects from the room when you pass the room id and
+     * device name. This method should not be called after you are disconnected.
+     * If it fails, the following error response will be returned.
+     * - ERR_CURL_CONNECTION_FAILED
+     * - ERR_SERVER_HEALTH_STATUS_FAULTY
+     * Additionaly, when a response other than 2xx is returned, the
+     * error passed from the server in the form of error response is returned.
+     * @param[in] id Room id
+     * @param[in] name Device name
+     * @return Result<Response, ErrorResponse>
+     * On success, it will return {@link Response}.
+     * On failure, it will return the error respose written above.
+     */
+    Result<Response, ErrorResponse> disconnectRoom(std::uint64_t id,
+                                                   std::string_view name);
     /**
      * @brief Gets the room's status
      * @details

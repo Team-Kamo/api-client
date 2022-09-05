@@ -98,20 +98,35 @@ namespace octane {
     if (!checkHealthResult) {
       return error(checkHealthResult.err());
     }
-    auto result = bridge.roomIdPost(id, name);
-    // NOTE: 一時的な処理。
-    if (!result && result.err().code != ERR_DUP_DEVICE) {
-      return error(result.err());
-    }
-    connectionStatus.id          = id;
-    connectionStatus.isConnected = true;
-    connectionStatus.name        = name;
-    Response response{};
-    response.health  = checkHealthResult.get().health;
-    response.message = checkHealthResult.get().message;
+    auto result = bridge.roomIdPost(id, name, "connect");
     if (!result) {
       return error(result.err());
     }
+    Response response{};
+    response.health              = checkHealthResult.get().health;
+    response.message             = checkHealthResult.get().message;
+    connectionStatus.id          = id;
+    connectionStatus.isConnected = true;
+    connectionStatus.name        = name;
+    return ok(response);
+  }
+  Result<Response, ErrorResponse> ApiClient::disconnectRoom(
+    std::uint64_t id,
+    std::string_view name) {
+    const auto checkHealthResult = checkHealth();
+    if (!checkHealthResult) {
+      return error(checkHealthResult.err());
+    }
+    auto result = bridge.roomIdPost(id, name, "disconnect");
+    if (!result) {
+      return error(result.err());
+    }
+    Response response{};
+    response.health              = checkHealthResult.get().health;
+    response.message             = checkHealthResult.get().message;
+    connectionStatus.id          = 0;
+    connectionStatus.isConnected = false;
+    connectionStatus.name        = "";
     return ok(response);
   }
 

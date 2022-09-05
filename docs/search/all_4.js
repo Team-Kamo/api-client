@@ -10,5 +10,6 @@ var searchData=
   ['deleteroom_7',['deleteRoom',['../classoctane_1_1_api_client.html#a6d53d65b7b226ac32a5a442d37e4d4d7',1,'octane::ApiClient']]],
   ['device_8',['device',['../structoctane_1_1_content_status.html#ae75661b140e0e44583af2feb067c9a45',1,'octane::ContentStatus']]],
   ['device_9',['Device',['../structoctane_1_1_device.html',1,'octane']]],
-  ['devices_10',['devices',['../structoctane_1_1_room_status.html#a0afd7e61504745794574698059533843',1,'octane::RoomStatus']]]
+  ['devices_10',['devices',['../structoctane_1_1_room_status.html#a0afd7e61504745794574698059533843',1,'octane::RoomStatus']]],
+  ['disconnectroom_11',['disconnectRoom',['../classoctane_1_1_api_client.html#a09a4ac78748bd2e505b5af7b50a27016',1,'octane::ApiClient']]]
 ];

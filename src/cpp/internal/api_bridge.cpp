@@ -158,10 +158,14 @@ namespace octane::internal {
     return ok();
   }
   Result<_, ErrorResponse> ApiBridge::roomIdPost(std::uint64_t id,
-                                                 std::string_view name) {
+                                                 std::string_view name,
+                                                 std::string_view request) {
     rapidjson::Document uploadJson(rapidjson::kObjectType);
     uploadJson.AddMember("name",
                          rapidjson::StringRef(name.data(), name.size()),
+                         uploadJson.GetAllocator());
+    uploadJson.AddMember("request",
+                         rapidjson::StringRef(request.data(), request.size()),
                          uploadJson.GetAllocator());
     auto response = fetch->request(
       internal::HttpMethod::Post, "/room/" + std::to_string(id), uploadJson);
