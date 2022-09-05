@@ -186,4 +186,66 @@ namespace octane::internal {
     EXPECT_EQ(response.get().statusCode, 200);
     EXPECT_EQ(response.get().mime, "text/html");
   }
+  /**
+   * @brief 3xx番台が返されたときにリダイレクト処理をするかテストをする。
+   *
+   */
+  TEST(FetchTest, RedirectSecond) {
+    octane::test::MockHttpClient mockHttpClient;
+    EXPECT_CALL(mockHttpClient, init())
+      .Times(1)
+      .WillOnce(testing::Return(ok()));
+
+    HttpRequest httpRequest{
+      .method      = HttpMethod::Get,
+      .version     = HttpVersion::Http2,
+      .uri         = "/api/v1/health",
+      .headerField = { { "X-Octane-API-Token", "mock" } },
+      .body        = {},
+    };
+    HttpResponse httpResponse{
+      .statusCode  = 301,
+      .statusLine  = "HTTP/2 301 Moved Permanently",
+      .version     = HttpVersion::Http2,
+      .headerField = { { "Location", "/api/v1/room/id" } },
+      .body        = {},
+    };
+
+    HttpRequest httpRequest2{
+      .method      = HttpMethod::Get,
+      .version     = HttpVersion::Http2,
+      .uri         = "/api/v1/room/id",
+      .headerField = { { "X-Octane-API-Token", "mock" } },
+      .body        = {},
+    };
+    std::vector<std::uint8_t> body;
+    for (auto c : "<!doctype html><html></html>") {
+      body.push_back(c);
+    }
+    HttpResponse httpResponse2{
+      .statusCode  = 200,
+      .statusLine  = "HTTP/2 200 OK",
+      .version     = HttpVersion::Http2,
+      .headerField = { { "Content-Type", "text/html" } },
+      .body        = body,
+    };
+
+    EXPECT_CALL(
+      mockHttpClient,
+      request(std::string_view("http://localhost:3000"), httpRequest2))
+      .Times(1)
+      .WillOnce(testing::Return(ok(httpResponse2)));
+    EXPECT_CALL(mockHttpClient,
+                request(std::string_view("http://localhost:3000"), httpRequest))
+      .Times(1)
+      .WillOnce(testing::Return(ok(httpResponse)));
+
+    Fetch fetch("mock", "http://localhost:3000", "/api/v1", &mockHttpClient);
+    EXPECT_TRUE(fetch.init());
+
+    auto response = fetch.request(HttpMethod::Get, "/health");
+    EXPECT_TRUE(response);
+    EXPECT_EQ(response.get().statusCode, 200);
+    EXPECT_EQ(response.get().mime, "text/html");
+  }
 } // namespace octane::internal
