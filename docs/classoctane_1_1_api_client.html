@@ -100,6 +100,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac17f6aa6f3515cee81b34091b6584db1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1_response.html">Response</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1_api_client.html#ac17f6aa6f3515cee81b34091b6584db1">connectRoom</a> (std::uint64_t id, std::string_view name)</td></tr>
 <tr class="memdesc:ac17f6aa6f3515cee81b34091b6584db1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects to the room.  <a href="classoctane_1_1_api_client.html#ac17f6aa6f3515cee81b34091b6584db1">More...</a><br /></td></tr>
 <tr class="separator:ac17f6aa6f3515cee81b34091b6584db1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09a4ac78748bd2e505b5af7b50a27016"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1_response.html">Response</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1_api_client.html#a09a4ac78748bd2e505b5af7b50a27016">disconnectRoom</a> (std::uint64_t id, std::string_view name)</td></tr>
+<tr class="memdesc:a09a4ac78748bd2e505b5af7b50a27016"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnects from the room.  <a href="classoctane_1_1_api_client.html#a09a4ac78748bd2e505b5af7b50a27016">More...</a><br /></td></tr>
+<tr class="separator:a09a4ac78748bd2e505b5af7b50a27016"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c08f94814368cec35a6a06c69b17bab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1_room_status.html">RoomStatus</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoctane_1_1_api_client.html#a7c08f94814368cec35a6a06c69b17bab">getRoomStatus</a> (std::optional&lt; std::uint64_t &gt; id=std::nullopt)</td></tr>
 <tr class="memdesc:a7c08f94814368cec35a6a06c69b17bab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the room's status.  <a href="classoctane_1_1_api_client.html#a7c08f94814368cec35a6a06c69b17bab">More...</a><br /></td></tr>
 <tr class="separator:a7c08f94814368cec35a6a06c69b17bab"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -216,7 +219,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Connects to the room. </p>
-<p >This method connects to the room when you pass the room id and device name. This method should be used only once per each room. If it fails, the following error response will be returned.</p><ul>
+<p >This method connects to the room when you pass the room id and device name. This method should not be called after you are connected. If it fails, the following error response will be returned.</p><ul>
 <li>ERR_CURL_CONNECTION_FAILED</li>
 <li>ERR_SERVER_HEALTH_STATUS_FAULTY Additionaly, when a response other than 2xx is returned, the error passed from the server in the form of error response is returned. <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -236,7 +239,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" title="Connects to the room." alt="" coords="5,52,136,92"/>
 <area shape="rect" href="namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="Utility function used to construct quasi&#45;normal state values." alt="" coords="815,161,909,186"/>
 <area shape="rect" href="namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835" title="Utitlity function used when the normal state type is _." alt="" coords="457,59,539,85"/>
-<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#abad3e1c394ae37e3538a2ba32b8f06ab" title="use post method for /room/{id}" alt="" coords="184,135,359,175"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aac310ef224b4dddb45a3d4e9e00f68d3" title="use post method for /room/{id}" alt="" coords="184,135,359,175"/>
 <area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="411,160,585,200"/>
 <area shape="rect" href="namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327" title="Utility function to construct quasi&#45;normal state values." alt="" coords="660,261,744,286"/>
 <area shape="rect" href="classoctane_1_1internal_1_1_fetch_base.html#a204cf835d57c87d11c39f35b1f757555" title="APIへのボディ部を持たないリクエストを発行する。" alt="" coords="407,275,589,315"/>
@@ -375,6 +378,63 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="411,149,585,189"/>
 <area shape="rect" href="namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327" title="Utility function to construct quasi&#45;normal state values." alt="" coords="660,207,744,232"/>
 <area shape="rect" href="classoctane_1_1internal_1_1_fetch_base.html#a204cf835d57c87d11c39f35b1f757555" title="APIへのボディ部を持たないリクエストを発行する。" alt="" coords="407,264,589,304"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a09a4ac78748bd2e505b5af7b50a27016" name="a09a4ac78748bd2e505b5af7b50a27016"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09a4ac78748bd2e505b5af7b50a27016">&#9670;&#160;</a></span>disconnectRoom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoctane_1_1_result.html">Result</a>&lt; <a class="el" href="structoctane_1_1_response.html">Response</a>, <a class="el" href="structoctane_1_1_error_response.html">ErrorResponse</a> &gt; octane::ApiClient::disconnectRoom </td>
+          <td>(</td>
+          <td class="paramtype">std::uint64_t&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disconnects from the room. </p>
+<p >This method disconnects from the room when you pass the room id and device name. This method should not be called after you are disconnected. If it fails, the following error response will be returned.</p><ul>
+<li>ERR_CURL_CONNECTION_FAILED</li>
+<li>ERR_SERVER_HEALTH_STATUS_FAULTY Additionaly, when a response other than 2xx is returned, the error passed from the server in the form of error response is returned. <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">id</td><td>Room id </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td><a class="el" href="structoctane_1_1_device.html" title="Structure used in RoomStatus&#39;s devices, has the information of each device connected to the room.">Device</a> name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Result&lt;Response, ErrorResponse&gt; On success, it will return <code><a class="el" href="structoctane_1_1_response.html">Response</a></code>. On failure, it will return the error respose written above. </dd></dl>
+</li>
+</ul>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classoctane_1_1_api_client_a09a4ac78748bd2e505b5af7b50a27016_cgraph.png" border="0" usemap="#aclassoctane_1_1_api_client_a09a4ac78748bd2e505b5af7b50a27016_cgraph" alt=""/></div>
+<map name="aclassoctane_1_1_api_client_a09a4ac78748bd2e505b5af7b50a27016_cgraph" id="aclassoctane_1_1_api_client_a09a4ac78748bd2e505b5af7b50a27016_cgraph">
+<area shape="rect" title="Disconnects from the room." alt="" coords="5,52,136,92"/>
+<area shape="rect" href="namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="Utility function used to construct quasi&#45;normal state values." alt="" coords="815,161,909,186"/>
+<area shape="rect" href="namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835" title="Utitlity function used when the normal state type is _." alt="" coords="457,59,539,85"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aac310ef224b4dddb45a3d4e9e00f68d3" title="use post method for /room/{id}" alt="" coords="184,135,359,175"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_api_bridge.html#aaa70b8ad65c7537a11df3982d342b61f" title="check if the given status code is 2xx" alt="" coords="411,160,585,200"/>
+<area shape="rect" href="namespaceoctane.html#a11bf84eb93d9625bf17de018e4491327" title="Utility function to construct quasi&#45;normal state values." alt="" coords="660,261,744,286"/>
+<area shape="rect" href="classoctane_1_1internal_1_1_fetch_base.html#a204cf835d57c87d11c39f35b1f757555" title="APIへのボディ部を持たないリクエストを発行する。" alt="" coords="407,275,589,315"/>
+<area shape="rect" href="namespaceoctane.html#a508d9040da1bea287606313174f69cbc" title="Utility function to create error response." alt="" coords="637,211,767,237"/>
 </map>
 </div>
 

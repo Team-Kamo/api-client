@@ -1,5 +1,5 @@
-<map id="octane::ApiClient::connectRoom" name="octane::ApiClient::connectRoom">
-<area shape="rect" id="node1" title="Connects to the room." alt="" coords="5,52,136,92"/>
+<map id="octane::ApiClient::disconnectRoom" name="octane::ApiClient::disconnectRoom">
+<area shape="rect" id="node1" title="Disconnects from the room." alt="" coords="5,52,136,92"/>
 <area shape="rect" id="node2" href="$namespaceoctane.html#a11a1130b89597aa8ff1d5d8ca69d74ed" title="Utility function used to construct quasi&#45;normal state values." alt="" coords="815,161,909,186"/>
 <area shape="rect" id="node3" href="$namespaceoctane.html#a4278ebdd8868424048d63d57af2bc835" title="Utitlity function used when the normal state type is _." alt="" coords="457,59,539,85"/>
 <area shape="rect" id="node4" href="$classoctane_1_1internal_1_1_api_bridge.html#aac310ef224b4dddb45a3d4e9e00f68d3" title="use post method for /room/{id}" alt="" coords="184,135,359,175"/>
