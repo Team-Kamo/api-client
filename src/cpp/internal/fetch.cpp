@@ -97,14 +97,18 @@ namespace octane::internal {
 
     auto& response = result.get();
     if (300 <= response.statusCode && response.statusCode < 400) {
-      const auto& location = response.headerField["Location"];
-      std::smatch regexResults;
-      if (std::regex_search(
-            location, regexResults, std::regex(R"(^(https?://.+)(/.*)?)"))) {
-        auto origin = regexResults[1].str();
-        auto url    = regexResults[2].str();
-        if (url.empty()) url = "/";
-        return this->request(method, origin, url, headers, body);
+      if (response.headerField.find("Location") != response.headerField.end()) {
+        const auto& location = response.headerField["Location"];
+        std::smatch regexResults;
+        if (std::regex_search(location,
+                              regexResults,
+                              std::regex(R"(^(https?://[^/]+)?(/.*)?)"))) {
+          auto _origin = regexResults[1].str();
+          auto _url    = regexResults[2].str();
+          if (_origin.empty()) _origin = origin;
+          if (_url.empty()) _url = "/";
+          return this->request(method, _origin, _url, headers, body);
+        }
       }
     }
 
