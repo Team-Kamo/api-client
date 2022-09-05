@@ -258,11 +258,13 @@ namespace octane::internal {
       { "clipboard", ContentType::Clipboard },
     };
 
-    ContentStatus status{ .device    = json["device"].GetString(),
-                          .timestamp = json["timestamp"].GetUint64(),
-                          .type      = typeMap.at(json["type"].GetString()),
-                          .mime      = json["mime"].GetString(),
-                          .name      = "" };
+    ContentStatus status{
+      .device    = json["device"].GetString(),
+      .timestamp = json["timestamp"].GetUint64(),
+      .type      = typeMap.at(json["type"].GetString()),
+      .name      = "",
+      .mime      = json["mime"].GetString(),
+    };
     if (status.type == ContentType::File) {
       status.name = json["name"].GetString();
     }
