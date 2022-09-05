@@ -4,7 +4,7 @@
 #if defined(_MSC_VER)
 #define OCTANE_API __declspec(dllexport)
 #elif defined(__GNUC__)
-#define OCTANCE_API __attribute__((visibility("default")))
+#define OCTANE_API __attribute__((visibility("default")))
 #else
 #define OCTANE_API
 #endif
