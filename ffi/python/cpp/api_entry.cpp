@@ -94,7 +94,8 @@ static void clearError() {
   delete[] octane_api_client__last_error.code;
   delete[] octane_api_client__last_error.reason;
 
-  octane_api_client__last_error.code   = strToCharArray(octane::ERR_API_CLIENT_OK);
+  octane_api_client__last_error.code
+    = strToCharArray(octane::ERR_API_CLIENT_OK);
   octane_api_client__last_error.reason = strToCharArray("");
 }
 
@@ -268,8 +269,8 @@ OCTANE_API OctaneApiClientContentStructure* octane_api_client__get_content(
         = toByteArray(std::get<std::vector<std::uint8_t>>(result.get().data));
       break;
     case octane::ContentType::Clipboard:
-      content->data.clipboard
-        = vecToCharArray(std::get<std::vector<std::uint8_t>>(result.get().data));
+      content->data.clipboard = vecToCharArray(
+        std::get<std::vector<std::uint8_t>>(result.get().data));
       break;
     case octane::ContentType::MultiFile:
       auto& files = std::get<std::vector<octane::FileInfo>>(result.get().data);
@@ -345,9 +346,10 @@ OCTANE_API bool octane_api_client__upload_content(
       std::vector<octane::FileInfo> files;
       files.reserve(content->data.multi_file.num_files);
       for (size_t i = 0; i < content->data.multi_file.num_files; ++i) {
-        files.emplace_back(
-          content->data.multi_file.files[i].filename,
-          fromByteArray(content->data.multi_file.files[i].data));
+        files.push_back(octane::FileInfo{
+          .filename = content->data.multi_file.files[i].filename,
+          .data     = fromByteArray(content->data.multi_file.files[i].data),
+        });
       }
       ctn.data = std::move(files);
       break;
