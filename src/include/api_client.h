@@ -260,7 +260,9 @@ namespace octane {
      * @return std::vector<std::uint8_t>
      */
     std::vector<std::uint8_t> createBinary(
-      std::variant<std::string, std::vector<uint8_t>> input);
+      const std::variant<std::string,
+                         std::vector<uint8_t>,
+                         std::vector<FileInfo>>& input);
   };
 } // namespace octane
 

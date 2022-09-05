@@ -297,7 +297,10 @@ namespace octane::internal {
                          rapidjson::Value().SetUint64(contentStatus.timestamp),
                          uploadJson.GetAllocator());
     if (contentStatus.type == ContentType::File) {
-      uploadJson.AddMember("mime", contentStatus.mime, uploadJson.GetAllocator());
+      uploadJson.AddMember("mime",
+                           rapidjson::StringRef(contentStatus.mime.data(),
+                                                contentStatus.mime.size()),
+                           uploadJson.GetAllocator());
       uploadJson.AddMember("type", "file", uploadJson.GetAllocator());
       uploadJson.AddMember("name", "", uploadJson.GetAllocator());
     } else if (contentStatus.type == ContentType::Clipboard) {

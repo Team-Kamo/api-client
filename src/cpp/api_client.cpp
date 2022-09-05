@@ -256,24 +256,23 @@ namespace octane {
     std::vector<std::uint8_t> contentData;
     if (content.contentStatus.type == ContentType::Clipboard
         || content.contentStatus.type == ContentType::File) {
-      if (std::holds_alternative<std::vector<FileInfo>>) {
+      if (std::holds_alternative<std::vector<FileInfo>>(content.data)) {
         return makeError(
           ERR_CONTENT_TYPE_DATA_MISMATCH,
           "The specified type of content.contentStatus.type doesn't match content.data");
       }
-      contentData = createBinary(
-        std::get<std::variant<std::string, std::vector<std::uint8_t>>>(
-          content.data));
+      contentData = createBinary(content.data);
     } else if (content.contentStatus.type == ContentType::MultiFile) {
-      // TODO:ファイルそれぞれを圧縮して、最終的にcontentDataに格納する
-      if (!std::holds_alternative<std::vector<FileInfo>>) {
+      if (!std::holds_alternative<std::vector<FileInfo>>(content.data)) {
         return makeError(
           ERR_CONTENT_TYPE_DATA_MISMATCH,
           "The specified type of content.contentStatus.type doesn't match content.data");
       }
       std::vector<FileInfo> MultiFiles
         = std::get<std::vector<FileInfo>>(content.data);
+      // TODO:ファイルそれぞれを圧縮して、最終的にcontentDataに格納する
       // MultiFilesを操作して頑張る。
+
     } else {
       std::abort();
     }
@@ -295,10 +294,8 @@ namespace octane {
     return ok(response);
   }
   std::vector<std::uint8_t> ApiClient::createBinary(
-    std::variant<std::string, std::vector<uint8_t>> input) {
-    if (std::holds_alternative<std::vector<FileInfo>>(input)) {
-      std::abort();
-    }
+    const std::variant<std::string, std::vector<uint8_t>, std::vector<FileInfo>>& input) {
+    assert(!std::holds_alternative<std::vector<FileInfo>>(input));
     if (std::holds_alternative<std::vector<std::uint8_t>>(input)) {
       return std::get<std::vector<std::uint8_t>>(input);
     }
