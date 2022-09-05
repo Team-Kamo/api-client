@@ -1,7 +1,7 @@
 /**
  * @file api_result_types.h
  * @author soon (kento.soon@gmail.com)
- * @brief Types which are used to return  in api client.
+ * @brief Types which are used to return values in api client.
  * @version 0.1
  * @date 2022-09-01
  *
@@ -92,8 +92,10 @@ namespace octane {
   enum struct ContentType {
     /** @brief Type of {@link Content} is file. */
     File,
-    /** @brief Type of {@link Content} is file. */
+    /** @brief Type of {@link Content} is clipboard. */
     Clipboard,
+    /** @brief Type of {@link Content} is multi-file. */
+    MultiFile
   };
   /**
    * @brief Structure used in {@link Content}, has the
@@ -115,6 +117,13 @@ namespace octane {
   bool operator==(const ContentStatus& a, const ContentStatus& b);
   std::ostream& operator<<(std::ostream& stream,
                            const ContentStatus& contentStatus);
+  struct FileInfo {
+    /** @brief file name. */
+    std::string filename;
+    /** @brief binary data of the file */
+    std::vector<std::uint8_t> data;
+  };
+
   /**
    * @brief Structure used as result for {@link getContent}, has data and {@link
    * ContentStatus} and inherits {@link Response}.
@@ -123,8 +132,9 @@ namespace octane {
   struct Content : Response {
     /** @brief The status of {@link Content}.*/
     ContentStatus contentStatus;
-    /** @brief The data of {@link Content}, is a variant of string and binary.*/
-    std::variant<std::string, std::vector<std::uint8_t>> data;
+    /** @brief The data of {@link Content}, is a variant of string, single file
+     * binary.*/
+    std::variant<std::string, std::vector<uint8_t>, std::vector<FileInfo>> data;
   };
   /**
    * @brief Structure used as result for {@link createRoom}, has the room id and

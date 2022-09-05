@@ -40,6 +40,7 @@ namespace octane {
   constexpr auto ERR_ROOM_DISCONNECTED     = "ERR_ROOM_DISCONNECTED";
   constexpr auto ERR_DUP_DEVICE            = "ERR_DUP_DEVICE";
   constexpr auto ERR_CONTENT_HASH_MISMATCH = "ERR_CONTENT_HASH_MISMATCH";
+  constexpr auto ERR_CONTENT_TYPE_DATA_MISMATCH = "ERR_CONTENT_TYPE_DATA_MISMATCH";
 } // namespace octane
 
 #endif // OCTANE_API_CLIENT_ERROR_CODE_H_

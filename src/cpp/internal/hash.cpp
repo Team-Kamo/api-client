@@ -1,3 +1,13 @@
+/**
+ * @file hash.cpp
+ * @author soon (kento.soon@gmail.com)
+ * @brief hash.hの実装
+ * @version 0.1
+ * @date 2022-09-05
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include "include/internal/hash.h"
 
 #include <blake2.h>

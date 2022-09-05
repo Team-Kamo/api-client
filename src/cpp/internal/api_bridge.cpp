@@ -1,7 +1,7 @@
 /**
  * @file api_bridge.cpp
  * @author soon (kento.soon@gmail.com)
- * @brief
+ * @brief api_bridge.hの実装
  * @version 0.1
  * @date 2022-09-01
  *
@@ -297,21 +297,24 @@ namespace octane::internal {
                          rapidjson::Value().SetUint64(contentStatus.timestamp),
                          uploadJson.GetAllocator());
     if (contentStatus.type == ContentType::File) {
+      uploadJson.AddMember("mime",
+                           rapidjson::StringRef(contentStatus.mime.data(),
+                                                contentStatus.mime.size()),
+                           uploadJson.GetAllocator());
       uploadJson.AddMember("type", "file", uploadJson.GetAllocator());
-      uploadJson.AddMember(
-        "name",
-        rapidjson::StringRef(contentStatus.name.value_or("file").data(),
-                             contentStatus.name.value_or("file").size()),
-        uploadJson.GetAllocator());
+      uploadJson.AddMember("name", "", uploadJson.GetAllocator());
     } else if (contentStatus.type == ContentType::Clipboard) {
+      uploadJson.AddMember("mime", "text/plain", uploadJson.GetAllocator());
       uploadJson.AddMember("type", "clipboard", uploadJson.GetAllocator());
+      uploadJson.AddMember("name", "", uploadJson.GetAllocator());
+    } else if (contentStatus.type == ContentType::MultiFile) {
+      // TODO:MultiFileの時の処理
+      uploadJson.AddMember(
+        "mime", "application/x-7z-compressed", uploadJson.GetAllocator());
+      uploadJson.AddMember("type", "multi-file", uploadJson.GetAllocator());
     } else {
       std::abort();
     }
-    uploadJson.AddMember("mime",
-                         rapidjson::StringRef(contentStatus.mime.data(),
-                                              contentStatus.mime.size()),
-                         uploadJson.GetAllocator());
     uploadJson.AddMember("hash",
                          rapidjson::StringRef(hash.data(), hash.size()),
                          uploadJson.GetAllocator());
