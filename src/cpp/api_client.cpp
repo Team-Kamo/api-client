@@ -1,7 +1,7 @@
 /**
  * @file api-client.cpp
  * @author cosocaf (cosocaf@gmail.com)
- * @brief
+ * @brief api_client.h の実装
  * @version 0.1
  * @date 2022-08-30
  *
@@ -193,7 +193,10 @@ namespace octane {
     }
     Content content{};
     content.contentStatus = resultS.get().first;
-    auto result           = bridge.roomIdContentGet(connectionStatus.id);
+    if (content.contentStatus.type == ContentType::MultiFile) {
+      // TODO: zipなので解凍してあげる
+    }
+    auto result = bridge.roomIdContentGet(connectionStatus.id);
     if (!result) {
       return error(result.err());
     }
@@ -249,25 +252,40 @@ namespace octane {
       return makeError(ERR_ROOM_DISCONNECTED,
                        "This device is disconnected from the room");
     }
-    // generate hash value
-    std::vector<std::uint8_t> hashData;
-    if (std::holds_alternative<std::vector<std::uint8_t>>(content.data)) {
-      hashData = std::get<std::vector<std::uint8_t>>(content.data);
-    } else if (std::holds_alternative<std::string>(content.data)) {
-      std::string hashDataString = std::get<std::string>(content.data);
-      hashData.resize(hashDataString.size());
-      std::copy(hashDataString.begin(), hashDataString.end(), hashData.begin());
+    // convert input data into binary
+    std::vector<std::uint8_t> contentData;
+    if (content.contentStatus.type == ContentType::Clipboard
+        || content.contentStatus.type == ContentType::File) {
+      if (std::holds_alternative<std::vector<FileInfo>>) {
+        return makeError(
+          ERR_CONTENT_TYPE_DATA_MISMATCH,
+          "The specified type of content.contentStatus.type doesn't match content.data");
+      }
+      contentData = createBinary(
+        std::get<std::variant<std::string, std::vector<std::uint8_t>>>(
+          content.data));
+    } else if (content.contentStatus.type == ContentType::MultiFile) {
+      // TODO:ファイルそれぞれを圧縮して、最終的にcontentDataに格納する
+      if (!std::holds_alternative<std::vector<FileInfo>>) {
+        return makeError(
+          ERR_CONTENT_TYPE_DATA_MISMATCH,
+          "The specified type of content.contentStatus.type doesn't match content.data");
+      }
+      std::vector<FileInfo> MultiFiles
+        = std::get<std::vector<FileInfo>>(content.data);
+      // MultiFilesを操作して頑張る。
     } else {
       std::abort();
     }
-    std::string hash = internal::generateHash(hashData);
+    // generate hash value
+    std::string hash = internal::generateHash(contentData);
     auto resultS     = bridge.roomIdStatusPut(
       connectionStatus.id, content.contentStatus, hash);
     if (!resultS) {
       return error(resultS.err());
     }
     auto result = bridge.roomIdContentPut(
-      connectionStatus.id, content.data, content.contentStatus.mime);
+      connectionStatus.id, contentData, content.contentStatus.mime);
     if (!result) {
       return error(result.err());
     }
@@ -275,5 +293,19 @@ namespace octane {
     response.health  = checkHealthResult.get().health;
     response.message = checkHealthResult.get().message;
     return ok(response);
+  }
+  std::vector<std::uint8_t> ApiClient::createBinary(
+    std::variant<std::string, std::vector<uint8_t>> input) {
+    if (std::holds_alternative<std::vector<FileInfo>>(input)) {
+      std::abort();
+    }
+    if (std::holds_alternative<std::vector<std::uint8_t>>(input)) {
+      return std::get<std::vector<std::uint8_t>>(input);
+    }
+    std::vector<std::uint8_t> outputBinary;
+    std::string inputString = std::get<std::string>(input);
+    outputBinary.resize(inputString.size());
+    std::copy(inputString.begin(), inputString.end(), outputBinary.begin());
+    return outputBinary;
   }
 } // namespace octane

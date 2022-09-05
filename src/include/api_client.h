@@ -1,7 +1,7 @@
 /**
  * @file api-client.h
  * @author cosocaf (cosocaf@gmail.com)
- * @brief Api client.
+ * @brief  Provides simple methods to communicate with OctaneServer.
  * @version 0.1
  * @date 2022-08-30
  *
@@ -252,6 +252,15 @@ namespace octane {
      * On failure, it will return the error response written above.
      */
     Result<HealthResult, ErrorResponse> checkHealth();
+    /**
+     * @brief Checks if the input is binary, and if not, returns the
+     * binary-nized input.
+     *
+     * @param[in] input
+     * @return std::vector<std::uint8_t>
+     */
+    std::vector<std::uint8_t> createBinary(
+      std::variant<std::string, std::vector<uint8_t>> input);
   };
 } // namespace octane
 
