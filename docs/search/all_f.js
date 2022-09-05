@@ -14,7 +14,7 @@ var searchData=
   ['roomidget_11',['roomIdGet',['../classoctane_1_1internal_1_1_api_bridge.html#afb7b22629f6212edad71b7289ddc6618',1,'octane::internal::ApiBridge']]],
   ['roomidpost_12',['roomIdPost',['../classoctane_1_1internal_1_1_api_bridge.html#aac310ef224b4dddb45a3d4e9e00f68d3',1,'octane::internal::ApiBridge']]],
   ['roomidstatusdelete_13',['roomIdStatusDelete',['../classoctane_1_1internal_1_1_api_bridge.html#a5b01879a21e410469c4e8a7494ae0f6c',1,'octane::internal::ApiBridge']]],
-  ['roomidstatusget_14',['roomIdStatusGet',['../classoctane_1_1internal_1_1_api_bridge.html#a01f98886f7272847b83c6c56b0af6fd6',1,'octane::internal::ApiBridge']]],
+  ['roomidstatusget_14',['roomIdStatusGet',['../classoctane_1_1internal_1_1_api_bridge.html#a2dece3f50fecffad537e1f31ddd16ffe',1,'octane::internal::ApiBridge']]],
   ['roomidstatusput_15',['roomIdStatusPut',['../classoctane_1_1internal_1_1_api_bridge.html#a0e57b82c4d1afa56a8877eac44750d49',1,'octane::internal::ApiBridge']]],
   ['roompost_16',['roomPost',['../classoctane_1_1internal_1_1_api_bridge.html#a2e121429a143bc0b958bac123ce0dd05',1,'octane::internal::ApiBridge']]],
   ['roomstatus_17',['RoomStatus',['../structoctane_1_1_room_status.html',1,'octane']]]

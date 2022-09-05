@@ -1,0 +1,4 @@
+<map id="octane::ApiClient::disconnectRoom" name="octane::ApiClient::disconnectRoom">
+<area shape="rect" id="node1" title="Disconnects from the room." alt="" coords="184,5,315,45"/>
+<area shape="rect" id="node2" href="$classoctane_1_1_api_client.html#a8107ab8f11d4298c0960fb078fb8611f" title="Destroy the Api Client object." alt="" coords="5,5,136,45"/>
+</map>

@@ -1,6 +1,7 @@
 <map id="octane::internal::convToHexMono" name="octane::internal::convToHexMono">
-<area shape="rect" id="node1" title=" " alt="" coords="665,5,827,45"/>
-<area shape="rect" id="node2" href="$namespaceoctane_1_1internal.html#a31fb34aee3d745d64fb7045d47f1cffa" title="バイナリシーケンスを16進数文字列に変換する。" alt="" coords="432,13,617,38"/>
-<area shape="rect" id="node3" href="$namespaceoctane_1_1internal.html#a777574b3ff26edf6d32ebd38ffa3cd99" title="ハッシュ値を生成する。" alt="" coords="184,13,384,38"/>
-<area shape="rect" id="node4" href="$classoctane_1_1_api_client.html#a0aca880c2faa076d42ac5caeca47e4c2" title="Uploads content to the room." alt="" coords="5,5,136,45"/>
+<area shape="rect" id="node1" title=" " alt="" coords="665,37,827,77"/>
+<area shape="rect" id="node2" href="$namespaceoctane_1_1internal.html#a31fb34aee3d745d64fb7045d47f1cffa" title="バイナリシーケンスを16進数文字列に変換する。" alt="" coords="432,45,617,70"/>
+<area shape="rect" id="node3" href="$namespaceoctane_1_1internal.html#a777574b3ff26edf6d32ebd38ffa3cd99" title="ハッシュ値を生成する。" alt="" coords="184,45,384,70"/>
+<area shape="rect" id="node4" href="$classoctane_1_1_api_client.html#a57723a0864001a21c14aa01e55a7e715" title="Gets the room&#39;s content." alt="" coords="5,5,136,45"/>
+<area shape="rect" id="node5" href="$classoctane_1_1_api_client.html#a0aca880c2faa076d42ac5caeca47e4c2" title="Uploads content to the room." alt="" coords="5,69,136,109"/>
 </map>

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['post_0',['Post',['../namespaceoctane_1_1internal.html#a164bed1ca702ea1cb6f0feb4ded22e73a03d947a2158373c3b9d74325850cb8b9',1,'octane::internal']]],
-  ['put_1',['Put',['../namespaceoctane_1_1internal.html#a164bed1ca702ea1cb6f0feb4ded22e73ad0bf1810982e9728fcf3ac444a015373',1,'octane::internal']]]
+  ['multifile_0',['MultiFile',['../namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4a1e1c1bd7f9cc7129802e1f00d2b171bd',1,'octane']]]
 ];

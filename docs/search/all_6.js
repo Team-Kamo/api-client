@@ -7,5 +7,7 @@ var searchData=
   ['fetchbase_4',['FetchBase',['../classoctane_1_1internal_1_1_fetch_base.html',1,'octane::internal']]],
   ['fetchresponse_5',['FetchResponse',['../structoctane_1_1internal_1_1_fetch_response.html',1,'octane::internal']]],
   ['fetchresult_6',['FetchResult',['../classoctane_1_1internal_1_1_fetch_base.html#a1fd6fc80fed23ffa8f8c442e002eb032',1,'octane::internal::FetchBase']]],
-  ['file_7',['File',['../namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4a0b27918290ff5323bea1e3b78a9cf04e',1,'octane']]]
+  ['file_7',['File',['../namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4a0b27918290ff5323bea1e3b78a9cf04e',1,'octane']]],
+  ['fileinfo_8',['FileInfo',['../structoctane_1_1_file_info.html',1,'octane']]],
+  ['filename_9',['filename',['../structoctane_1_1_file_info.html#a58540a7626e5e117f700d4d445563176',1,'octane::FileInfo']]]
 ];

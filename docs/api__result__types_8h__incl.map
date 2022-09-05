@@ -1,5 +1,5 @@
 <map id="src/include/api_result_types.h" name="src/include/api_result_types.h">
-<area shape="rect" id="node1" title="Types which are used to return in api client." alt="" coords="241,5,386,45"/>
+<area shape="rect" id="node1" title="Types which are used to return values in api client." alt="" coords="241,5,386,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,93,72,119"/>
 <area shape="rect" id="node3" title=" " alt="" coords="96,93,165,119"/>
 <area shape="rect" id="node4" title=" " alt="" coords="190,93,245,119"/>

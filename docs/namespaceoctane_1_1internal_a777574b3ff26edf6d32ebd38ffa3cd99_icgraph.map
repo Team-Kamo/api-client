@@ -1,4 +1,5 @@
 <map id="octane::internal::generateHash" name="octane::internal::generateHash">
-<area shape="rect" id="node1" title="ハッシュ値を生成する。" alt="" coords="184,13,384,38"/>
-<area shape="rect" id="node2" href="$classoctane_1_1_api_client.html#a0aca880c2faa076d42ac5caeca47e4c2" title="Uploads content to the room." alt="" coords="5,5,136,45"/>
+<area shape="rect" id="node1" title="ハッシュ値を生成する。" alt="" coords="184,45,384,70"/>
+<area shape="rect" id="node2" href="$classoctane_1_1_api_client.html#a57723a0864001a21c14aa01e55a7e715" title="Gets the room&#39;s content." alt="" coords="5,5,136,45"/>
+<area shape="rect" id="node3" href="$classoctane_1_1_api_client.html#a0aca880c2faa076d42ac5caeca47e4c2" title="Uploads content to the room." alt="" coords="5,69,136,109"/>
 </map>

@@ -1,5 +1,6 @@
 <map id="octane::internal::ApiBridge::roomIdPost" name="octane::internal::ApiBridge::roomIdPost">
-<area shape="rect" id="node1" title="use post method for /room/{id}" alt="" coords="184,37,359,77"/>
-<area shape="rect" id="node2" href="$classoctane_1_1_api_client.html#ac17f6aa6f3515cee81b34091b6584db1" title="Connects to the room." alt="" coords="5,5,136,45"/>
-<area shape="rect" id="node3" href="$classoctane_1_1_api_client.html#a09a4ac78748bd2e505b5af7b50a27016" title="Disconnects from the room." alt="" coords="5,69,136,109"/>
+<area shape="rect" id="node1" title="use post method for /room/{id}" alt="" coords="363,37,537,77"/>
+<area shape="rect" id="node2" href="$classoctane_1_1_api_client.html#ac17f6aa6f3515cee81b34091b6584db1" title="Connects to the room." alt="" coords="184,5,315,45"/>
+<area shape="rect" id="node3" href="$classoctane_1_1_api_client.html#a09a4ac78748bd2e505b5af7b50a27016" title="Disconnects from the room." alt="" coords="184,69,315,109"/>
+<area shape="rect" id="node4" href="$classoctane_1_1_api_client.html#a8107ab8f11d4298c0960fb078fb8611f" title="Destroy the Api Client object." alt="" coords="5,69,136,109"/>
 </map>

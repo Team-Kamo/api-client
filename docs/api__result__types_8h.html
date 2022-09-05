@@ -82,7 +82,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Types which are used to return in api client.  
+<p>Types which are used to return values in api client.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;optional&gt;</code><br />
 <code>#include &lt;ostream&gt;</code><br />
@@ -96,7 +96,7 @@ Include dependency graph for api_result_types.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="api__result__types_8h__incl.png" border="0" usemap="#asrc_2include_2api__result__types_8h" alt=""/></div>
 <map name="asrc_2include_2api__result__types_8h" id="asrc_2include_2api__result__types_8h">
-<area shape="rect" title="Types which are used to return in api client." alt="" coords="241,5,386,45"/>
+<area shape="rect" title="Types which are used to return values in api client." alt="" coords="241,5,386,45"/>
 <area shape="rect" title=" " alt="" coords="5,93,72,119"/>
 <area shape="rect" title=" " alt="" coords="96,93,165,119"/>
 <area shape="rect" title=" " alt="" coords="190,93,245,119"/>
@@ -113,12 +113,12 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="api__result__types_8h__dep__incl.png" border="0" usemap="#asrc_2include_2api__result__types_8hdep" alt=""/></div>
 <map name="asrc_2include_2api__result__types_8hdep" id="asrc_2include_2api__result__types_8hdep">
-<area shape="rect" title="Types which are used to return in api client." alt="" coords="95,5,241,45"/>
+<area shape="rect" title="Types which are used to return values in api client." alt="" coords="95,5,241,45"/>
 <area shape="rect" href="api__result__types_8cpp.html" title=" " alt="" coords="5,93,131,133"/>
 <area shape="rect" href="api__client_8h.html" title=" " alt="" coords="91,189,245,214"/>
 <area shape="rect" href="api__bridge_8h.html" title="APIclientとAPI一つ一つを結びつける。" alt="" coords="205,93,336,133"/>
 <area shape="rect" href="api__client_8cpp.html" title=" " alt="" coords="93,269,243,295"/>
-<area shape="rect" href="api__bridge_8cpp.html" title=" " alt="" coords="270,181,402,221"/>
+<area shape="rect" href="api__bridge_8cpp.html" title="api_bridge.hの実装" alt="" coords="270,181,402,221"/>
 </map>
 </div>
 </div>
@@ -140,6 +140,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_content_status.html">octane::ContentStatus</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure used in <code><a class="el" href="structoctane_1_1_content.html">Content</a></code>, has the status of <code><a class="el" href="structoctane_1_1_content.html">Content</a></code>.  <a href="structoctane_1_1_content_status.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_file_info.html">octane::FileInfo</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoctane_1_1_content.html">octane::Content</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure used as result for <code><a class="el" href="">getContent</a></code>, has data and <code><a class="el" href="structoctane_1_1_content_status.html">ContentStatus</a></code> and inherits <code><a class="el" href="structoctane_1_1_response.html">Response</a></code>.  <a href="structoctane_1_1_content.html#details">More...</a><br /></td></tr>
@@ -163,6 +165,7 @@ Enumerations</h2></td></tr>
 <tr class="separator:a1f009b9e200bd7209934b50ab7b01900"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6ae76f8bafa760d30cd5a5863b0cea4"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4">octane::ContentType</a> { <a class="el" href="namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4a0b27918290ff5323bea1e3b78a9cf04e">octane::File</a>
 , <a class="el" href="namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4a23e5a7b7976e412ece233ceaf8257bc2">octane::Clipboard</a>
+, <a class="el" href="namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4a1e1c1bd7f9cc7129802e1f00d2b171bd">octane::MultiFile</a>
  }</td></tr>
 <tr class="memdesc:ab6ae76f8bafa760d30cd5a5863b0cea4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum used in <code><a class="el" href="">ContentStatus</a></code>, represents the type of <code><a class="el" href="">Content</a></code>.  <a href="namespaceoctane.html#ab6ae76f8bafa760d30cd5a5863b0cea4">More...</a><br /></td></tr>
 <tr class="separator:ab6ae76f8bafa760d30cd5a5863b0cea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,13 +180,17 @@ Functions</h2></td></tr>
 <tr class="separator:aa9a56566f0f8c9c11edd77924cc54205"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2962d7508d359f13f4270e885c0f2596"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a2962d7508d359f13f4270e885c0f2596">octane::operator&lt;&lt;</a> (std::ostream &amp;stream, const RoomStatus &amp;roomStatus)</td></tr>
 <tr class="separator:a2962d7508d359f13f4270e885c0f2596"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0352dfcc37a3f8b0a5def0a762ae0504"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a0352dfcc37a3f8b0a5def0a762ae0504">octane::operator==</a> (const ContentStatus &amp;a, const ContentStatus &amp;b)</td></tr>
+<tr class="separator:a0352dfcc37a3f8b0a5def0a762ae0504"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afca5b476550aaf2cce2018977f6f855b"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#afca5b476550aaf2cce2018977f6f855b">octane::operator&lt;&lt;</a> (std::ostream &amp;stream, const ContentStatus &amp;contentStatus)</td></tr>
+<tr class="separator:afca5b476550aaf2cce2018977f6f855b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a068d187376feaa28b52f8f92ebd61385"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a068d187376feaa28b52f8f92ebd61385">octane::operator==</a> (const RoomId &amp;a, const RoomId &amp;b)</td></tr>
 <tr class="separator:a068d187376feaa28b52f8f92ebd61385"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89e2ccc6a24cb08255c1f1a00025852f"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoctane.html#a89e2ccc6a24cb08255c1f1a00025852f">octane::operator&lt;&lt;</a> (std::ostream &amp;stream, const RoomId &amp;roomId)</td></tr>
 <tr class="separator:a89e2ccc6a24cb08255c1f1a00025852f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Types which are used to return in api client. </p>
+<div class="textblock"><p >Types which are used to return values in api client. </p>
 <dl class="section author"><dt>Author</dt><dd>soon (<a href="#" onclick="location.href='mai'+'lto:'+'ken'+'to'+'.so'+'on'+'@gm'+'ai'+'l.c'+'om'; return false;">kento<span class="obfuscator">.nosp@m.</span>.soo<span class="obfuscator">.nosp@m.</span>n@gma<span class="obfuscator">.nosp@m.</span>il.c<span class="obfuscator">.nosp@m.</span>om</a>) </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2022-09-01</dd></dl>

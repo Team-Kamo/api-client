@@ -1,5 +1,5 @@
 <map id="src/cpp/internal/api_bridge.cpp" name="src/cpp/internal/api_bridge.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="1539,5,1671,45"/>
+<area shape="rect" id="node1" title="api_bridge.hの実装" alt="" coords="1539,5,1671,45"/>
 <area shape="rect" id="node2" href="$api__bridge_8h.html" title="APIclientとAPI一つ一つを結びつける。" alt="" coords="574,93,705,133"/>
 <area shape="rect" id="node15" title=" " alt="" coords="1128,262,1274,287"/>
 <area shape="rect" id="node17" title=" " alt="" coords="1299,262,1452,287"/>
@@ -9,7 +9,7 @@
 <area shape="rect" id="node23" title=" " alt="" coords="1802,101,1874,126"/>
 <area shape="rect" id="node24" href="$error__code_8h.html" title="Define error codes." alt="" coords="1898,101,2037,126"/>
 <area shape="rect" id="node25" href="$api__schema_8h.html" title=" " alt="" coords="2061,93,2192,133"/>
-<area shape="rect" id="node3" href="$api__result__types_8h.html" title="Types which are used to return in api client." alt="" coords="233,255,356,295"/>
+<area shape="rect" id="node3" href="$api__result__types_8h.html" title="Types which are used to return values in api client." alt="" coords="233,255,356,295"/>
 <area shape="rect" id="node10" href="$result_8h.html" title="Define type to represent the result, inspired by Rust&#39;s &quot;Result&quot;." alt="" coords="107,416,180,441"/>
 <area shape="rect" id="node13" href="$error__response_8h.html" title="Error response." alt="" coords="643,343,807,368"/>
 <area shape="rect" id="node14" href="$fetch_8h.html" title="fetch.hの実装" alt="" coords="702,181,855,207"/>

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['library_5fname_0',['LIBRARY_NAME',['../namespaceoctane.html#a96eff99c83d3347fc5d6986d70ebf0f2',1,'octane']]],
-  ['library_5fversion_1',['LIBRARY_VERSION',['../namespaceoctane.html#a7b3adc173e870b16195fca8a3bc897a4',1,'octane']]]
+  ['id_0',['id',['../structoctane_1_1_room_status.html#a80c66b79dfeae71be34f1c0b3c6b2ba6',1,'octane::RoomStatus::id()'],['../structoctane_1_1_room_id.html#ac5351f42d49c16067058737a4ebfad5d',1,'octane::RoomId::id()']]]
 ];
