@@ -818,7 +818,7 @@ namespace octane::internal {
       mockFetch,
       request(HttpMethod::Put,
               std::string_view("/room/" + std::to_string(id) + "/content"),
-              mime,
+              std::string_view(mime),
               body))
       .Times(1)
       .WillOnce(testing::Return(ok(makeEmptyResponse())));
@@ -843,7 +843,7 @@ namespace octane::internal {
       mockFetch,
       request(HttpMethod::Put,
               std::string_view("/room/" + std::to_string(id) + "/content"),
-              mime,
+              std::string_view(mime),
               body))
       .Times(1)
       .WillOnce(testing::Return(ok(makeEmptyResponse())));
@@ -868,7 +868,7 @@ namespace octane::internal {
       mockFetch,
       request(HttpMethod::Put,
               std::string_view("/room/" + std::to_string(id) + "/content"),
-              mime,
+              std::string_view(mime),
               body))
       .Times(1)
       .WillOnce(
@@ -908,11 +908,13 @@ namespace octane::internal {
           "hash": "101010"
           }
         )"))));
-    ContentStatus contentStatus{ .device    = "soon's windows",
-                                 .type      = ContentType::File,
-                                 .mime      = "application/pdf",
-                                 .name      = "filename",
-                                 .timestamp = 20202020 };
+    ContentStatus contentStatus{
+      .device    = "soon's windows",
+      .timestamp = 20202020,
+      .type      = ContentType::File,
+      .name      = "filename",
+      .mime      = "application/pdf",
+    };
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.roomIdStatusGet(id);
     EXPECT_TRUE(result) << result.err();
@@ -943,11 +945,13 @@ namespace octane::internal {
           "hash": "101010"
           }
         )"))));
-    ContentStatus contentStatus{ .device    = "soon's windows",
-                                 .type      = ContentType::Clipboard,
-                                 .mime      = "text",
-                                 .name      = "",
-                                 .timestamp = 20202020 };
+    ContentStatus contentStatus{
+      .device    = "soon's windows",
+      .timestamp = 20202020,
+      .type      = ContentType::Clipboard,
+      .name      = "",
+      .mime      = "text",
+    };
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.roomIdStatusGet(id);
     EXPECT_TRUE(result) << result.err();
@@ -979,11 +983,13 @@ namespace octane::internal {
           "hash": "101010"
           }
         )"))));
-    ContentStatus contentStatus{ .device    = "soon's windows",
-                                 .type      = ContentType::Clipboard,
-                                 .mime      = "text",
-                                 .name      = "",
-                                 .timestamp = 20202020 };
+    ContentStatus contentStatus{
+      .device    = "soon's windows",
+      .timestamp = 20202020,
+      .type      = ContentType::Clipboard,
+      .name      = "",
+      .mime = "text",
+    };
 
     ApiBridge apiBridge(&mockFetch);
     auto result = apiBridge.roomIdStatusGet(id);
