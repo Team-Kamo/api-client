@@ -193,7 +193,7 @@ namespace octane::internal {
     /**
      * @brief use put method for /room/{id}/status
      * @details
-     * このメソッドは/room/{id}/statusにDELETEリクエストを発行する。
+     * このメソッドは/room/{id}/statusにPUTリクエストを発行する。
      * 失敗した場合は次のエラーレスポンスを返す。
      * - ERR_CURL_CONNECTION_FAILED: CURLの接続に失敗したとき。
      * また、2xx以外のレスポンスが返された時には、同様のエラーレスポンスの形式でサーバから渡ってきたエラーをそのまま返す。

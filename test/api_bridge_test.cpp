@@ -988,7 +988,7 @@ namespace octane::internal {
       .timestamp = 20202020,
       .type      = ContentType::Clipboard,
       .name      = "",
-      .mime = "text",
+      .mime      = "text",
     };
 
     ApiBridge apiBridge(&mockFetch);
@@ -1117,7 +1117,8 @@ namespace octane::internal {
       "mime": "application/pdf",
       "name": "",
       "timestamp": 20202020,
-      "type": file
+      "type": "file",
+      "hash": "20202020"
     })");
     EXPECT_CALL(
       mockFetch,
@@ -1150,7 +1151,8 @@ namespace octane::internal {
       "mime": "text/plain",
       "name": "",
       "timestamp": 20202020,
-      "type": file
+      "type": "clipboard",
+      "hash": "20202020"
     })");
     EXPECT_CALL(
       mockFetch,
@@ -1185,7 +1187,8 @@ namespace octane::internal {
       "mime": "text/plain",
       "name": "",
       "timestamp": 20202020,
-      "type": file
+      "type": "clipboard",
+      "hash": "20202020"
     })");
     EXPECT_CALL(
       mockFetch,
@@ -1218,7 +1221,8 @@ namespace octane::internal {
       "mime": "application/x-7z-compressed",
       "name": "",
       "timestamp": 20202020,
-      "type": file
+      "type": "multi-file",
+      "hash": "20202020"
     })");
     EXPECT_CALL(
       mockFetch,
@@ -1251,7 +1255,8 @@ namespace octane::internal {
       "mime": "application/x-7z-compressed",
       "name": "",
       "timestamp": 20202020,
-      "type": file
+      "type": "multi-file",
+      "hash": "20202020"
     })");
     EXPECT_CALL(
       mockFetch,
