@@ -123,7 +123,7 @@ namespace octane::internal {
           "title": "timestamp"
         },
         "type": {
-          "enum": ["clipboard", "file"],
+          "enum": ["clipboard", "file", "multifile"],
           "type": "string",
           "title": "type"
         },
