@@ -12,6 +12,8 @@
 #define OCTANE_API_CLIENT_ERROR_CODE_H_
 
 namespace octane {
+  /** @brief No error or unknown error occurred. */
+  constexpr auto ERR_API_CLIENT_OK = "ERR_API_CLIENT_OK";
   /** @brief Used when {@link ApiClient} initialization failed.*/
   constexpr auto ERR_API_CLIENT_INITIALIZATION_FAILED
     = "ERR_API_CLIENT_INITIALIZATION_FAILED";
@@ -40,7 +42,8 @@ namespace octane {
   constexpr auto ERR_ROOM_DISCONNECTED     = "ERR_ROOM_DISCONNECTED";
   constexpr auto ERR_DUP_DEVICE            = "ERR_DUP_DEVICE";
   constexpr auto ERR_CONTENT_HASH_MISMATCH = "ERR_CONTENT_HASH_MISMATCH";
-  constexpr auto ERR_CONTENT_TYPE_DATA_MISMATCH = "ERR_CONTENT_TYPE_DATA_MISMATCH";
+  constexpr auto ERR_CONTENT_TYPE_DATA_MISMATCH
+    = "ERR_CONTENT_TYPE_DATA_MISMATCH";
 } // namespace octane
 
 #endif // OCTANE_API_CLIENT_ERROR_CODE_H_
