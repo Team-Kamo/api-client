@@ -59,14 +59,15 @@ set(ENABLE_INSTALL OFF)
 
 if(WIN32)
   set(ZLIB zlibstaticd)
-  set(LZMA ${CMAKE_CURRENT_SOURCE_DIR}/lib/liblzma.lib)
+  set(LZMALIB ${CMAKE_CURRENT_SOURCE_DIR}/lib/liblzma.lib)
+  set(LZMABIN ${CMAKE_CURRENT_SOURCE_DIR}/bin/liblzma.dll)
 elseif(APPLE)
   set(ZLIB libz.a)
   add_compile_definitions(CRYPTOPP_DISABLE_ASM)
-  set(LZMA lzma)
+  set(LZMALIB lzma)
 elseif(UNIX)
   set(ZLIB libz.a)
-  set(LZMA lzma)
+  set(LZMALIB lzma)
 endif()
 
 include(FetchContent)
@@ -115,6 +116,14 @@ set(
   ${libarchive_SOURCE_DIR}
   ${googletest_SOURCE_DIR}/googletest/include
   ${gmock_SOURCE_DIR}/include
+)
+set(
+  OCTANE_API_CLIENT_LIB_DIR
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib
+)
+set(
+  OCTANE_API_CLIENT_BIN_DIR
+  ${CMAKE_CURRENT_SOURCE_DIR}/bin
 )
 
 add_subdirectory(${SRC_DIR})
