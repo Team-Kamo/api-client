@@ -142,9 +142,11 @@ namespace octane::internal {
         .timestamp = device["timestamp"].GetUint64(),
       });
     }
-    return ok(RoomStatus{ .name    = json["name"].GetString(),
-                          .devices = devices,
-                          .id      = json["id"].GetUint64() });
+    return ok(RoomStatus{
+      .name    = json["name"].GetString(),
+      .devices = devices,
+      .id      = json["id"].GetUint64(),
+    });
   }
   Result<_, ErrorResponse> ApiBridge::roomIdDelete(std::uint64_t id) {
     auto response = fetch->request(internal::HttpMethod::Delete,
@@ -207,22 +209,12 @@ namespace octane::internal {
   }
   Result<_, ErrorResponse> ApiBridge::roomIdContentPut(
     std::uint64_t id,
-    const std::variant<std::string, std::vector<std::uint8_t>>& contentData,
+    const std::vector<std::uint8_t>& contentData,
     std::string_view mime) {
-    std::vector<std::uint8_t> data;
-    if (std::holds_alternative<std::vector<std::uint8_t>>(contentData)) {
-      data = std::get<std::vector<std::uint8_t>>(contentData);
-    } else if (std::holds_alternative<std::string>(contentData)) {
-      const std::string& stringData = std::get<std::string>(contentData);
-      data.resize(stringData.size());
-      std::copy(stringData.begin(), stringData.end(), data.begin());
-    } else {
-      std::abort();
-    }
     auto response = fetch->request(internal::HttpMethod::Put,
                                    "/room/" + std::to_string(id) + "/content",
                                    mime,
-                                   data);
+                                   contentData);
     if (!response) {
       return error(response.err());
     }
@@ -253,9 +245,10 @@ namespace octane::internal {
       return error(err.value());
     }
 
-    static const std::map<std::string, ContentType> typeMap = {
+    const std::map<std::string, ContentType> typeMap = {
       { "file", ContentType::File },
       { "clipboard", ContentType::Clipboard },
+      { "multi-file", ContentType::MultiFile },
     };
 
     ContentStatus status{

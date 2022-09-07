@@ -160,7 +160,7 @@ namespace octane::internal {
      */
     Result<_, ErrorResponse> roomIdContentPut(
       std::uint64_t id,
-      const std::variant<std::string, std::vector<std::uint8_t>>& contentData,
+      const std::vector<std::uint8_t>& contentData,
       std::string_view mime);
     /**
      * @brief use get method for /room/{id}/status
@@ -177,7 +177,8 @@ namespace octane::internal {
      * 成功した場合にはコンテンツの状態{@link
      * ContentStatus}とハッシュ値のpairを返し、失敗した場合には上記のエラーレスポンスを返す。
      */
-    Result<std::pair<ContentStatus,std::string>, ErrorResponse> roomIdStatusGet(std::uint64_t id);
+    Result<std::pair<ContentStatus, std::string>, ErrorResponse>
+    roomIdStatusGet(std::uint64_t id);
     /**
      * @brief use delete method for /room/{id}/status
      * @details

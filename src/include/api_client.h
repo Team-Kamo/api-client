@@ -252,17 +252,6 @@ namespace octane {
      * On failure, it will return the error response written above.
      */
     Result<HealthResult, ErrorResponse> checkHealth();
-    /**
-     * @brief Checks if the input is binary, and if not, returns the
-     * binary-nized input.
-     *
-     * @param[in] input
-     * @return std::vector<std::uint8_t>
-     */
-    std::vector<std::uint8_t> createBinary(
-      const std::variant<std::string,
-                         std::vector<uint8_t>,
-                         std::vector<FileInfo>>& input);
   };
 } // namespace octane
 

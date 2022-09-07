@@ -26,7 +26,7 @@ if(WIN32)
   set(CMAKE_SHARED_LINKER_FLAGS /MANIFEST:NO)
 endif(WIN32)
 
-add_definitions(-D_UNICODE -DUNICODE)
+add_definitions(-D_UNICODE -DUNICODE -DHAVE_LZMA_H)
 
 set(ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(SRC_DIR ${ROOT_DIR}/src)
@@ -59,11 +59,14 @@ set(ENABLE_INSTALL OFF)
 
 if(WIN32)
   set(ZLIB zlibstaticd)
+  set(LZMA ${CMAKE_CURRENT_SOURCE_DIR}/lib/liblzma.lib)
 elseif(APPLE)
   set(ZLIB libz.a)
   add_compile_definitions(CRYPTOPP_DISABLE_ASM)
+  set(LZMA lzma)
 elseif(UNIX)
   set(ZLIB libz.a)
+  set(LZMA lzma)
 endif()
 
 include(FetchContent)
@@ -83,14 +86,12 @@ FetchContent_Declare(
   cryptopp-cmake
   GIT_REPOSITORY https://github.com/abdes/cryptopp-cmake.git
 )
-FetchContent_MakeAvailable(cryptopp-cmake)
 
 FetchContent_Declare(
   libarchive
   GIT_REPOSITORY https://github.com/libarchive/libarchive
   GIT_TAG v3.6.1
 )
-FetchContent_MakeAvailable(libarchive)
 
 FetchContent_Declare(
   googletest
@@ -98,10 +99,10 @@ FetchContent_Declare(
   GIT_TAG release-1.12.1
 )
 
-
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
+
+FetchContent_MakeAvailable(cryptopp-cmake libarchive googletest)
 
 include(GoogleTest)
 
