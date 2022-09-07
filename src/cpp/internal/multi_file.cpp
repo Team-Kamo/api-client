@@ -88,17 +88,11 @@ namespace octane::internal {
   }
   Result<std::vector<FileInfo>, ErrorResponse>
   MultiFileDecompressor::decompress(const std::vector<uint8_t>& data) {
-    std::uint8_t buf[4096];
     archive* arch        = nullptr;
-    archive* dist        = nullptr;
     archive_entry* entry = nullptr;
     std::vector<FileInfo> files;
 
     const auto defer = [&]() {
-      if (dist) {
-        archive_write_close(dist);
-        archive_write_free(dist);
-      }
       if (arch) {
         archive_read_close(arch);
         archive_read_free(arch);
@@ -115,18 +109,11 @@ namespace octane::internal {
     if (res == ARCHIVE_OK) {
       res = archive_read_open_memory(arch, data.data(), data.size());
     }
-    if (res == ARCHIVE_OK) {
-      dist = archive_write_disk_new();
-      res  = archive_write_disk_set_standard_lookup(dist);
-    }
     while (res == ARCHIVE_OK) {
       res = archive_read_next_header(arch, &entry);
       if (res == ARCHIVE_EOF) {
         res = ARCHIVE_OK;
         break;
-      }
-      if (res == ARCHIVE_OK) {
-        res = archive_write_header(dist, entry);
       }
       if (res == ARCHIVE_OK) {
         FileInfo file;
@@ -144,14 +131,10 @@ namespace octane::internal {
           if (res == ARCHIVE_OK) {
             file.data.reserve(file.data.size() + size);
             std::copy_n((uint8_t*)buf, size, std::back_inserter(file.data));
-            res = archive_write_data_block(dist, buf, size, offset);
           }
         }
 
         files.push_back(std::move(file));
-      }
-      if (res == ARCHIVE_OK) {
-        res = archive_write_finish_entry(dist);
       }
     }
 
