@@ -201,6 +201,12 @@ namespace octane {
     if (!result) {
       return error(result.err());
     }
+    auto hash = internal::generateHash(result.get());
+    if (status.get().second != hash) {
+      return makeError(ERR_CONTENT_HASH_MISMATCH,
+                       "Content data doesn't match with its own hash value");
+    }
+
     if (content.contentStatus.type == ContentType::File) {
       content.data = std::move(result.get());
     } else if (content.contentStatus.type == ContentType::Clipboard) {
@@ -215,12 +221,6 @@ namespace octane {
         return error(data.err());
       }
       content.data = std::move(data.get());
-    }
-
-    auto hash = internal::generateHash(result.get());
-    if (status.get().second != hash) {
-      return makeError(ERR_CONTENT_HASH_MISMATCH,
-                       "Content data doesn't match with its own hash value");
     }
 
     content.health  = checkHealthResult.get().health;
@@ -267,8 +267,14 @@ namespace octane {
       if (!resultS) {
         return error(resultS.err());
       }
-      auto result = bridge.roomIdContentPut(
-        connectionStatus.id, data, content.contentStatus.mime);
+      // TODO: mime関係の処理が歪すぎるのでどうにかしましょう
+      std::string mime = content.contentStatus.mime;
+      if (content.contentStatus.type == ContentType::Clipboard) {
+        mime = "text/plain";
+      } else if (content.contentStatus.type == ContentType::MultiFile) {
+        mime = "application/x-7z-compressed";
+      }
+      auto result = bridge.roomIdContentPut(connectionStatus.id, data, mime);
       if (!result) {
         return error(result.err());
       }
