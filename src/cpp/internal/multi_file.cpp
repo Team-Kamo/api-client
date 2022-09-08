@@ -74,6 +74,7 @@ namespace octane::internal {
       return error(tarResult.err());
     }
     auto tarFile = tarResult.get();
+    auto len     = ftell(tarFile);
     fseek(tarFile, 0, SEEK_SET);
 
     std::uint8_t buf[4096];
