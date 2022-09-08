@@ -267,8 +267,14 @@ namespace octane {
       if (!resultS) {
         return error(resultS.err());
       }
-      auto result = bridge.roomIdContentPut(
-        connectionStatus.id, data, content.contentStatus.mime);
+      // TODO: mime関係の処理が歪すぎるのでどうにかしましょう
+      std::string mime = content.contentStatus.mime;
+      if (content.contentStatus.type == ContentType::Clipboard) {
+        mime = "text/plain";
+      } else if (content.contentStatus.type == ContentType::MultiFile) {
+        mime = "application/x-7z-compressed";
+      }
+      auto result = bridge.roomIdContentPut(connectionStatus.id, data, mime);
       if (!result) {
         return error(result.err());
       }
