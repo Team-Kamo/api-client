@@ -36,18 +36,6 @@ set(CMAKE_USE_OPENSSL)
 include(FindOpenSSL)
 include(FindCURL)
 
-include(ExternalProject)
-
-ExternalProject_Add(
-  zlib
-  GIT_REPOSITORY "https://github.com/madler/zlib"
-  GIT_TAG "v1.2.12"
-  PREFIX "${CMAKE_BINARY_DIR}/zlib"
-  CMAKE_CACHE_ARGS
-  "-DBUILD_SHARED_LIBS:BOOL=OFF"
-  "-DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}"
-)
-
 link_directories(${CMAKE_BINARY_DIR}/lib)
 
 # cryptopp options
@@ -58,14 +46,11 @@ set(ENABLE_TEST OFF)
 set(ENABLE_INSTALL OFF)
 
 if(WIN32)
-  set(ZLIB zlibstaticd)
   set(LZMA ${CMAKE_CURRENT_SOURCE_DIR}/lib/liblzma.lib)
 elseif(APPLE)
-  set(ZLIB libz.a)
   add_compile_definitions(CRYPTOPP_DISABLE_ASM)
   set(LZMA lzma)
 elseif(UNIX)
-  set(ZLIB libz.a)
   set(LZMA lzma)
 endif()
 
@@ -81,6 +66,12 @@ FetchContent_GetProperties(rapidjson)
 if(NOT rapidjson_POPULATED)
   FetchContent_Populate(rapidjson)
 endif()
+
+FetchContent_Declare(
+  zlib
+  GIT_REPOSITORY https://github.com/madler/zlib
+  GIT_TAG v1.2.12
+)
 
 FetchContent_Declare(
   cryptopp-cmake
@@ -102,7 +93,7 @@ FetchContent_Declare(
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
-FetchContent_MakeAvailable(cryptopp-cmake libarchive googletest)
+FetchContent_MakeAvailable(zlib cryptopp-cmake libarchive googletest)
 
 include(GoogleTest)
 
