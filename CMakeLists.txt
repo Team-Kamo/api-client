@@ -125,6 +125,10 @@ set(
   OCTANE_API_CLIENT_BIN_DIR
   ${CMAKE_CURRENT_SOURCE_DIR}/bin
 )
+set(
+  OCTANE_API_CLIENT_LIBRARIES
+  ${CMAKE_BINARY_DIR}/lib/liblzma.lib
+)
 
 add_subdirectory(${SRC_DIR})
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/ffi/python/cpp)

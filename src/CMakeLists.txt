@@ -18,9 +18,11 @@ target_include_directories(octane_api_client PUBLIC ${OCTANE_API_CLIENT_INCLUDE_
 
 target_link_libraries(octane_api_client PRIVATE OpenSSL::SSL CURL::libcurl ${ZLIB} ${LZMALIB} cryptopp::cryptopp archive_static)
 
-add_custom_command(
-  TARGET octane_api_client PRE_LINK COMMAND ${CMAKE_COMMAND} -E copy ${OCTANE_API_CLIENT_LIB_DIR}/liblzma.lib ${PROJECT_BINARY_DIR}/lib/liblzma.lib
-)
-add_custom_command(
-  TARGET octane_api_client PRE_LINK COMMAND ${CMAKE_COMMAND} -E copy ${OCTANE_API_CLIENT_BIN_DIR}/liblzma.dll ${PROJECT_BINARY_DIR}/bin/liblzma.dll
-)
+if(WIN32)
+  add_custom_command(
+    TARGET octane_api_client PRE_LINK COMMAND ${CMAKE_COMMAND} -E copy ${OCTANE_API_CLIENT_LIB_DIR}/liblzma.lib ${CMAKE_BINARY_DIR}/lib/liblzma.lib
+  )
+  add_custom_command(
+    TARGET octane_api_client PRE_LINK COMMAND ${CMAKE_COMMAND} -E copy ${OCTANE_API_CLIENT_BIN_DIR}/liblzma.dll ${CMAKE_BINARY_DIR}/bin/liblzma.dll
+  )
+endif()
