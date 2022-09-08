@@ -80,7 +80,8 @@ namespace octane::internal {
       return error(err.value());
     }
 
-    static const std::map<std::string, Health> healthMap = {
+    // NOTE: staticつけるとApiClientのデストラクタでこける
+    const std::map<std::string, Health> healthMap = {
       { "healthy", Health::Healthy },
       { "degraded", Health::Degraded },
       { "faulty", Health::Faulty },
