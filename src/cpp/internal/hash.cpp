@@ -24,8 +24,8 @@ namespace octane::internal {
   std::string convToHex(const std::vector<std::uint8_t>& data) {
     std::string ans;
     for (auto number : data) {
-      auto left  = number >> 4;
-      auto right = number & 0x0f;
+      std::uint8_t left = number >> 4;
+      std::uint8_t right = number & 0x0f;
       ans.push_back(convToHexMono(left));
       ans.push_back(convToHexMono(right));
     }
