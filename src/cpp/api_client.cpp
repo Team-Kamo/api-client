@@ -24,7 +24,10 @@ namespace octane {
                        std::string_view baseUrl)
     : bridge(
       new internal::Fetch(token, origin, baseUrl, new internal::HttpClient())),
-      lastCheckedTime(0) {}
+      lastCheckedTime(0),
+      connectionStatus(ConnectionStatus{
+        .isConnected = false,
+      }) {}
 
   ApiClient::~ApiClient() noexcept {
     if (connectionStatus.isConnected == true) {

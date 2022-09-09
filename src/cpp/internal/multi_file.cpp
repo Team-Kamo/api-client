@@ -4,6 +4,7 @@
 #include <libarchive/archive_entry.h>
 
 #include <algorithm>
+#include <chrono>
 #include <cstring>
 
 #include "include/error_code.h"
@@ -134,8 +135,10 @@ namespace octane::internal {
             break;
           }
           if (res == ARCHIVE_OK) {
-            file.data.reserve(file.data.size() + size);
-            std::copy_n((uint8_t*)buf, size, std::back_inserter(file.data));
+            file.data.resize(file.data.size() + size);
+            std::copy((uint8_t*)buf,
+                      ((uint8_t*)buf) + size,
+                      file.data.begin() + offset);
           }
         }
 

@@ -35,7 +35,7 @@ namespace octane {
        */
       std::string name;
     };
-    ConnectionStatus connectionStatus{ .isConnected = false };
+    ConnectionStatus connectionStatus;
 
   public:
     /**
