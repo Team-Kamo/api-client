@@ -45,6 +45,10 @@ set(CRYPTOPP_BUILD_TESTING OFF)
 set(ENABLE_TEST OFF)
 set(ENABLE_INSTALL OFF)
 
+if(APPLE)
+  add_compile_definitions(CRYPTOPP_DISABLE_ASM)
+endif()
+
 include(FetchContent)
 
 FetchContent_Declare(
