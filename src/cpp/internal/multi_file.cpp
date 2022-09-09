@@ -71,7 +71,6 @@ namespace octane::internal {
       return ok(file);
     }
   } // namespace
-  std::uint8_t buf[16 * 1024 * 1024];
 
   Result<std::vector<uint8_t>, ErrorResponse> MultiFileCompressor::compress(
     const std::vector<FileInfo>& files) {
@@ -84,10 +83,8 @@ namespace octane::internal {
     fseek(tarFile, 0, SEEK_SET);
 
     std::vector<uint8_t> data;
-    data.reserve(len);
-    while (auto size = fread(buf, 1, sizeof(buf), tarFile)) {
-      std::copy_n(buf, size, std::back_inserter(data));
-    }
+    data.resize(len);
+    fread(data.data(), 1, len, tarFile);
     fclose(tarFile);
 
     return ok(std::move(data));
