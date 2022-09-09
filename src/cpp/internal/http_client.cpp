@@ -227,9 +227,9 @@ namespace octane::internal {
                                    size_t size,
                                    size_t nmemb,
                                    HttpResponse* response) {
-    auto itr = response->body.begin() + response->body.size();
     response->body.resize(response->body.size() + nmemb);
-    std::copy(buffer, buffer + nmemb, itr);
+    std::copy_n(
+      buffer, nmemb, response->body.begin() + (response->body.size() - nmemb));
     return size * nmemb;
   }
 
