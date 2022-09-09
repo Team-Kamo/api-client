@@ -28,10 +28,10 @@ namespace octane::internal {
     };
 
     void dump(const char* text,
-                     FILE* stream,
-                     unsigned char* ptr,
-                     size_t size,
-                     char nohex) {
+              FILE* stream,
+              unsigned char* ptr,
+              size_t size,
+              char nohex) {
       size_t i;
       size_t c;
 
@@ -83,10 +83,10 @@ namespace octane::internal {
     }
 
     int trace(CURL* handle,
-                        curl_infotype type,
-                        char* data,
-                        size_t size,
-                        void* userp) {
+              curl_infotype type,
+              char* data,
+              size_t size,
+              void* userp) {
       struct data* config = (struct data*)userp;
       const char* text;
       (void)handle; /* prevent compiler warning */
@@ -144,12 +144,14 @@ namespace octane::internal {
       return makeError(ERR_CURL_INITIALIZATION_FAILED, "curl is nullptr");
     }
 
-    struct data config;
-    config.trace_ascii = 1;
-    curl_easy_setopt(curl, CURLOPT_DEBUGFUNCTION, trace);
-    curl_easy_setopt(curl, CURLOPT_DEBUGDATA, &config);
-    curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
-    curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+#ifndef NDEBUG
+    // struct data config;
+    // config.trace_ascii = 1;
+    // curl_easy_setopt(curl, CURLOPT_DEBUGFUNCTION, trace);
+    // curl_easy_setopt(curl, CURLOPT_DEBUGDATA, &config);
+    // curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
+    // curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+#endif // #ifndef NDEBUG
 
     // HTTPヘッダを定義する。
     curl_slist* list = nullptr;
