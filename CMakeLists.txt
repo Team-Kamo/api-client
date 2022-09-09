@@ -26,7 +26,7 @@ if(WIN32)
   set(CMAKE_SHARED_LINKER_FLAGS /MANIFEST:NO)
 endif(WIN32)
 
-add_definitions(-D_UNICODE -DUNICODE -DHAVE_LZMA_H)
+add_definitions(-D_UNICODE -DUNICODE)
 
 set(ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(SRC_DIR ${ROOT_DIR}/src)
@@ -44,15 +44,6 @@ set(CRYPTOPP_BUILD_TESTING OFF)
 # libarchive options
 set(ENABLE_TEST OFF)
 set(ENABLE_INSTALL OFF)
-
-if(WIN32)
-  set(LZMA ${CMAKE_CURRENT_SOURCE_DIR}/lib/liblzma.lib)
-elseif(APPLE)
-  add_compile_definitions(CRYPTOPP_DISABLE_ASM)
-  set(LZMA lzma)
-elseif(UNIX)
-  set(LZMA lzma)
-endif()
 
 include(FetchContent)
 
@@ -85,6 +76,11 @@ FetchContent_Declare(
 )
 
 FetchContent_Declare(
+  xz
+  GIT_REPOSITORY https://git.tukaani.org/xz.git
+)
+
+FetchContent_Declare(
   googletest
   GIT_REPOSITORY https://github.com/google/googletest.git
   GIT_TAG release-1.12.1
@@ -93,7 +89,7 @@ FetchContent_Declare(
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
-FetchContent_MakeAvailable(zlib cryptopp-cmake libarchive googletest)
+FetchContent_MakeAvailable(zlib xz cryptopp-cmake libarchive googletest)
 
 include(GoogleTest)
 
@@ -106,10 +102,6 @@ set(
   ${libarchive_SOURCE_DIR}
   ${googletest_SOURCE_DIR}/googletest/include
   ${gmock_SOURCE_DIR}/include
-)
-set(
-  OCTANE_API_CLIENT_LIBRARIES
-  ${CMAKE_BINARY_DIR}/lib/liblzma.lib
 )
 
 add_subdirectory(${SRC_DIR})

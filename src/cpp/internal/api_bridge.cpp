@@ -145,7 +145,7 @@ namespace octane::internal {
     }
     return ok(RoomStatus{
       .name    = json["name"].GetString(),
-      .devices = devices,
+      .devices = std::move(devices),
       .id      = json["id"].GetUint64(),
     });
   }
@@ -195,7 +195,8 @@ namespace octane::internal {
       return makeError(ERR_INVALID_RESPONSE,
                        "Invalid response, binary not returned");
     }
-    return ok(std::get<std::vector<std::uint8_t>>(response.get().body));
+    return ok(
+      std::move(std::get<std::vector<std::uint8_t>>(response.get().body)));
   }
   Result<_, ErrorResponse> ApiBridge::roomIdContentDelete(std::uint64_t id) {
     auto response = fetch->request(internal::HttpMethod::Delete,
@@ -262,10 +263,8 @@ namespace octane::internal {
     if (status.type == ContentType::File) {
       status.name = json["name"].GetString();
     }
-    std::pair<ContentStatus, std::string> result;
-    result.first  = status;
-    result.second = json["hash"].GetString();
-    return ok(result);
+    return ok(std::make_pair<ContentStatus, std::string>(
+      std::move(status), json["hash"].GetString()));
   }
   Result<_, ErrorResponse> ApiBridge::roomIdStatusDelete(std::uint64_t id) {
     auto response = fetch->request(internal::HttpMethod::Delete,
@@ -326,11 +325,10 @@ namespace octane::internal {
     if (100 <= response.statusCode && response.statusCode < 300)
       return std::nullopt;
     if (!std::holds_alternative<rapidjson::Document>(response.body)) {
-      std::string body = "";
-      body.resize(std::get<std::vector<std::uint8_t>>(response.body).size());
-      std::copy(std::get<std::vector<std::uint8_t>>(response.body).begin(),
-                std::get<std::vector<std::uint8_t>>(response.body).end(),
-                body.begin());
+      auto& vec = std::get<std::vector<std::uint8_t>>(response.body);
+      std::string body;
+      body.reserve(vec.size());
+      std::copy(vec.begin(), vec.end(), std::back_inserter(body));
       std::string headers;
       for (auto itr = response.header.begin(); itr != response.header.end();
            itr++) {

@@ -49,10 +49,10 @@ namespace octane::internal {
     rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
     body.Accept(writer);
 
-    decoded.resize(buffer.GetSize());
+    decoded.reserve(buffer.GetSize());
     std::copy(buffer.GetString(),
               buffer.GetString() + buffer.GetSize(),
-              decoded.begin());
+              std::back_inserter(decoded));
 
     return request(method,
                    origin,
