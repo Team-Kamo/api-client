@@ -3,6 +3,9 @@
 #include <libarchive/archive.h>
 #include <libarchive/archive_entry.h>
 
+#include <algorithm>
+#include <cstring>
+
 #include "include/error_code.h"
 
 namespace octane::internal {
@@ -76,7 +79,6 @@ namespace octane::internal {
       return error(tarResult.err());
     }
     auto tarFile = tarResult.get();
-    auto len     = ftell(tarFile);
     fseek(tarFile, 0, SEEK_SET);
 
     std::vector<uint8_t> data;
