@@ -155,10 +155,11 @@ namespace octane {
     if (!result) {
       return error(result.err());
     }
-    return ok(Response{
-      .health  = checkHealthResult.get().health,
-      .message = std::move(checkHealthResult.get().message),
-    });
+
+    auto& response   = result.get();
+    response.health  = checkHealthResult.get().health;
+    response.message = std::move(checkHealthResult.get().message);
+    return ok(std::move(response));
   }
 
   Result<Response, ErrorResponse> ApiClient::deleteRoom(
