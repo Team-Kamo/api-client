@@ -327,8 +327,8 @@ namespace octane::internal {
     if (!std::holds_alternative<rapidjson::Document>(response.body)) {
       auto& vec = std::get<std::vector<std::uint8_t>>(response.body);
       std::string body;
-      body.reserve(vec.size());
-      std::copy(vec.begin(), vec.end(), std::back_inserter(body));
+      body.resize(vec.size());
+      std::copy(vec.begin(), vec.end(), body.begin());
       std::string headers;
       for (auto itr = response.header.begin(); itr != response.header.end();
            itr++) {
