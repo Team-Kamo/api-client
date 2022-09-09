@@ -227,7 +227,9 @@ namespace octane::internal {
                                    size_t size,
                                    size_t nmemb,
                                    HttpResponse* response) {
-    std::copy_n(buffer, nmemb, std::back_inserter(response->body));
+    auto itr = response->body.begin() + response->body.size();
+    response->body.resize(response->body.size() + nmemb);
+    std::copy(buffer, buffer + nmemb, itr);
     return size * nmemb;
   }
 
@@ -237,7 +239,8 @@ namespace octane::internal {
     size_t nmemb,
     std::pair<const std::vector<std::uint8_t>*, size_t>* stream) {
     size_t len = std::min(stream->first->size() - stream->second, size * nmemb);
-    std::copy_n(stream->first->data() + stream->second, len, buffer);
+    auto itr   = stream->first->begin() + stream->second;
+    std::copy(itr, itr + len, buffer);
     stream->second += len;
     return len;
   }
