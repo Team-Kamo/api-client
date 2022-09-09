@@ -88,7 +88,7 @@ namespace octane::internal {
       .version     = HttpVersion::Http2,
       .uri         = std::string(url),
       .headerField = headers,
-      .body        = body,
+      .body        = &body,
     };
     auto result = client->request(origin, request);
     if (!result) {

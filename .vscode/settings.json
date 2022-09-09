@@ -1,5 +1,10 @@
 {
   "files.associations": {
+    "*.h": "cpp",
+    "*.txt": "plaintext",
+    "CMakeLists.txt": "cmake",
+    "*.html": "html",
+    "*.i": "cpp",
     "string_view": "cpp",
     "__bit_reference": "cpp",
     "__bits": "cpp",
@@ -82,6 +87,14 @@
     "iterator": "cpp",
     "utility": "cpp",
     "hash_map": "cpp",
-    "hash_set": "cpp"
+    "hash_set": "cpp",
+    "*.tcc": "cpp",
+    "numbers": "cpp",
+    "semaphore": "cpp",
+    "stop_token": "cpp",
+    "queue": "cpp",
+    "random": "cpp",
+    "memory_resource": "cpp",
+    "cinttypes": "cpp"
   }
 }

@@ -16,6 +16,7 @@
 
 #include <curl/curl.h>
 
+#include <algorithm>
 #include <cstring>
 #include <ostream>
 
@@ -162,29 +163,29 @@ namespace octane::internal {
     curl_easy_setopt(curl, CURLOPT_HTTPHEADER, list);
 
     // PUTメソッド用
-    std::pair<const std::vector<std::uint8_t>*, size_t> pair(&request.body, 0);
+    std::pair<const std::vector<std::uint8_t>*, size_t> pair(request.body, 0);
 
     // HTTPメソッドごとに処理を分岐。
     switch (request.method) {
       case HttpMethod::Get:
-        if (!request.body.empty()) {
+        if (!request.body->empty()) {
           return makeError(ERR_INCORRECT_HTTP_METHOD,
                            "Request body must be empty.");
         }
         break;
       case HttpMethod::Post:
         curl_easy_setopt(curl, CURLOPT_POST, 1L);
-        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, request.body.data());
-        curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, request.body.size());
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, request.body->data());
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, request.body->size());
         break;
       case HttpMethod::Put:
         curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);
         curl_easy_setopt(curl, CURLOPT_READDATA, &pair);
-        curl_easy_setopt(curl, CURLOPT_INFILESIZE_LARGE, request.body.size());
+        curl_easy_setopt(curl, CURLOPT_INFILESIZE_LARGE, request.body->size());
         curl_easy_setopt(curl, CURLOPT_READFUNCTION, readCallback);
         break;
       case HttpMethod::Delete:
-        if (!request.body.empty()) {
+        if (!request.body->empty()) {
           return makeError(ERR_INCORRECT_HTTP_METHOD,
                            "Request body must be empty.");
         }
@@ -197,17 +198,16 @@ namespace octane::internal {
           "An undefined method was specified. Available methods are GET, POST, PUT, and DELETE.");
     }
 
-    // レスポンスのヘッダを受け取るための準備
-    std::pair<std::string, std::map<std::string, std::string>> responseHeader;
-    curl_easy_setopt(curl, CURLOPT_HEADERDATA, &responseHeader);
+    HttpResponse response;
+
+    curl_easy_setopt(curl, CURLOPT_HEADERDATA, &response);
     curl_easy_setopt(curl, CURLOPT_HEADERFUNCTION, headerCallback);
 
     // レスポンスのボディを受け取るための準備
-    std::vector<std::uint8_t> chunk;
     const std::string uri = std::string(origin) + request.uri;
     curl_easy_setopt(curl, CURLOPT_URL, uri.c_str());
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeCallback);
-    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &chunk);
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
 
     // 通信を開始する。
     const CURLcode code = curl_easy_perform(curl);
@@ -220,17 +220,14 @@ namespace octane::internal {
       return makeError(ERR_CURL_CONNECTION_FAILED, curl_easy_strerror(code));
     }
     //レスポンスを正しい形にして返す。
-    return makeHttpResponse(std::move(responseHeader), std::move(chunk));
+    return makeHttpResponse(std::move(response));
   }
 
   size_t HttpClient::writeCallback(char* buffer,
                                    size_t size,
                                    size_t nmemb,
-                                   std::vector<std::uint8_t>* chunk) {
-    chunk->reserve(chunk->size() + size * nmemb);
-    for (size_t i = 0; i < size * nmemb; ++i) {
-      chunk->push_back(buffer[i]);
-    }
+                                   HttpResponse* response) {
+    std::copy_n(buffer, nmemb, std::back_inserter(response->body));
     return size * nmemb;
   }
 
@@ -240,37 +237,33 @@ namespace octane::internal {
     size_t nmemb,
     std::pair<const std::vector<std::uint8_t>*, size_t>* stream) {
     size_t len = std::min(stream->first->size() - stream->second, size * nmemb);
-    std::memcpy(buffer, stream->first->data() + stream->second, len);
+    std::copy_n(stream->first->data() + stream->second, len, buffer);
     stream->second += len;
     return len;
   }
 
-  size_t HttpClient::headerCallback(
-    char* buffer,
-    size_t size,
-    size_t nmemb,
-    std::pair<std::string, std::map<std::string, std::string>>*
-      responseHeader) {
+  size_t HttpClient::headerCallback(char* buffer,
+                                    size_t size,
+                                    size_t nmemb,
+                                    HttpResponse* response) {
     // 扱いやすいようにstring_viewでラップ(コピーが発生しないのでオーバーヘッドは無視できるほど小さいはず多分)
     std::string_view buf(buffer, size * nmemb);
-    auto pos1 = buf.find(": ");
-    auto pos2 = buf.find("\r");
-    if (pos1 == buf.npos) {
-      if (responseHeader->first.empty()) {
-        responseHeader->first = buf.substr(0, pos2);
-      }
+    if (response->statusLine.empty()) {
+      response->statusLine = buf.substr(0, buf.size() - 2);
     } else {
-      std::string key(buf.substr(0, pos1));
-      std::string val(buf.substr(pos1 + 2, pos2 - (pos1 + 2)));
-      responseHeader->second[key] = val;
+      auto pos = buf.find(": ");
+      std::string key(buf.substr(0, pos));
+      buf = buf.substr(pos + 2);
+      std::string val(buf.substr(0, buf.size() - 2));
+      response->headerField[key] = val;
+      if (key == "Content-Length") {
+        response->body.reserve(std::stoll(val));
+      }
     }
     return size * nmemb;
   }
   Result<HttpResponse, ErrorResponse> HttpClient::makeHttpResponse(
-    std::pair<std::string, std::map<std::string, std::string>>&& responseHeader,
-    std::vector<std::uint8_t>&& chunk) {
-    HttpResponse response;
-    response.statusLine = std::move(responseHeader.first);
+    HttpResponse&& response) {
     auto pos1           = response.statusLine.find(" ");
     auto pos2           = response.statusLine.substr(pos1 + 1).find(" ");
     response.statusCode = std::stoi(response.statusLine.substr(pos1 + 1, pos2));
@@ -286,9 +279,7 @@ namespace octane::internal {
     } else {
       return makeError(ERR_INVALID_RESPONSE, "http version was invalid");
     }
-    response.headerField = std::move(responseHeader.second);
-    response.body        = std::move(chunk);
-    return ok(response);
+    return ok(std::move(response));
   }
 
   bool operator==(const HttpRequest& a, const HttpRequest& b) {
@@ -356,8 +347,8 @@ namespace octane::internal {
     headers += "}";
 
     std::string body;
-    body.resize(request.body.size());
-    std::copy(request.body.begin(), request.body.end(), body.begin());
+    body.resize(request.body->size());
+    std::copy(request.body->begin(), request.body->end(), body.begin());
 
     stream << "method = " << method << ", version = " << version
            << ", uri = " << request.uri << ", headers = " << headers

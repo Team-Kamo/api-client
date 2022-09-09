@@ -19,7 +19,7 @@ class Api:
         self.baseUrl = baseUrl
 
         dir = os.path.dirname(os.path.abspath(__file__))
-        lib = dir + "/dynoctane"
+        lib = dir + "/libdynoctane.dylib"
         if os.name == "nt":
             self.api = ctypes.windll.LoadLibrary(lib)
         else:

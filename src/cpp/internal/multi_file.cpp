@@ -79,11 +79,12 @@ namespace octane::internal {
       return error(tarResult.err());
     }
     auto tarFile = tarResult.get();
+    auto len     = ftell(tarFile);
     fseek(tarFile, 0, SEEK_SET);
 
     std::vector<uint8_t> data;
+    data.reserve(len);
     while (auto size = fread(buf, 1, sizeof(buf), tarFile)) {
-      data.reserve(data.size() + size);
       std::copy_n(buf, size, std::back_inserter(data));
     }
     fclose(tarFile);

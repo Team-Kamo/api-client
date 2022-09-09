@@ -63,7 +63,7 @@ namespace octane::internal {
     /** @brief リクエストに使用するHTTPヘッダフィールド。*/
     std::map<std::string, std::string> headerField;
     /** @brief リクエストのボディ部。*/
-    std::vector<std::uint8_t> body;
+    const std::vector<std::uint8_t>* body;
   };
   bool operator==(const HttpRequest& a, const HttpRequest& b);
   std::ostream& operator<<(std::ostream& stream, const HttpRequest& request);
@@ -190,7 +190,7 @@ namespace octane::internal {
     static size_t writeCallback(char* buffer,
                                 size_t size,
                                 size_t nmemb,
-                                std::vector<std::uint8_t>* chunk);
+                                HttpResponse* chunk);
 
     /**
      * @brief CURLでリクエストのボディ部に書き込むためのコールバック。
@@ -221,12 +221,10 @@ namespace octane::internal {
      * @param[in,out] responseHeaderField 受け取るための領域。
      * @return size_t 処理したバイト数。
      */
-    static size_t headerCallback(
-      char* buffer,
-      size_t size,
-      size_t nmemb,
-      std::pair<std::string, std::map<std::string, std::string>>*
-        responseHeader);
+    static size_t headerCallback(char* buffer,
+                                 size_t size,
+                                 size_t nmemb,
+                                 HttpResponse* responseHeader);
     /**
      * @brief fetchにレスポンスを返す際に{@link HttpResponse}型に加工する。
      * 失敗した場合は次のエラーレスポンスを返す。
@@ -236,9 +234,7 @@ namespace octane::internal {
      * @return HttpResponse fetchに返される加工済みのレスポンス
      */
     Result<HttpResponse, ErrorResponse> makeHttpResponse(
-      std::pair<std::string, std::map<std::string, std::string>>&&
-        responseHeader,
-      std::vector<std::uint8_t>&& chunk);
+      HttpResponse&& responseHeader);
   };
 } // namespace octane::internal
 
