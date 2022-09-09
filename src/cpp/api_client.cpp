@@ -44,10 +44,10 @@ namespace octane {
     if (!checkHealthResult) {
       return error(checkHealthResult.err());
     }
-    Response response{};
-    response.health  = checkHealthResult.get().health;
-    response.message = checkHealthResult.get().message;
-    return ok(response);
+    return ok(Response{
+      .health  = checkHealthResult.get().health,
+      .message = std::move(checkHealthResult.get().message),
+    });
   }
 
   Result<HealthResult, ErrorResponse> ApiClient::checkHealth() {
@@ -71,7 +71,7 @@ namespace octane {
     if (health != Health::Healthy && health != Health::Degraded) {
       std::abort();
     }
-    lastCheckedHealth = healthResult.get();
+    lastCheckedHealth = std::move(healthResult.get());
     lastCheckedTime   = now;
     return ok(lastCheckedHealth);
   }
@@ -93,10 +93,10 @@ namespace octane {
     if (!result) {
       return error(result.err());
     }
-    auto response    = result.get();
+    auto& response   = result.get();
     response.health  = checkHealthResult.get().health;
-    response.message = checkHealthResult.get().message;
-    return ok(response);
+    response.message = std::move(checkHealthResult.get().message);
+    return ok(std::move(response));
   }
 
   Result<Response, ErrorResponse> ApiClient::connectRoom(
@@ -110,13 +110,14 @@ namespace octane {
     if (!result) {
       return error(result.err());
     }
-    Response response{};
-    response.health              = checkHealthResult.get().health;
-    response.message             = checkHealthResult.get().message;
+
     connectionStatus.id          = id;
     connectionStatus.isConnected = true;
-    connectionStatus.name        = name;
-    return ok(response);
+    connectionStatus.name        = std::move(name);
+    return ok(Response{
+      .health  = checkHealthResult.get().health,
+      .message = std::move(checkHealthResult.get().message),
+    });
   }
   Result<Response, ErrorResponse> ApiClient::disconnectRoom(
     std::uint64_t id,
@@ -129,13 +130,13 @@ namespace octane {
     if (!result) {
       return error(result.err());
     }
-    Response response{};
-    response.health              = checkHealthResult.get().health;
-    response.message             = checkHealthResult.get().message;
     connectionStatus.id          = 0;
     connectionStatus.isConnected = false;
     connectionStatus.name        = "";
-    return ok(response);
+    return ok(Response{
+      .health  = checkHealthResult.get().health,
+      .message = std::move(checkHealthResult.get().message),
+    });
   }
 
   Result<RoomStatus, ErrorResponse> ApiClient::getRoomStatus(
@@ -154,10 +155,10 @@ namespace octane {
     if (!result) {
       return error(result.err());
     }
-    auto response    = result.get();
-    response.health  = checkHealthResult.get().health;
-    response.message = checkHealthResult.get().message;
-    return ok(response);
+    return ok(Response{
+      .health  = checkHealthResult.get().health,
+      .message = std::move(checkHealthResult.get().message),
+    });
   }
 
   Result<Response, ErrorResponse> ApiClient::deleteRoom(
@@ -176,10 +177,10 @@ namespace octane {
     if (!result) {
       return error(result.err());
     }
-    Response response{};
-    response.health  = checkHealthResult.get().health;
-    response.message = checkHealthResult.get().message;
-    return ok(response);
+    return ok(Response{
+      .health  = checkHealthResult.get().health,
+      .message = std::move(checkHealthResult.get().message),
+    });
   }
 
   Result<Content, ErrorResponse> ApiClient::getContent() {
@@ -214,9 +215,8 @@ namespace octane {
       content.data = std::move(result.get());
     } else if (content.contentStatus.type == ContentType::Clipboard) {
       std::string str;
-      str.reserve(result.get().size());
-      std::copy(
-        result.get().begin(), result.get().end(), std::back_inserter(str));
+      str.resize(result.get().size());
+      std::copy(result.get().begin(), result.get().end(), str.begin());
       content.data = std::move(str);
     } else {
       auto data = internal::MultiFileDecompressor::decompress(result.get());
@@ -227,7 +227,7 @@ namespace octane {
     }
 
     content.health  = checkHealthResult.get().health;
-    content.message = checkHealthResult.get().message;
+    content.message = std::move(checkHealthResult.get().message);
 
     return ok(std::move(content));
   }
@@ -245,10 +245,11 @@ namespace octane {
     if (!result) {
       return error(result.err());
     }
-    Response response{};
-    response.health  = checkHealthResult.get().health;
-    response.message = checkHealthResult.get().message;
-    return ok(response);
+
+    return ok(Response{
+      .health  = checkHealthResult.get().health,
+      .message = std::move(checkHealthResult.get().message),
+    });
   }
 
   Result<Response, ErrorResponse> ApiClient::uploadContent(
@@ -281,10 +282,11 @@ namespace octane {
       if (!result) {
         return error(result.err());
       }
-      Response response{};
-      response.health  = checkHealthResult.get().health;
-      response.message = checkHealthResult.get().message;
-      return ok(response);
+
+      return ok(Response{
+        .health  = checkHealthResult.get().health,
+        .message = std::move(checkHealthResult.get().message),
+      });
     };
 
     if (content.contentStatus.type == ContentType::Clipboard
@@ -292,8 +294,8 @@ namespace octane {
       if (std::holds_alternative<std::string>(content.data)) {
         auto& str = std::get<std::string>(content.data);
         std::vector<std::uint8_t> data;
-        data.reserve(str.size());
-        std::copy(str.begin(), str.end(), std::back_inserter(data));
+        data.resize(str.size());
+        std::copy(str.begin(), str.end(), data.begin());
         return send(data);
       } else if (std::holds_alternative<std::vector<std::uint8_t>>(
                    content.data)) {
